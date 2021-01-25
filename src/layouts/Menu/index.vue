@@ -3,51 +3,55 @@
     style="height: 100%"
     :collapse="aside"
     router
-    default-active="about"
+    :default-active="defaultActive"
     background-color="#1d1e23"
     text-color="#eee"
     :collapse-transition="false"
-    @open="handleOpen"
-    @close="handleClose"
   >
     <el-submenu index="1">
       <template #title>
-        <i class="el-icon-location"></i>
-        <span>导航一</span>
+        <i class="el-icon-s-data"></i>
+        <span>数据页</span>
       </template>
-      <el-menu-item-group title="分组1">
-        <el-menu-item index="/"><i class="el-icon-location" />首页</el-menu-item>
-        <el-menu-item index="1-2"><i class="el-icon-location" />选项2</el-menu-item>
+      <el-menu-item-group title="数据页">
+        <el-menu-item index="/"><i class="el-icon-s-marketing" />数据分析</el-menu-item>
+        <el-menu-item index="/oversee"
+          ><i class="el-icon-odometer" />数据监控</el-menu-item
+        >
       </el-menu-item-group>
-      <el-menu-item-group title="分组2">
-        <el-menu-item index="1-3"><i class="el-icon-location"></i>选项3</el-menu-item>
-      </el-menu-item-group>
-      <el-submenu index="1-4">
-        <template #title><i class="el-icon-location" /> <span>选项4</span></template>
-        <el-menu-item index="1-4-1"><i class="el-icon-question" />选项1</el-menu-item>
-      </el-submenu>
     </el-submenu>
-    <el-menu-item index="about">
-      <i class="el-icon-menu"></i>
-      <template #title>关于</template>
-    </el-menu-item>
-    <el-menu-item index="login">
-      <i class="el-icon-setting"></i>
-      <template #title>登录</template>
-    </el-menu-item>
-    <el-submenu index="5">
+    <el-submenu index="2">
       <template #title>
-        <i class="el-icon-location"></i>
-        <span>导航一</span>
+        <i class="el-icon-data-board"></i>
+        <span>表格页</span>
       </template>
-      <el-menu-item-group>
-        <template #title>分组一</template>
-        <el-menu-item index="5-1">选项1</el-menu-item>
-        <el-menu-item index="5-2">选项2</el-menu-item>
-      </el-menu-item-group>
-      <el-menu-item-group title="分组2">
-        <el-menu-item index="5-3">选项3</el-menu-item>
-      </el-menu-item-group>
+      <el-menu-item index="/table-base"
+        ><i class="el-icon-data-board" />基本表格</el-menu-item
+      >
+      <el-menu-item index="/table-server"
+        ><i class="el-icon-data-board" />动态数据表格</el-menu-item
+      >
+    </el-submenu>
+    <el-submenu index="3">
+      <template #title>
+        <i class="el-icon-edit-outline"></i>
+        <span>表单页</span>
+      </template>
+      <el-menu-item index="/form-base">
+        <i class="el-icon-edit-outline"></i>基本表单</el-menu-item
+      >
+      <el-menu-item index="/form-def">
+        <i class="el-icon-edit-outline"></i>自定义表单</el-menu-item
+      >
+    </el-submenu>
+    <el-submenu index="4">
+      <template #title>
+        <i class="el-icon-warning-outline"></i>
+        <span>异常页</span>
+      </template>
+      <el-menu-item index="/403"><i class="el-icon-warning-outline"></i>403</el-menu-item>
+      <el-menu-item index="/404"><i class="el-icon-warning-outline"></i>404</el-menu-item>
+      <el-menu-item index="/500"><i class="el-icon-warning-outline"></i>500</el-menu-item>
     </el-submenu>
   </el-menu>
 </template>
@@ -72,12 +76,7 @@ export default defineComponent({
     return {
       props,
       aside,
-      handleOpen(key: string | number, keyPath: string): void {
-        console.log(key, keyPath);
-      },
-      handleClose(key: string | number, keyPath: string): void {
-        console.log(key, keyPath);
-      }
+      defaultActive: state.setting.activeMenu
     };
   },
   methods: {}
