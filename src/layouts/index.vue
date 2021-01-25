@@ -30,6 +30,7 @@
             </li>
             <li><i class="el-icon-table-lamp" /></li>
             <li><i class="el-icon-full-screen" /></li>
+            <li><i class="el-icon-setting" /></li>
             <el-dropdown>
               <li><el-avatar size="small" :src="`/@/assets/IMG_0380.GIF`" /></li>
               <template #dropdown>

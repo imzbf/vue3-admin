@@ -9,99 +9,97 @@ import Layout from '/@/layouts/index.vue';
 
 import store from '/@/store';
 
+// vue-router子路由path不需要添加/
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/login',
     name: 'Login',
+    meta: { title: '登录' },
     component: () => import('/@/views/Login/index.vue')
   },
   {
-    path: '/',
+    path: '',
+    redirect: '/index/dashboard'
+  },
+  {
+    path: '/index',
     component: Layout,
-    redirect: '/login',
+    redirect: '/index/dashboard',
     children: [
       {
-        path: '/',
-        component: () => import('/@/views/Home/index.vue'),
-        name: 'DataAnalysis'
+        path: 'dashboard',
+        name: 'Dashboard',
+        meta: { title: '数据分析' },
+        component: () => import('/@/views/Home/index.vue')
       },
       {
-        path: '/oversee',
-        component: () => import('/@/views/Home/oversee.vue'),
-        name: 'DataOversee'
+        path: 'oversee',
+        name: 'DataOversee',
+        meta: { title: '数据监控' },
+        component: () => import('/@/views/Home/oversee.vue')
       }
     ]
   },
   {
-    path: '/',
+    path: '/table',
     component: Layout,
-    redirect: '/login',
+    redirect: '/table/base',
     children: [
       {
-        path: '/table-base',
-        component: () => import('/@/views/Table/index.vue'),
-        name: 'TableBase'
+        path: 'base',
+        name: 'TableBase',
+        meta: { title: '数据监控' },
+        component: () => import('/@/views/Table/index.vue')
       },
       {
-        path: '/table-server',
-        component: () => import('/@/views/Table/server.vue'),
-        name: 'TableServer'
+        path: 'server',
+        name: 'TableServer',
+        meta: { title: '数据监控' },
+        component: () => import('/@/views/Table/server.vue')
       }
     ]
   },
   {
-    path: '/',
+    path: '/form',
     component: Layout,
-    redirect: '/login',
+    redirect: '/form/base',
     children: [
       {
-        path: '/form-base',
-        component: () => import('/@/views/Form/index.vue'),
-        name: 'FormBase'
+        path: 'base',
+        name: 'FormBase',
+        meta: { title: '数据监控' },
+        component: () => import('/@/views/Form/index.vue')
       },
       {
-        path: '/form-def',
-        component: () => import('/@/views/Form/def.vue'),
-        name: 'FormDef'
+        path: 'def',
+        name: 'FormDef',
+        meta: { title: '数据监控' },
+        component: () => import('/@/views/Form/def.vue')
       }
     ]
   },
   {
-    path: '/',
+    path: '/error',
     component: Layout,
-    redirect: '/login',
+    redirect: '/error/404',
     children: [
       {
-        path: '/403',
-        component: () => import('/@/views/Error/403.vue'),
-        name: '403'
+        path: '403',
+        name: '403',
+        meta: { title: '数据监控' },
+        component: () => import('/@/views/Error/403.vue')
       },
       {
-        path: '/404',
-        component: () => import('/@/views/Error/404.vue'),
-        name: '404'
+        path: '404',
+        name: '404',
+        meta: { title: '数据监控' },
+        component: () => import('/@/views/Error/404.vue')
       },
       {
-        path: '/500',
-        component: () => import('/@/views/Error/500.vue'),
-        name: '500'
-      }
-    ]
-  },
-  {
-    path: '/',
-    component: Layout,
-    redirect: '/login',
-    children: [
-      {
-        path: '/',
-        component: () => import('/@/views/Home/index.vue'),
-        name: 'DataAnalysis'
-      },
-      {
-        path: '/oversee',
-        component: () => import('/@/views/Home/oversee.vue'),
-        name: 'DataOversee'
+        path: '500',
+        name: '500',
+        meta: { title: '数据监控' },
+        component: () => import('/@/views/Error/500.vue')
       }
     ]
   }
@@ -112,10 +110,16 @@ const router = createRouter({
   routes
 });
 
-router.beforeEach((route: RouteLocationNormalized) => {
+router.beforeEach((to: RouteLocationNormalized, from, next) => {
   store.commit('setting/routeChanged', {
-    path: route.path
+    path: to.path
   });
+
+  document.title = to.meta?.title;
+
+  console.log(to);
+
+  next();
 });
 
 export default router;
