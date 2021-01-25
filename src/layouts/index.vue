@@ -10,17 +10,46 @@
     </div>
     <div class="layout">
       <header class="layout-header">
-        <div class="">
-          <div @click="adjustMenu"><i class="el-icon-s-fold" /></div>
-          <el-breadcrumb separator="/">
-            <el-breadcrumb-item>首页</el-breadcrumb-item>
-            <el-breadcrumb-item>活动管理</el-breadcrumb-item>
-            <el-breadcrumb-item>活动列表</el-breadcrumb-item>
-            <el-breadcrumb-item>活动详情</el-breadcrumb-item>
-          </el-breadcrumb>
+        <div class="layout-bar">
+          <ul class="layout-bar-left">
+            <li @click="adjustMenu" class="cper"><i :class="data.menuTouchClass" /></li>
+            <li class="breadcrumb-help">
+              <el-breadcrumb separator="/">
+                <el-breadcrumb-item>首页</el-breadcrumb-item>
+                <el-breadcrumb-item>活动管理</el-breadcrumb-item>
+                <el-breadcrumb-item>活动列表</el-breadcrumb-item>
+                <el-breadcrumb-item>活动详情</el-breadcrumb-item>
+              </el-breadcrumb>
+            </li>
+          </ul>
+          <ul class="layout-bar-right">
+            <li>
+              <el-badge :value="12" class="item">
+                <i class="el-icon-bell" />
+              </el-badge>
+            </li>
+            <li><i class="el-icon-table-lamp" /></li>
+            <li><i class="el-icon-full-screen" /></li>
+            <li>
+              <el-dropdown>
+                <el-avatar
+                  size="small"
+                  src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"
+                />
+                <template #dropdown>
+                  <el-dropdown-menu>
+                    <el-dropdown-item icon="el-icon-user">个人中心</el-dropdown-item>
+                    <el-dropdown-item icon="el-icon-setting">个人设置</el-dropdown-item>
+                    <el-dropdown-item icon="el-icon-switch-button" divided
+                      >退出登录</el-dropdown-item
+                    >
+                  </el-dropdown-menu>
+                </template>
+              </el-dropdown>
+            </li>
+          </ul>
         </div>
       </header>
-      <div>路由标签栏</div>
       <main class="layout-main">
         <router-view />
       </main>
@@ -29,7 +58,7 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, reactive } from 'vue';
+import { computed, defineComponent, reactive, watch } from 'vue';
 import { useStore } from 'vuex';
 import { key } from '/@/store';
 
@@ -44,19 +73,28 @@ export default defineComponent({
     const store = useStore(key);
 
     const data = reactive({
-      logoShow: store.state.setting.aside === 'open'
+      logoShow: store.state.setting.aside === 'open',
+      menuTouchClass: 'el-icon-s-fold'
     });
+
+    // 隐藏显示菜单图标样式，watch写法
+    watch(
+      () => store.state.setting.aside === 'open',
+      (state) => {
+        data.menuTouchClass = state ? 'el-icon-s-fold' : 'el-icon-s-unfold';
+      }
+    );
 
     // 侧边栏展开状态
     const asideOpen = computed(() => {
       return store.state.setting.aside === 'open';
     });
 
+    // 侧边栏样式
     const layoutAsideClass = computed(() => {
-      return (
-        'layout-aside ' +
-        (store.state.setting.aside === 'open' ? '' : 'layout-aside-close')
-      );
+      return store.state.setting.aside === 'open'
+        ? 'layout-aside'
+        : 'layout-aside layout-aside-close';
     });
 
     const adjustMenu = () => {
@@ -147,6 +185,53 @@ export default defineComponent({
 
   .layout {
     flex: 1;
+
+    .layout-header {
+      .layout-bar {
+        display: flex;
+        justify-content: space-between;
+        box-shadow: 0 1px 4px rgb(220, 223, 230);
+
+        .layout-bar-left,
+        .layout-bar-right {
+          position: relative;
+          display: flex;
+
+          li {
+            height: 50px;
+            padding: 0 10px;
+            display: inline-flex;
+            align-items: center;
+          }
+        }
+
+        .layout-bar-left {
+          @media screen and (max-width: 750px) {
+            .breadcrumb-help {
+              display: none;
+            }
+          }
+        }
+
+        .layout-bar-right {
+          padding-right: 10px;
+
+          li {
+            cursor: pointer;
+            padding: 0 16px;
+            transition: all 0.3s;
+
+            &:hover {
+              background-color: rgb(244, 244, 245);
+            }
+          }
+        }
+      }
+    }
+
+    .layout-main {
+      padding: 10px;
+    }
   }
 }
 </style>
