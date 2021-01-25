@@ -30,23 +30,18 @@
             </li>
             <li><i class="el-icon-table-lamp" /></li>
             <li><i class="el-icon-full-screen" /></li>
-            <li>
-              <el-dropdown>
-                <el-avatar
-                  size="small"
-                  src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"
-                />
-                <template #dropdown>
-                  <el-dropdown-menu>
-                    <el-dropdown-item icon="el-icon-user">个人中心</el-dropdown-item>
-                    <el-dropdown-item icon="el-icon-setting">个人设置</el-dropdown-item>
-                    <el-dropdown-item icon="el-icon-switch-button" divided
-                      >退出登录</el-dropdown-item
-                    >
-                  </el-dropdown-menu>
-                </template>
-              </el-dropdown>
-            </li>
+            <el-dropdown>
+              <li><el-avatar size="small" :src="`/@/assets/IMG_0380.GIF`" /></li>
+              <template #dropdown>
+                <el-dropdown-menu>
+                  <el-dropdown-item icon="el-icon-user">个人中心</el-dropdown-item>
+                  <el-dropdown-item icon="el-icon-setting">个人设置</el-dropdown-item>
+                  <el-dropdown-item icon="el-icon-switch-button" divided
+                    >退出登录</el-dropdown-item
+                  >
+                </el-dropdown-menu>
+              </template>
+            </el-dropdown>
           </ul>
         </div>
       </header>
