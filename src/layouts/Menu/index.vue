@@ -6,6 +6,7 @@
     default-active="about"
     background-color="#1d1e23"
     text-color="#eee"
+    :collapse-transition="false"
     @open="handleOpen"
     @close="handleClose"
   >

@@ -6,7 +6,7 @@
         <span v-if="asideOpen">Vue3-Admin</span>
       </header>
       <div class="menu-container"><Menu /></div>
-      <footer class="copyright"><span>@2020 zhoubangfu</span></footer>
+      <footer class="copyright" v-if="asideOpen"><span>@2020 zhoubangfu</span></footer>
     </div>
     <div class="layout">
       <header class="layout-header">
@@ -29,7 +29,7 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent } from 'vue';
+import { computed, defineComponent, reactive } from 'vue';
 import { useStore } from 'vuex';
 import { key } from '/@/store';
 
@@ -42,6 +42,12 @@ export interface SetUpReturn {
 export default defineComponent({
   setup() {
     const store = useStore(key);
+
+    const data = reactive({
+      logoShow: store.state.setting.aside === 'open'
+    });
+
+    // 侧边栏展开状态
     const asideOpen = computed(() => {
       return store.state.setting.aside === 'open';
     });
@@ -59,13 +65,19 @@ export default defineComponent({
       });
     };
 
-    return { adjustMenu, asideOpen, layoutAsideClass };
+    return { adjustMenu, asideOpen, data, layoutAsideClass };
   },
   components: { Menu }
 });
 </script>
 
 <style lang="scss" scoped>
+@mixin hidden-words {
+  overflow: hidden; //超出的文本隐藏
+  text-overflow: ellipsis; //溢出用省略号显示
+  white-space: nowrap; //溢出不换行
+}
+
 .black-theme {
   display: flex;
   height: 100%;
@@ -75,6 +87,9 @@ export default defineComponent({
     display: flex;
     flex-direction: column;
     position: relative;
+    border-right: 1px solid rgb(230, 230, 230); // 适应element
+
+    transition: all 0.2s;
 
     .logo {
       background-color: #1d1e23;
@@ -82,6 +97,7 @@ export default defineComponent({
       padding: 16px;
       display: flex;
       align-items: center;
+      @include hidden-words;
 
       img {
         width: 32px;
@@ -100,6 +116,7 @@ export default defineComponent({
       max-height: 100%;
       overflow-x: hidden;
       overflow-y: auto;
+      background-color: #1d1e23;
 
       &::-webkit-scrollbar {
         width: 0 !important;
@@ -112,6 +129,7 @@ export default defineComponent({
       font-size: 14px;
       padding: 16px;
       text-align: center;
+      @include hidden-words;
 
       span {
         line-height: 32px;
@@ -121,6 +139,10 @@ export default defineComponent({
 
   .layout-aside-close {
     width: 64px;
+
+    .logo {
+      border-right: none;
+    }
   }
 
   .layout {
