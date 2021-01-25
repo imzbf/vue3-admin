@@ -69,14 +69,13 @@ export default defineComponent({
   setup(props: PropsType) {
     const { state } = useStore(key);
 
-    const aside = computed(() => {
-      return state.setting.aside === 'close';
-    });
+    const aside = computed(() => state.setting.aside === 'close');
+    const defaultActive = computed(() => state.setting.activeMenu);
 
     return {
       props,
       aside,
-      defaultActive: state.setting.activeMenu
+      defaultActive
     };
   },
   methods: {}
