@@ -30,7 +30,9 @@
               </el-badge>
             </li>
             <li><i class="el-icon-table-lamp" /></li>
-            <li><i class="el-icon-full-screen" /></li>
+            <li @click="fullScreen">
+              <i :class="data.isFullscreen ? 'el-icon-aim' : 'el-icon-full-screen'" />
+            </li>
             <li><i class="el-icon-setting" /></li>
             <el-dropdown>
               <li><el-avatar size="small" :src="`/@/assets/IMG_0380.GIF`" /></li>
@@ -58,7 +60,8 @@
 import { onMounted, computed, defineComponent, reactive, watch } from 'vue';
 import { useStore } from 'vuex';
 import { key } from '/@/store';
-
+import screenfull from 'screenfull';
+import { ElMessage } from 'element-plus';
 import Menu from './Menu/index.vue';
 
 export interface SetUpReturn {
@@ -76,7 +79,9 @@ export default defineComponent({
 
     const data = reactive({
       logoShow: store.state.setting.aside === 'open',
-      menuTouchClass: 'el-icon-s-fold'
+      menuTouchClass: 'el-icon-s-fold',
+      // 全屏状态
+      isFullscreen: false
     });
 
     // 隐藏显示菜单图标样式，watch写法
@@ -107,7 +112,27 @@ export default defineComponent({
       });
     };
 
-    return { adjustMenu, asideOpen, data, breadcrumbs, layoutAsideClass };
+    if (screenfull.isEnabled) {
+      screenfull.on('change', () => {
+        data.isFullscreen = !data.isFullscreen;
+      });
+    }
+
+    const fullScreen = () => {
+      if (screenfull.isEnabled) {
+        if (screenfull.isFullscreen) {
+          screenfull.exit();
+        } else screenfull.request();
+      } else {
+        ElMessage({
+          showClose: true,
+          message: '浏览器不支持全屏',
+          type: 'error'
+        });
+      }
+    };
+
+    return { adjustMenu, asideOpen, data, breadcrumbs, layoutAsideClass, fullScreen };
   },
   components: { Menu }
 });
