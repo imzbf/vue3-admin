@@ -8,59 +8,7 @@
     text-color="#eee"
     :collapse-transition="false"
   >
-    <el-submenu index="1">
-      <template #title>
-        <i class="el-icon-s-data"></i>
-        <span>数据页</span>
-      </template>
-      <el-menu-item-group title="数据页">
-        <el-menu-item index="/index/dashboard"
-          ><i class="el-icon-s-marketing" />数据分析</el-menu-item
-        >
-        <el-menu-item index="/index/oversee"
-          ><i class="el-icon-odometer" />数据监控</el-menu-item
-        >
-      </el-menu-item-group>
-    </el-submenu>
-    <el-submenu index="2">
-      <template #title>
-        <i class="el-icon-data-board"></i>
-        <span>表格页</span>
-      </template>
-      <el-menu-item index="/table/base"
-        ><i class="el-icon-data-board" />基本表格</el-menu-item
-      >
-      <el-menu-item index="/table/server"
-        ><i class="el-icon-data-board" />动态数据表格</el-menu-item
-      >
-    </el-submenu>
-    <el-submenu index="3">
-      <template #title>
-        <i class="el-icon-edit-outline"></i>
-        <span>表单页</span>
-      </template>
-      <el-menu-item index="/form/base">
-        <i class="el-icon-edit-outline"></i>基本表单</el-menu-item
-      >
-      <el-menu-item index="/form/def">
-        <i class="el-icon-edit-outline"></i>自定义表单</el-menu-item
-      >
-    </el-submenu>
-    <el-submenu index="4">
-      <template #title>
-        <i class="el-icon-warning-outline"></i>
-        <span>异常页</span>
-      </template>
-      <el-menu-item index="/error/403"
-        ><i class="el-icon-warning-outline"></i>403</el-menu-item
-      >
-      <el-menu-item index="/error/404"
-        ><i class="el-icon-warning-outline"></i>404</el-menu-item
-      >
-      <el-menu-item index="/error/500"
-        ><i class="el-icon-warning-outline"></i>500</el-menu-item
-      >
-    </el-submenu>
+    <Nest :list="menuList"></Nest>
   </el-menu>
 </template>
 
@@ -68,25 +16,26 @@
 import { defineComponent, computed } from 'vue';
 import { useStore } from 'vuex';
 import { key } from '/@/store';
-
-export interface PropsType {
-  collapse: boolean;
-}
+import Nest from './nest.vue';
 
 export default defineComponent({
-  setup(props: PropsType) {
+  // 组件需要申明props，setup方法中才能正确接收到props
+  props: {},
+  setup(props) {
     const { state } = useStore(key);
 
     const aside = computed(() => state.setting.aside === 'close');
     const defaultActive = computed(() => state.setting.activeMenu);
+    const menuList = computed(() => state.menu.menuList);
 
     return {
-      props,
+      ...props,
       aside,
-      defaultActive
+      defaultActive,
+      menuList
     };
   },
-  methods: {}
+  components: { Nest }
 });
 </script>
 

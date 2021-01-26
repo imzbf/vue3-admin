@@ -14,7 +14,7 @@ type AdminRouteRecordRaw = RouteRecordRaw & {
   meta?: {
     title?: string;
     // element标准的图标类名，使用i标签创建
-    iconCLass?: string;
+    iconClass?: string;
     // 阿里矢量图标js标准，使用svg创建，以#开头
     iconHref?: string;
     [propName: string]: any;
@@ -32,7 +32,7 @@ const routes: Array<AdminRouteRecordRaw> = [
     component: () => import('/@/views/Login/index.vue')
   },
   {
-    path: '',
+    path: '/',
     redirect: '/index/dashboard'
   },
   {
@@ -41,17 +41,20 @@ const routes: Array<AdminRouteRecordRaw> = [
     redirect: '/index/dashboard',
     name: 'Index',
     meta: { title: '数据页', iconClass: 'el-icon-s-data' },
+    menu: true,
     children: [
       {
         path: 'dashboard',
         name: 'Dashboard',
-        meta: { title: '数据分析', iconCLass: 'el-icon-s-marketing' },
+        meta: { title: '数据分析', iconClass: 'el-icon-s-marketing' },
+        menu: true,
         component: () => import('/@/views/Home/index.vue')
       },
       {
         path: 'oversee',
         name: 'DataOversee',
-        meta: { title: '数据监控', iconCLass: 'el-icon-odometer' },
+        meta: { title: '数据监控', iconClass: 'el-icon-odometer' },
+        menu: true,
         component: () => import('/@/views/Home/oversee.vue')
       }
     ]
@@ -61,18 +64,21 @@ const routes: Array<AdminRouteRecordRaw> = [
     component: Layout,
     redirect: '/table/base',
     name: 'Table',
-    meta: { title: '表格页', iconCLass: 'el-icon-data-board' },
+    meta: { title: '表格页', iconClass: 'el-icon-data-board' },
+    menu: true,
     children: [
       {
         path: 'base',
         name: 'TableBase',
-        meta: { title: '基本表格', iconCLass: 'el-icon-data-board' },
+        meta: { title: '基本表格', iconClass: 'el-icon-data-board' },
+        menu: true,
         component: () => import('/@/views/Table/index.vue')
       },
       {
         path: 'server',
         name: 'TableServer',
-        meta: { title: '动态数据表格', iconCLass: 'el-icon-data-board' },
+        meta: { title: '动态数据表格', iconClass: 'el-icon-data-board' },
+        menu: true,
         component: () => import('/@/views/Table/server.vue')
       }
     ]
@@ -82,18 +88,21 @@ const routes: Array<AdminRouteRecordRaw> = [
     component: Layout,
     redirect: '/form/base',
     name: 'Form',
-    meta: { title: '表单页', iconCLass: 'el-icon-edit-outline' },
+    meta: { title: '表单页', iconClass: 'el-icon-edit-outline' },
+    menu: true,
     children: [
       {
         path: 'base',
         name: 'FormBase',
-        meta: { title: '基本表单', iconCLass: 'el-icon-edit-outline' },
+        meta: { title: '基本表单', iconClass: 'el-icon-edit-outline' },
+        menu: true,
         component: () => import('/@/views/Form/index.vue')
       },
       {
         path: 'def',
         name: 'FormDef',
-        meta: { title: '自定义表单', iconCLass: 'el-icon-edit-outline' },
+        meta: { title: '自定义表单', iconClass: 'el-icon-edit-outline' },
+        menu: true,
         component: () => import('/@/views/Form/def.vue')
       }
     ]
@@ -105,25 +114,29 @@ const routes: Array<AdminRouteRecordRaw> = [
     name: 'Error',
     meta: {
       title: '异常页',
-      iconCLass: 'el-icon-warning-outline'
+      iconClass: 'el-icon-warning-outline'
     },
+    menu: true,
     children: [
       {
         path: '403',
         name: '403',
-        meta: { title: '403', iconCLass: 'el-icon-warning-outline' },
+        meta: { title: '403', iconClass: 'el-icon-warning-outline' },
+        menu: true,
         component: () => import('/@/views/Error/403.vue')
       },
       {
         path: '404',
         name: '404',
-        meta: { title: '404', iconCLass: 'el-icon-warning-outline' },
+        meta: { title: '404', iconClass: 'el-icon-warning-outline' },
+        menu: true,
         component: () => import('/@/views/Error/404.vue')
       },
       {
         path: '500',
         name: '500',
-        meta: { title: '500', iconCLass: 'el-icon-warning-outline' },
+        meta: { title: '500', iconClass: 'el-icon-warning-outline' },
+        menu: true,
         component: () => import('/@/views/Error/500.vue')
       }
     ]
@@ -144,4 +157,5 @@ router.beforeEach((to: RouteLocationNormalized, _, next) => {
   next();
 });
 
+export { AdminRouteRecordRaw, routes };
 export default router;

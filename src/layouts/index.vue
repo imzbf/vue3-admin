@@ -54,7 +54,7 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, reactive, watch } from 'vue';
+import { onMounted, computed, defineComponent, reactive, watch } from 'vue';
 import { useStore } from 'vuex';
 import { key } from '/@/store';
 
@@ -67,6 +67,11 @@ export interface SetUpReturn {
 export default defineComponent({
   setup() {
     const store = useStore(key);
+
+    // BUG 登录后触发生成菜单
+    onMounted(() => {
+      store.commit('menu/routeChanged');
+    });
 
     const data = reactive({
       logoShow: store.state.setting.aside === 'open',
