@@ -1,16 +1,5 @@
 <template>
-  <div class="about">
-    <el-row>
-      <el-button>默认按钮</el-button>
-      <el-button type="primary">主要按钮</el-button>
-      <el-button type="success">成功按钮</el-button>
-      <el-button type="info">信息按钮</el-button>
-      <el-button type="warning">警告按钮</el-button>
-      <el-button type="danger">危险按钮</el-button>
-    </el-row>
-  </div>
-  {{ data.msg }}
-  <el-button @click="handleClick">点击</el-button>
+  <div></div>
 </template>
 
 <script lang="ts">
@@ -40,14 +29,6 @@ export default defineComponent({
     watchEffect(() => {
       console.log(data.time);
     });
-
-    setTimeout(() => {
-      data.msg = '456';
-    }, 3000);
-
-    setTimeout(() => {
-      data.time = new Date().getTime();
-    }, 5000);
 
     const handleClick = () => {
       data.msg = Math.random() + '';
