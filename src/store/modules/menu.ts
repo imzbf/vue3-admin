@@ -1,4 +1,4 @@
-import { routes, AdminRouteRecordRaw } from '/@/router';
+import { routes, AdminRouteRecordRaw } from '@/router';
 
 export interface MenuType {
   menuName: string;

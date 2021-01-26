@@ -15,7 +15,7 @@
 <script lang="ts">
 import { defineComponent, computed } from 'vue';
 import { useStore } from 'vuex';
-import { key } from '/@/store';
+import { key } from '@/store';
 import Nest from './nest.vue';
 
 export default defineComponent({

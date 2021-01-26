@@ -2,7 +2,7 @@
   <section class="black-theme">
     <div :class="layoutAsideClass">
       <header class="logo">
-        <img :src="`/@/assets/logo.png`" />
+        <img :src="LogoImg" />
         <span v-if="asideOpen">Vue3-Admin</span>
       </header>
       <div class="menu-container"><Menu /></div>
@@ -44,7 +44,7 @@
             </li>
             <li><i class="el-icon-setting" /></li>
             <el-dropdown>
-              <li><el-avatar size="small" :src="`/@/assets/IMG_0380.GIF`" /></li>
+              <li><el-avatar size="small" :src="HeadImg" /></li>
               <template #dropdown>
                 <el-dropdown-menu>
                   <el-dropdown-item icon="el-icon-user">个人中心</el-dropdown-item>
@@ -68,10 +68,13 @@
 <script lang="ts">
 import { onMounted, computed, defineComponent, reactive, watch } from 'vue';
 import { useStore } from 'vuex';
-import { key } from '/@/store';
+import { key } from '@/store';
 import screenfull from 'screenfull';
 import { ElMessage } from 'element-plus';
 import Menu from './Menu/index.vue';
+
+import LogoImg from '@/assets/logo.png';
+import HeadImg from '@/assets/head02.gif';
 
 export interface SetUpReturn {
   collapse: boolean;
@@ -141,7 +144,16 @@ export default defineComponent({
       }
     };
 
-    return { adjustMenu, asideOpen, data, breadcrumbs, layoutAsideClass, fullScreen };
+    return {
+      adjustMenu,
+      asideOpen,
+      data,
+      breadcrumbs,
+      layoutAsideClass,
+      fullScreen,
+      LogoImg,
+      HeadImg
+    };
   },
   components: { Menu }
 });

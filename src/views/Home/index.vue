@@ -14,7 +14,7 @@
 </template>
 
 <script lang="ts">
-import { reactive, watchEffect, defineComponent } from 'vue';
+import { reactive, defineComponent } from 'vue';
 
 export interface DataType {
   msg: string;
@@ -32,22 +32,6 @@ export default defineComponent({
       msg: '123',
       time: 123
     });
-
-    watchEffect(() => {
-      console.log(data.msg);
-    });
-
-    watchEffect(() => {
-      console.log(data.time);
-    });
-
-    setTimeout(() => {
-      data.msg = '456';
-    }, 3000);
-
-    setTimeout(() => {
-      data.time = new Date().getTime();
-    }, 5000);
 
     const handleClick = () => {
       data.msg = Math.random() + '';
