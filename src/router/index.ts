@@ -150,8 +150,11 @@ const router = createRouter({
 
 router.beforeEach((to: RouteLocationNormalized, _, next) => {
   store.commit('setting/routeChanged', {
-    path: to.path
+    path: to.path,
+    breadcrumbs: to.matched.map((item: AdminRouteRecordRaw) => item.meta?.title)
   });
+
+  console.log(to);
 
   document.title = `${to.meta?.title || ''} - 管理系统`;
   next();

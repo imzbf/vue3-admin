@@ -4,18 +4,24 @@ interface AsideType {
 
 export interface SettingStateType extends AsideType {
   activeMenu: string;
+  breadcrumbs: Array<string>;
 }
 
 const state: SettingStateType = {
   aside: 'open',
-  activeMenu: '/'
+  activeMenu: '/',
+  breadcrumbs: []
 };
 const mutations = {
   asideState(state: SettingStateType, payload: AsideType): void {
     state.aside = payload.aside;
   },
-  routeChanged(state: SettingStateType, payload: { path: string }): void {
+  routeChanged(
+    state: SettingStateType,
+    payload: { path: string; breadcrumbs: Array<string> }
+  ): void {
     state.activeMenu = payload.path;
+    state.breadcrumbs = payload.breadcrumbs;
   }
 };
 const actions = {};

@@ -15,10 +15,11 @@
             <li @click="adjustMenu" class="cper"><i :class="data.menuTouchClass" /></li>
             <li class="breadcrumb-help">
               <el-breadcrumb separator="/">
-                <el-breadcrumb-item>首页</el-breadcrumb-item>
-                <el-breadcrumb-item>活动管理</el-breadcrumb-item>
-                <el-breadcrumb-item>活动列表</el-breadcrumb-item>
-                <el-breadcrumb-item>活动详情</el-breadcrumb-item>
+                <el-breadcrumb-item
+                  v-for="(breadcrumb, index) of breadcrumbs"
+                  :key="breadcrumb + index"
+                  >{{ breadcrumb }}</el-breadcrumb-item
+                >
               </el-breadcrumb>
             </li>
           </ul>
@@ -98,13 +99,15 @@ export default defineComponent({
         : 'layout-aside layout-aside-close';
     });
 
+    const breadcrumbs = computed(() => store.state.setting.breadcrumbs);
+
     const adjustMenu = () => {
       store.commit('setting/asideState', {
         aside: store.state.setting.aside === 'open' ? 'close' : 'open'
       });
     };
 
-    return { adjustMenu, asideOpen, data, layoutAsideClass };
+    return { adjustMenu, asideOpen, data, breadcrumbs, layoutAsideClass };
   },
   components: { Menu }
 });
