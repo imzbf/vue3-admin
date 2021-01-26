@@ -154,8 +154,6 @@ router.beforeEach((to: RouteLocationNormalized, _, next) => {
     breadcrumbs: to.matched.map((item: AdminRouteRecordRaw) => item.meta?.title)
   });
 
-  console.log(to);
-
   document.title = `${to.meta?.title || ''} - 管理系统`;
   next();
 });

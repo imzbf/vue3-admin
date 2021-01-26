@@ -24,11 +24,20 @@
             </li>
           </ul>
           <ul class="layout-bar-right">
-            <li>
-              <el-badge :value="12" class="item">
-                <i class="el-icon-bell" />
-              </el-badge>
-            </li>
+            <el-popover placement="top-end" trigger="click">
+              <template #reference>
+                <li>
+                  <el-badge :value="12" class="item">
+                    <i class="el-icon-bell" />
+                  </el-badge>
+                </li>
+              </template>
+              <el-tabs value="first">
+                <el-tab-pane label="通知" name="first">通知</el-tab-pane>
+                <el-tab-pane label="消息" name="second">消息</el-tab-pane>
+                <el-tab-pane label="邮件" name="third">邮件</el-tab-pane>
+              </el-tabs>
+            </el-popover>
             <li><i class="el-icon-table-lamp" /></li>
             <li @click="fullScreen">
               <i :class="data.isFullscreen ? 'el-icon-aim' : 'el-icon-full-screen'" />

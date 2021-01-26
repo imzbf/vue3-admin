@@ -42,9 +42,8 @@ export default defineComponent({
 <style lang="scss">
 .el-menu {
   border-right: none;
-}
-
-.is-active {
-  background-color: #111 !important;
+  .is-active {
+    background-color: #111 !important;
+  }
 }
 </style>
