@@ -1,5 +1,4 @@
 <template>
-  {{ list.length }}
   <template v-for="(menu, index) of list" :key="menu.path + index">
     <el-submenu :index="menu.path" v-if="menu.children.length > 0">
       <template #title>
@@ -21,7 +20,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { MenuType } from '/@/store/modules/menu';
+import { MenuType } from '@/store/modules/menu';
 
 export interface PropsType {
   list: Array<MenuType>;

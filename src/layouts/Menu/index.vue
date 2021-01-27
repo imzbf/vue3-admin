@@ -8,7 +8,7 @@
     text-color="#eee"
     :collapse-transition="false"
   >
-    <Nest :list="menuList"></Nest>
+    <Nest :list="menuList" />
   </el-menu>
 </template>
 
