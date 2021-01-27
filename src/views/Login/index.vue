@@ -24,7 +24,7 @@
           ></el-input>
         </div>
         <div class="form-item" style="margin-bottom: 14px">
-          <el-checkbox v-model="data.checked">记住我</el-checkbox>
+          <el-checkbox v-model="data.remembered">记住我</el-checkbox>
           <span class="forget-p-help cper" @click="forgetHelp">忘记密码？</span>
         </div>
         <div class="form-item">
@@ -62,11 +62,6 @@ import { ElMessageBox } from 'element-plus';
 import '@/assets/iconfonts/login/iconfont.css';
 
 export default defineComponent({
-  data() {
-    return {
-      checked: true
-    };
-  },
   setup() {
     const data = reactive({
       info: {
