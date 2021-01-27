@@ -1,7 +1,7 @@
 <template>
   <div class="layout-bar">
     <ul class="layout-bar-left">
-      <li @click="adjustMenu" class="cper"><i :class="menuTouchClass" /></li>
+      <li @click="adjustMenu" class="cper"><i :class="data.menuTouchClass" /></li>
       <li class="breadcrumb-help">
         <el-breadcrumb separator="/">
           <el-breadcrumb-item
@@ -29,7 +29,7 @@
       </el-popover>
       <li><i class="el-icon-table-lamp" /></li>
       <li @click="fullScreen">
-        <i :class="isFullscreen ? 'el-icon-aim' : 'el-icon-full-screen'" />
+        <i :class="data.isFullscreen ? 'el-icon-aim' : 'el-icon-full-screen'" />
       </li>
       <li><i class="el-icon-setting" /></li>
       <el-dropdown>
@@ -103,7 +103,7 @@ export default defineComponent({
     }
 
     return {
-      ...data,
+      data,
       breadcrumbs,
       HeadImg,
       adjustMenu,
