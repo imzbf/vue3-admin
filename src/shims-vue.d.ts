@@ -4,20 +4,10 @@ declare module '*.vue' {
   export default component;
 }
 
-// 以此方法像this添加type
-import { ElMessageBox } from 'element-plus';
-declare module '@vue/runtime-core' {
-  interface ComponentCustomProperties {
-    $alert: typeof ElMessageBox.alert;
-  }
-}
-
-declare module '*.png' {
-  const value: any;
-  export default value;
-}
-
-declare module '*.gif' {
-  const value: any;
-  export default value;
-}
+declare module '*.svg';
+declare module '*.png';
+declare module '*.jpg';
+declare module '*.jpeg';
+declare module '*.gif';
+declare module '*.bmp';
+declare module '*.tiff';
