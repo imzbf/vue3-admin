@@ -89,6 +89,8 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
+$borderRadius: 6px;
+
 .login {
   width: 100%;
   height: 100%;
@@ -102,7 +104,8 @@ export default defineComponent({
     // TODO 这个我也不知道咋调好看
     box-shadow: 0px 14px 20px #c0c4cc;
     // filter: drop-shadow(0px 14px 20px #c0c4cc);
-    background-color: unset;
+    // background-color: transparent;
+    border-radius: $borderRadius;
     display: flex;
 
     .login-form,
@@ -114,8 +117,8 @@ export default defineComponent({
 
     .login-form {
       background-color: rgb(255, 255, 255);
-      border-top-left-radius: 6px;
-      border-bottom-left-radius: 6px;
+      border-top-left-radius: $borderRadius;
+      border-bottom-left-radius: $borderRadius;
       padding: 14px;
       display: flex;
       flex-direction: column;
@@ -178,8 +181,8 @@ export default defineComponent({
 
     .login-welcome {
       background-color: #607d8b;
-      border-top-right-radius: 6px;
-      border-bottom-right-radius: 6px;
+      border-top-right-radius: $borderRadius;
+      border-bottom-right-radius: $borderRadius;
       color: #fff;
       display: flex;
       flex-direction: column;
