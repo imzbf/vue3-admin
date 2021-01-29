@@ -1,6 +1,7 @@
 import path from 'path';
 import { UserConfigExport, ConfigEnv } from 'vite';
 import { viteMockServe } from 'vite-plugin-mock';
+import vueJsx from '@vitejs/plugin-vue-jsx';
 import vue from '@vitejs/plugin-vue';
 
 export default ({ command }: ConfigEnv): UserConfigExport => {
@@ -23,6 +24,9 @@ export default ({ command }: ConfigEnv): UserConfigExport => {
         mockPath: 'mock',
         watchFiles: true, // 修改更新
         localEnabled: command === 'serve'
+      }),
+      vueJsx({
+        // options are passed on to @vue/babel-plugin-jsx
       })
     ]
     // proxy: {

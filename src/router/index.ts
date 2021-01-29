@@ -55,7 +55,7 @@ const routes: Array<AdminRouteRecordRaw> = [
         name: 'DataOversee',
         meta: { title: '数据监控', iconClass: 'el-icon-odometer' },
         menu: true,
-        component: () => import('@/views/Home/oversee.vue')
+        component: () => import('@/views/Home/oversee.tsx')
       }
     ]
   },
