@@ -1,0 +1,81 @@
+@mixin hidden-words {
+  overflow: hidden; //超出的文本隐藏
+  text-overflow: ellipsis; //溢出用省略号显示
+  white-space: nowrap; //溢出不换行
+}
+
+.black-theme {
+  display: flex;
+  height: 100%;
+
+  .layout-aside {
+    width: 210px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    border-right: 1px solid rgb(230, 230, 230); // 适应element
+
+    transition: all 0.2s;
+
+    .logo {
+      background-color: #1d1e23;
+      color: #fff;
+      padding: 16px;
+      display: flex;
+      align-items: center;
+      @include hidden-words;
+
+      img {
+        width: 32px;
+        height: 32px;
+      }
+
+      span {
+        font-size: 18px;
+        font-weight: 600;
+        padding-left: 10px;
+      }
+    }
+
+    .menu-container {
+      flex: 1 1;
+      max-height: 100%;
+      overflow-x: hidden;
+      overflow-y: auto;
+      background-color: #1d1e23;
+
+      &::-webkit-scrollbar {
+        width: 0 !important;
+      }
+    }
+
+    .copyright {
+      background-color: #1d1e23;
+      color: #ddd;
+      font-size: 14px;
+      padding: 16px;
+      text-align: center;
+      @include hidden-words;
+
+      span {
+        line-height: 32px;
+      }
+    }
+  }
+
+  .layout-aside-close {
+    width: 64px;
+
+    .logo {
+      border-right: none;
+    }
+  }
+
+  .layout {
+    flex: 1;
+
+    .layout-main {
+      padding: 10px;
+    }
+  }
+}

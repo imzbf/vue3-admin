@@ -5,7 +5,7 @@ import {
   RouteLocationNormalized
 } from 'vue-router';
 
-import Layout from '@/layouts/index.vue';
+import Layout from '@/layouts';
 import store from '@/store';
 
 type AdminRouteRecordRaw = RouteRecordRaw & {
@@ -29,7 +29,7 @@ const routes: Array<AdminRouteRecordRaw> = [
     path: '/login',
     name: 'Login',
     meta: { title: '登录' },
-    component: () => import('@/views/Login/index.vue')
+    component: () => import('@/views/Login')
   },
   {
     path: '/',
@@ -48,14 +48,14 @@ const routes: Array<AdminRouteRecordRaw> = [
         name: 'Dashboard',
         meta: { title: '数据分析', iconClass: 'el-icon-s-marketing' },
         menu: true,
-        component: () => import('@/views/Home/index.vue')
+        component: () => import('@/views/Home')
       },
       {
         path: 'oversee',
         name: 'DataOversee',
         meta: { title: '数据监控', iconClass: 'el-icon-odometer' },
         menu: true,
-        component: () => import('@/views/Home/oversee.tsx')
+        component: () => import('@/views/Home/Oversee')
       }
     ]
   },
@@ -72,14 +72,14 @@ const routes: Array<AdminRouteRecordRaw> = [
         name: 'TableBase',
         meta: { title: '基本表格', iconClass: 'el-icon-data-board' },
         menu: true,
-        component: () => import('@/views/Table/index.vue')
+        component: () => import('@/views/Table')
       },
       {
         path: 'server',
         name: 'TableServer',
         meta: { title: '动态数据表格', iconClass: 'el-icon-data-board' },
         menu: true,
-        component: () => import('@/views/Table/server.vue')
+        component: () => import('@/views/Table/Server')
       }
     ]
   },
@@ -96,14 +96,14 @@ const routes: Array<AdminRouteRecordRaw> = [
         name: 'FormBase',
         meta: { title: '基本表单', iconClass: 'el-icon-edit-outline' },
         menu: true,
-        component: () => import('@/views/Form/index.vue')
+        component: () => import('@/views/Form')
       },
       {
         path: 'def',
         name: 'FormDef',
         meta: { title: '自定义表单', iconClass: 'el-icon-edit-outline' },
         menu: true,
-        component: () => import('@/views/Form/def.vue')
+        component: () => import('@/views/Form/Def')
       }
     ]
   },
@@ -123,21 +123,21 @@ const routes: Array<AdminRouteRecordRaw> = [
         name: '403',
         meta: { title: '403', iconClass: 'el-icon-warning-outline' },
         menu: true,
-        component: () => import('@/views/Error/403.vue')
+        component: () => import('@/views/Error/403')
       },
       {
         path: '404',
         name: '404',
         meta: { title: '404', iconClass: 'el-icon-warning-outline' },
         menu: true,
-        component: () => import('@/views/Error/404.vue')
+        component: () => import('@/views/Error/404')
       },
       {
         path: '500',
         name: '500',
         meta: { title: '500', iconClass: 'el-icon-warning-outline' },
         menu: true,
-        component: () => import('@/views/Error/500.vue')
+        component: () => import('@/views/Error/500')
       }
     ]
   }

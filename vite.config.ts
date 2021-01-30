@@ -28,7 +28,12 @@ export default ({ command }: ConfigEnv): UserConfigExport => {
       vueJsx({
         // options are passed on to @vue/babel-plugin-jsx
       })
-    ]
+    ],
+    css: {
+      modules: {
+        localsConvention: 'camelCase' // 默认只支持驼峰，修改为同事支持横线和驼峰
+      }
+    }
     // proxy: {
     //   '/api': {
     //     target: 'http://127.0.0.1:6789',
