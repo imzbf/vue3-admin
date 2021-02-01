@@ -105,4 +105,12 @@ $borderRadius: 6px;
       }
     }
   }
+
+  :global {
+    .ant-btn-lg,
+    .ant-input-lg {
+      font-size: 14px;
+      font-weight: 600;
+    }
+  }
 }

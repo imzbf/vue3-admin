@@ -13,17 +13,17 @@ export default defineComponent({
     const defaultActive = computed(() => state.setting.activeMenu);
 
     return () => (
-      <el-menu
+      <a-menu
         style="height: 100%"
-        collapse={aside.value}
+        inlineCollapsed={aside.value}
         router
-        default-active={defaultActive}
+        selectedKeys={[defaultActive]}
         background-color="#1d1e23"
         text-color="#eee"
         collapse-transition={false}
       >
         <Nest list={state.menu.menuList} />
-      </el-menu>
+      </a-menu>
     );
   },
   components: { Nest }
