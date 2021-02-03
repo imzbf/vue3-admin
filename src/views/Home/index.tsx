@@ -1,4 +1,5 @@
 import { reactive, defineComponent } from 'vue';
+import { Button, ConfigProvider } from 'ant-design-vue';
 
 export interface DataType {
   msg: string;
@@ -18,18 +19,19 @@ export default defineComponent({
 
     return () => (
       <>
-        <div class="about">
-          <el-row>
-            <el-button>默认按钮</el-button>
-            <el-button type="primary">主要按钮</el-button>
-            <el-button type="success">成功按钮</el-button>
-            <el-button type="info">信息按钮</el-button>
-            <el-button type="warning">警告按钮</el-button>
-            <el-button type="danger">危险按钮</el-button>
-          </el-row>
+        <div>
+          <Button type="primary">Primary</Button>
+          <Button>Default</Button>
+          <Button type="dashed">Dashed</Button>
+          <Button type="danger">Danger</Button>
+          <ConfigProvider autoInsertSpaceInButton={false}>
+            <Button type="primary">按钮</Button>
+          </ConfigProvider>
+          <Button type="primary">按钮</Button>
+          <Button type="link">Link</Button>
         </div>
         {data.msg}
-        <el-button onClick="handleClick">点击</el-button>
+        <Button onClick={handleClick}>点击</Button>
       </>
     );
   }
