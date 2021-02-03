@@ -15,7 +15,6 @@
     "@ant-design/icons-vue": "^6.0.1",
     "ant-design-vue": "^2.0.0-rc.9",
     "axios": "^0.21.1",
-    "element-plus": "^1.0.2-beta.30",
     "screenfull": "^5.1.0",
     "vue": "^3.0.4",
     "vue-router": "^4.0.1",
@@ -30,6 +29,7 @@
     "@vue/compiler-sfc": "^3.0.4",
     "@vue/eslint-config-prettier": "^6.0.0",
     "@vue/eslint-config-typescript": "^7.0.0",
+    "babel-plugin-import": "^1.13.3",
     "eslint": "^7.16.0",
     "eslint-plugin-prettier": "^3.3.0",
     "eslint-plugin-vue": "^7.3.0",
@@ -80,11 +80,6 @@
   "lint-staged": {
     "*.{js,vue,ts,md}": [
       "eslint --fix --ext"
-    ]
-  },
-  "babel": {
-    "plugins": [
-      "@vue/babel-plugin-jsx"
     ]
   }
 }
