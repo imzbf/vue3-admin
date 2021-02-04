@@ -4,6 +4,7 @@ import {
   RouteRecordRaw,
   RouteLocationNormalized
 } from 'vue-router';
+import Icon from '@ant-design/icons-vue/lib/icons';
 
 import Layout from '@/layouts';
 import store from '@/store';
@@ -13,8 +14,8 @@ type AdminRouteRecordRaw = RouteRecordRaw & {
   menu?: boolean;
   meta?: {
     title?: string;
-    // element标准的图标类名，使用i标签创建
-    iconClass?: string;
+    // ant-design-vue使用的标准Icon组件名称
+    iconName?: keyof typeof Icon;
     // 阿里矢量图标js标准，使用svg创建，以#开头
     iconHref?: string;
     [propName: string]: any;
@@ -40,20 +41,20 @@ const routes: Array<AdminRouteRecordRaw> = [
     component: Layout,
     redirect: '/index/dashboard',
     name: 'Index',
-    meta: { title: '数据页', iconClass: 'el-icon-s-data' },
+    meta: { title: '数据页', iconName: 'LaptopOutlined' },
     menu: true,
     children: [
       {
         path: 'dashboard',
         name: 'Dashboard',
-        meta: { title: '数据分析', iconClass: 'el-icon-s-marketing' },
+        meta: { title: '数据分析', iconName: 'ProjectOutlined' },
         menu: true,
         component: () => import('@/views/Home')
       },
       {
         path: 'oversee',
         name: 'DataOversee',
-        meta: { title: '数据监控', iconClass: 'el-icon-odometer' },
+        meta: { title: '数据监控', iconName: 'RobotOutlined' },
         menu: true,
         component: () => import('@/views/Home/Oversee')
       }
@@ -64,20 +65,20 @@ const routes: Array<AdminRouteRecordRaw> = [
     component: Layout,
     redirect: '/table/base',
     name: 'Table',
-    meta: { title: '表格页', iconClass: 'el-icon-data-board' },
+    meta: { title: '表格页', iconName: 'TableOutlined' },
     menu: true,
     children: [
       {
         path: 'base',
         name: 'TableBase',
-        meta: { title: '基本表格', iconClass: 'el-icon-data-board' },
+        meta: { title: '基本表格', iconName: 'TableOutlined' },
         menu: true,
         component: () => import('@/views/Table')
       },
       {
         path: 'server',
         name: 'TableServer',
-        meta: { title: '动态数据表格', iconClass: 'el-icon-data-board' },
+        meta: { title: '动态数据表格', iconName: 'TabletOutlined' },
         menu: true,
         component: () => import('@/views/Table/Server')
       }
@@ -88,20 +89,20 @@ const routes: Array<AdminRouteRecordRaw> = [
     component: Layout,
     redirect: '/form/base',
     name: 'Form',
-    meta: { title: '表单页', iconClass: 'el-icon-edit-outline' },
+    meta: { title: '表单页', iconName: 'FormOutlined' },
     menu: true,
     children: [
       {
         path: 'base',
         name: 'FormBase',
-        meta: { title: '基本表单', iconClass: 'el-icon-edit-outline' },
+        meta: { title: '基本表单', iconName: 'EditOutlined' },
         menu: true,
         component: () => import('@/views/Form')
       },
       {
         path: 'def',
         name: 'FormDef',
-        meta: { title: '自定义表单', iconClass: 'el-icon-edit-outline' },
+        meta: { title: '自定义表单', iconName: 'DiffOutlined' },
         menu: true,
         component: () => import('@/views/Form/Def')
       }
@@ -114,28 +115,28 @@ const routes: Array<AdminRouteRecordRaw> = [
     name: 'Error',
     meta: {
       title: '异常页',
-      iconClass: 'el-icon-warning-outline'
+      iconName: 'QuestionOutlined'
     },
     menu: true,
     children: [
       {
         path: '403',
         name: '403',
-        meta: { title: '403', iconClass: 'el-icon-warning-outline' },
+        meta: { title: '403', iconName: 'QuestionCircleOutlined' },
         menu: true,
         component: () => import('@/views/Error/403')
       },
       {
         path: '404',
         name: '404',
-        meta: { title: '404', iconClass: 'el-icon-warning-outline' },
+        meta: { title: '404', iconName: 'QuestionCircleOutlined' },
         menu: true,
         component: () => import('@/views/Error/404')
       },
       {
         path: '500',
         name: '500',
-        meta: { title: '500', iconClass: 'el-icon-warning-outline' },
+        meta: { title: '500', iconName: 'QuestionCircleOutlined' },
         menu: true,
         component: () => import('@/views/Error/500')
       }

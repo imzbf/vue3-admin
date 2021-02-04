@@ -64,10 +64,12 @@ ol {
 }
 a {
   text-decoration: none;
+
+  &:hover {
+    text-decoration: none;
+  }
 }
-a:hover {
-  text-decoration: underline;
-}
+
 sup {
   vertical-align: text-top;
 }

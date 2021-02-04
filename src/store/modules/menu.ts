@@ -1,9 +1,9 @@
 import { routes, AdminRouteRecordRaw } from '@/router';
-
+import Icon from '@ant-design/icons-vue/lib/icons';
 export interface MenuType {
   menuName: string;
   path: string;
-  iconClass?: string;
+  iconName?: keyof typeof Icon;
   iconHref?: string;
   children: Array<MenuType>;
 }
@@ -22,7 +22,7 @@ const transformMenu = (): Array<MenuType> => {
         const menu: MenuType = {
           menuName: item.meta?.title || '',
           path: `${parent.path}/${item.path.replace(/^\//, '')}`,
-          iconClass: item.meta?.iconClass,
+          iconName: item.meta?.iconName,
           iconHref: item.meta?.iconHref,
           children: []
         };
