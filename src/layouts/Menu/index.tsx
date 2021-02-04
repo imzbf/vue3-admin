@@ -17,7 +17,7 @@ const menuChildRender = (menuList: MenuType[]) => {
           key={menu.path}
           title={
             <>
-              {menu.iconName && Icon[menu.iconName]}
+              {menu.iconName && h(Icon[menu.iconName])}
               <span>{menu.menuName}</span>
             </>
           }
