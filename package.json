@@ -9,7 +9,7 @@
   "scripts": {
     "dev": "vite serve",
     "build": "vite build",
-    "lint": "eslint --fix --ext .ts,.vue src"
+    "lint": "eslint --fix --ext .ts,.tsx,.md,.json src"
   },
   "dependencies": {
     "@ant-design/icons-vue": "^6.0.1",
@@ -78,8 +78,9 @@
     "pre-commit": "lint-staged"
   },
   "lint-staged": {
-    "*.{js,vue,ts,md}": [
-      "eslint --fix --ext"
+    "*.{html,ts,tsx,md,json}": [
+      "eslint --fix",
+      "prettier"
     ]
   }
 }

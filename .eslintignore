@@ -1,5 +1,6 @@
 .vscode/
+.idea/
 node_modules/
-build/
+dist/
 
-/src/assets/
+src/assets/
