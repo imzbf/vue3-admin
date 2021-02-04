@@ -36,7 +36,7 @@ export default defineComponent({
     // };
 
     return () => (
-      <section class={style['black-theme']}>
+      <section class={style.wrapper}>
         <div class={layoutAsideClass.value}>
           <header class={style.logo}>
             <img src={LogoImg} />

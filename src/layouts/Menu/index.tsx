@@ -7,8 +7,6 @@ import { RouterLink } from 'vue-router';
 
 import * as Icon from '@ant-design/icons-vue';
 
-Icon['ZoomOutOutlined'];
-
 const menuChildRender = (menuList: MenuType[]) => {
   return menuList.map((menu: MenuType) => {
     return (
@@ -60,9 +58,9 @@ export default defineComponent({
 
     return () => (
       <Menu
-        style={{ height: '100%' }}
         mode="inline"
         inlineCollapsed={aside.value}
+        // class="skin-dark"
         theme="dark"
         defaultSelectedKeys={[defaultActive.value.menuItem]}
         defaultOpenKeys={[defaultActive.value.subMenu]}

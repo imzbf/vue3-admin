@@ -4,7 +4,12 @@
   white-space: nowrap; //溢出不换行
 }
 
-.black-theme {
+// 黑色主题菜单背景色
+$darkMenuBack: rgb(0, 17, 30);
+// 白色主题菜单背景色
+$lightMenuBack: rgb(255, 255, 255);
+
+.wrapper {
   display: flex;
   height: 100%;
 
@@ -18,7 +23,7 @@
     transition: all 0.2s;
 
     .logo {
-      background-color: #1d1e23;
+      background-color: $darkMenuBack;
       color: #fff;
       padding: 16px;
       display: flex;
@@ -42,15 +47,31 @@
       max-height: 100%;
       overflow-x: hidden;
       overflow-y: auto;
-      background-color: #1d1e23;
+      background-color: $darkMenuBack;
 
       &::-webkit-scrollbar {
         width: 0 !important;
       }
+
+      :global {
+        .ant-menu-inline-collapsed {
+          width: 100%;
+
+          .ant-menu-item,
+          .ant-menu-item-group > .ant-menu-item-group-list > .ant-menu-item,
+          .ant-menu-item-group
+            > .ant-menu-item-group-list
+            > .ant-menu-submenu
+            > .ant-menu-submenu-title,
+          .ant-menu-submenu > .ant-menu-submenu-title {
+            padding: 0 23px !important;
+          }
+        }
+      }
     }
 
     .copyright {
-      background-color: #1d1e23;
+      background-color: $darkMenuBack;
       color: #ddd;
       font-size: 14px;
       padding: 16px;
