@@ -23,8 +23,6 @@ $lightMenuBack: rgb(255, 255, 255);
     transition: all 0.2s;
 
     .logo {
-      background-color: $darkMenuBack;
-      color: #fff;
       padding: 16px;
       display: flex;
       align-items: center;
@@ -47,7 +45,6 @@ $lightMenuBack: rgb(255, 255, 255);
       max-height: 100%;
       overflow-x: hidden;
       overflow-y: auto;
-      background-color: $darkMenuBack;
 
       &::-webkit-scrollbar {
         width: 0 !important;
@@ -71,8 +68,6 @@ $lightMenuBack: rgb(255, 255, 255);
     }
 
     .copyright {
-      background-color: $darkMenuBack;
-      color: #ddd;
       font-size: 14px;
       padding: 16px;
       text-align: center;
@@ -98,5 +93,23 @@ $lightMenuBack: rgb(255, 255, 255);
     .layout-main {
       padding: 10px;
     }
+  }
+}
+
+.dark-theme {
+  .logo,
+  .menu-container,
+  .copyright {
+    color: #fff;
+    background-color: $darkMenuBack;
+  }
+}
+
+.light-theme {
+  .logo,
+  .menu-container,
+  .copyright {
+    background-color: $lightMenuBack;
+    color: #333;
   }
 }

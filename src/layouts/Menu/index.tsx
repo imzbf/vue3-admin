@@ -61,7 +61,7 @@ export default defineComponent({
         mode="inline"
         inlineCollapsed={aside.value}
         // class="skin-dark"
-        theme="dark"
+        theme="light"
         defaultSelectedKeys={[defaultActive.value.menuItem]}
         defaultOpenKeys={[defaultActive.value.subMenu]}
         // background-color="#1d1e23"

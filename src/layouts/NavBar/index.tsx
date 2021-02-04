@@ -15,7 +15,13 @@ import {
   PoweroffOutlined,
   UserOutlined
 } from '@ant-design/icons-vue';
+
 import style from './index.module.scss';
+
+import { createFromIconfontCN } from '@ant-design/icons-vue';
+const MyIcon = createFromIconfontCN({
+  scriptUrl: '//at.alicdn.com/t/font_2365632_9x17rvubrqj.js' // 在 iconfont.cn 上生成
+});
 
 export default defineComponent({
   setup() {
@@ -98,9 +104,30 @@ export default defineComponent({
               </Badge>
             </li>
           </Dropdown>
-          <li>
-            <SkinOutlined />
-          </li>
+          <Dropdown
+            trigger={['click']}
+            overlay={
+              <Menu>
+                <Menu.Item>
+                  <MyIcon type="icon-ditu_diqiu" />
+                  黑白主题
+                </Menu.Item>
+                <Menu.Item>
+                  <MyIcon type="icon-taiyang" />
+                  白色主题
+                </Menu.Item>
+                <Menu.Item disabled>
+                  <MyIcon type="icon-yueliang" />
+                  暗黑主题
+                </Menu.Item>
+              </Menu>
+            }
+          >
+            <li>
+              <SkinOutlined />
+            </li>
+          </Dropdown>
+
           <li onClick={fullScreen}>
             {data.isFullscreen ? <FullscreenOutlined /> : <FullscreenExitOutlined />}
           </li>

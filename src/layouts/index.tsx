@@ -36,7 +36,7 @@ export default defineComponent({
     // };
 
     return () => (
-      <section class={style.wrapper}>
+      <section class={`${style.wrapper} ${style['light-theme']}`}>
         <div class={layoutAsideClass.value}>
           <header class={style.logo}>
             <img src={LogoImg} />
