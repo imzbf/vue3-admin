@@ -12,6 +12,7 @@ import store from '@/store';
 type AdminRouteRecordRaw = RouteRecordRaw & {
   // 是否展示在左侧菜单栏
   menu?: boolean;
+  outLink?: string;
   meta?: {
     title?: string;
     // ant-design-vue使用的标准Icon组件名称
@@ -141,6 +142,14 @@ const routes: Array<AdminRouteRecordRaw> = [
         component: () => import('@/views/Error/500')
       }
     ]
+  },
+  {
+    path: '/outlink',
+    name: 'Github',
+    meta: { title: '外部链接', iconName: 'GithubFilled' },
+    menu: true,
+    outLink: 'https://github.com/zhoubangfu/vue3-admin',
+    redirect: '/'
   }
 ];
 

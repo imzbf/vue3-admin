@@ -1,11 +1,13 @@
 import { routes, AdminRouteRecordRaw } from '@/router';
 import Icon from '@ant-design/icons-vue/lib/icons';
+
 export interface MenuType {
-  menuName: string;
+  title: string;
   path: string;
+  children: Array<MenuType>;
+  outLink?: string;
   iconName?: keyof typeof Icon;
   iconHref?: string;
-  children: Array<MenuType>;
 }
 
 export interface MenuStateType {
@@ -20,11 +22,12 @@ const transformMenu = (): Array<MenuType> => {
       // 设置了menu为true才显示
       if (item.menu) {
         const menu: MenuType = {
-          menuName: item.meta?.title || '',
+          title: item.meta?.title || '',
           path: `${parent.path}/${item.path.replace(/^\//, '')}`,
           iconName: item.meta?.iconName,
           iconHref: item.meta?.iconHref,
-          children: []
+          children: [],
+          outLink: item.outLink
         };
 
         if (item.children && item.children.length > 0) {
@@ -36,7 +39,7 @@ const transformMenu = (): Array<MenuType> => {
     });
   };
 
-  innerLoop(routes, { children: menuList, path: '', menuName: '' });
+  innerLoop(routes, { children: menuList, path: '', title: '' });
 
   return menuList;
 };

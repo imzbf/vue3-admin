@@ -7,35 +7,50 @@ import { RouterLink } from 'vue-router';
 
 import * as Icon from '@ant-design/icons-vue';
 
+const menuItemRender = (menu: MenuType) => {
+  return menu.outLink ? (
+    <li key={`__outlink-${menu.path}`} class="ant-menu-item" style="padding-left: 24px;">
+      <a href={menu.outLink} target="_blank">
+        {menu.iconName && h(Icon[menu.iconName])}
+        <span>{menu.title}</span>
+      </a>
+    </li>
+  ) : (
+    <Menu.Item key={menu.path}>
+      <RouterLink to={menu.path}>
+        {menu.iconName && h(Icon[menu.iconName])}
+        <span>{menu.title}</span>
+      </RouterLink>
+    </Menu.Item>
+  );
+};
+
 const menuChildRender = (menuList: MenuType[]) => {
   return menuList.map((menu: MenuType) => {
     return (
-      menu.children.length > 0 && (
-        <Menu.SubMenu
-          key={menu.path}
-          title={
-            <>
-              {menu.iconName && h(Icon[menu.iconName])}
-              <span>{menu.menuName}</span>
-            </>
-          }
-        >
-          {menu.children.map((menuChild: MenuType) => (
-            <>
-              {menuChild.children.length === 0 ? (
-                <Menu.Item key={menuChild.path}>
-                  <RouterLink to={menuChild.path}>
-                    {menuChild.iconName && h(Icon[menuChild.iconName])}
-                    {menuChild.menuName}
-                  </RouterLink>
-                </Menu.Item>
-              ) : (
-                menuChildRender(menuChild.children)
-              )}
-            </>
-          ))}
-        </Menu.SubMenu>
-      )
+      <>
+        {menu.children.length > 0 ? (
+          <Menu.SubMenu
+            key={menu.path}
+            title={
+              <>
+                {menu.iconName && h(Icon[menu.iconName])}
+                <span>{menu.title}</span>
+              </>
+            }
+          >
+            {menu.children.map((menuChild: MenuType) => (
+              <>
+                {menuChild.children.length === 0
+                  ? menuItemRender(menuChild)
+                  : menuChildRender(menuChild.children)}
+              </>
+            ))}
+          </Menu.SubMenu>
+        ) : (
+          menuItemRender(menu)
+        )}
+      </>
     );
   });
 };
@@ -58,6 +73,7 @@ export default defineComponent({
 
     return () => (
       <Menu
+        onClick={(ddd) => console.log(ddd, defaultActive.value.menuItem)}
         mode="inline"
         inlineCollapsed={aside.value}
         // class="skin-dark"
