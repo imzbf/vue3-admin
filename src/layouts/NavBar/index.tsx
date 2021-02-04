@@ -45,6 +45,14 @@ export default defineComponent({
       });
     };
 
+    // 调整主题
+
+    const adjustTheme = ({ key }: any) => {
+      store.commit('setting/themeChanged', {
+        theme: key
+      });
+    };
+
     const fullScreen = () => {
       if (screenfull.isEnabled) {
         if (screenfull.isFullscreen) {
@@ -107,16 +115,16 @@ export default defineComponent({
           <Dropdown
             trigger={['click']}
             overlay={
-              <Menu>
-                <Menu.Item>
+              <Menu onClick={adjustTheme}>
+                <Menu.Item key="dark">
                   <MyIcon type="icon-ditu_diqiu" />
                   黑白主题
                 </Menu.Item>
-                <Menu.Item>
+                <Menu.Item key="light">
                   <MyIcon type="icon-taiyang" />
                   白色主题
                 </Menu.Item>
-                <Menu.Item disabled>
+                <Menu.Item key="deepDark" disabled>
                   <MyIcon type="icon-yueliang" />
                   暗黑主题
                 </Menu.Item>

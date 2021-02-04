@@ -29,14 +29,8 @@ export default defineComponent({
         : `${style['layout-aside']} ${style['layout-aside-close']}`;
     });
 
-    // {
-    //   asideOpen,
-    //   layoutAsideClass,
-    //   LogoImg
-    // };
-
     return () => (
-      <section class={`${style.wrapper} ${style['light-theme']}`}>
+      <section class={`${style.wrapper} ${style[`${store.state.setting.theme}-theme`]}`}>
         <div class={layoutAsideClass.value}>
           <header class={style.logo}>
             <img src={LogoImg} />
