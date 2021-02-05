@@ -72,26 +72,16 @@ export default defineComponent({
   props: {},
   setup(props) {
     const { state } = useStore(key);
-
     const aside = computed(() => state.setting.aside === 'close');
-    const defaultActive = computed(() => {
-      const path = state.setting.activePath;
-
-      return {
-        menuItem: path,
-        subMenu: path.replace(/\/[a-zA-Z-\d]*$/, '')
-      };
-    });
 
     return () => (
       <Menu
-        onClick={(ddd) => console.log(ddd, defaultActive.value.menuItem)}
         mode="inline"
         inlineCollapsed={aside.value}
         // class="skin-dark"
         theme={state.setting.theme === 'light' ? 'light' : 'dark'}
-        defaultSelectedKeys={[defaultActive.value.menuItem]}
-        defaultOpenKeys={[defaultActive.value.subMenu]}
+        defaultSelectedKeys={state.setting.selectedKeys}
+        defaultOpenKeys={state.setting.openKeys}
         // background-color="#1d1e23"
         // text-color="#eee"
         // collapse-transition={false}

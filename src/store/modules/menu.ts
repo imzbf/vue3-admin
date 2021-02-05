@@ -50,7 +50,6 @@ const state: MenuStateType = {
 const mutations = {
   routeChanged(state: MenuStateType): void {
     state.menuList = transformMenu();
-    console.log(state.menuList);
   }
 };
 const actions = {};
