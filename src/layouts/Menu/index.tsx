@@ -29,7 +29,7 @@ const menuChildRender = (menuList: MenuType[]) => {
   return menuList.map((menu: MenuType) => {
     return (
       <>
-        {menu.children.length > 0 ? (
+        {menu.children.length > 1 ? (
           <Menu.SubMenu
             key={menu.path}
             title={
@@ -41,14 +41,26 @@ const menuChildRender = (menuList: MenuType[]) => {
           >
             {menu.children.map((menuChild: MenuType) => (
               <>
-                {menuChild.children.length === 0
-                  ? menuItemRender(menuChild)
-                  : menuChildRender(menuChild.children)}
+                {menuChild.children.length === 0 ? (
+                  menuItemRender(menuChild)
+                ) : (
+                  <Menu.SubMenu
+                    key={menuChild.path}
+                    title={
+                      <>
+                        {menuChild.iconName && h(Icon[menuChild.iconName])}
+                        <span>{menuChild.title}</span>
+                      </>
+                    }
+                  >
+                    {menuChildRender(menuChild.children)}
+                  </Menu.SubMenu>
+                )}
               </>
             ))}
           </Menu.SubMenu>
         ) : (
-          menuItemRender(menu)
+          menuItemRender(menu.children[0] || menu)
         )}
       </>
     );
@@ -63,7 +75,7 @@ export default defineComponent({
 
     const aside = computed(() => state.setting.aside === 'close');
     const defaultActive = computed(() => {
-      const path = state.setting.activeMenu;
+      const path = state.setting.activePath;
 
       return {
         menuItem: path,

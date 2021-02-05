@@ -23,7 +23,7 @@ const transformMenu = (): Array<MenuType> => {
       if (item.menu) {
         const menu: MenuType = {
           title: item.meta?.title || '',
-          path: `${parent.path}/${item.path.replace(/^\//, '')}`,
+          path: `${parent.path.replace(/\/$/, '')}/${item.path.replace(/^\//, '')}`,
           iconName: item.meta?.iconName,
           iconHref: item.meta?.iconHref,
           children: [],
@@ -50,6 +50,7 @@ const state: MenuStateType = {
 const mutations = {
   routeChanged(state: MenuStateType): void {
     state.menuList = transformMenu();
+    console.log(state.menuList);
   }
 };
 const actions = {};

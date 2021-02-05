@@ -35,29 +35,41 @@ const routes: Array<AdminRouteRecordRaw> = [
   },
   {
     path: '/',
-    redirect: '/index/dashboard'
-  },
-  {
-    path: '/index',
     component: Layout,
-    redirect: '/index/dashboard',
+    redirect: '/index',
     name: 'Index',
-    meta: { title: '数据页', iconName: 'LaptopOutlined' },
     menu: true,
     children: [
       {
-        path: 'dashboard',
-        name: 'Dashboard',
-        meta: { title: '数据分析', iconName: 'ProjectOutlined' },
+        path: 'index',
+        name: 'IndexPage',
+        component: () => import('@/views'),
         menu: true,
-        component: () => import('@/views/Home')
+        meta: { title: '工作台', iconName: 'CodeOutlined' }
+      }
+    ]
+  },
+  {
+    path: '/data',
+    component: Layout,
+    redirect: '/data/chart',
+    name: 'Data',
+    meta: { title: '数据分析', iconName: 'SlidersFilled' },
+    menu: true,
+    children: [
+      {
+        path: 'chart',
+        name: 'Chart',
+        meta: { title: '图形数据', iconName: 'BarChartOutlined' },
+        menu: true,
+        component: () => import('@/views/Data')
       },
       {
-        path: 'oversee',
-        name: 'DataOversee',
-        meta: { title: '数据监控', iconName: 'RobotOutlined' },
+        path: 'card',
+        name: 'Card',
+        meta: { title: '模块数据', iconName: 'RobotOutlined' },
         menu: true,
-        component: () => import('@/views/Home/Oversee')
+        component: () => import('@/views/Data/Oversee')
       }
     ]
   },
@@ -144,6 +156,50 @@ const routes: Array<AdminRouteRecordRaw> = [
     ]
   },
   {
+    path: '/m',
+    component: Layout,
+    redirect: '/m/m1',
+    name: 'Menu0',
+    meta: {
+      title: '多级菜单',
+      iconName: 'QuestionOutlined'
+    },
+    menu: true,
+    children: [
+      {
+        path: 'm1',
+        name: 'Menu1-1',
+        meta: { title: '菜单1-1', iconName: 'QuestionCircleOutlined' },
+        menu: true,
+        component: () => import('@/views/MenuDemo/M1')
+      },
+      {
+        path: 'm2',
+        name: 'Menu1-2',
+        meta: { title: '菜单1-2', iconName: 'QuestionCircleOutlined' },
+        menu: true,
+        component: () => import('@/views/MenuDemo/M2'),
+        redirect: '/m/m2/m1',
+        children: [
+          {
+            path: 'm1',
+            name: 'Menu1-2-1',
+            meta: { title: '菜单1-2-1', iconName: 'QuestionCircleOutlined' },
+            menu: true,
+            component: () => import('@/views/MenuDemo/M2/M2-1')
+          },
+          {
+            path: 'm2',
+            menu: true,
+            name: 'Menu1-2-2',
+            meta: { title: '菜单1-2-2', iconName: 'QuestionCircleOutlined' },
+            component: () => import('@/views/MenuDemo/M2/M2-2')
+          }
+        ]
+      }
+    ]
+  },
+  {
     path: '/outlink',
     name: 'Github',
     meta: { title: '外部链接', iconName: 'GithubFilled' },
@@ -161,7 +217,9 @@ const router = createRouter({
 router.beforeEach((to: RouteLocationNormalized, _, next) => {
   store.commit('setting/routeChanged', {
     path: to.path,
-    breadcrumbs: to.matched.map((item: AdminRouteRecordRaw) => item.meta?.title)
+    breadcrumbs: to.matched
+      .filter((item) => item.meta?.title)
+      .map((item: AdminRouteRecordRaw) => item.meta?.title)
   });
 
   document.title = `${to.meta?.title || ''} - 管理系统`;

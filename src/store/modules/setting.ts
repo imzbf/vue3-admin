@@ -6,7 +6,7 @@ export type Themes = 'dark' | 'light' | 'deepDark';
 
 export interface SettingStateType extends AsideType {
   // 当前菜单
-  activeMenu: string;
+  activePath: string;
   // 面包屑
   breadcrumbs: Array<string>;
   // 主题
@@ -19,7 +19,7 @@ const cacheTheme = localStorage.getItem(themeKey);
 
 const state: SettingStateType = {
   aside: 'open',
-  activeMenu: '/',
+  activePath: '/',
   breadcrumbs: [],
   theme:
     (cacheTheme === 'dark' && 'dark') ||
@@ -36,7 +36,7 @@ const mutations = {
     state: SettingStateType,
     payload: { path: string; breadcrumbs: Array<string> }
   ): void {
-    state.activeMenu = payload.path;
+    state.activePath = payload.path;
     state.breadcrumbs = payload.breadcrumbs;
   },
   // 切换主题
