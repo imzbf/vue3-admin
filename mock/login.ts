@@ -2,13 +2,14 @@ import { MockMethod } from 'vite-plugin-mock';
 
 const login: Array<MockMethod> = [
   {
-    url: '/api/token',
+    url: '/api/info',
     method: 'get',
     response: (): any => {
       return {
         code: 0,
         data: {
-          name: 'vben'
+          username: 'zbf',
+          avatar: '/static/img/head02.gif'
         }
       };
     }
@@ -16,14 +17,9 @@ const login: Array<MockMethod> = [
   {
     url: '/api/login',
     method: 'post',
-    timeout: 1500,
     response: {
       code: 0,
       data: {
-        info: {
-          username: 'zbfget',
-          avatar: '/static/img/head02.gif'
-        },
         token: 'nSoCWuIpVU1ZWqkaM1TT5MBwYNfyaqhh5BRQQ9Aw'
       }
     }
@@ -31,7 +27,6 @@ const login: Array<MockMethod> = [
   {
     url: '/api/logout',
     method: 'post',
-    timeout: 1500,
     response: {
       code: 0,
       data: {}
