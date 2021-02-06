@@ -1,19 +1,42 @@
+import { logout } from '@/apis/user';
+import Final from '@/config/final';
+import router from '@/router';
 export interface UserStateType {
-  info?: any;
+  info?: {
+    username: string;
+    avatar: string;
+  };
   token?: string;
 }
 
-const state: UserStateType = {
-  info: {},
-  token: ''
+const initInfo = {
+  username: '',
+  avatar: ''
 };
 
-const mutations = {};
+const state: UserStateType = {
+  info: initInfo,
+  token: localStorage.getItem(Final.TOKEN) || ''
+};
+
+const mutations = {
+  reset(state: UserStateType): void {
+    state.token = '';
+    state.info = initInfo;
+    localStorage.removeItem(Final.TOKEN);
+  }
+};
 
 const actions = {
-  async logout(): Promise<any> {
-    console.log(import.meta.env);
-    return await Promise.resolve();
+  logout(store: any): Promise<any> {
+    return logout()
+      .then(() => {
+        store.commit('reset');
+      })
+      .then(() => {
+        // 返回登录界面
+        router.push('/login');
+      });
   }
 };
 

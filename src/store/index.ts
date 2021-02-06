@@ -14,7 +14,9 @@ export interface StateType {
 export const key: InjectionKey<Store<StateType>> = Symbol();
 
 export default createStore({
-  state: {},
+  getters: {
+    token: (state: StateType) => state.user.token
+  },
   mutations: {},
   actions: {},
   modules: {

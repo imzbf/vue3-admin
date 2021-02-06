@@ -3,8 +3,17 @@ import { RouterLink } from 'vue-router';
 import { useStore } from 'vuex';
 import { key } from '@/store';
 import screenfull from 'screenfull';
-import HeadImg from '@/assets/head02.gif';
-import { Tabs, Badge, Breadcrumb, message, Avatar, Dropdown, Menu } from 'ant-design-vue';
+// import HeadImg from '@/assets/head02.gif';
+import {
+  Tabs,
+  Badge,
+  Breadcrumb,
+  message,
+  Avatar,
+  Dropdown,
+  Menu,
+  notification
+} from 'ant-design-vue';
 import {
   MenuFoldOutlined,
   MenuUnfoldOutlined,
@@ -78,7 +87,12 @@ export default defineComponent({
 
     // 退出登录
     const logout = () => {
-      store.dispatch('user/logout');
+      store.dispatch('user/logout').catch((error: any) => {
+        notification.error({
+          message: '操作失败！',
+          description: error?.msg || '未知的异常！'
+        });
+      });
     };
 
     if (screenfull.isEnabled) {
@@ -192,7 +206,7 @@ export default defineComponent({
             // }}
           >
             <li>
-              <Avatar size="small" src={HeadImg} />
+              <Avatar size="small" src="/static/img/head02.gif" />
             </li>
           </Dropdown>
         </ul>
