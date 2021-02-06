@@ -173,7 +173,7 @@ export default defineComponent({
                     <SettingOutlined /> 个人设置
                   </RouterLink>
                 </Menu.Item>
-                <Menu.Item>
+                <Menu.Item onClick={console.log}>
                   <PoweroffOutlined />
                   退出登录
                 </Menu.Item>
