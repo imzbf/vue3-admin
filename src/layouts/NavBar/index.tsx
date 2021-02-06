@@ -76,6 +76,11 @@ export default defineComponent({
       }
     };
 
+    // 退出登录
+    const logout = () => {
+      store.dispatch('user/logout');
+    };
+
     if (screenfull.isEnabled) {
       screenfull.on('change', () => {
         data.isFullscreen = !data.isFullscreen;
@@ -173,7 +178,10 @@ export default defineComponent({
                     <SettingOutlined /> 个人设置
                   </RouterLink>
                 </Menu.Item>
-                <Menu.Item onClick={console.log}>
+                {
+                  // TODO antd-vue Property 'onClick' does not exist
+                }
+                <Menu.Item onClick={logout}>
                   <PoweroffOutlined />
                   退出登录
                 </Menu.Item>

@@ -1,15 +1,19 @@
-import { App } from 'vue';
+// import { App } from 'vue';
 import axios from 'axios';
 
-const axiosInstance = axios.create();
+const axiosInstance = axios.create({
+  timeout: 7600
+});
+
+export default axiosInstance;
 
 // console.log(process.env.NODE_ENV);
 // {NODE_ENV: "production"}
 
-export default {
-  install(app: App<Element>): void {
-    Object.defineProperty(app.config.globalProperties, '$axios', {
-      value: axiosInstance
-    });
-  }
-};
+// export default {
+//   install(app: App<Element>): void {
+//     Object.defineProperty(app.config.globalProperties, '$axios', {
+//       value: axiosInstance
+//     });
+//   }
+// };
