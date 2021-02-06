@@ -1,4 +1,5 @@
 import { defineComponent, computed, reactive } from 'vue';
+import { RouterLink } from 'vue-router';
 import { useStore } from 'vuex';
 import { key } from '@/store';
 import screenfull from 'screenfull';
@@ -13,12 +14,12 @@ import {
   SkinOutlined,
   SettingOutlined,
   PoweroffOutlined,
-  UserOutlined
+  UserOutlined,
+  createFromIconfontCN
 } from '@ant-design/icons-vue';
 
 import style from './index.module.scss';
 
-import { createFromIconfontCN } from '@ant-design/icons-vue';
 const MyIcon = createFromIconfontCN({
   scriptUrl: '//at.alicdn.com/t/font_2365632_9x17rvubrqj.js' // 在 iconfont.cn 上生成
 });
@@ -163,11 +164,14 @@ export default defineComponent({
             overlay={
               <Menu>
                 <Menu.Item>
-                  <UserOutlined /> 个人中心
+                  <RouterLink to="/user">
+                    <UserOutlined /> 个人中心
+                  </RouterLink>
                 </Menu.Item>
                 <Menu.Item>
-                  <SettingOutlined />
-                  个人设置
+                  <RouterLink to="/user/setting">
+                    <SettingOutlined /> 个人设置
+                  </RouterLink>
                 </Menu.Item>
                 <Menu.Item>
                   <PoweroffOutlined />

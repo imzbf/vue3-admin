@@ -25,8 +25,30 @@ type AdminRouteRecordRaw = RouteRecordRaw & {
   [propName: string]: any;
 };
 
+const userModule: AdminRouteRecordRaw = {
+  path: '/user',
+  component: Layout,
+  name: 'User',
+  meta: { title: '用户中心' },
+  children: [
+    {
+      path: '',
+      name: 'UserIndex',
+      meta: { title: '个人中心' },
+      component: () => import('@/views/User')
+    },
+    {
+      path: 'setting',
+      name: 'Setting',
+      meta: { title: '个人设置' },
+      component: () => import('@/views/User/Setting')
+    }
+  ]
+};
+
 // vue-router子路由path不需要添加/
 const routes: Array<AdminRouteRecordRaw> = [
+  userModule,
   {
     path: '/login',
     name: 'Login',
@@ -227,4 +249,5 @@ router.beforeEach((to: RouteLocationNormalized, _, next) => {
 });
 
 export { AdminRouteRecordRaw, routes };
+
 export default router;
