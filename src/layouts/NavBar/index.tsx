@@ -23,8 +23,21 @@ const MyIcon = createFromIconfontCN({
   scriptUrl: '//at.alicdn.com/t/font_2365632_9x17rvubrqj.js' // 在 iconfont.cn 上生成
 });
 
+// 同时设置props的vue属性和ts类型，setup会报错
+// interface NavBarPropsType {
+//   setSettingVisible: (val: boolean) => void;
+// }
+
 export default defineComponent({
-  setup() {
+  props: {
+    setSettingVisible: {
+      type: Function,
+      default: (val: boolean) => {
+        return val;
+      }
+    }
+  },
+  setup(props) {
     const store = useStore(key);
 
     const data = reactive({
@@ -46,7 +59,6 @@ export default defineComponent({
     };
 
     // 调整主题
-
     const adjustTheme = ({ key }: any) => {
       store.commit('setting/themeChanged', {
         theme: key
@@ -139,7 +151,11 @@ export default defineComponent({
           <li onClick={fullScreen}>
             {data.isFullscreen ? <FullscreenOutlined /> : <FullscreenExitOutlined />}
           </li>
-          <li>
+          <li
+            onClick={() => {
+              props.setSettingVisible(true);
+            }}
+          >
             <SettingOutlined />
           </li>
           <Dropdown

@@ -1,4 +1,4 @@
-import { computed, defineComponent, onBeforeMount } from 'vue';
+import { computed, defineComponent, onBeforeMount, reactive } from 'vue';
 import { useStore } from 'vuex';
 import { key } from '@/store';
 
@@ -7,6 +7,8 @@ import NavBar from './NavBar';
 import LogoImg from '@/assets/logo.png';
 
 import style from './index.module.scss';
+
+import Setting from './Setting';
 
 export default defineComponent({
   setup() {
@@ -29,6 +31,10 @@ export default defineComponent({
         : `${style['layout-aside']} ${style['layout-aside-close']}`;
     });
 
+    const data = reactive({
+      settingVisible: false
+    });
+
     return () => (
       <section class={`${style.wrapper} ${style[`${store.state.setting.theme}-theme`]}`}>
         <div class={layoutAsideClass.value}>
@@ -47,14 +53,25 @@ export default defineComponent({
         </div>
         <div class={style.layout}>
           <header class={style.layoutHeader}>
-            <NavBar />
+            <NavBar
+              setSettingVisible={(val: boolean) => {
+                data.settingVisible = val;
+              }}
+            />
           </header>
           <main class={style.layoutMain}>
             <router-view />
           </main>
         </div>
+        <div class={style.drawer}>
+          <Setting
+            visible={data.settingVisible}
+            setVisible={() => {
+              data.settingVisible = false;
+            }}
+          />
+        </div>
       </section>
     );
-  },
-  components: { Menu, NavBar }
+  }
 });
