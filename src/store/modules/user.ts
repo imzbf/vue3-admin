@@ -1,4 +1,4 @@
-import { logout } from '@/apis/user';
+import { logout, login, LoginInfoType } from '@/apis/user';
 import Final from '@/config/final';
 import router from '@/router';
 export interface UserStateType {
@@ -20,6 +20,10 @@ const state: UserStateType = {
 };
 
 const mutations = {
+  setToken(state: UserStateType, payload: { token: string }) {
+    state.token = payload.token;
+    localStorage.setItem(Final.TOKEN, payload.token);
+  },
   reset(state: UserStateType): void {
     state.token = '';
     state.info = initInfo;
@@ -28,6 +32,16 @@ const mutations = {
 };
 
 const actions = {
+  login(store: any, payload: LoginInfoType): Promise<any> {
+    return login(payload)
+      .then(({ data }: any) => {
+        store.commit('setToken', data);
+      })
+      .then(() => {
+        const from = router.currentRoute.value.query.from as string;
+        router.push(from || '/');
+      });
+  },
   logout(store: any): Promise<any> {
     return logout()
       .then(() => {
@@ -35,7 +49,9 @@ const actions = {
       })
       .then(() => {
         // 返回登录界面
-        router.push('/login');
+        router.push(
+          `/login?from=${encodeURIComponent(router.currentRoute.value.fullPath)}`
+        );
       });
   }
 };

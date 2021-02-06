@@ -1,27 +1,56 @@
-import { reactive, defineComponent } from 'vue';
+import { reactive, defineComponent, onMounted } from 'vue';
+import { useStore } from 'vuex';
+import { key } from '@/store';
 import '@/assets/iconfonts/login/iconfont.css';
 import style from './index.module.scss';
 import { UserOutlined, LockOutlined } from '@ant-design/icons-vue';
-import { Input, Checkbox, Button, Popconfirm } from 'ant-design-vue';
+import { Input, Checkbox, Button, Popconfirm, message } from 'ant-design-vue';
+import { onBeforeRouteLeave } from 'vue-router';
 
 export default defineComponent({
   setup() {
     const data = reactive({
       info: {
-        username: '',
-        password: ''
+        username: 'admin',
+        password: 'admin'
       },
       remembered: true
     });
 
+    const store = useStore(key);
+
     const login = () => {
-      //
-      console.log(data.info);
+      if (data.info.username !== '' && data.info.password !== '') {
+        //
+        store
+          .dispatch('user/login', {
+            ...data.info,
+            remembered: data.remembered
+          })
+          .catch((error: any) => {
+            message.error(error?.msg || '未知的异常！');
+          });
+      } else {
+        message.error('登录信息不能为空！');
+      }
     };
 
-    const forgetHelp = () => {
-      // ElMessageBox.alert('这个我也不知道咋办！');
+    const keyUpHandler = (e: any) => {
+      if (e.keyCode == 13) {
+        login();
+      }
     };
+
+    onMounted(() => {
+      document.addEventListener('keyup', keyUpHandler);
+    });
+
+    onBeforeRouteLeave((_to, _from, next) => {
+      // 清除按键监控
+      document.removeEventListener('keyup', keyUpHandler);
+      next();
+    });
+
     return () => (
       <div class={style['login']} id="login">
         <div class={style['login-container']}>
@@ -32,7 +61,10 @@ export default defineComponent({
               <Input
                 size="large"
                 type="text"
-                v-model={data.info.username}
+                value={data.info.username}
+                onChange={(e) => {
+                  data.info.username = e.target.value;
+                }}
                 placeholder="username: 1"
                 prefix={<UserOutlined />}
               ></Input>
@@ -41,22 +73,28 @@ export default defineComponent({
               <Input
                 size="large"
                 type="password"
-                v-model={data.info.password}
+                value={data.info.password}
+                onChange={(e) => {
+                  data.info.password = e.target.value;
+                }}
                 show-password
                 placeholder="password: 1"
                 prefix={<LockOutlined />}
               ></Input>
             </div>
             <div class={style['form-item']} style="margin-bottom: 14px">
-              <Checkbox v-model={data.remembered}>记住我</Checkbox>
-              <Popconfirm
-                title="Are you sure delete this task?"
-                ok-text="Yes"
-                cancel-text="No"
+              <Checkbox
+                checked={data.remembered}
+                onChange={(e) => (data.remembered = e.target.value)}
               >
-                <span class={`${style['forget-p-help']} cper`} onClick={forgetHelp}>
-                  忘记密码？
-                </span>
+                记住我
+              </Checkbox>
+              <Popconfirm
+                title="这个我也不知道咋办！"
+                okText="好的"
+                cancelText="被迫好的"
+              >
+                <span class={`${style['forget-p-help']} cper`}>忘记密码？</span>
               </Popconfirm>
             </div>
             <div class={style['form-item']}>
