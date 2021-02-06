@@ -1,8 +1,9 @@
 import axios from '@/utils/request';
 
-interface LoginInfoType {
+export interface LoginInfoType {
   username: string;
   password: string;
+  remembered?: boolean;
 }
 
 // 登出
