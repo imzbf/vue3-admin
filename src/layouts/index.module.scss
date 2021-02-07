@@ -88,10 +88,14 @@ $lightMenuBack: rgb(255, 255, 255);
   }
 
   .layout {
+    display: flex;
+    flex-direction: column;
     flex: 1;
 
     .layout-main {
+      flex: 1;
       padding: 10px;
+      overflow: auto;
     }
   }
 }
