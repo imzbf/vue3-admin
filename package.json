@@ -15,12 +15,14 @@
     "@ant-design/icons-vue": "^6.0.1",
     "ant-design-vue": "^2.0.0-rc.9",
     "axios": "^0.21.1",
+    "nprogress": "^0.2.0",
     "screenfull": "^5.1.0",
     "vue": "^3.0.4",
     "vue-router": "^4.0.3",
     "vuex": "^4.0.0-rc.2"
   },
   "devDependencies": {
+    "@types/nprogress": "^0.2.0",
     "@typescript-eslint/eslint-plugin": "^4.11.0",
     "@typescript-eslint/parser": "^4.11.0",
     "@vitejs/plugin-vue": "^1.1.2",

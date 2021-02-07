@@ -5,6 +5,9 @@ import {
   RouteLocationNormalized
 } from 'vue-router';
 import Icon from '@ant-design/icons-vue/lib/icons';
+import NProgress from 'nprogress';
+
+NProgress.configure({ minimum: 0.1 });
 
 import Layout from '@/layouts';
 import store from '@/store';
@@ -237,6 +240,7 @@ const router = createRouter({
 });
 
 router.beforeEach((to: RouteLocationNormalized, _, next) => {
+  NProgress.start();
   store.commit('setting/routeChanged', {
     path: to.path,
     breadcrumbs: to.matched
@@ -246,6 +250,10 @@ router.beforeEach((to: RouteLocationNormalized, _, next) => {
 
   document.title = `${to.meta?.title || ''} - 管理系统`;
   next();
+});
+
+router.afterEach(() => {
+  NProgress.done();
 });
 
 export { AdminRouteRecordRaw, routes };

@@ -16,6 +16,7 @@ const login: Array<MockMethod> = [
   },
   {
     url: '/api/login',
+    timeout: 1000,
     method: 'post',
     response: {
       code: 0,
