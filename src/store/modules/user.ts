@@ -22,7 +22,6 @@ const state: UserStateType = {
 const mutations = {
   setToken(state: UserStateType, payload: { token: string }) {
     state.token = payload.token;
-    localStorage.setItem(Final.TOKEN, payload.token);
   },
   reset(state: UserStateType): void {
     state.token = '';
@@ -36,6 +35,10 @@ const actions = {
     return login(payload)
       .then(({ data }: any) => {
         store.commit('setToken', data);
+        return data.token;
+      })
+      .then((token: string) => {
+        payload.remembered && localStorage.setItem(Final.TOKEN, token);
       })
       .then(() => {
         const from = router.currentRoute.value.query.from as string;
