@@ -1,5 +1,5 @@
 import setting from '@/setting';
-
+import Final from '@/config/final';
 interface AsideType {
   aside: 'open' | 'close' | 'none'; // 正常展开、缩小显示图标、不展示
 }
@@ -17,9 +17,7 @@ export interface SettingStateType extends AsideType {
   theme?: Themes;
 }
 
-const themeKey = 'theme';
-
-const cacheTheme = localStorage.getItem(themeKey);
+const cacheTheme = localStorage.getItem(Final.THEME);
 
 const state: SettingStateType = {
   aside: 'open',
@@ -60,7 +58,7 @@ const mutations = {
   // 切换主题
   themeChanged(state: SettingStateType, payload: { theme: Themes }): void {
     state.theme = payload.theme;
-    localStorage.setItem(themeKey, payload.theme);
+    localStorage.setItem(Final.THEME, payload.theme);
   }
 };
 const actions = {};
