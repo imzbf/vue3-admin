@@ -1,5 +1,5 @@
 import setting from '@/setting';
-import Final from '@/config/strs';
+import Final from '@/config/keys';
 interface AsideType {
   aside: 'open' | 'close' | 'none'; // 正常展开、缩小显示图标、不展示
 }

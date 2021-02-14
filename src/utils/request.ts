@@ -1,7 +1,7 @@
 // import { App } from 'vue';
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
 import store from '@/store';
-import Final from '@/config/strs';
+import Final from '@/config/keys';
 
 // const data = {
 //   code: 0,
