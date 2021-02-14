@@ -102,12 +102,13 @@ body,
   color: #333;
 }
 
-// element override
-.el-menu {
-  border-right: none;
+// antd-vue 样式覆盖
+.ant-menu-dark,
+.ant-menu-dark .ant-menu-sub {
+  background-color: #03111d;
 }
+// antd-vue 样式覆盖结束
 
-//
 .cper {
   cursor: pointer;
 }
