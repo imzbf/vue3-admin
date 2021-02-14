@@ -1,5 +1,5 @@
 import { logout, login, LoginInfoType } from '@/apis/user';
-import Final from '@/config/final';
+import Final from '@/config/strs';
 import router from '@/router';
 export interface UserStateType {
   info?: {
