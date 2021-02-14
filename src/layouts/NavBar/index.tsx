@@ -3,7 +3,8 @@ import { RouterLink } from 'vue-router';
 import { useStore } from 'vuex';
 import { key } from '@/store';
 import screenfull from 'screenfull';
-// import HeadImg from '@/assets/head02.gif';
+import URLS from '@/config/urls';
+
 import {
   Tabs,
   Badge,
@@ -206,7 +207,7 @@ export default defineComponent({
             // }}
           >
             <li>
-              <Avatar size="small" src="/static/img/head02.gif" />
+              <Avatar size="small" src={URLS.DEMO_USER_HEAD} />
             </li>
           </Dropdown>
         </ul>
