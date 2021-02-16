@@ -13,9 +13,11 @@ export default ({ command }: ConfigEnv): UserConfigExport => {
       port: 33,
       https: false
     },
-    alias: {
-      // 键必须以斜线开始和结束
-      '@': path.resolve(__dirname, './src')
+    resolve: {
+      alias: {
+        // 键必须以斜线开始和结束
+        '@': path.resolve(__dirname, './src')
+      }
     },
     plugins: [
       vue(),
