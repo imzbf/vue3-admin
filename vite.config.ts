@@ -10,7 +10,7 @@ export default ({ command }: ConfigEnv): UserConfigExport => {
     server: {
       host: 'localhost',
       open: true,
-      port: 33,
+      port: 3344,
       https: false
     },
     resolve: {
