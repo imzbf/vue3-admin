@@ -82,8 +82,10 @@
     }
   },
   "lint-staged": {
+    "*.{html,ts,tsx,json}": [
+      "eslint --fix"
+    ],
     "*.{html,ts,tsx,md,json}": [
-      "eslint --fix",
       "prettier"
     ]
   }
