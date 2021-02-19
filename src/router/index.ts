@@ -1,18 +1,23 @@
 import {
   createRouter,
   createWebHistory,
-  RouteRecordRaw,
-  RouteLocationNormalized
+  RouteLocationNormalized,
+  RouteRecordRaw
 } from 'vue-router';
-import Icon from '@ant-design/icons-vue/lib/icons';
 import NProgress from 'nprogress';
-
-NProgress.configure({ minimum: 0.1 });
+import Icon from '@ant-design/icons-vue/lib/icons';
 
 import Layout from '@/layouts';
 import store from '@/store';
 
-type AdminRouteRecordRaw = RouteRecordRaw & {
+import userModule from './modules/user';
+import tableModule from './modules/table';
+import errorModule from './modules/error';
+import demoModule from './modules/demo';
+
+NProgress.configure({ minimum: 0.1 });
+
+interface OverrideRecordRaw {
   // 是否展示在左侧菜单栏
   menu?: boolean;
   outLink?: string;
@@ -24,34 +29,18 @@ type AdminRouteRecordRaw = RouteRecordRaw & {
     iconHref?: string;
     [propName: string]: any;
   };
-  children?: Array<AdminRouteRecordRaw>;
+  children?: Array<RouteRecordRaw & OverrideRecordRaw>;
   [propName: string]: any;
-};
+}
 
-const userModule: AdminRouteRecordRaw = {
-  path: '/user',
-  component: Layout,
-  name: 'User',
-  meta: { title: '用户中心' },
-  children: [
-    {
-      path: '',
-      name: 'UserIndex',
-      meta: { title: '个人中心' },
-      component: () => import('@/views/User')
-    },
-    {
-      path: 'setting',
-      name: 'Setting',
-      meta: { title: '个人设置' },
-      component: () => import('@/views/User/Setting')
-    }
-  ]
-};
+type AdminRouteRecordRaw = RouteRecordRaw & OverrideRecordRaw;
 
-// vue-router子路由path不需要添加/
+// vue-router子路由path不需要添加/关键词
 const routes: Array<AdminRouteRecordRaw> = [
+  demoModule,
   userModule,
+  tableModule,
+  errorModule,
   {
     path: '/login',
     name: 'Login',
@@ -99,30 +88,6 @@ const routes: Array<AdminRouteRecordRaw> = [
     ]
   },
   {
-    path: '/table',
-    component: Layout,
-    redirect: '/table/base',
-    name: 'Table',
-    meta: { title: '表格页', iconName: 'TableOutlined' },
-    menu: true,
-    children: [
-      {
-        path: 'base',
-        name: 'TableBase',
-        meta: { title: '基本表格', iconName: 'TableOutlined' },
-        menu: true,
-        component: () => import('@/views/Table')
-      },
-      {
-        path: 'server',
-        name: 'TableServer',
-        meta: { title: '动态数据表格', iconName: 'TabletOutlined' },
-        menu: true,
-        component: () => import('@/views/Table/Server')
-      }
-    ]
-  },
-  {
     path: '/form',
     component: Layout,
     redirect: '/form/base',
@@ -143,84 +108,6 @@ const routes: Array<AdminRouteRecordRaw> = [
         meta: { title: '自定义表单', iconName: 'DiffOutlined' },
         menu: true,
         component: () => import('@/views/Form/Def')
-      }
-    ]
-  },
-  {
-    path: '/error',
-    component: Layout,
-    redirect: '/error/404',
-    name: 'Error',
-    meta: {
-      title: '异常页',
-      iconName: 'QuestionOutlined'
-    },
-    menu: true,
-    children: [
-      {
-        path: '403',
-        name: '403',
-        meta: { title: '403', iconName: 'QuestionCircleOutlined' },
-        menu: true,
-        component: () => import('@/views/Error/403')
-      },
-      {
-        path: '404',
-        name: '404',
-        meta: { title: '404', iconName: 'QuestionCircleOutlined' },
-        menu: true,
-        component: () => import('@/views/Error/404')
-      },
-      {
-        path: '500',
-        name: '500',
-        meta: { title: '500', iconName: 'QuestionCircleOutlined' },
-        menu: true,
-        component: () => import('@/views/Error/500')
-      }
-    ]
-  },
-  {
-    path: '/m',
-    component: Layout,
-    redirect: '/m/m1',
-    name: 'Menu0',
-    meta: {
-      title: '多级菜单',
-      iconName: 'QuestionOutlined'
-    },
-    menu: true,
-    children: [
-      {
-        path: 'm1',
-        name: 'Menu1-1',
-        meta: { title: '菜单1-1', iconName: 'QuestionCircleOutlined' },
-        menu: true,
-        component: () => import('@/views/MenuDemo/M1')
-      },
-      {
-        path: 'm2',
-        name: 'Menu1-2',
-        meta: { title: '菜单1-2', iconName: 'QuestionCircleOutlined' },
-        menu: true,
-        component: () => import('@/views/MenuDemo/M2'),
-        redirect: '/m/m2/m1',
-        children: [
-          {
-            path: 'm1',
-            name: 'Menu1-2-1',
-            meta: { title: '菜单1-2-1', iconName: 'QuestionCircleOutlined' },
-            menu: true,
-            component: () => import('@/views/MenuDemo/M2/M2-1')
-          },
-          {
-            path: 'm2',
-            menu: true,
-            name: 'Menu1-2-2',
-            meta: { title: '菜单1-2-2', iconName: 'QuestionCircleOutlined' },
-            component: () => import('@/views/MenuDemo/M2/M2-2')
-          }
-        ]
       }
     ]
   },
