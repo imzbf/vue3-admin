@@ -1,5 +1,6 @@
 import { AdminRouteRecordRaw } from '..';
 import Layout from '@/layouts';
+import DynamicRoutes from '../dynamic';
 
 const userModule: AdminRouteRecordRaw = {
   path: '/user',
@@ -11,13 +12,13 @@ const userModule: AdminRouteRecordRaw = {
       path: '',
       name: 'UserIndex',
       meta: { title: '个人中心' },
-      component: () => import('@/views/User')
+      component: DynamicRoutes.user_center
     },
     {
       path: 'setting',
       name: 'Setting',
       meta: { title: '个人设置' },
-      component: () => import('@/views/User/Setting')
+      component: DynamicRoutes.user_setting
     }
   ]
 };

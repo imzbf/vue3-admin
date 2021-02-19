@@ -1,5 +1,6 @@
 import { AdminRouteRecordRaw } from '..';
 import Layout from '@/layouts';
+import DynamicRoutes from '../dynamic';
 
 const Table: AdminRouteRecordRaw = {
   path: '/table',
@@ -14,14 +15,14 @@ const Table: AdminRouteRecordRaw = {
       name: 'TableBase',
       meta: { title: '基本表格', iconName: 'TableOutlined' },
       menu: true,
-      component: () => import('@/views/Table')
+      component: DynamicRoutes.table_base
     },
     {
       path: 'server',
       name: 'TableServer',
       meta: { title: '动态数据表格', iconName: 'TabletOutlined' },
       menu: true,
-      component: () => import('@/views/Table/Server')
+      component: DynamicRoutes.table_dynamic
     }
   ]
 };

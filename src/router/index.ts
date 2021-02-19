@@ -15,6 +15,8 @@ import tableModule from './modules/table';
 import errorModule from './modules/error';
 import demoModule from './modules/demo';
 
+import DynamicRoutes from './dynamic';
+
 NProgress.configure({ minimum: 0.1 });
 
 interface OverrideRecordRaw {
@@ -37,15 +39,11 @@ type AdminRouteRecordRaw = RouteRecordRaw & OverrideRecordRaw;
 
 // vue-router子路由path不需要添加/关键词
 const routes: Array<AdminRouteRecordRaw> = [
-  demoModule,
-  userModule,
-  tableModule,
-  ...errorModule,
   {
     path: '/login',
     name: 'Login',
     meta: { title: '登录' },
-    component: () => import('@/views/Login')
+    component: DynamicRoutes.login
   },
   {
     path: '/',
@@ -57,7 +55,7 @@ const routes: Array<AdminRouteRecordRaw> = [
       {
         path: 'index',
         name: 'IndexPage',
-        component: () => import('@/views'),
+        component: DynamicRoutes.dashboard,
         menu: true,
         meta: { title: '工作台', iconName: 'CodeOutlined' }
       }
@@ -76,14 +74,14 @@ const routes: Array<AdminRouteRecordRaw> = [
         name: 'Chart',
         meta: { title: '图形数据', iconName: 'BarChartOutlined' },
         menu: true,
-        component: () => import('@/views/Data')
+        component: DynamicRoutes.chart_data
       },
       {
         path: 'card',
         name: 'Card',
         meta: { title: '模块数据', iconName: 'RobotOutlined' },
         menu: true,
-        component: () => import('@/views/Data/Oversee')
+        component: DynamicRoutes.card_data
       }
     ]
   },
@@ -100,17 +98,21 @@ const routes: Array<AdminRouteRecordRaw> = [
         name: 'FormBase',
         meta: { title: '基本表单', iconName: 'EditOutlined' },
         menu: true,
-        component: () => import('@/views/Form')
+        component: DynamicRoutes.base_form
       },
       {
         path: 'def',
         name: 'FormDef',
         meta: { title: '自定义表单', iconName: 'DiffOutlined' },
         menu: true,
-        component: () => import('@/views/Form/Def')
+        component: DynamicRoutes.def_form
       }
     ]
   },
+  demoModule,
+  userModule,
+  tableModule,
+  ...errorModule,
   {
     path: '/outlink',
     name: 'Github',
