@@ -40,7 +40,7 @@ const routes: Array<AdminRouteRecordRaw> = [
   demoModule,
   userModule,
   tableModule,
-  errorModule,
+  ...errorModule,
   {
     path: '/login',
     name: 'Login',
@@ -118,7 +118,8 @@ const routes: Array<AdminRouteRecordRaw> = [
     menu: true,
     outLink: 'https://github.com/zhoubangfu/vue3-admin',
     redirect: '/'
-  }
+  },
+  { path: '/:pathMatch(.*)*', redirect: '/404' }
 ];
 
 const router = createRouter({
