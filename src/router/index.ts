@@ -2,6 +2,7 @@ import {
   createRouter,
   createWebHistory,
   RouteLocationNormalized,
+  NavigationGuardNext,
   RouteRecordRaw
 } from 'vue-router';
 import NProgress from 'nprogress';
@@ -16,6 +17,8 @@ import errorModule from './modules/error';
 import demoModule from './modules/demo';
 
 import DynamicRoutes from './dynamic';
+
+import { getToken } from '@/utils/biz';
 
 NProgress.configure({ minimum: 0.1 });
 
@@ -129,17 +132,47 @@ const router = createRouter({
   routes
 });
 
-router.beforeEach((to: RouteLocationNormalized, _, next) => {
+router.beforeEach((to: RouteLocationNormalized, _, next: NavigationGuardNext) => {
   NProgress.start();
-  store.commit('setting/routeChanged', {
-    path: to.path,
-    breadcrumbs: to.matched
-      .filter((item) => item.meta?.title)
-      .map((item: AdminRouteRecordRaw) => item.meta?.title)
-  });
 
-  document.title = `${to.meta?.title || ''} - 管理系统`;
-  next();
+  const token = getToken();
+
+  // 返回之前页面如有额外query参数可自行携带
+  // 例如：
+  // const { query } = to;
+  // delete query.from;
+  // next(`/?${Object.entries(query).join('&').replace(/,/g, '=')}`);
+
+  if (token) {
+    // 有token时，前往登录页
+    if (/^\/login.*/.test(to.path)) {
+      if (to.query.from) {
+        // 存在登录跳转回页面
+        next(to.query.from as string);
+      } else {
+        next('/');
+      }
+    } else {
+      store.commit('setting/routeChanged', {
+        path: to.path,
+        breadcrumbs: to.matched
+          .filter((item) => item.meta?.title)
+          .map((item: AdminRouteRecordRaw) => item.meta?.title)
+      });
+
+      document.title = `${to.meta?.title || ''} - 管理系统`;
+      next();
+    }
+  } else {
+    // 没有token
+
+    // 判断是否是登录页，防止死循环
+    if (/^\/login.*/.test(to.path)) {
+      next();
+    } else {
+      next(`/login?from=${to.path}`);
+    }
+  }
 });
 
 router.afterEach(() => {
