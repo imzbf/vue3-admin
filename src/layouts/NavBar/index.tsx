@@ -193,9 +193,6 @@ export default defineComponent({
                     <SettingOutlined /> 个人设置
                   </RouterLink>
                 </Menu.Item>
-                {
-                  // TODO antd-vue Property 'onClick' does not exist
-                }
                 <Menu.Item onClick={logout}>
                   <PoweroffOutlined />
                   退出登录

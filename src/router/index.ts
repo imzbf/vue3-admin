@@ -35,6 +35,8 @@ interface OverrideRecordRaw {
     [propName: string]: any;
   };
   children?: Array<RouteRecordRaw & OverrideRecordRaw>;
+  // 所需角色列表
+  roles?: Array<number | string>;
   [propName: string]: any;
 }
 
