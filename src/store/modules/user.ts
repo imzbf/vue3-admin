@@ -1,4 +1,4 @@
-import { logout, login, LoginInfoType } from '@/apis/user';
+import { logout, login, getUseInfo, LoginInfoType } from '@/apis/user';
 import Final from '@/config/keys';
 import router from '@/router';
 export interface UserStateType {
@@ -27,6 +27,9 @@ const mutations = {
     state.token = '';
     state.info = initInfo;
     localStorage.removeItem(Final.TOKEN);
+  },
+  setUserInfo(state: UserStateType, payload: any): void {
+    state.info = payload;
   }
 };
 
@@ -56,6 +59,11 @@ const actions = {
           `/login?from=${encodeURIComponent(router.currentRoute.value.fullPath)}`
         );
       });
+  },
+  getLoginUser(store: any): Promise<any> {
+    return getUseInfo().then(({ data }: any) => {
+      store.commit('setUserInfo', data);
+    });
   }
 };
 

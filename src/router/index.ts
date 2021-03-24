@@ -134,7 +134,7 @@ const router = createRouter({
   routes
 });
 
-router.beforeEach((to: RouteLocationNormalized, _, next: NavigationGuardNext) => {
+router.beforeEach(async (to: RouteLocationNormalized, _, next: NavigationGuardNext) => {
   NProgress.start();
 
   const token = getToken();
@@ -146,6 +146,12 @@ router.beforeEach((to: RouteLocationNormalized, _, next: NavigationGuardNext) =>
   // next(`/?${Object.entries(query).join('&').replace(/,/g, '=')}`);
 
   if (token) {
+    // 检测是否有用户信息
+    if (!store.state.user.info?.username) {
+      // 获取用户信息
+      await store.dispatch('user/getLoginUser');
+    }
+
     // 有token时，前往登录页
     if (/^\/login.*/.test(to.path)) {
       if (to.query.from) {
