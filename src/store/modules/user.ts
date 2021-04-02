@@ -29,7 +29,7 @@ const mutations = {
     localStorage.removeItem(Final.TOKEN);
   },
   setUserInfo(state: UserStateType, payload: any): void {
-    state.info = payload;
+    state.info = payload.info;
   }
 };
 

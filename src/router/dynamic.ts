@@ -1,4 +1,5 @@
 export default {
+  layout: () => import('@/layouts'),
   login: () => import('@/views/Login'),
   dashboard: () => import('@/views'),
   // 图形

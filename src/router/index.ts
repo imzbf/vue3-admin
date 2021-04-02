@@ -8,20 +8,13 @@ import {
 import NProgress from 'nprogress';
 import Icon from '@ant-design/icons-vue/lib/icons';
 
-import Layout from '@/layouts';
 import store from '@/store';
-
-import userModule from './modules/user';
-import tableModule from './modules/table';
-import errorModule from './modules/error';
-import demoModule from './modules/demo';
-
-import DynamicRoutes from './dynamic';
-
 import { getToken } from '@/utils/biz';
 
-NProgress.configure({ minimum: 0.1 });
+import DynamicRoutes from './dynamic';
+import errorModule from './modules/error';
 
+NProgress.configure({ minimum: 0.1 });
 interface OverrideRecordRaw {
   // 是否展示在左侧菜单栏
   menu?: boolean;
@@ -50,82 +43,82 @@ const routes: Array<AdminRouteRecordRaw> = [
     meta: { title: '登录' },
     component: DynamicRoutes.login
   },
-  {
-    path: '/',
-    component: Layout,
-    redirect: '/index',
-    name: 'Index',
-    menu: true,
-    children: [
-      {
-        path: 'index',
-        name: 'IndexPage',
-        component: DynamicRoutes.dashboard,
-        menu: true,
-        meta: { title: '工作台', iconName: 'CodeOutlined' }
-      }
-    ]
-  },
-  {
-    path: '/data',
-    component: Layout,
-    redirect: '/data/chart',
-    name: 'Data',
-    meta: { title: '数据分析', iconName: 'SlidersFilled' },
-    menu: true,
-    children: [
-      {
-        path: 'chart',
-        name: 'Chart',
-        meta: { title: '图形数据', iconName: 'BarChartOutlined' },
-        menu: true,
-        component: DynamicRoutes.chart_data
-      },
-      {
-        path: 'card',
-        name: 'Card',
-        meta: { title: '模块数据', iconName: 'RobotOutlined' },
-        menu: true,
-        component: DynamicRoutes.card_data
-      }
-    ]
-  },
-  {
-    path: '/form',
-    component: Layout,
-    redirect: '/form/base',
-    name: 'Form',
-    meta: { title: '表单页', iconName: 'FormOutlined' },
-    menu: true,
-    children: [
-      {
-        path: 'base',
-        name: 'FormBase',
-        meta: { title: '基本表单', iconName: 'EditOutlined' },
-        menu: true,
-        component: DynamicRoutes.base_form
-      },
-      {
-        path: 'def',
-        name: 'FormDef',
-        meta: { title: '自定义表单', iconName: 'DiffOutlined' },
-        menu: true,
-        component: DynamicRoutes.def_form
-      }
-    ]
-  },
-  demoModule,
-  userModule,
-  tableModule,
+  // {
+  //   path: '/',
+  //   component: DynamicRoutes.layout,
+  //   redirect: '/index',
+  //   name: 'Index',
+  //   menu: true,
+  //   children: [
+  //     {
+  //       path: 'index',
+  //       name: 'IndexPage',
+  //       component: DynamicRoutes.dashboard,
+  //       menu: true,
+  //       meta: { title: '工作台', iconName: 'CodeOutlined' }
+  //     }
+  //   ]
+  // },
+  // {
+  //   path: '/data',
+  //   component: DynamicRoutes.layout,
+  //   redirect: '/data/chart',
+  //   name: 'Data',
+  //   meta: { title: '数据分析', iconName: 'SlidersFilled' },
+  //   menu: true,
+  //   children: [
+  //     {
+  //       path: 'chart',
+  //       name: 'Chart',
+  //       meta: { title: '图形数据', iconName: 'BarChartOutlined' },
+  //       menu: true,
+  //       component: DynamicRoutes.chart_data
+  //     },
+  //     {
+  //       path: 'card',
+  //       name: 'Card',
+  //       meta: { title: '模块数据', iconName: 'RobotOutlined' },
+  //       menu: true,
+  //       component: DynamicRoutes.card_data
+  //     }
+  //   ]
+  // },
+  // {
+  //   path: '/form',
+  //   component: DynamicRoutes.layout,
+  //   redirect: '/form/base',
+  //   name: 'Form',
+  //   meta: { title: '表单页', iconName: 'FormOutlined' },
+  //   menu: true,
+  //   children: [
+  //     {
+  //       path: 'base',
+  //       name: 'FormBase',
+  //       meta: { title: '基本表单', iconName: 'EditOutlined' },
+  //       menu: true,
+  //       component: DynamicRoutes.base_form
+  //     },
+  //     {
+  //       path: 'def',
+  //       name: 'FormDef',
+  //       meta: { title: '自定义表单', iconName: 'DiffOutlined' },
+  //       menu: true,
+  //       component: DynamicRoutes.def_form
+  //     }
+  //   ]
+  // },
+  // demoModule,
+  // userModule,
+  // tableModule,
   ...errorModule,
-  {
-    path: '/outlink',
-    name: 'Github',
-    meta: { title: '外部链接', iconName: 'GithubFilled' },
-    menu: true,
-    outLink: 'https://github.com/zhoubangfu/vue3-admin',
-    redirect: '/'
-  },
+  // {
+  //   path: '/outlink',
+  //   name: 'Github',
+  //   meta: { title: '外部链接', iconName: 'GithubFilled' },
+  //   menu: true,
+  //   outLink: 'https://github.com/zhoubangfu/vue3-admin',
+  //   redirect: '/'
+  // },
   { path: '/:pathMatch(.*)*', redirect: '/404' }
 ];
 

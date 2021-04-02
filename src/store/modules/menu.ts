@@ -14,7 +14,7 @@ export interface MenuStateType {
   menuList: Array<MenuType>;
 }
 
-const transformMenu = (): Array<MenuType> => {
+const transformMenu = (routes: Array<AdminRouteRecordRaw>): Array<MenuType> => {
   const menuList: Array<MenuType> = [];
 
   const innerLoop = (_routes: Array<AdminRouteRecordRaw>, parent: MenuType): void => {
@@ -49,7 +49,13 @@ const state: MenuStateType = {
 };
 const mutations = {
   routeChanged(state: MenuStateType): void {
-    state.menuList = transformMenu();
+    state.menuList = transformMenu(routes);
+  },
+  resetMenu(
+    state: MenuStateType,
+    payload: { newRoutes: Array<AdminRouteRecordRaw> }
+  ): void {
+    state.menuList = transformMenu(routes.concat(payload.newRoutes));
   }
 };
 const actions = {};
