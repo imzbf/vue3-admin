@@ -23,22 +23,6 @@ interface Menu {
 
 const Default: Menu[] = [
   {
-    path: '/',
-    component: 'layout',
-    redirect: '/index',
-    name: 'Index',
-    menu: true,
-    children: [
-      {
-        path: 'index',
-        name: 'IndexPage',
-        component: 'dashboard',
-        menu: true,
-        meta: { title: '工作台', iconName: 'CodeOutlined' }
-      }
-    ]
-  },
-  {
     path: '/data',
     component: 'layout',
     redirect: '/data/chart',
@@ -85,14 +69,6 @@ const Default: Menu[] = [
         component: 'def_form'
       }
     ]
-  },
-  {
-    path: '/outlink',
-    name: 'Github',
-    meta: { title: '外部链接', iconName: 'GithubFilled' },
-    menu: true,
-    outLink: 'https://github.com/zhoubangfu/vue3-admin',
-    redirect: '/'
   }
 ];
 
@@ -191,12 +167,66 @@ const TableModule: Menu[] = [
   }
 ];
 
+const ErrorModule: Menu[] = [
+  {
+    path: '/error',
+    component: 'layout',
+    redirect: '/error/404',
+    name: 'Error',
+    meta: {
+      title: '异常页',
+      iconName: 'QuestionOutlined'
+    },
+    menu: true,
+    children: [
+      {
+        path: '403',
+        name: '403',
+        meta: { title: '403', iconName: 'QuestionCircleOutlined' },
+        menu: true,
+        component: 'error_403'
+      },
+      {
+        path: '404',
+        name: '404',
+        meta: { title: '404', iconName: 'QuestionCircleOutlined' },
+        menu: true,
+        component: 'error_404'
+      },
+      {
+        path: '500',
+        name: '500',
+        meta: { title: '500', iconName: 'QuestionCircleOutlined' },
+        menu: true,
+        component: 'error_500'
+      }
+    ]
+  }
+];
+
+const OutLinkModule: Menu[] = [
+  {
+    path: '/outlink',
+    name: 'Github',
+    meta: { title: '外部链接', iconName: 'GithubFilled' },
+    menu: true,
+    outLink: 'https://github.com/zhoubangfu/vue3-admin',
+    redirect: '/'
+  }
+];
+
 const user: Array<MockMethod> = [
   {
     url: '/api/user',
     method: 'get',
     response: ({ headers }): any => {
-      let menus = [...Default, ...UserModule, ...TableModule];
+      let menus = [
+        ...Default,
+        ...UserModule,
+        ...TableModule,
+        ...ErrorModule,
+        ...OutLinkModule
+      ];
 
       // 管理员角色菜单
       if (headers.token === ADMIN_TOKEN) {

@@ -42,7 +42,7 @@ export const resetRoutes = (newRoutes: AdminRouteRecordRaw[] = []) => {
   );
 
   // 挨个添加新的路由
-  routes.concat(newRoutes).forEach((route: AdminRouteRecordRaw) => {
+  newRoutes.concat(routes).forEach((route: AdminRouteRecordRaw) => {
     router.addRoute(route);
   });
 };

@@ -62,22 +62,17 @@ const actions = {
         );
       });
   },
-  getLoginUser(store: any): Promise<any> {
-    return getUseInfo().then(({ data }: any) => {
-      store.commit('setUserInfo', data);
+  async getLoginUser(store: any): Promise<any> {
+    const { data }: any = await getUseInfo();
 
-      // 将后端菜单列表转换为vue-router列表
-      const newRoutes = transformRoutes(data.menus);
+    store.commit('setUserInfo', data);
+    // 将后端菜单列表转换为vue-router列表
+    const newRoutes = transformRoutes(data.menus);
+    store.commit('menu/resetMenu', { newRoutes }, { root: true });
+    // 重置路由
+    resetRoutes(newRoutes);
 
-      setTimeout(() => {
-        store.commit('menu/resetMenu', { newRoutes }, { root: true });
-
-        // 重置路由
-        resetRoutes(newRoutes);
-      }, 100);
-      // 将信息返回，
-      return data;
-    });
+    return data;
   }
 };
 

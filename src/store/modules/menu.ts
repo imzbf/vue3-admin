@@ -48,9 +48,6 @@ const state: MenuStateType = {
   menuList: []
 };
 const mutations = {
-  routeChanged(state: MenuStateType): void {
-    state.menuList = transformMenu(routes);
-  },
   resetMenu(
     state: MenuStateType,
     payload: { newRoutes: Array<AdminRouteRecordRaw> }

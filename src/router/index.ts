@@ -12,7 +12,7 @@ import store from '@/store';
 import { getToken } from '@/utils/biz';
 
 import DynamicRoutes from './dynamic';
-import errorModule from './modules/error';
+// import errorModule from './modules/error';
 // import tableModule from './modules/table';
 
 NProgress.configure({ minimum: 0.1 });
@@ -44,22 +44,22 @@ const routes: Array<AdminRouteRecordRaw> = [
     meta: { title: '登录' },
     component: DynamicRoutes.login
   },
-  // {
-  //   path: '/',
-  //   component: DynamicRoutes.layout,
-  //   redirect: '/index',
-  //   name: 'Index',
-  //   menu: true,
-  //   children: [
-  //     {
-  //       path: 'index',
-  //       name: 'IndexPage',
-  //       component: DynamicRoutes.dashboard,
-  //       menu: true,
-  //       meta: { title: '工作台', iconName: 'CodeOutlined' }
-  //     }
-  //   ]
-  // },
+  {
+    path: '/',
+    component: DynamicRoutes.layout,
+    redirect: '/index',
+    name: 'Index',
+    menu: true,
+    children: [
+      {
+        path: 'index',
+        name: 'IndexPage',
+        component: DynamicRoutes.dashboard,
+        menu: true,
+        meta: { title: '工作台', iconName: 'CodeOutlined' }
+      }
+    ]
+  },
   // {
   //   path: '/data',
   //   component: DynamicRoutes.layout,
@@ -111,7 +111,7 @@ const routes: Array<AdminRouteRecordRaw> = [
   // demoModule,
   // userModule,
   // tableModule,
-  ...errorModule,
+  // ...errorModule,
   // {
   //   path: '/outlink',
   //   name: 'Github',
@@ -120,7 +120,13 @@ const routes: Array<AdminRouteRecordRaw> = [
   //   outLink: 'https://github.com/zhoubangfu/vue3-admin',
   //   redirect: '/'
   // },
-  { path: '/:pathMatch(.*)*', redirect: '/404' }
+  {
+    path: '/404',
+    name: 'Global404',
+    meta: { title: '页面不见啦.' },
+    component: DynamicRoutes.error_404
+  },
+  { path: '/:pathMatch(.*)*', name: 'All', redirect: '/404' }
 ];
 
 const router = createRouter({
@@ -128,7 +134,7 @@ const router = createRouter({
   routes
 });
 
-router.beforeEach((to: RouteLocationNormalized, _, next: NavigationGuardNext) => {
+router.beforeEach(async (to: RouteLocationNormalized, _, next: NavigationGuardNext) => {
   NProgress.start();
 
   const token = getToken();
@@ -143,7 +149,7 @@ router.beforeEach((to: RouteLocationNormalized, _, next: NavigationGuardNext) =>
     // 检测是否有用户信息
     if (!store.state.user.info?.username) {
       // 获取用户信息
-      store.dispatch('user/getLoginUser');
+      await store.dispatch('user/getLoginUser');
     }
 
     // 有token时，前往登录页

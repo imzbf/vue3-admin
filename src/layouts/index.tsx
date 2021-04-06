@@ -14,11 +14,6 @@ export default defineComponent({
   setup() {
     const store = useStore(key);
 
-    // BUG 登录后触发生成菜单
-    onBeforeMount(() => {
-      store.commit('menu/routeChanged');
-    });
-
     // 侧边栏展开状态
     const asideOpen = computed(() => {
       return store.state.setting.aside === 'open';
