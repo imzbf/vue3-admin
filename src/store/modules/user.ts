@@ -1,6 +1,8 @@
 import { logout, login, getUseInfo, LoginInfoType } from '@/apis/user';
 import Final from '@/config/keys';
 import router from '@/router';
+import { transformRoutes, resetRoutes } from '@/utils/biz';
+
 export interface UserStateType {
   info?: {
     username: string;
@@ -63,6 +65,18 @@ const actions = {
   getLoginUser(store: any): Promise<any> {
     return getUseInfo().then(({ data }: any) => {
       store.commit('setUserInfo', data);
+
+      // 将后端菜单列表转换为vue-router列表
+      const newRoutes = transformRoutes(data.menus);
+
+      setTimeout(() => {
+        store.commit('menu/resetMenu', { newRoutes }, { root: true });
+
+        // 重置路由
+        resetRoutes(newRoutes);
+      }, 100);
+      // 将信息返回，
+      return data;
     });
   }
 };

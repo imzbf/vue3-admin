@@ -13,6 +13,7 @@ import { getToken } from '@/utils/biz';
 
 import DynamicRoutes from './dynamic';
 import errorModule from './modules/error';
+// import tableModule from './modules/table';
 
 NProgress.configure({ minimum: 0.1 });
 interface OverrideRecordRaw {
@@ -127,7 +128,7 @@ const router = createRouter({
   routes
 });
 
-router.beforeEach(async (to: RouteLocationNormalized, _, next: NavigationGuardNext) => {
+router.beforeEach((to: RouteLocationNormalized, _, next: NavigationGuardNext) => {
   NProgress.start();
 
   const token = getToken();
@@ -142,7 +143,7 @@ router.beforeEach(async (to: RouteLocationNormalized, _, next: NavigationGuardNe
     // 检测是否有用户信息
     if (!store.state.user.info?.username) {
       // 获取用户信息
-      await store.dispatch('user/getLoginUser');
+      store.dispatch('user/getLoginUser');
     }
 
     // 有token时，前往登录页
