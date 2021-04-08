@@ -1,0 +1,34 @@
+.fe-card {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  color: rgba(0, 0, 0, 0.85);
+  font-size: 14px;
+  font-variant: tabular-nums;
+  line-height: 1.5715;
+  list-style: none;
+  font-feature-settings: 'tnum';
+  position: relative;
+  background: #fff;
+  border-radius: 2px;
+  transition: all 0.3s;
+
+  .fe-card-header {
+    position: relative;
+    height: 42px;
+    line-height: 42px;
+    color: rgb(51, 51, 51);
+    font-size: 14px;
+    padding: 0px 15px;
+    border-bottom: 1px solid rgb(246, 246, 246);
+    border-radius: 2px 2px 0px 0px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .fe-card-body {
+    position: relative;
+    line-height: 24px;
+    padding: 10px 15px;
+  }
+}
