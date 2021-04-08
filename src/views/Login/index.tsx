@@ -89,7 +89,9 @@ export default defineComponent({
               <div class={style['form-item']} style="margin-bottom: 14px">
                 <Checkbox
                   checked={data.remembered}
-                  onChange={(e) => (data.remembered = e.target.value)}
+                  onChange={(e) => {
+                    data.remembered = e.target.checked;
+                  }}
                 >
                   记住我
                 </Checkbox>
