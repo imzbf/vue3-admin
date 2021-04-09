@@ -41,11 +41,16 @@ const mutations = {
   ): void {
     // ['index','data']
     const levels = payload.path.match(/[^/]+/g) || [];
+
     // 删除最后一个Item，展开其他的所有父级菜单
     levels.pop();
 
     const openKeysTemp: string[] = setting.openKeys;
 
+    // 解决一级路由不能正确展开菜单
+    if (levels.length === 0) {
+      levels.push('');
+    }
     levels.reduce((prev: string, curr): string => {
       openKeysTemp.push(prev + '/' + curr);
       return prev + '/' + curr;
