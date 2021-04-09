@@ -21,7 +21,34 @@ interface Menu {
   children?: Array<Menu>;
 }
 
-const Default: Menu[] = [
+const DashboardModule: Menu[] = [
+  {
+    path: '/',
+    component: 'layout',
+    redirect: '/workspace',
+    meta: { title: '首页', iconName: 'SlidersFilled' },
+    name: 'Index',
+    menu: true,
+    children: [
+      {
+        path: 'workspace',
+        name: 'IndexPage',
+        component: 'dashboard',
+        menu: true,
+        meta: { title: '工作台', iconName: 'CodeOutlined' }
+      },
+      {
+        path: 'monitor',
+        name: 'MonitorPage',
+        component: 'dashboard',
+        menu: true,
+        meta: { title: '监控台', iconName: 'CodeOutlined' }
+      }
+    ]
+  }
+];
+
+const DataModule: Menu[] = [
   {
     path: '/data',
     component: 'layout',
@@ -221,7 +248,8 @@ const user: Array<MockMethod> = [
     method: 'get',
     response: ({ headers }): any => {
       let menus = [
-        ...Default,
+        ...DashboardModule,
+        ...DataModule,
         ...UserModule,
         ...TableModule,
         ...ErrorModule,

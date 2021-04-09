@@ -3,7 +3,8 @@ import {
   createWebHistory,
   RouteLocationNormalized,
   NavigationGuardNext,
-  RouteRecordRaw
+  RouteRecordRaw,
+  RouteLocation
 } from 'vue-router';
 import NProgress from 'nprogress';
 import Icon from '@ant-design/icons-vue/lib/icons';
@@ -44,22 +45,22 @@ const routes: Array<AdminRouteRecordRaw> = [
     meta: { title: '登录' },
     component: DynamicRoutes.login
   },
-  {
-    path: '/',
-    component: DynamicRoutes.layout,
-    redirect: '/index',
-    name: 'Index',
-    menu: true,
-    children: [
-      {
-        path: 'index',
-        name: 'IndexPage',
-        component: DynamicRoutes.dashboard,
-        menu: true,
-        meta: { title: '工作台', iconName: 'CodeOutlined' }
-      }
-    ]
-  },
+  // {
+  //   path: '/',
+  //   component: DynamicRoutes.layout,
+  //   redirect: '/index',
+  //   name: 'Index',
+  //   menu: true,
+  //   children: [
+  //     {
+  //       path: 'index',
+  //       name: 'IndexPage',
+  //       component: DynamicRoutes.dashboard,
+  //       menu: true,
+  //       meta: { title: '工作台', iconName: 'CodeOutlined' }
+  //     }
+  //   ]
+  // },
   // {
   //   path: '/data',
   //   component: DynamicRoutes.layout,
@@ -126,13 +127,21 @@ const routes: Array<AdminRouteRecordRaw> = [
     meta: { title: '页面不见啦.' },
     component: DynamicRoutes.error_404
   },
-  { path: '/:pathMatch(.*)*', name: 'All', redirect: '/404' }
+  {
+    path: '/:pathMatch(.*)*',
+    name: 'All',
+    redirect: (to: RouteLocation) => {
+      return { path: '/404', query: { from: to.path } };
+    }
+  }
 ];
 
 const router = createRouter({
   history: createWebHistory(),
   routes
 });
+
+const WHITE_LIST = ['/404'];
 
 router.beforeEach(async (to: RouteLocationNormalized, _, next: NavigationGuardNext) => {
   NProgress.start();
@@ -147,10 +156,10 @@ router.beforeEach(async (to: RouteLocationNormalized, _, next: NavigationGuardNe
 
   if (token) {
     // 检测是否有用户信息
-    if (!store.state.user.info?.username) {
-      // 获取用户信息
-      await store.dispatch('user/getLoginUser');
-    }
+    // if (!store.state.user.info?.username) {
+    //   // 获取用户信息
+    //   await store.dispatch('user/getLoginUser');
+    // }
 
     // 有token时，前往登录页
     if (/^\/login.*/.test(to.path)) {
@@ -177,6 +186,9 @@ router.beforeEach(async (to: RouteLocationNormalized, _, next: NavigationGuardNe
     // 判断是否是登录页，防止死循环
     if (/^\/login.*/.test(to.path)) {
       next();
+    } else if ('/404' === to.path) {
+      const from = to.query.from;
+      next(from ? `/login?from=${from}` : '/login');
     } else {
       next(`/login?from=${to.path}`);
     }

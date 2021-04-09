@@ -12,8 +12,10 @@ if (getToken()) {
   // 检测是否有用户信息
   if (!store.state.user.info?.username) {
     // 获取用户信息
-    await store.dispatch('user/getLoginUser');
+    store.dispatch('user/getLoginUser').then(() => {
+      createApp(App).use(store, key).use(router).mount('#app');
+    });
   }
+} else {
+  createApp(App).use(store, key).use(router).mount('#app');
 }
-
-createApp(App).use(store, key).use(router).mount('#app');

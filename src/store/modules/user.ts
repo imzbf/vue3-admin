@@ -45,6 +45,9 @@ const actions = {
       .then((token: string) => {
         payload.remembered && localStorage.setItem(Final.TOKEN, token);
       })
+      .then(async () => {
+        await store.dispatch('getLoginUser');
+      })
       .then(() => {
         const from = router.currentRoute.value.query.from as string;
         router.push(from || '/');
@@ -54,6 +57,11 @@ const actions = {
     return logout()
       .then(() => {
         store.commit('reset');
+      })
+      .then(() => {
+        store.commit('menu/resetMenu', { newRoutes: [] }, { root: true });
+        // 重置路由
+        resetRoutes([]);
       })
       .then(() => {
         // 返回登录界面
