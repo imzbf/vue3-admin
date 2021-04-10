@@ -33,14 +33,14 @@ const DashboardModule: Menu[] = [
       {
         path: 'workspace',
         name: 'IndexPage',
-        component: 'dashboard',
+        component: 'workspace',
         menu: true,
-        meta: { title: '工作台', iconName: 'CodeOutlined' }
+        meta: { title: '工作台', iconName: 'BgColorsOutlined' }
       },
       {
         path: 'monitor',
         name: 'MonitorPage',
-        component: 'dashboard',
+        component: 'monitor',
         menu: true,
         meta: { title: '监控台', iconName: 'CodeOutlined' }
       }
