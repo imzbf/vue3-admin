@@ -1,7 +1,9 @@
 export interface ViewList {
   layout: () => Promise<any>;
   login: () => Promise<any>;
-  dashboard: () => Promise<any>;
+  // 首页
+  workspace: () => Promise<any>;
+  monitor: () => Promise<any>;
   // 图形
   chart_data: () => Promise<any>;
   card_data: () => Promise<any>;
@@ -28,7 +30,9 @@ export interface ViewList {
 const DynamisList: ViewList = {
   layout: () => import('@/layouts'),
   login: () => import('@/views/Login'),
-  dashboard: () => import('@/views'),
+  // 首页
+  workspace: () => import('@/views/Home/workspace'),
+  monitor: () => import('@/views/Home/monitor'),
   // 图形
   chart_data: () => import('@/views/Data'),
   card_data: () => import('@/views/Data/Oversee'),
