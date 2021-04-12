@@ -31,7 +31,7 @@ import {
 import style from './index.module.scss';
 
 const MyIcon = createFromIconfontCN({
-  scriptUrl: '//at.alicdn.com/t/font_2365632_9x17rvubrqj.js' // 在 iconfont.cn 上生成
+  scriptUrl: '//at.alicdn.com/t/font_2365632_torsmt1mas.js' // 在 iconfont.cn 上生成
 });
 
 // 同时设置props的vue属性和ts类型，setup会报错

@@ -1,0 +1,47 @@
+.workspace {
+  .header {
+    display: flex;
+    justify-content: space-between;
+    background-color: #fff;
+    border-bottom: 1px solid #ddd;
+    padding: 20px 10px;
+
+    .welcome {
+      .avatar {
+        float: left;
+      }
+      .msg {
+        padding-left: 70px;
+
+        .hello {
+          font-size: 20px;
+          font-weight: 600;
+          margin-bottom: 8px;
+          color: #4e4e4e;
+        }
+
+        .weather {
+          color: rgb(102, 102, 102);
+
+          .icon {
+            font-size: 20px;
+            vertical-align: text-bottom;
+            padding-right: 4px;
+          }
+        }
+      }
+    }
+    .todo {
+      display: flex;
+
+      .todo-item {
+        padding: 0 20px;
+        text-align: right;
+
+        .item-title {
+          font-size: 16px;
+        }
+      }
+    }
+  }
+}
