@@ -4,10 +4,10 @@ import './index.scss';
 
 const Card = defineComponent({
   props: {
-    title: null
+    title: null,
+    func: null
   },
   setup(props, ctx: SetupContext<EmitsOptions>) {
-    console.log(props, ctx);
     const slotDefault = getSlot({ ctx });
     const slotTitle = getSlot({ props, ctx }, 'title');
     const slotFunc = getSlot({ props, ctx }, 'func');
