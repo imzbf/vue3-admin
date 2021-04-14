@@ -44,4 +44,29 @@
       }
     }
   }
+
+  .body {
+    padding: 14px;
+
+    .title-icon {
+      font-size: 16px;
+      padding-right: 4px;
+      vertical-align: text-bottom;
+    }
+
+    .used-list {
+      .used-item {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 80px;
+        padding: 10px;
+        text-align: center;
+
+        .used-item-icon {
+          font-size: 24px;
+        }
+      }
+    }
+  }
 }
