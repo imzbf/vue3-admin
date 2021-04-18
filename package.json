@@ -5,6 +5,14 @@
     "name": "zhoubangfu",
     "url": "https://zhoubangfu.com"
   },
+  "keywords": [
+    "vue",
+    "vue3",
+    "vueComponent",
+    "admin",
+    "jsx",
+    "tsx"
+  ],
   "license": "MIT",
   "scripts": {
     "dev": "vite serve",
