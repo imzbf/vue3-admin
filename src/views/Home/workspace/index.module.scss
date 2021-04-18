@@ -31,6 +31,7 @@
         }
       }
     }
+
     .todo {
       display: flex;
 
@@ -52,6 +53,35 @@
       font-size: 16px;
       padding-right: 4px;
       vertical-align: text-bottom;
+    }
+
+    .project {
+      display: block;
+
+      .footer {
+        display: flex;
+        margin-top: 16px;
+        font-size: 12px;
+        padding: 0 6px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        word-break: break-all;
+        justify-content: space-between;
+
+        a {
+          color: #666;
+          transition: color 0.5s;
+
+          &:hover {
+            color: #1890ff;
+          }
+        }
+
+        span {
+          color: #aaa;
+        }
+      }
     }
 
     .used-list {
