@@ -117,3 +117,15 @@ body,
   color: #999999;
   font-size: 14px;
 }
+
+.va-mb {
+  margin-bottom: 14px !important;
+}
+
+.clear {
+  &::after {
+    content: '';
+    display: block;
+    clear: both;
+  }
+}

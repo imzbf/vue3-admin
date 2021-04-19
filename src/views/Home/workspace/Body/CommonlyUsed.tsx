@@ -7,6 +7,7 @@ import styles from '../index.module.scss';
 // 常用的
 const CommonlyUsed = () => (
   <FeCard
+    class="va-mb"
     title={
       <>
         <IconFont type="icon-changyongfenlei" class={styles['title-icon']} />
