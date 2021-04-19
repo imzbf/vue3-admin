@@ -23,6 +23,13 @@ const Table: AdminRouteRecordRaw = {
       meta: { title: '动态数据表格', iconName: 'TabletOutlined' },
       menu: true,
       component: DynamicRoutes.table_dynamic
+    },
+    {
+      path: 'query',
+      name: 'TableQuery',
+      meta: { title: '查询表格', iconName: 'SearchOutlined' },
+      menu: true,
+      component: DynamicRoutes.table_query
     }
   ]
 };

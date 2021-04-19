@@ -7,7 +7,7 @@ export default defineComponent({
     const local = zhCN;
     return () => (
       <ConfigProvider locale={local}>
-        <router-view />;
+        <router-view />
       </ConfigProvider>
     );
   }

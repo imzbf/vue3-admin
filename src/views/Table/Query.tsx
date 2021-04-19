@@ -2,6 +2,6 @@ import { defineComponent } from 'vue';
 
 export default defineComponent({
   setup() {
-    return () => <span>table-base</span>;
+    return () => <span>table-query</span>;
   }
 });

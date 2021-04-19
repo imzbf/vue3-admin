@@ -1,0 +1,49 @@
+.header-info {
+  position: relative;
+  text-align: center;
+  .text-grey-dark {
+    color: #8c8c8c !important;
+  }
+
+  .d-block {
+    display: block !important;
+  }
+  .display-2 {
+    font-size: 24px;
+  }
+
+  em {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 1px;
+    height: 56px;
+    background-color: #e8e8e8;
+  }
+}
+
+.header-title {
+  margin-bottom: 24px !important;
+}
+
+h3 {
+  font-size: 18px;
+}
+
+.baseTable {
+  margin: 24px;
+}
+
+.btn-plus {
+  margin-bottom: 8px;
+}
+
+.width-md {
+  width: 240px;
+}
+
+:global {
+  .ant-card {
+    margin-bottom: 16px;
+  }
+}
