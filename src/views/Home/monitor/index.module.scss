@@ -1,0 +1,9 @@
+.monitor {
+  padding: 14px;
+
+  :global {
+    canvas {
+      pointer-events: none;
+    }
+  }
+}
