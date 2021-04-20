@@ -22,8 +22,5 @@ pnpm-debug.log*
 *.sln
 *.sw?
 
-yarn.lock
-package-lock.json
-
 # 本地文件
 local_*
