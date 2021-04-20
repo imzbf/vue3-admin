@@ -50,30 +50,6 @@ const DashboardModule: Menu[] = [
 
 const DataModule: Menu[] = [
   {
-    path: '/data',
-    component: 'layout',
-    redirect: '/data/chart',
-    name: 'Data',
-    meta: { title: '数据分析', iconName: 'SlidersFilled' },
-    menu: true,
-    children: [
-      {
-        path: 'chart',
-        name: 'Chart',
-        meta: { title: '图形数据', iconName: 'BarChartOutlined' },
-        menu: true,
-        component: 'chart_data'
-      },
-      {
-        path: 'card',
-        name: 'Card',
-        meta: { title: '模块数据', iconName: 'RobotOutlined' },
-        menu: true,
-        component: 'card_data'
-      }
-    ]
-  },
-  {
     path: '/form',
     component: 'layout',
     redirect: '/form/base',
@@ -200,7 +176,6 @@ const TableModule: Menu[] = [
     ]
   }
 ];
-
 const ErrorModule: Menu[] = [
   {
     path: '/error',
@@ -237,7 +212,6 @@ const ErrorModule: Menu[] = [
     ]
   }
 ];
-
 const OutLinkModule: Menu[] = [
   {
     path: '/outlink',
@@ -246,6 +220,32 @@ const OutLinkModule: Menu[] = [
     menu: true,
     outLink: 'https://github.com/zhoubangfu/vue3-admin',
     redirect: '/'
+  }
+];
+const ComponentModule: Menu[] = [
+  {
+    path: '/component',
+    component: 'layout',
+    redirect: '/component/chart',
+    name: 'Component',
+    meta: { title: '自定义组件', iconName: 'SlidersFilled' },
+    menu: true,
+    children: [
+      {
+        path: 'card',
+        name: 'Card',
+        meta: { title: '卡片', iconName: 'CreditCardOutlined' },
+        menu: true,
+        component: 'card_data'
+      },
+      {
+        path: 'carousel',
+        name: 'Carousel',
+        meta: { title: '走马灯', iconName: 'PicCenterOutlined' },
+        menu: true,
+        component: 'carousel_data'
+      }
+    ]
   }
 ];
 
@@ -259,6 +259,7 @@ const user: Array<MockMethod> = [
         ...DataModule,
         ...UserModule,
         ...TableModule,
+        ...ComponentModule,
         ...ErrorModule,
         ...OutLinkModule
       ];
