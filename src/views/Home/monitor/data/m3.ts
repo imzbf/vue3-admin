@@ -93,7 +93,7 @@ export default {
       label: {
         position: 'outer',
         alignTo: 'edge',
-        margin: 20
+        edgeDistance: 20
       },
       left: '66.6667%',
       right: 0,

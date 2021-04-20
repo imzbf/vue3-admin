@@ -187,10 +187,8 @@ const option = {
       },
       markPoint: {
         label: {
-          normal: {
-            formatter: function (param: any) {
-              return param != null ? Math.round(param.value) : '';
-            }
+          formatter: function (param: any) {
+            return param != null ? Math.round(param.value) : '';
           }
         },
         data: [
