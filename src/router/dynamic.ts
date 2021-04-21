@@ -4,8 +4,8 @@ export interface ViewList {
   // 首页
   workspace: () => Promise<any>;
   monitor: () => Promise<any>;
-  // 图形
-  chart_data: () => Promise<any>;
+  // 自定义组件展示
+  carousel_data: () => Promise<any>;
   card_data: () => Promise<any>;
   // 表单
   base_form: () => Promise<any>;
@@ -34,9 +34,9 @@ const DynamisList: ViewList = {
   // 首页
   workspace: () => import('@/views/Home/workspace'),
   monitor: () => import('@/views/Home/monitor'),
-  // 图形
-  chart_data: () => import('@/views/Data'),
-  card_data: () => import('@/views/Data/Oversee'),
+  // 自定义组件展示页
+  card_data: () => import('@/views/Component/Card'),
+  carousel_data: () => import('@/views/Component/Carousel'),
   // 表单
   base_form: () => import('@/views/Form'),
   def_form: () => import('@/views/Form/Def'),
