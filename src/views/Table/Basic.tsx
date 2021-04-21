@@ -10,8 +10,7 @@ import {
   Avatar,
   Dropdown,
   Menu,
-  Progress,
-  ConfigProvider
+  Progress
 } from 'ant-design-vue';
 import tablStyles from './index.module.scss';
 import { PlusOutlined } from '@ant-design/icons-vue';
@@ -70,7 +69,7 @@ export default defineComponent({
           pageNo: data.pageNo,
           pageSize: data.pageSize
         })
-        .then((res) => {
+        .then(() => {
           data.loading = false;
         });
     };
@@ -83,7 +82,7 @@ export default defineComponent({
     };
 
     // 克点击的链接
-    const getMoreActions = function (item: any): any[] {
+    const getMoreActions = function (): any[] {
       return [
         <a>修改</a>,
         <Dropdown

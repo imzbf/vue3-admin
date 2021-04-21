@@ -1,3 +1,4 @@
+// 基本表格
 .header-info {
   position: relative;
   text-align: center;
@@ -45,5 +46,44 @@ h3 {
 :global {
   .ant-card {
     margin-bottom: 16px;
+  }
+
+  .ant-form-item {
+    display: flex;
+    .ant-form-item-control-wrapper {
+      flex: 1;
+    }
+  }
+}
+
+// 查询表格
+.query-title {
+  background-color: #fff;
+  .title-wrap {
+    padding: 12px 0 12px 28px;
+    .h1 {
+      font-size: 20px;
+      font-weight: 500;
+    }
+  }
+}
+
+.query-content {
+  margin: 24px;
+  .ant-advanced-search-form .ant-form-item {
+    display: flex;
+  }
+
+  .btn-mg{
+    margin-left: 10px;
+  }
+
+  .my-md{
+    margin-top: 16px!important;
+    margin-bottom: 16px!important;
+  }
+
+  .btn-groups{
+    text-align: right;
   }
 }
