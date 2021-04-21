@@ -10,3 +10,10 @@ export const getBaseTableList = (
   name = ''
 ): Promise<any> =>
   axios.get(`getBaseTableList?pageNo=${pageNo}&pageSize=${pageSize}&name=${name}`);
+
+export const getQueryTableList = (
+  pageNo: number,
+  pageSize: number,
+  name = ''
+): Promise<any> =>
+  axios.get(`getQueryTableList?pageNo=${pageNo}&pageSize=${pageSize}&name=${name}`);

@@ -1,1 +1,1 @@
-export * from './baseTable.api';
+export * from './table.api';
