@@ -14,16 +14,35 @@ export interface StateType {
 
 export const key: InjectionKey<Store<StateType>> = Symbol();
 
-export default createStore({
-  getters: {
-    token: (state: StateType) => state.user.token
-  },
-  mutations: {},
-  actions: {},
-  modules: {
-    setting,
-    menu,
-    user,
-    baseTable
+const store = (() => {
+  const store = createStore({
+    getters: {
+      token: (state: StateType) => state.user.token
+    },
+    mutations: {},
+    actions: {},
+    modules: {
+      setting,
+      menu,
+      user,
+      baseTable
+    }
+  });
+  // 处理热更新时需要刷新页面，vuex才能继续使用
+  if (import.meta.env.DEV) {
+    store.hotUpdate({
+      getters: {
+        token: (state: StateType) => state.user.token
+      },
+      modules: {
+        setting,
+        menu,
+        user,
+        baseTable
+      }
+    });
   }
-});
+  return store;
+})();
+
+export default store;
