@@ -8,7 +8,7 @@ import Record from './Record';
 import Team from './Team';
 
 export default () => (
-  <div class={styles.body}>
+  <div class={`view-space ${styles.body}`}>
     <Row gutter={[14, 14]}>
       <Col span={16}>
         <ProjectSchedule />

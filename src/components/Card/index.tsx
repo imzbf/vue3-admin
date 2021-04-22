@@ -11,6 +11,7 @@ import './index.scss';
 import classnames from 'classnames';
 
 const Card = defineComponent({
+  name: 'VRACard',
   props: {
     title: {
       type: [Object, String] as PropType<JSX.Element | string>,
@@ -35,6 +36,10 @@ const Card = defineComponent({
     bodyStyle: {
       type: [Object, String] as PropType<CSSProperties | string>,
       default: ''
+    },
+    border: {
+      type: Boolean,
+      defalut: false
     }
   },
   setup(props, ctx: SetupContext<EmitsOptions>) {
@@ -44,15 +49,18 @@ const Card = defineComponent({
       const slotTitle = getSlot({ props, ctx }, 'title');
       const slotFunc = getSlot({ props, ctx }, 'func');
 
-      const headerClass = classnames('fe-card-header', props.headerClass);
-      const bodyClass = classnames('fe-card-body', props.bodyClass);
+      const cardClass = classnames('vra-card', props.border && 'vra-card-border');
+      const headerClass = classnames('vra-card-header', props.headerClass);
+      const bodyClass = classnames('vra-card-body', props.bodyClass);
 
       return (
-        <div class="fe-card">
-          <div class={headerClass} style={props.headerStyle}>
-            <div class="fe-card-title">{slotTitle}</div>
-            <div class="fe-card-func">{slotFunc}</div>
-          </div>
+        <div class={cardClass}>
+          {slotTitle && (
+            <div class={headerClass} style={props.headerStyle}>
+              <div class="vra-card-title">{slotTitle}</div>
+              {slotFunc && <div class="vra-card-func">{slotFunc}</div>}
+            </div>
+          )}
           <div class={bodyClass} style={props.bodyStyle}>
             {slotDefault}
           </div>

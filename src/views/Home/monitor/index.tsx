@@ -12,7 +12,7 @@ import M5 from './M5';
 const Monitor = defineComponent({
   setup() {
     return () => (
-      <div class={styles.monitor}>
+      <div class={`view-space ${styles.monitor}`}>
         <Row gutter={[14, 14]}>
           <Col span={16}>
             <M1 />
