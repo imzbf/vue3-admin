@@ -43,19 +43,6 @@ h3 {
   width: 240px;
 }
 
-:global {
-  .ant-card {
-    margin-bottom: 16px;
-  }
-
-  .ant-form-item {
-    display: flex;
-    .ant-form-item-control-wrapper {
-      flex: 1;
-    }
-  }
-}
-
 // 查询表格
 .query-title {
   background-color: #fff;
@@ -70,10 +57,6 @@ h3 {
 
 .query-content {
   margin: 24px;
-  .ant-advanced-search-form .ant-form-item {
-    display: flex;
-  }
-
   .btn-mg{
     margin-left: 10px;
   }
@@ -85,5 +68,19 @@ h3 {
 
   .btn-groups{
     text-align: right;
+  }
+}
+
+
+:global {
+  .ant-card {
+    margin-bottom: 16px;
+  }
+
+  .ant-form-item {
+    // display: flex;
+    .ant-form-item-control-wrapper {
+      flex: 1;
+    }
   }
 }

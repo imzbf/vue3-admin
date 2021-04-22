@@ -161,9 +161,9 @@ export default defineComponent({
             pagination={{
               current: data.pageNo,
               total: store.state.baseTable.total,
-              onChange: pageNoChange,
               showQuickJumper: true,
               showSizeChanger: true,
+              onChange: pageNoChange,
               showSizeChange: pageNoChange,
               onShowSizeChange: pageNoChange
             }}
@@ -171,7 +171,7 @@ export default defineComponent({
           >
             {store.state.baseTable.dataSourceList.map((dataItem) => {
               return (
-                <List.Item actions={getMoreActions(dataItem)}>
+                <List.Item actions={getMoreActions()}>
                   <List.Item.Meta
                     description={dataItem.content}
                     title={<a>{dataItem.name}</a>}

@@ -12,8 +12,9 @@ Mock.Random.extend({
     return this.pick(constellations);
   }
 });
-// 测试数据生成器
-const mockExp = [
+// ---------------------------测试数据生成表达式-------------------
+// 基础表格
+const baseTableExp = [
   {
     // 属性 id 是一个自增数，起始值为 1，每次增 1
     'id|+1': 1,
@@ -24,6 +25,18 @@ const mockExp = [
     content: '@cparagraph(1 , 2)',
     statu: '@boolean',
     url: `${REMOTE_IMAGES_ADDRESS}@constellation`
+  }
+];
+
+const queryTableExp = [
+  {
+    // 属性 id 是一个自增数，起始值为 1，每次增 1
+    'id|+1': 1,
+    code: '@word@word',
+    desc: '@cparagraph(2)',
+    invokeCount: '@integer(0,10000)',
+    updateTime: '@date("yyyy-MM-dd HH:mm")',
+    status: '@integer(0,3)'
   }
 ];
 
@@ -59,7 +72,7 @@ const table: Array<MockMethod> = [
         }
         const obj = {};
         const key = `list|${size}`;
-        obj[key] = mockExp;
+        obj[key] = baseTableExp;
         const res = Mock.mock(obj);
         data = res.list;
       } else if (pages - total > pages) {
@@ -68,7 +81,7 @@ const table: Array<MockMethod> = [
         const size = total % pageSize;
         const key = `list|${size}`;
         const obj = {};
-        obj[key] = mockExp;
+        obj[key] = baseTableExp;
         const res = Mock.mock(obj);
         data = res.list;
       }
@@ -99,7 +112,7 @@ const table: Array<MockMethod> = [
         }
         const obj = {};
         const key = `list|${size}`;
-        obj[key] = mockExp;
+        obj[key] = queryTableExp;
         const res = Mock.mock(obj);
         data = res.list;
       } else if (pages - total > pages) {
@@ -108,11 +121,10 @@ const table: Array<MockMethod> = [
         const size = total % pageSize;
         const key = `list|${size}`;
         const obj = {};
-        obj[key] = mockExp;
+        obj[key] = queryTableExp;
         const res = Mock.mock(obj);
         data = res.list;
       }
-
       return {
         records: data || [],
         total: total
