@@ -11,7 +11,8 @@ import {
   Select,
   Table,
   Divider,
-  message
+  message,
+  Badge
 } from 'ant-design-vue';
 import { defineComponent, onMounted, reactive } from 'vue';
 import queryTable from './index.module.scss';
@@ -51,9 +52,9 @@ export default defineComponent({
         id: 4,
         dataIndex: 'status',
         width: 160,
-        orderable: true,
-        sort: (a: any, b: any) => {
-          return a.status - b.status;
+        custom: true,
+        customRender: () => {
+          return <Table.Column title={'操作'} customRender={getStatus}></Table.Column>;
         }
       },
       {
@@ -71,8 +72,18 @@ export default defineComponent({
       {
         title: '操作',
         id: 6,
-        custom: true
+        custom: true,
+        customRender: () => {
+          return <Table.Column title={'操作'} customRender={getActions}></Table.Column>;
+        }
       }
+    ];
+
+    const statuList = [
+      { label: '停止', value: 0, color: '#d9d9d9' },
+      { label: '运行中', value: 1, color: '#108ee9' },
+      { label: '已上线', value: 2, color: 'green' },
+      { label: '异常', value: 3, color: 'red' }
     ];
 
     // ----------------------（2）API方法----------------------------------
@@ -142,6 +153,12 @@ export default defineComponent({
           <a onClick={subscribe}>订阅警报</a>
         </span>
       );
+    };
+
+    // 表格状态组件
+    const getStatus = ({ record }: { index: number; record: any; text: string }) => {
+      const finded = statuList.find((e) => e.value === record.status);
+      return <Badge text={finded?.label} color={finded?.color}></Badge>;
     };
 
     // alert消息组件
@@ -281,12 +298,7 @@ export default defineComponent({
                       ></Table.Column>
                     );
                   } else if (item.custom) {
-                    return (
-                      <Table.Column
-                        title={'操作'}
-                        customRender={getActions}
-                      ></Table.Column>
-                    );
+                    return item.customRender();
                   } else {
                     return (
                       <Table.Column
