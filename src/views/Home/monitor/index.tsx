@@ -10,6 +10,7 @@ import M4 from './M4';
 import M5 from './M5';
 
 const Monitor = defineComponent({
+  name: 'ViewHomeMonitor',
   setup() {
     return () => (
       <div class={`view-space ${styles.monitor}`}>

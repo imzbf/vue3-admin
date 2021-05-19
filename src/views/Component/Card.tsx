@@ -5,6 +5,7 @@ import VraCard from '@/components/Card';
 import CardDemo from './CardDemo.vue';
 
 export default defineComponent({
+  name: 'ViewComponentCard',
   setup() {
     return () => (
       <div class="view-space">

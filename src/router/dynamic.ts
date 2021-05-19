@@ -5,7 +5,6 @@ export interface ViewList {
   workspace: () => Promise<any>;
   monitor: () => Promise<any>;
   // 自定义组件展示
-  carousel_data: () => Promise<any>;
   card_data: () => Promise<any>;
   // 表单
   base_form: () => Promise<any>;
@@ -36,7 +35,6 @@ const DynamisList: ViewList = {
   monitor: () => import('@/views/Home/monitor'),
   // 自定义组件展示页
   card_data: () => import('@/views/Component/Card'),
-  carousel_data: () => import('@/views/Component/Carousel'),
   // 表单
   base_form: () => import('@/views/Form'),
   def_form: () => import('@/views/Form/Def'),

@@ -2,6 +2,7 @@ import { defineComponent } from 'vue';
 import { Result } from 'ant-design-vue';
 
 export default defineComponent({
+  name: 'ViewError403',
   setup() {
     return () => (
       <div

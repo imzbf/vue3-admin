@@ -15,6 +15,8 @@ export interface SettingStateType extends AsideType {
   breadcrumbs: Array<string>;
   // 主题
   theme?: Themes;
+  // 缓存路由名称列表
+  cacheList: Array<string>;
 }
 
 const cacheTheme = localStorage.getItem(Final.THEME);
@@ -28,7 +30,29 @@ const state: SettingStateType = {
     (cacheTheme === 'dark' && 'dark') ||
     (cacheTheme === 'light' && 'light') ||
     (cacheTheme === 'deepDark' && 'dark') ||
-    'dark'
+    'dark',
+  cacheList: []
+};
+
+// 获取路由列表中需要缓存的组件名称
+const getCacheComponentName = (routes: Array<any>): Array<string> => {
+  const list: Set<any> = new Set();
+
+  const innerLoop = (routesRow: Array<any>) => {
+    routesRow.forEach((route) => {
+      if (route.meta && route.meta.keepAlive && route.meta.cname) {
+        list.add(route.meta.cname);
+      }
+
+      // 判断是否存在子组件
+      if (route.children && route.children.length > 0) {
+        innerLoop(route.children);
+      }
+    });
+  };
+
+  innerLoop(routes);
+  return Array.from(list);
 };
 
 const mutations = {
@@ -64,6 +88,10 @@ const mutations = {
   themeChanged(state: SettingStateType, payload: { theme: Themes }): void {
     state.theme = payload.theme;
     localStorage.setItem(Final.THEME, payload.theme);
+  },
+  // 生成新的缓存名单
+  setCacheList(state: SettingStateType, payload: { routes: Array<any> }): void {
+    state.cacheList = [...state.cacheList, ...getCacheComponentName(payload.routes)];
   }
 };
 const actions = {};

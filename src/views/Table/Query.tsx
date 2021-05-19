@@ -19,6 +19,7 @@ import queryTable from './index.module.scss';
 import { key } from '@/store';
 import { useStore } from 'vuex';
 export default defineComponent({
+  name: 'ViewTableQuery',
   setup() {
     const store = useStore(key);
     // ----------------------（1）属性定义-------------------------------
@@ -307,7 +308,6 @@ export default defineComponent({
                       ></Table.Column>
                     );
                   }
-                  return;
                 })}
               </Table>
             </section>

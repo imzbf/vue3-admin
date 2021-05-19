@@ -16,6 +16,10 @@ interface Menu {
     iconName?: keyof typeof Icon;
     // 阿里矢量图标js标准，使用svg创建，以#开头
     iconHref?: string;
+    // 路由对应组件名称，务必与组件name一致
+    cname?: string;
+    // 是否缓存组件
+    keepAlive?: boolean;
     [propName: string]: any;
   };
   children?: Array<Menu>;
@@ -35,14 +39,24 @@ const DashboardModule: Menu[] = [
         name: 'IndexPage',
         component: 'workspace',
         menu: true,
-        meta: { title: '工作台', iconName: 'BgColorsOutlined' }
+        meta: {
+          title: '工作台',
+          iconName: 'BgColorsOutlined',
+          cname: 'ViewHomeWorkspace',
+          keepAlive: true
+        }
       },
       {
         path: 'monitor',
         name: 'MonitorPage',
         component: 'monitor',
         menu: true,
-        meta: { title: '监控台', iconName: 'CodeOutlined' }
+        meta: {
+          title: '监控台',
+          iconName: 'CodeOutlined',
+          cname: 'ViewHomeMonitor',
+          keepAlive: true
+        }
       }
     ]
   }
@@ -54,22 +68,37 @@ const DataModule: Menu[] = [
     component: 'layout',
     redirect: '/form/base',
     name: 'Form',
-    meta: { title: '表单页', iconName: 'FormOutlined' },
+    meta: {
+      title: '表单页',
+      iconName: 'FormOutlined',
+      cname: 'ViewForm',
+      keepAlive: true
+    },
     menu: true,
     children: [
       {
         path: 'base',
         name: 'FormBase',
-        meta: { title: '基本表单', iconName: 'EditOutlined' },
+        component: 'base_form',
         menu: true,
-        component: 'base_form'
+        meta: {
+          title: '基本表单',
+          iconName: 'EditOutlined',
+          cname: 'ViewForm',
+          keepAlive: true
+        }
       },
       {
         path: 'def',
         name: 'FormDef',
-        meta: { title: '自定义表单', iconName: 'DiffOutlined' },
+        component: 'def_form',
         menu: true,
-        component: 'def_form'
+        meta: {
+          title: '自定义表单',
+          iconName: 'DiffOutlined',
+          cname: 'ViewFormDef',
+          keepAlive: true
+        }
       }
     ]
   }
@@ -131,13 +160,13 @@ const UserModule: Menu[] = [
       {
         path: '',
         name: 'UserIndex',
-        meta: { title: '个人中心' },
+        meta: { title: '个人中心', cname: 'ViewUser', keepAlive: true },
         component: 'user_center'
       },
       {
         path: 'setting',
         name: 'Setting',
-        meta: { title: '个人设置' },
+        meta: { title: '个人设置', cname: 'ViewUserSetting', keepAlive: true },
         component: 'user_setting'
       }
     ]
@@ -155,21 +184,36 @@ const TableModule: Menu[] = [
       {
         path: 'base',
         name: 'TableBase',
-        meta: { title: '基本表格', iconName: 'TableOutlined' },
+        meta: {
+          title: '基本表格',
+          iconName: 'TableOutlined',
+          cname: 'ViewTableBasic',
+          keepAlive: true
+        },
         menu: true,
         component: 'table_base'
       },
       {
         path: 'server',
         name: 'TableServer',
-        meta: { title: '动态数据表格', iconName: 'TabletOutlined' },
+        meta: {
+          title: '动态数据表格',
+          iconName: 'TabletOutlined',
+          cname: 'ViewTableServer',
+          keepAlive: true
+        },
         menu: true,
         component: 'table_dynamic'
       },
       {
         path: 'query',
         name: 'TableQuery',
-        meta: { title: '查询表格', iconName: 'SearchOutlined' },
+        meta: {
+          title: '查询表格',
+          iconName: 'SearchOutlined',
+          cname: 'ViewTableQuery',
+          keepAlive: true
+        },
         menu: true,
         component: 'table_query'
       }

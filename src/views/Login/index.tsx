@@ -8,6 +8,7 @@ import { Input, Checkbox, Button, Popconfirm, message, Spin } from 'ant-design-v
 import { onBeforeRouteLeave } from 'vue-router';
 
 export default defineComponent({
+  name: 'ViewLogin',
   setup() {
     const data = reactive({
       info: {

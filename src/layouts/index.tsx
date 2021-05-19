@@ -1,4 +1,5 @@
-import { computed, defineComponent, onBeforeMount, reactive } from 'vue';
+import { computed, defineComponent, KeepAlive, reactive } from 'vue';
+import { RouterView } from 'vue-router';
 import { useStore } from 'vuex';
 import { key } from '@/store';
 
@@ -55,7 +56,16 @@ export default defineComponent({
             />
           </header>
           <main class={style.layoutMain}>
-            <router-view />
+            {/* https://github.com/vuejs/vue-router-next/issues/716#issuecomment-759521287 */}
+            <RouterView>
+              {({ Component, route }: any) => {
+                return (
+                  <KeepAlive include={store.state.setting.cacheList}>
+                    <Component />
+                  </KeepAlive>
+                );
+              }}
+            </RouterView>
           </main>
         </div>
         <div class={style.drawer}>

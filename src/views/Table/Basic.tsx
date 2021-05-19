@@ -22,6 +22,7 @@ interface RadioOptions {
   value: string | number;
 }
 export default defineComponent({
+  name: 'ViewTableBasic',
   mounted() {
     // 设置列表初始化数据
     this.getRadioStatus();

@@ -76,7 +76,10 @@ const actions = {
     store.commit('setUserInfo', data);
     // 将后端菜单列表转换为vue-router列表
     const newRoutes = transformRoutes(data.menus);
+
     store.commit('menu/resetMenu', { newRoutes }, { root: true });
+    store.commit('setting/setCacheList', { routes: newRoutes }, { root: true });
+
     // 重置路由
     resetRoutes(newRoutes);
 
