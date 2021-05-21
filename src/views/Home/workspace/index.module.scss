@@ -2,8 +2,7 @@
   .header {
     display: flex;
     justify-content: space-between;
-    background-color: #fff;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid $borderColor;
     padding: 20px 10px;
 
     .welcome {
@@ -102,7 +101,6 @@
         display: block;
         height: 24px;
         margin: 12px 0;
-        color: rgba(0, 0, 0, 0.85);
         transition: all 0.3s;
         white-space: nowrap;
         text-overflow: ellipsis;
@@ -114,6 +112,14 @@
           vertical-align: text-top;
         }
       }
+    }
+  }
+}
+
+:global(.theme-dark) {
+  .workspace {
+    .header {
+      border-color: $darkBorderColor;
     }
   }
 }

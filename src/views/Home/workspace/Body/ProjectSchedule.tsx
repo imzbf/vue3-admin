@@ -27,7 +27,7 @@ const ProjectSchedule = defineComponent({
             </>
           }
           bodyClass="clear"
-          bodyStyle={{ padding: 0 }}
+          bodyStyle={{ paddingTop: 10 }}
           func={<RouterLink to="/project">全部项目</RouterLink>}
         >
           {[1, 2, 3, 4, 5].map((item) => {
