@@ -68,3 +68,17 @@
     padding: 10px;
   }
 }
+
+:global(.theme-dark) {
+  .layout-bar {
+    box-shadow: 0 1px 4px rgb(43, 43, 44);
+
+    .layout-bar-right {
+      li {
+        &:hover {
+          background-color: rgb(29, 29, 29);
+        }
+      }
+    }
+  }
+}
