@@ -24,3 +24,9 @@ pnpm-debug.log*
 
 # 本地文件
 local_*
+
+# 主题文件
+color.less
+light.json
+dark.json
+compact.json

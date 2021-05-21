@@ -2,7 +2,8 @@ import { createApp } from 'vue';
 import App from './App';
 import router from './router';
 import store, { key } from './store';
-import 'ant-design-vue/dist/antd.css';
+// import 'ant-design-vue/dist/antd.css';
+import 'ant-design-vue/dist/antd.less';
 import './styles/global.scss';
 import 'nprogress/nprogress.css';
 
