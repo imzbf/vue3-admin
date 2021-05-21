@@ -31,6 +31,10 @@ import style from './index.module.scss';
 
 import MyIcon from '@/components/IconFont';
 
+import Message from './Message';
+import Notification from './Notification';
+import Todo from './Todo';
+
 // 同时设置props的vue属性和ts类型，setup会报错
 // interface NavBarPropsType {
 //   setSettingVisible: (val: boolean) => void;
@@ -48,7 +52,7 @@ export default defineComponent({
   setup(props) {
     const store = useStore(key);
 
-    const data = reactive({
+    const configData = reactive({
       // 全屏状态
       isFullscreen: false,
       // 通知内容显示
@@ -90,7 +94,7 @@ export default defineComponent({
 
     if (screenfull.isEnabled) {
       screenfull.on('change', () => {
-        data.isFullscreen = !data.isFullscreen;
+        configData.isFullscreen = !configData.isFullscreen;
       });
     }
 
@@ -122,13 +126,13 @@ export default defineComponent({
                 <div class={style['notice-content']}>
                   <Tabs defaultActiveKey={1}>
                     <Tabs.TabPane key={1} tab="通知">
-                      通知内容
+                      <Notification />
                     </Tabs.TabPane>
                     <Tabs.TabPane key={2} tab="消息">
-                      消息内容
+                      <Message />
                     </Tabs.TabPane>
                     <Tabs.TabPane key={3} tab="代办">
-                      邮件内容
+                      <Todo />
                     </Tabs.TabPane>
                   </Tabs>
                 </div>
@@ -166,7 +170,11 @@ export default defineComponent({
           </Dropdown>
 
           <li onClick={fullScreen}>
-            {data.isFullscreen ? <FullscreenOutlined /> : <FullscreenExitOutlined />}
+            {configData.isFullscreen ? (
+              <FullscreenOutlined />
+            ) : (
+              <FullscreenExitOutlined />
+            )}
           </li>
           <li
             onClick={() => {

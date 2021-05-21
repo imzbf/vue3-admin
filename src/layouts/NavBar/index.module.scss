@@ -39,7 +39,26 @@
   }
 }
 
+.message {
+  :global {
+    .ant-list-item-meta {
+      .ant-list-item-meta-avatar {
+        margin-top: 4px;
+      }
+
+      .ant-list-item-meta-title {
+        font-weight: 400;
+      }
+
+      .ant-list-item-meta-description {
+        font-size: 12px;
+      }
+    }
+  }
+}
+
 .notice {
+  width: 300px;
   background-color: #fff;
   border-radius: 4px;
   box-shadow: 0 6px 16px -8px rgba(0, 0, 0, 0.08), 0 9px 28px 0 rgba(0, 0, 0, 0.05),
