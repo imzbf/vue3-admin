@@ -24,15 +24,12 @@ import {
   SkinOutlined,
   SettingOutlined,
   PoweroffOutlined,
-  UserOutlined,
-  createFromIconfontCN
+  UserOutlined
 } from '@ant-design/icons-vue';
 
 import style from './index.module.scss';
 
-const MyIcon = createFromIconfontCN({
-  scriptUrl: '//at.alicdn.com/t/font_2365632_torsmt1mas.js' // 在 iconfont.cn 上生成
-});
+import MyIcon from '@/components/IconFont';
 
 // 同时设置props的vue属性和ts类型，setup会报错
 // interface NavBarPropsType {
@@ -57,11 +54,6 @@ export default defineComponent({
       // 通知内容显示
       bellContent: false
     });
-
-    const breadcrumbs = computed(() => store.state.setting.breadcrumbs);
-
-    // 隐藏显示菜单图标样式，watch写法
-    const menuSwitch = computed(() => store.state.setting.aside);
 
     const adjustMenu = () => {
       store.commit('setting/asideState', {
@@ -106,11 +98,15 @@ export default defineComponent({
       <div class={style['layout-bar']}>
         <ul class={style['layout-bar-left']}>
           <li onClick={adjustMenu} class={style['cper']}>
-            {menuSwitch.value === 'open' ? <MenuFoldOutlined /> : <MenuUnfoldOutlined />}
+            {store.state.setting.aside === 'open' ? (
+              <MenuFoldOutlined />
+            ) : (
+              <MenuUnfoldOutlined />
+            )}
           </li>
           <li class={style['breadcrumb-help']}>
             <Breadcrumb separator="/">
-              {breadcrumbs.value.map((breadcrumb, index) => (
+              {store.state.setting.breadcrumbs.map((breadcrumb, index) => (
                 <Breadcrumb.Item key={breadcrumb + index}>{breadcrumb}</Breadcrumb.Item>
               ))}
             </Breadcrumb>
@@ -131,7 +127,7 @@ export default defineComponent({
                     <Tabs.TabPane key={2} tab="消息">
                       消息内容
                     </Tabs.TabPane>
-                    <Tabs.TabPane key={3} tab="邮件">
+                    <Tabs.TabPane key={3} tab="代办">
                       邮件内容
                     </Tabs.TabPane>
                   </Tabs>
