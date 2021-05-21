@@ -1,7 +1,7 @@
 .layout-bar {
   display: flex;
   justify-content: space-between;
-  box-shadow: 0 1px 4px rgb(220, 223, 230);
+  border-bottom: 1px solid $borderColor;
 
   .layout-bar-left,
   .layout-bar-right {
@@ -71,7 +71,7 @@
 
 :global(.theme-dark) {
   .layout-bar {
-    box-shadow: 0 1px 4px rgb(43, 43, 44);
+    border-color: $darkBorderColor;
 
     .layout-bar-right {
       li {

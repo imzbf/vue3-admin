@@ -32,7 +32,7 @@ export default defineComponent({
     });
 
     return () => (
-      <section class={`${style.wrapper} ${style[`${store.state.setting.theme}-theme`]}`}>
+      <section class={style.wrapper}>
         <div class={layoutAsideClass.value}>
           <header class={style.logo}>
             <img src={LogoImg} />
