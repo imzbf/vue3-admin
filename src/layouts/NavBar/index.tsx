@@ -149,7 +149,7 @@ export default defineComponent({
             trigger={['click']}
             overlay={
               <Menu onClick={adjustTheme}>
-                <Menu.Item key="dark">
+                <Menu.Item key="mix">
                   <MyIcon type="icon-ditu_diqiu" />
                   黑白主题
                 </Menu.Item>
@@ -157,7 +157,7 @@ export default defineComponent({
                   <MyIcon type="icon-taiyang" />
                   白色主题
                 </Menu.Item>
-                <Menu.Item key="deepDark" disabled>
+                <Menu.Item key="dark">
                   <MyIcon type="icon-yueliang" />
                   暗黑主题
                 </Menu.Item>

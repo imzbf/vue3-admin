@@ -1,10 +1,12 @@
 import setting from '@/config/setting';
 import Final from '@/config/keys';
+import darkVars from '@/config/dark.json';
+import lightVars from '@/config/light.json';
 interface AsideType {
   aside: 'open' | 'close' | 'none'; // 正常展开、缩小显示图标、不展示
 }
 
-export type Themes = 'dark' | 'light' | 'deepDark';
+export type Themes = 'dark' | 'light' | 'mix';
 
 export interface SettingStateType extends AsideType {
   // 当前激活的菜单
@@ -14,10 +16,22 @@ export interface SettingStateType extends AsideType {
   // 面包屑
   breadcrumbs: Array<string>;
   // 主题
-  theme?: Themes;
+  theme: Themes;
   // 缓存路由名称列表
   cacheList: Array<string>;
 }
+
+const lessHandler = (themeName: Themes) => {
+  switch (themeName) {
+    case 'dark': {
+      (window as any).less.modifyVars(darkVars);
+      break;
+    }
+    case 'light': {
+      (window as any).less.modifyVars(lightVars);
+    }
+  }
+};
 
 const cacheTheme = localStorage.getItem(Final.THEME);
 
@@ -29,10 +43,12 @@ const state: SettingStateType = {
   theme:
     (cacheTheme === 'dark' && 'dark') ||
     (cacheTheme === 'light' && 'light') ||
-    (cacheTheme === 'deepDark' && 'dark') ||
+    (cacheTheme === 'mix' && 'mix') ||
     'dark',
   cacheList: []
 };
+
+lessHandler(state.theme);
 
 // 获取路由列表中需要缓存的组件名称
 const getCacheComponentName = (routes: Array<any>): Array<string> => {
@@ -88,6 +104,7 @@ const mutations = {
   themeChanged(state: SettingStateType, payload: { theme: Themes }): void {
     state.theme = payload.theme;
     localStorage.setItem(Final.THEME, payload.theme);
+    lessHandler(payload.theme);
   },
   // 生成新的缓存名单
   setCacheList(state: SettingStateType, payload: { routes: Array<any> }): void {
