@@ -194,18 +194,6 @@ const TableModule: Menu[] = [
         component: 'table_base'
       },
       {
-        path: 'server',
-        name: 'TableServer',
-        meta: {
-          title: '动态数据表格',
-          iconName: 'TabletOutlined',
-          cname: 'ViewTableServer',
-          keepAlive: true
-        },
-        menu: true,
-        component: 'table_dynamic'
-      },
-      {
         path: 'query',
         name: 'TableQuery',
         meta: {
