@@ -99,9 +99,6 @@ export default defineComponent({
       });
     }
 
-    // 通知外部ref
-    const noticeRef = ref();
-
     return () => (
       <div class={style['layout-bar']}>
         <ul class={style['layout-bar-left']}>
@@ -120,12 +117,12 @@ export default defineComponent({
             </Breadcrumb>
           </li>
         </ul>
-        <ul class={style['layout-bar-right']} ref={noticeRef}>
+        <ul class={style['layout-bar-right']}>
           <Dropdown
-            overlayClassName={style.notice}
+            overlayClassName={style['notice-wrapper']}
             trigger={['click']}
             placement="bottomCenter"
-            getPopupContainer={() => noticeRef.value}
+            getPopupContainer={() => document.querySelector('.theme-wrapper')}
             overlay={
               <>
                 <div class={style['notice-content']}>
