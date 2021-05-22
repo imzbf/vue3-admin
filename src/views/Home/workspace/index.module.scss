@@ -120,5 +120,13 @@
     .header {
       border-color: $darkBorderColor;
     }
+
+    .project {
+      :global {
+        .ant-card-grid-hoverable:hover {
+          box-shadow: 0 0 8px rgb(58, 59, 70);
+        }
+      }
+    }
   }
 }
