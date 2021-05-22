@@ -45,7 +45,7 @@ h3 {
 
 // 查询表格
 .query-title {
-  background-color: #fff;
+  background-color: $bgColor;
   .title-wrap {
     padding: 12px 0 12px 28px;
     .h1 {
@@ -57,20 +57,19 @@ h3 {
 
 .query-content {
   margin: 24px;
-  .btn-mg{
+  .btn-mg {
     margin-left: 10px;
   }
 
-  .my-md{
-    margin-top: 16px!important;
-    margin-bottom: 16px!important;
+  .my-md {
+    margin-top: 16px !important;
+    margin-bottom: 16px !important;
   }
 
-  .btn-groups{
+  .btn-groups {
     text-align: right;
   }
 }
-
 
 :global {
   .ant-card {
@@ -82,5 +81,11 @@ h3 {
     .ant-form-item-control-wrapper {
       flex: 1;
     }
+  }
+}
+
+:global(.theme-dark) {
+  .query-title {
+    background-color: $darkBgColor;
   }
 }

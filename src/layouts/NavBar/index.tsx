@@ -1,4 +1,4 @@
-import { defineComponent, computed, reactive } from 'vue';
+import { defineComponent, reactive, ref } from 'vue';
 import { RouterLink } from 'vue-router';
 import { useStore } from 'vuex';
 import { key } from '@/store';
@@ -34,6 +34,7 @@ import MyIcon from '@/components/IconFont';
 import Message from './Message';
 import Notification from './Notification';
 import Todo from './Todo';
+import Card from '@/components/Card';
 
 // 同时设置props的vue属性和ts类型，setup会报错
 // interface NavBarPropsType {
@@ -98,6 +99,9 @@ export default defineComponent({
       });
     }
 
+    // 通知外部ref
+    const noticeRef = ref();
+
     return () => (
       <div class={style['layout-bar']}>
         <ul class={style['layout-bar-left']}>
@@ -116,11 +120,12 @@ export default defineComponent({
             </Breadcrumb>
           </li>
         </ul>
-        <ul class={style['layout-bar-right']}>
+        <ul class={style['layout-bar-right']} ref={noticeRef}>
           <Dropdown
             overlayClassName={style.notice}
             trigger={['click']}
             placement="bottomCenter"
+            getPopupContainer={() => noticeRef.value}
             overlay={
               <>
                 <div class={style['notice-content']}>
