@@ -19,7 +19,7 @@ const queryTableActions = {
     payload: { pageNo: number; pageSize: number }
   ): Promise<any> {
     return getQueryTableList(payload.pageNo, payload.pageSize, '').then((res) => {
-      store.commit('setQueryDataList', res.data);
+      store.commit('setQueryDataList', res);
     });
   }
 };

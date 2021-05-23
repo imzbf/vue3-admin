@@ -43,7 +43,7 @@ const queryTableExp = [
 // 标准表格
 const table: Array<MockMethod> = [
   {
-    url: '/table/statusRadio',
+    url: '/api/table/statusRadio',
     method: 'get',
     response: (): any => {
       return {
@@ -53,7 +53,7 @@ const table: Array<MockMethod> = [
     }
   },
   {
-    url: '/table/getBaseTableList',
+    url: '/api/table/getBaseTableList',
     method: 'get',
     response: ({ query }): any => {
       // 待优化
@@ -93,7 +93,7 @@ const table: Array<MockMethod> = [
     }
   },
   {
-    url: '/table/getQueryTableList',
+    url: '/api/table/getQueryTableList',
     method: 'get',
     response: ({ query }) => {
       // 待优化

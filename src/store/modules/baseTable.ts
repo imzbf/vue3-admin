@@ -19,7 +19,7 @@ const baseTableState: BaseTableType = {
 const baseTableActions = {
   // 获取到状态按钮
   getRadioStatus(store: any): Promise<any> {
-    return getRadioStatus().then(({ data }: any) => {
+    return getRadioStatus().then((data: any) => {
       store.commit('setRadioStatus', data);
       return data.token;
     });
@@ -30,7 +30,7 @@ const baseTableActions = {
     payload: { pageNo: number; pageSize: number }
   ): Promise<any> {
     return getBaseTableList(payload.pageNo, payload.pageSize, '').then((res) => {
-      store.commit('setBaseDataList', res.data);
+      store.commit('setBaseDataList', res);
     });
   }
 };
