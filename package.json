@@ -18,6 +18,7 @@
   "scripts": {
     "dev": "vite serve",
     "build": "vite build",
+    "build:preview": "vite build --mode preview",
     "lint": "eslint --fix --ext .ts,.tsx,.md,.json src"
   },
   "dependencies": {
