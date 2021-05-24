@@ -37,6 +37,8 @@ interface OverrideRecordRaw {
 
 type AdminRouteRecordRaw = RouteRecordRaw & OverrideRecordRaw;
 
+const VITE_BASE = import.meta.env.VITE_BASE;
+
 // vue-router子路由path不需要添加/关键词
 const routes: Array<AdminRouteRecordRaw> = [
   {
@@ -137,11 +139,9 @@ const routes: Array<AdminRouteRecordRaw> = [
 ];
 
 const router = createRouter({
-  history: createWebHistory(),
+  history: createWebHistory(VITE_BASE),
   routes
 });
-
-const WHITE_LIST = ['/404'];
 
 router.beforeEach(async (to: RouteLocationNormalized, _, next: NavigationGuardNext) => {
   NProgress.start();
@@ -162,12 +162,12 @@ router.beforeEach(async (to: RouteLocationNormalized, _, next: NavigationGuardNe
     // }
 
     // 有token时，前往登录页
-    if (/^\/login.*/.test(to.path)) {
+    if (/\/login.*/.test(to.path)) {
       if (to.query.from) {
         // 存在登录跳转回页面
         next(to.query.from as string);
       } else {
-        next('/');
+        next(VITE_BASE);
       }
     } else {
       store.commit('setting/routeChanged', {
@@ -184,13 +184,13 @@ router.beforeEach(async (to: RouteLocationNormalized, _, next: NavigationGuardNe
     // 没有token
 
     // 判断是否是登录页，防止死循环
-    if (/^\/login.*/.test(to.path)) {
+    if (/\/login.*/.test(to.path)) {
       next();
     } else if ('/404' === to.path) {
       const from = to.query.from;
-      next(from ? `/login?from=${from}` : '/login');
+      next(from ? `${VITE_BASE}/login?from=${from}` : `${VITE_BASE}/login`);
     } else {
-      next(`/login?from=${to.path}`);
+      next(`${VITE_BASE}/login?from=${to.path}`);
     }
   }
 });

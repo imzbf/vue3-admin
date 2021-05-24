@@ -10,31 +10,33 @@ interface DataItem {
   date: string;
 }
 
+const VITE_BASE = import.meta.env.VITE_BASE;
+
 export default defineComponent({
   name: 'message',
   setup() {
     const data = reactive<{ list: DataItem[] }>({
       list: [
         {
-          avatar: '/static/img/boy01.jpg',
+          avatar: `${VITE_BASE}/static/img/boy01.jpg`,
           title: '小五郎 评论了你',
           desc: '柯南要请饭，收到请回话！',
           date: '两天前'
         },
         {
-          avatar: '/static/img/head02.gif',
+          avatar: `${VITE_BASE}/static/img/head02.gif`,
           title: '小五郎 评论了你',
           desc: '柯南要请饭，收到请回话！',
           date: '两天前'
         },
         {
-          avatar: '/static/img/boy01.jpg',
+          avatar: `${VITE_BASE}/static/img/boy01.jpg`,
           title: '小五郎 评论了你',
           desc: '柯南要请饭，收到请回话！',
           date: '两天前'
         },
         {
-          avatar: '/static/img/boy01.jpg',
+          avatar: `${VITE_BASE}/static/img/boy01.jpg`,
           title: '小五郎 评论了你',
           desc: '柯南要请饭，收到请回话！',
           date: '两天前'
