@@ -4,6 +4,8 @@ import { Row, Col, Avatar } from 'ant-design-vue';
 import IconFont from '@/components/IconFont';
 import styles from '../index.module.scss';
 
+const VITE_BASE = import.meta.env.VITE_BASE;
+
 const Team = defineComponent({
   setup() {
     return () => (
@@ -19,31 +21,31 @@ const Team = defineComponent({
         <Row>
           <Col span={12}>
             <a href="#" class={styles.item}>
-              <Avatar src="/static/img/boy01.jpg" />
+              <Avatar src={`${VITE_BASE}/static/img/boy01.jpg`} />
               <span class={styles.name}>vra-dever</span>
             </a>
           </Col>
           <Col span={12}>
             <a href="#" class={styles.item}>
-              <Avatar src="/static/img/boy01.jpg" />
+              <Avatar src={`${VITE_BASE}/static/img/boy01.jpg`} />
               <span class={styles.name}>vra-dever</span>
             </a>
           </Col>
           <Col span={12}>
             <a href="#" class={styles.item}>
-              <Avatar src="/static/img/boy01.jpg" />
+              <Avatar src={`${VITE_BASE}/static/img/boy01.jpg`} />
               <span class={styles.name}>vra-dever</span>
             </a>
           </Col>
           <Col span={12}>
             <a href="#" class={styles.item}>
-              <Avatar src="/static/img/boy01.jpg" />
+              <Avatar src={`${VITE_BASE}/static/img/boy01.jpg`} />
               <span class={styles.name}>vra-dever</span>
             </a>
           </Col>
           <Col span={12}>
             <a href="#" class={styles.item}>
-              <Avatar src="/static/img/boy01.jpg" />
+              <Avatar src={`${VITE_BASE}/static/img/boy01.jpg`} />
               <span class={styles.name}>vra-dever</span>
             </a>
           </Col>

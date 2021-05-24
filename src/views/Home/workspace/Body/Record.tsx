@@ -9,6 +9,9 @@ interface DataItem {
   time: string;
   avatar: string;
 }
+
+const VITE_BASE = import.meta.env.VITE_BASE;
+
 const data: DataItem[] = [
   {
     title: (
@@ -23,7 +26,7 @@ const data: DataItem[] = [
       </>
     ),
     time: '8小时前',
-    avatar: '/static/img/boy01.jpg'
+    avatar: `${VITE_BASE}/static/img/boy01.jpg`
   },
   {
     title: (
@@ -38,7 +41,7 @@ const data: DataItem[] = [
       </>
     ),
     time: '23小时前',
-    avatar: '/static/img/boy01.jpg'
+    avatar: `${VITE_BASE}/static/img/boy01.jpg`
   },
   {
     title: (
@@ -53,7 +56,7 @@ const data: DataItem[] = [
       </>
     ),
     time: '2021年04月16日18:24:51',
-    avatar: '/static/img/boy01.jpg'
+    avatar: `${VITE_BASE}/static/img/boy01.jpg`
   },
   {
     title: (
@@ -68,7 +71,7 @@ const data: DataItem[] = [
       </>
     ),
     time: '2021年03月16日18:24:59',
-    avatar: '/static/img/boy01.jpg'
+    avatar: `${VITE_BASE}/static/img/boy01.jpg`
   },
   {
     title: (
@@ -83,7 +86,7 @@ const data: DataItem[] = [
       </>
     ),
     time: '2021年02月16日18:25:08',
-    avatar: '/static/img/boy01.jpg'
+    avatar: `${VITE_BASE}/static/img/boy01.jpg`
   }
 ];
 

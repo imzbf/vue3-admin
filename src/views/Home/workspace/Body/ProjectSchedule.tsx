@@ -5,10 +5,12 @@ import { Card, Progress, Button, Avatar } from 'ant-design-vue';
 import IconFont from '@/components/IconFont';
 import styles from '../index.module.scss';
 
+const VITE_BASE = import.meta.env.VITE_BASE;
+
 const proj = {
   title: 'vue3-admin',
   description: '项目基于vue@3.x系列开发，开发环境使用vite@2.x搭配纯jsx',
-  avatar: '/static/img/boy01.jpg',
+  avatar: `${VITE_BASE}/static/img/boy01.jpg`,
   team: 'vra-dever',
   date: '4个月前'
 };
