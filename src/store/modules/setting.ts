@@ -29,6 +29,10 @@ const lessHandler = (themeName: Themes) => {
     }
     case 'light': {
       (window as any).less.modifyVars(lightVars);
+      break;
+    }
+    case 'mix': {
+      (window as any).less.modifyVars(lightVars);
     }
   }
 };
