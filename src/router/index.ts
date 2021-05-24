@@ -162,7 +162,7 @@ router.beforeEach(async (to: RouteLocationNormalized, _, next: NavigationGuardNe
     // }
 
     // 有token时，前往登录页
-    if (/\/login.*/.test(to.path)) {
+    if (new RegExp(`^${VITE_BASE}/login.*`).test(to.path)) {
       if (to.query.from) {
         // 存在登录跳转回页面
         next(to.query.from as string);
@@ -184,9 +184,9 @@ router.beforeEach(async (to: RouteLocationNormalized, _, next: NavigationGuardNe
     // 没有token
 
     // 判断是否是登录页，防止死循环
-    if (/\/login.*/.test(to.path)) {
+    if (new RegExp(`^${VITE_BASE}/login.*`).test(to.path)) {
       next();
-    } else if ('/404' === to.path) {
+    } else if (new RegExp(`^${VITE_BASE}/404`).test(to.path)) {
       const from = to.query.from;
       next(from ? `${VITE_BASE}/login?from=${from}` : `${VITE_BASE}/login`);
     } else {
