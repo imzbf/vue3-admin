@@ -2763,10 +2763,10 @@ v8-compile-cache@^2.0.3:
   resolved "https://registry.npm.taobao.org/v8-compile-cache/download/v8-compile-cache-2.3.0.tgz#2de19618c66dc247dcfb6f99338035d8245a2cee"
   integrity sha1-LeGWGMZtwkfc+2+ZM4A12CRaLO4=
 
-vite-plugin-antd-theme@^1.0.2:
-  version "1.0.2"
-  resolved "https://registry.npmjs.org/vite-plugin-antd-theme/-/vite-plugin-antd-theme-1.0.2.tgz#d5648a4998a3b0a611b017e9a67fe2df8525d1bd"
-  integrity sha512-LCY37jcm4AxPN/qlgPkyqk9NmHuQvZcEp2AcopnyM0epiAaDp2+mUmovvArQ9OwDvQ/wPV3fQDdrqLT7hPp/jQ==
+vite-plugin-antd-theme@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.npmjs.org/vite-plugin-antd-theme/-/vite-plugin-antd-theme-1.1.0.tgz#59b1dfed0b9fb1b0f307d35d76175a3e93b7ea5c"
+  integrity sha512-LBFf0qQ8HLjNqX62pvfjpBbD9gvm6wtIcovAtfCUvrf23rOrqBNZ2p1NTSvKjl2W97xTdCXUmVl4T5t6c2vdqA==
   dependencies:
     antd-theme-generator "^1.2.8"
 
