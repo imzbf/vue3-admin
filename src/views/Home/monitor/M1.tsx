@@ -1,4 +1,4 @@
-import { defineComponent, onMounted, ref } from '@vue/runtime-core';
+import { defineComponent, onMounted, ref } from 'vue';
 import Card from '@/components/Card';
 
 import * as echarts from 'echarts/core';
