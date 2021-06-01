@@ -43,7 +43,7 @@ export default defineComponent({
           </div>
           {asideOpen.value && (
             <footer class={style.copyright}>
-              <span>@2020 zhoubangfu</span>
+              <span>@2020 zbf</span>
             </footer>
           )}
         </div>

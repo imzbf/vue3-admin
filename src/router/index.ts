@@ -120,7 +120,7 @@ const routes: Array<AdminRouteRecordRaw> = [
   //   name: 'Github',
   //   meta: { title: '外部链接', iconName: 'GithubFilled' },
   //   menu: true,
-  //   outLink: 'https://github.com/zhoubangfu/vue3-admin',
+  //   outLink: 'https://github.com/imzbf/vue3-admin',
   //   redirect: '/'
   // },
   {
