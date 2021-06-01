@@ -2,8 +2,8 @@
   "name": "vue3-admin",
   "version": "0.0.0",
   "author": {
-    "name": "zhoubangfu",
-    "url": "https://zhoubangfu.com"
+    "name": "zbf",
+    "url": "https://imbf.com"
   },
   "keywords": [
     "vue",
@@ -14,7 +14,7 @@
     "tsx"
   ],
   "license": "MIT",
-  "homepage": "https://zhoubangfu.github.io/vue3-admin",
+  "homepage": "https://imzbf.github.io/vue3-admin",
   "scripts": {
     "dev": "vite serve",
     "build": "vite build",
