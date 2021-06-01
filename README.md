@@ -12,7 +12,7 @@
 
 ## 预览
 
-在线预览：（<a href="https://zhoubangfu.github.io/vue3-admin" target="_blank">传送门</a>）
+在线预览：（<a href="https://imzbf.github.io/vue3-admin" target="_blank">传送门</a>）
 
 **登录**
 
