@@ -271,11 +271,11 @@ const ComponentModule: Menu[] = [
         component: 'card_data'
       },
       {
-        path: 'carousel',
-        name: 'Carousel',
-        meta: { title: '走马灯', iconName: 'PicCenterOutlined' },
+        path: 'editor',
+        name: 'MdEditor',
+        meta: { title: '编辑器', iconName: 'FormOutlined' },
         menu: true,
-        component: 'carousel_data'
+        component: 'editor_md'
       }
     ]
   }

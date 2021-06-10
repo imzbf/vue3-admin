@@ -6,6 +6,7 @@ export interface ViewList {
   monitor: () => Promise<any>;
   // 自定义组件展示
   card_data: () => Promise<any>;
+  editor_md: () => Promise<any>;
   // 表单
   base_form: () => Promise<any>;
   def_form: () => Promise<any>;
@@ -35,6 +36,7 @@ const DynamisList: ViewList = {
   monitor: () => import('@/views/Home/monitor'),
   // 自定义组件展示页
   card_data: () => import('@/views/Component/Card'),
+  editor_md: () => import('@/views/Component/MdEditor'),
   // 表单
   base_form: () => import('@/views/Form'),
   def_form: () => import('@/views/Form/Def'),
