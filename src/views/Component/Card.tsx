@@ -41,9 +41,7 @@ export default defineComponent({
                       </VraCard>
                     </Col>
                     <Col span={12}>
-                      <VraCard border>
-                        <CardDemo />
-                      </VraCard>
+                      <CardDemo />
                     </Col>
                   </Row>
                 </Typography.Paragraph>

@@ -1,5 +1,5 @@
 <template>
-  <vra-card headerStyle="font-weight: bold; font-size: 16px;">
+  <vra-card border headerStyle="font-weight: bold; font-size: 16px;">
     <template v-slot:title> 这是使用vue模块开发的 </template>
     <p>标题使用props.title或title插槽</p>
     <p>内容默认插槽</p>
