@@ -74,7 +74,7 @@ export default ({ command }: ConfigEnv): UserConfigExport => {
         localsConvention: 'camelCase' // 默认只支持驼峰，修改为同事支持横线和驼峰
       },
       preprocessorOptions: {
-        scss: { additionalData: `@import "${srcPath}/styles/vars.scss";` },
+        scss: { additionalData: `@import "@/styles/vars.scss";` },
         less: {
           javascriptEnabled: true
         }
