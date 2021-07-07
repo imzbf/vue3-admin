@@ -58,7 +58,7 @@ export default defineComponent({
           <main class={style.layoutMain}>
             {/* https://github.com/vuejs/vue-router-next/issues/716#issuecomment-759521287 */}
             <RouterView>
-              {({ Component, route }: any) => {
+              {({ Component }: any) => {
                 return (
                   <KeepAlive include={store.state.setting.cacheList}>
                     <Component />

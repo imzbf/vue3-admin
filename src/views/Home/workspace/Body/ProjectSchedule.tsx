@@ -1,7 +1,7 @@
-import { defineComponent, reactive } from 'vue';
+import { defineComponent } from 'vue';
 import { RouterLink } from 'vue-router';
 import FeCard from '@/components/Card';
-import { Card, Progress, Button, Avatar } from 'ant-design-vue';
+import { Card, Avatar } from 'ant-design-vue';
 import IconFont from '@/components/IconFont';
 import styles from '../index.module.scss';
 

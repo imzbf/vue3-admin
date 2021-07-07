@@ -8,7 +8,7 @@ export default defineComponent({
       default: '1'
     }
   },
-  setup(props, { slots }) {
+  setup() {
     return () => (
       <>
         <div class="c-tab">

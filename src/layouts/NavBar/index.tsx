@@ -1,4 +1,4 @@
-import { defineComponent, reactive, ref } from 'vue';
+import { defineComponent, reactive } from 'vue';
 import { RouterLink } from 'vue-router';
 import { useStore } from 'vuex';
 import { key } from '@/store';
@@ -34,7 +34,6 @@ import MyIcon from '@/components/IconFont';
 import Message from './Message';
 import Notification from './Notification';
 import Todo from './Todo';
-import Card from '@/components/Card';
 
 // 同时设置props的vue属性和ts类型，setup会报错
 // interface NavBarPropsType {

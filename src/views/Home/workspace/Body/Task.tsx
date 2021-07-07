@@ -23,7 +23,7 @@ const columns = [
     title: '操作',
     align: 'center',
     key: 'action',
-    customRender({ record }: any) {
+    customRender() {
       return (
         <Button size="small" type="link">
           详情
