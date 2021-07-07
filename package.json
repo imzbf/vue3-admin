@@ -19,7 +19,7 @@
     "dev": "vite serve",
     "build": "vite build",
     "build:preview": "vite build --mode preview",
-    "lint": "eslint --fix --ext .ts,.tsx,.md,.json src"
+    "lint": "eslint --fix --ext .ts,.tsx,.json src"
   },
   "dependencies": {
     "@ant-design/icons-vue": "^6.0.1",
@@ -60,8 +60,10 @@
   "eslintConfig": {
     "root": true,
     "env": {
+      "browser": true,
       "node": true
     },
+    "parser": "@typescript-eslint/parser",
     "extends": [
       "plugin:vue/vue3-essential",
       "eslint:recommended",
@@ -69,12 +71,13 @@
       "@vue/prettier",
       "@vue/prettier/@typescript-eslint"
     ],
-    "parserOptions": {
-      "ecmaVersion": 2020
-    },
+    "plugins": [
+      "@typescript-eslint"
+    ],
     "rules": {
+      "@typescript-eslint/explicit-module-boundary-types": "off",
       "@typescript-eslint/no-explicit-any": "off",
-      "@typescript-eslint/explicit-module-boundary-types": "off"
+      "@typescript-eslint/no-empty-function": "off"
     }
   },
   "prettier": {
