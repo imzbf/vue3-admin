@@ -5,8 +5,6 @@ import vueJsx from '@vitejs/plugin-vue-jsx';
 import vue from '@vitejs/plugin-vue';
 import viteAntdTheme, { ThemeEntry, AntdThemeOptions } from 'vite-plugin-antd-theme';
 
-const srcPath = path.resolve(__dirname, './src');
-
 const themesEntry: Array<ThemeEntry> = [
   // 暗黑主题
   {
