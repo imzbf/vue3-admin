@@ -983,6 +983,13 @@ copy-anything@^2.0.1:
   dependencies:
     is-what "^3.12.0"
 
+copy-to-clipboard@^3.3.1:
+  version "3.3.1"
+  resolved "https://registry.nlark.com/copy-to-clipboard/download/copy-to-clipboard-3.3.1.tgz#115aa1a9998ffab6196f93076ad6da3b913662ae"
+  integrity sha1-EVqhqZmP+rYZb5MHatbaO5E2Yq4=
+  dependencies:
+    toggle-selection "^1.0.6"
+
 core-js@^3.12.1:
   version "3.12.1"
   resolved "https://registry.nlark.com/core-js/download/core-js-3.12.1.tgz?cache=0&sync_timestamp=1620508219639&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fcore-js%2Fdownload%2Fcore-js-3.12.1.tgz#6b5af4ff55616c08a44d386f1f510917ff204112"
@@ -1976,6 +1983,20 @@ make-dir@^2.1.0:
     pify "^4.0.1"
     semver "^5.6.0"
 
+marked@^2.1.3:
+  version "2.1.3"
+  resolved "https://registry.nlark.com/marked/download/marked-2.1.3.tgz#bd017cef6431724fd4b27e0657f5ceb14bff3753"
+  integrity sha1-vQF872Qxck/Usn4GV/XOsUv/N1M=
+
+md-editor-v3@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.npmjs.org/md-editor-v3/-/md-editor-v3-1.0.0.tgz#a591bc3d9e7021692836976ebba9cf533f29e984"
+  integrity sha512-aQr93YJcQP3Llsc4gVusphd/qfdDKRxb3FsQBHzFbbObJKqGFEKYcZyx+TWS0n7cqnxe97CMo+N0bFdM/zLdGw==
+  dependencies:
+    copy-to-clipboard "^3.3.1"
+    marked "^2.1.3"
+    screenfull "^5.1.0"
+
 merge-source-map@^1.1.0:
   version "1.1.0"
   resolved "https://registry.npm.taobao.org/merge-source-map/download/merge-source-map-1.1.0.tgz#2fdde7e6020939f70906a68f2d7ae685e4c8c646"
@@ -2691,6 +2712,11 @@ to-regex-range@^5.0.1:
   integrity sha1-FkjESq58jZiKMmAY7XL1tN0DkuQ=
   dependencies:
     is-number "^7.0.0"
+
+toggle-selection@^1.0.6:
+  version "1.0.6"
+  resolved "https://registry.npm.taobao.org/toggle-selection/download/toggle-selection-1.0.6.tgz#6e45b1263f2017fa0acc7d89d78b15b8bf77da32"
+  integrity sha1-bkWxJj8gF/oKzH2J14sVuL932jI=
 
 tslib@2.0.3:
   version "2.0.3"
