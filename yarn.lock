@@ -1988,10 +1988,10 @@ marked@^2.1.3:
   resolved "https://registry.nlark.com/marked/download/marked-2.1.3.tgz#bd017cef6431724fd4b27e0657f5ceb14bff3753"
   integrity sha1-vQF872Qxck/Usn4GV/XOsUv/N1M=
 
-md-editor-v3@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.npmjs.org/md-editor-v3/-/md-editor-v3-1.0.0.tgz#a591bc3d9e7021692836976ebba9cf533f29e984"
-  integrity sha512-aQr93YJcQP3Llsc4gVusphd/qfdDKRxb3FsQBHzFbbObJKqGFEKYcZyx+TWS0n7cqnxe97CMo+N0bFdM/zLdGw==
+md-editor-v3@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.npmjs.org/md-editor-v3/-/md-editor-v3-1.1.0.tgz#7142c72e0b76a92764351228b669378a5d3bf29b"
+  integrity sha512-JRxcky99Ku7n9iycwqzz+tUWUNqPdjP3N7iUUPA59IFzckf5rqP/W7pcFOku7VqJf0wSxtVzecPOZE369oYFjg==
   dependencies:
     copy-to-clipboard "^3.3.1"
     marked "^2.1.3"
