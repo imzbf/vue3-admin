@@ -1,7 +1,7 @@
 .layout-bar {
   display: flex;
   justify-content: space-between;
-  border-bottom: 1px solid $borderColor;
+  border-bottom: 1px solid @border-color-base;
 
   .layout-bar-left,
   .layout-bar-right {
@@ -33,26 +33,32 @@
       transition: all 0.3s;
 
       &:hover {
-        background-color: rgb(244, 244, 245);
+        background-color: @item-hover-bg;
       }
     }
   }
 }
 
-.message {
-  :global {
-    .ant-list-item-meta {
-      .ant-list-item-meta-avatar {
-        margin-top: 4px;
-      }
+.layout-bar-link {
+  color: inherit;
 
-      .ant-list-item-meta-title {
-        font-weight: 400;
-      }
+  &:hover {
+    color: inherit;
+  }
+}
 
-      .ant-list-item-meta-description {
-        font-size: 12px;
-      }
+.layout-bar-message {
+  .ant-list-item-meta {
+    .ant-list-item-meta-avatar {
+      margin-top: 4px;
+    }
+
+    .ant-list-item-meta-title {
+      font-weight: 400;
+    }
+
+    .ant-list-item-meta-description {
+      font-size: 12px;
     }
   }
 }
@@ -64,25 +70,7 @@
     0 12px 48px 16px rgba(0, 0, 0, 0.03);
 
   .notice-content {
-    background-color: $bgColor;
+    background-color: @component-background;
     padding: 10px;
-  }
-}
-
-:global(.theme-dark) {
-  .notice-content {
-    background-color: $darkBgColor;
-  }
-
-  .layout-bar {
-    border-color: $darkBorderColor;
-
-    .layout-bar-right {
-      li {
-        &:hover {
-          background-color: rgb(29, 29, 29);
-        }
-      }
-    }
   }
 }

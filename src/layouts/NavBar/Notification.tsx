@@ -1,7 +1,7 @@
 import { defineComponent, reactive } from 'vue';
 import { Avatar, List } from 'ant-design-vue';
 
-import styles from './index.module.scss';
+import './index.less';
 
 interface DataItem {
   avatar: string;
@@ -39,7 +39,6 @@ export default defineComponent({
 
     return () => (
       <List
-        class={styles.notification}
         dataSource={data.list}
         renderItem={({ item }: { item: DataItem; index: number }) => {
           return (

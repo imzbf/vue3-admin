@@ -27,7 +27,7 @@ import {
   UserOutlined
 } from '@ant-design/icons-vue';
 
-import style from './index.module.scss';
+import './index.less';
 
 import MyIcon from '@/components/IconFont';
 
@@ -99,16 +99,16 @@ export default defineComponent({
     }
 
     return () => (
-      <div class={style['layout-bar']}>
-        <ul class={style['layout-bar-left']}>
-          <li onClick={adjustMenu} class={style['cper']}>
+      <div class="layout-bar">
+        <ul class="layout-bar-left">
+          <li onClick={adjustMenu} class="cper">
             {store.state.setting.aside === 'open' ? (
               <MenuFoldOutlined />
             ) : (
               <MenuUnfoldOutlined />
             )}
           </li>
-          <li class={style['breadcrumb-help']}>
+          <li class="breadcrumb-help">
             <Breadcrumb separator="/">
               {store.state.setting.breadcrumbs.map((breadcrumb, index) => (
                 <Breadcrumb.Item key={breadcrumb + index}>{breadcrumb}</Breadcrumb.Item>
@@ -116,15 +116,15 @@ export default defineComponent({
             </Breadcrumb>
           </li>
         </ul>
-        <ul class={style['layout-bar-right']}>
+        <ul class="layout-bar-right">
           <Dropdown
-            overlayClassName={style['notice-wrapper']}
+            overlayClassName="notice-wrapper"
             trigger={['click']}
             placement="bottomCenter"
             getPopupContainer={() => document.querySelector('.theme-wrapper')}
             overlay={
               <>
-                <div class={style['notice-content']}>
+                <div class="notice-content">
                   <Tabs defaultActiveKey={1}>
                     <Tabs.TabPane key={1} tab="通知">
                       <Notification />
@@ -141,7 +141,7 @@ export default defineComponent({
             }
           >
             <li>
-              <Badge dot class={style['item']}>
+              <Badge dot>
                 <BellOutlined />
               </Badge>
             </li>
@@ -189,12 +189,12 @@ export default defineComponent({
             overlay={
               <Menu>
                 <Menu.Item>
-                  <RouterLink to="/user">
+                  <RouterLink to="/user" class="layout-bar-link">
                     <UserOutlined /> 个人中心
                   </RouterLink>
                 </Menu.Item>
                 <Menu.Item>
-                  <RouterLink to="/user/setting">
+                  <RouterLink to="/user/setting" class="layout-bar-link">
                     <SettingOutlined /> 个人设置
                   </RouterLink>
                 </Menu.Item>
