@@ -74,7 +74,8 @@ export default ({ command }: ConfigEnv): UserConfigExport => {
       preprocessorOptions: {
         scss: { additionalData: `@import "@/styles/vars.scss";` },
         less: {
-          javascriptEnabled: true
+          javascriptEnabled: true,
+          additionalData: `@import "@/styles/vars.less";`
         }
       }
     }
