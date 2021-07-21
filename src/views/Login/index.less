@@ -1,4 +1,4 @@
-$borderRadius: 6px;
+@borderRadius: 6px;
 
 .login {
   width: 100%;
@@ -11,10 +11,10 @@ $borderRadius: 6px;
   .login-container {
     width: 760px;
     // TODO 这个我也不知道咋调好看
-    box-shadow: 0px 14px 20px #c0c4cc;
+    box-shadow: 0px 14px 20px @shadow-color;
     // filter: drop-shadow(0px 14px 20px #c0c4cc);
     // background-color: transparent;
-    border-radius: $borderRadius;
+    border-radius: @borderRadius;
     display: flex;
 
     .login-form,
@@ -25,9 +25,9 @@ $borderRadius: 6px;
     }
 
     .login-form {
-      background-color: rgb(255, 255, 255);
-      border-top-left-radius: $borderRadius;
-      border-bottom-left-radius: $borderRadius;
+      background-color: @component-background;
+      border-top-left-radius: @borderRadius;
+      border-bottom-left-radius: @borderRadius;
       padding: 14px;
       display: flex;
       flex-direction: column;
@@ -90,8 +90,8 @@ $borderRadius: 6px;
 
     .login-welcome {
       background-color: #607d8b;
-      border-top-right-radius: $borderRadius;
-      border-bottom-right-radius: $borderRadius;
+      border-top-right-radius: @borderRadius;
+      border-bottom-right-radius: @borderRadius;
       color: #fff;
       display: flex;
       flex-direction: column;
@@ -111,28 +111,6 @@ $borderRadius: 6px;
     .ant-input-lg {
       font-size: 14px;
       font-weight: 600;
-    }
-  }
-}
-
-:global(.theme-dark) {
-  .login {
-    .login-container {
-      box-shadow: 0px 0 1px 1px #292929;
-
-      .login-form {
-        background-color: #000;
-
-        ul.oauth {
-          li {
-            &:hover {
-              .login-icon {
-                color: rgb(65, 65, 65);
-              }
-            }
-          }
-        }
-      }
     }
   }
 }
