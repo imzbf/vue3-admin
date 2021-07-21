@@ -80,8 +80,8 @@ export default defineComponent({
         inlineCollapsed={aside.value}
         // class="skin-dark"
         theme={store.state.setting.theme === 'light' ? 'light' : 'dark'}
-        defaultSelectedKeys={store.state.setting.selectedKeys}
-        defaultOpenKeys={store.state.setting.openKeys}
+        selectedKeys={store.state.setting.selectedKeys}
+        openKeys={store.state.setting.openKeys}
         // background-color="#1d1e23"
         // text-color="#eee"
         // collapse-transition={false}

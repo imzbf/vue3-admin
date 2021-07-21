@@ -7,7 +7,7 @@ import Menu from './Menu';
 import NavBar from './NavBar';
 import LogoImg from '@/assets/logo.png';
 
-import style from './index.module.scss';
+import './index.less';
 
 import Setting from './Setting';
 
@@ -23,8 +23,8 @@ export default defineComponent({
     // 侧边栏样式
     const layoutAsideClass = computed(() => {
       return store.state.setting.aside === 'open'
-        ? style['layout-aside']
-        : `${style['layout-aside']} ${style['layout-aside-close']}`;
+        ? 'layout-aside'
+        : 'layout-aside layout-aside-close';
     });
 
     const data = reactive({
@@ -32,30 +32,30 @@ export default defineComponent({
     });
 
     return () => (
-      <section class={style.wrapper}>
+      <section class="wrapper">
         <div class={layoutAsideClass.value}>
-          <header class={style.logo}>
+          <header class="logo">
             <img src={LogoImg} />
             {asideOpen.value && <span>Vue3-Admin</span>}
           </header>
-          <div class={style['menu-container']}>
+          <div class="menu-container">
             <Menu />
           </div>
           {asideOpen.value && (
-            <footer class={style.copyright}>
-              <span>@2020 zbf</span>
+            <footer class="copyright">
+              <span>@2020 imbf.cc</span>
             </footer>
           )}
         </div>
-        <div class={style.layout}>
-          <header class={style.layoutHeader}>
+        <div class="layout">
+          <header class="layout-header">
             <NavBar
               setSettingVisible={(val: boolean) => {
                 data.settingVisible = val;
               }}
             />
           </header>
-          <main class={style.layoutMain}>
+          <main class="layout-main">
             {/* https://github.com/vuejs/vue-router-next/issues/716#issuecomment-759521287 */}
             <RouterView>
               {({ Component }: any) => {
@@ -68,7 +68,7 @@ export default defineComponent({
             </RouterView>
           </main>
         </div>
-        <div class={style.drawer}>
+        <div class="drawer">
           <Setting
             visible={data.settingVisible}
             setVisible={() => {
