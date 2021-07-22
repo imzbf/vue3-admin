@@ -10,6 +10,12 @@
     <div id="app"></div>
     <script type="module" src="/src/main.ts"></script>
     <link rel="stylesheet/less" type="text/css" href="/static/color.less" />
+    <script>
+      window.less = {
+        async: false,
+        env: 'production' //production  development
+      };
+    </script>
     <script src="/static/libs/less.min.js"></script>
   </body>
 </html>
