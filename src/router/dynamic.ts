@@ -20,7 +20,6 @@ export interface ViewList {
   user_setting: () => Promise<any>;
   // 表格
   table_base: () => Promise<any>;
-  table_dynamic: () => Promise<any>;
   table_query: () => Promise<any>;
   // 错误
   error_403: () => Promise<any>;
@@ -50,7 +49,6 @@ const DynamisList: ViewList = {
   user_setting: () => import('@/views/User/Setting'),
   // 表格
   table_base: () => import('@/views/Table/Basic'),
-  table_dynamic: () => import('@/views/Table/Server'),
   table_query: () => import('@/views/Table/Query'),
   // 错误
   error_403: () => import('@/views/Error/403'),
