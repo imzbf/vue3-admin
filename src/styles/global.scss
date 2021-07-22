@@ -131,6 +131,14 @@ body,
   }
 }
 
+.normal-link {
+  color: inherit;
+
+  &:hover {
+    color: inherit;
+  }
+}
+
 .view-space {
   padding: 14px;
 }

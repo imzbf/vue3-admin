@@ -6,7 +6,7 @@ import {
   CSSProperties
 } from 'vue';
 import { getSlot } from '@/utils/vue-tsx';
-import './index.scss';
+import './index.less';
 
 import classnames from 'classnames';
 

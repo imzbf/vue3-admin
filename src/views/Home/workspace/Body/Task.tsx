@@ -2,7 +2,7 @@ import { defineComponent, reactive } from 'vue';
 import FeCard from '@/components/Card';
 import { Table, Progress, Button } from 'ant-design-vue';
 import IconFont from '@/components/IconFont';
-import styles from '../index.module.scss';
+import '../index.less';
 
 const columns = [
   {
@@ -72,7 +72,7 @@ const Task = defineComponent({
         class="va-mb"
         title={
           <>
-            <IconFont type="icon-shouye" class={styles['title-icon']} />
+            <IconFont type="icon-shouye" class="title-icon" />
             我的代办
           </>
         }

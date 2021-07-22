@@ -10,6 +10,7 @@
   position: relative;
   border-radius: 2px;
   transition: all 0.3s;
+  background-color: @component-background;
 
   .vra-card-header {
     position: relative;
@@ -17,7 +18,7 @@
     line-height: 42px;
     font-size: 14px;
     padding: 0px 15px;
-    border-bottom: 1px solid $borderColor;
+    border-bottom: 1px solid @border-color-base;
     border-radius: 2px 2px 0px 0px;
     display: flex;
     justify-content: space-between;
@@ -31,17 +32,5 @@
 }
 
 .vra-card-border {
-  border: 1px solid $borderColor;
-}
-
-.theme-dark {
-  .vra-card {
-    .vra-card-header {
-      border-color: $darkBorderColor;
-    }
-  }
-
-  .vra-card-border {
-    border-color: $darkBorderColor;
-  }
+  border: 1px solid @border-color-base;
 }

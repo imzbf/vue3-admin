@@ -1,9 +1,12 @@
 .workspace {
-  .header {
+  background-color: @page-background;
+
+  &-header {
     display: flex;
     justify-content: space-between;
-    border-bottom: 1px solid $borderColor;
+    border-bottom: 1px solid @border-color-base;
     padding: 20px 10px;
+    background-color: @component-background;
 
     .welcome {
       .avatar {
@@ -44,7 +47,7 @@
     }
   }
 
-  .body {
+  &-body {
     .title-icon {
       font-size: 16px;
       padding-right: 4px;
@@ -115,18 +118,18 @@
   }
 }
 
-:global(.theme-dark) {
-  .workspace {
-    .header {
-      border-color: $darkBorderColor;
-    }
+// :global(.theme-dark) {
+//   .workspace {
+//     .header {
+//       border-color: $darkBorderColor;
+//     }
 
-    .project {
-      :global {
-        .ant-card-grid-hoverable:hover {
-          box-shadow: 0 0 8px rgb(58, 59, 70);
-        }
-      }
-    }
-  }
-}
+//     .project {
+//       :global {
+//         .ant-card-grid-hoverable:hover {
+//           box-shadow: 0 0 8px rgb(58, 59, 70);
+//         }
+//       }
+//     }
+//   }
+// }

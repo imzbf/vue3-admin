@@ -2,7 +2,7 @@ import { defineComponent, reactive } from 'vue';
 import FeCard from '@/components/Card';
 import { List, Avatar } from 'ant-design-vue';
 import IconFont from '@/components/IconFont';
-import styles from '../index.module.scss';
+import '../index.less';
 
 interface DataItem {
   title: JSX.Element;
@@ -102,7 +102,7 @@ const ProjectSchedule = defineComponent({
         class="va-mb"
         title={
           <>
-            <IconFont type="icon-dongtai" class={styles['title-icon']} />
+            <IconFont type="icon-dongtai" class="title-icon" />
             动态
           </>
         }

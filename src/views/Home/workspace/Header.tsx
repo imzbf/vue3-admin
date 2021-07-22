@@ -1,29 +1,29 @@
 import { Avatar, Statistic } from 'ant-design-vue';
 import IconFont from '@/components/IconFont';
 
-import styles from './index.module.scss';
+import './index.less';
 
 const VITE_BASE = import.meta.env.VITE_BASE;
 
 export default () => (
-  <div class={styles.header}>
-    <div class={styles.welcome}>
-      <div class={styles.avatar}>
+  <div class="workspace-header">
+    <div class="welcome">
+      <div class="avatar">
         <Avatar shape="circle" size={60} src={`${VITE_BASE}/static/img/boy01.jpg`} />
       </div>
-      <div class={styles.msg}>
-        <div class={styles.hello}>早上好，毛利小五郎，开始奋斗吧！</div>
-        <div class={styles.weather}>
-          <IconFont type="icon-tianqi" class={styles.icon} />
+      <div class="msg">
+        <div class="hello">早上好，毛利小五郎，开始奋斗吧！</div>
+        <div class="weather">
+          <IconFont type="icon-tianqi" class="icon" />
           <span>红火大太阳，33℃ - 41℃，建议你不要建议我建议你别去上班！</span>
         </div>
       </div>
     </div>
-    <div class={styles.todo}>
+    <div class="todo">
       <Statistic
-        class={styles['todo-item']}
+        class="todo-item"
         title={
-          <span class={styles['item-title']}>
+          <span class="item-title">
             <IconFont type="icon-beOnDutyIssue" /> <span>issues</span>
           </span>
         }
@@ -31,9 +31,9 @@ export default () => (
         value={13}
       />
       <Statistic
-        class={styles['todo-item']}
+        class="todo-item"
         title={
-          <span class={styles['item-title']}>
+          <span class="item-title">
             <IconFont type="icon-renwu" /> <span>任务</span>
           </span>
         }
@@ -41,9 +41,9 @@ export default () => (
         value={13}
       />
       <Statistic
-        class={styles['todo-item']}
+        class="todo-item"
         title={
-          <span class={styles['item-title']}>
+          <span class="item-title">
             <IconFont type="icon-youjian" /> <span>邮件</span>
           </span>
         }

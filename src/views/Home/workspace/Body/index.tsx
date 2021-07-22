@@ -1,5 +1,5 @@
 import { Row, Col } from 'ant-design-vue';
-import styles from '../index.module.scss';
+import '../index.less';
 
 import ProjectSchedule from './ProjectSchedule';
 import CommonlyUsed from './CommonlyUsed';
@@ -8,7 +8,7 @@ import Record from './Record';
 import Team from './Team';
 
 export default () => (
-  <div class={`view-space ${styles.body}`}>
+  <div class={`view-space workspace-body`}>
     <Row gutter={[14, 14]}>
       <Col span={16}>
         <ProjectSchedule />

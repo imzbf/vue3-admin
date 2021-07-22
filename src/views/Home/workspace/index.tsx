@@ -2,13 +2,13 @@ import { defineComponent } from 'vue';
 
 import Header from './Header';
 import Body from './Body';
-import styles from './index.module.scss';
+import './index.less';
 
 const WorkSpace = defineComponent({
   name: 'ViewHomeWorkspace',
   setup() {
     return () => (
-      <div class={styles.workspace}>
+      <div class="workspace">
         <Header />
         <Body />
       </div>

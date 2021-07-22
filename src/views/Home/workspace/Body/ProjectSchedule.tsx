@@ -3,7 +3,7 @@ import { RouterLink } from 'vue-router';
 import FeCard from '@/components/Card';
 import { Card, Avatar } from 'ant-design-vue';
 import IconFont from '@/components/IconFont';
-import styles from '../index.module.scss';
+import '../index.less';
 
 const VITE_BASE = import.meta.env.VITE_BASE;
 
@@ -21,16 +21,20 @@ const ProjectSchedule = defineComponent({
     return () => {
       return (
         <FeCard
-          class={`va-mb ${styles.project}`}
+          class={`va-mb project`}
           title={
             <>
-              <IconFont type="icon-shouye" class={styles['title-icon']} />
+              <IconFont type="icon-shouye" class="title-icon" />
               进行中的项目
             </>
           }
           bodyClass="clear"
           bodyStyle={{ paddingTop: 10 }}
-          func={<RouterLink to="/project">全部项目</RouterLink>}
+          func={
+            <RouterLink to="/project" class="normal-link">
+              全部项目
+            </RouterLink>
+          }
         >
           {[1, 2, 3, 4, 5].map((item) => {
             return (
@@ -41,7 +45,7 @@ const ProjectSchedule = defineComponent({
                   avatar={<Avatar src={proj.avatar} />}
                   key={`project-item-${item}`}
                 />
-                <div class={styles.footer}>
+                <div class="footer">
                   <a href="#">{proj.team}</a> <span>{proj.date}</span>
                 </div>
               </Card.Grid>
