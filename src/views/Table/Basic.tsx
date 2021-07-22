@@ -1,4 +1,4 @@
-import { defineComponent, reactive } from 'vue';
+import { defineComponent, onMounted, reactive, ref } from 'vue';
 import {
   Card,
   Row,
@@ -12,10 +12,10 @@ import {
   Menu,
   Progress
 } from 'ant-design-vue';
-import tablStyles from './index.module.scss';
+import './index.less';
 import { PlusOutlined } from '@ant-design/icons-vue';
-import { key } from '@/store';
-import { useStore } from 'vuex';
+
+import { getBaseTableList, getRadioStatus } from '@/apis/table';
 
 interface RadioOptions {
   name: string;
@@ -23,40 +23,28 @@ interface RadioOptions {
 }
 export default defineComponent({
   name: 'ViewTableBasic',
-  mounted() {
-    // 设置列表初始化数据
-    this.getRadioStatus();
-    this.getBaseTableList();
-  },
-  methods: {
-    getRadioStatus() {
-      const store = useStore(key);
-      store.dispatch('baseTable/getRadioStatus');
-    },
-    getBaseTableList() {
-      const store = useStore(key);
-      store.dispatch('baseTable/getBaseTableList', {
-        pageNo: 1,
-        pageSize: 10
-      });
-    },
-    statusChange(e: Event) {
-      console.log(e);
-    }
-  },
-  components: {
-    PlusOutlined,
-    Radio
-  },
-  props: {},
   setup() {
-    const store = useStore(key);
+    // 查询参数
     const data = reactive({
       statusValue: 'all',
       pageNo: 1,
       pageSize: 10,
       loading: false
     });
+
+    // 表格内容
+    const tableData = reactive<{ dataSourceList: any; total: number }>({
+      dataSourceList: [],
+      total: 0
+    });
+
+    // 状态
+    const statusList = ref([
+      { name: '全部', value: 'all' },
+      { name: '进行中', value: 'doing' },
+      { name: '等待中', value: 'wating' }
+    ]);
+
     // 状态改变
     const statusChangeEvent = ({ target }: { target: any }) => {
       data.statusValue = target.value;
@@ -65,12 +53,13 @@ export default defineComponent({
     // 请求数据
     const getDataList = () => {
       data.loading = true;
-      store
-        .dispatch('baseTable/getBaseTableList', {
-          pageNo: data.pageNo,
-          pageSize: data.pageSize
+
+      getBaseTableList(data.pageNo, data.pageSize)
+        .then(({ records, total }) => {
+          tableData.dataSourceList = records;
+          tableData.total = total;
         })
-        .then(() => {
+        .finally(() => {
           data.loading = false;
         });
     };
@@ -104,45 +93,47 @@ export default defineComponent({
       ];
     };
 
+    onMounted(() => {
+      getDataList();
+    });
+
     return () => (
-      <section class={tablStyles.baseTable}>
+      <section class="base-table">
         <Card>
           <Row>
-            <Col xs={24} sm={8} class={tablStyles.headerInfo}>
-              <span class={tablStyles.textGreyDark}>我的代办</span>
-              <span class={[tablStyles.dBlock, tablStyles.display2]}>8个任务</span>
+            <Col xs={24} sm={8} class="header-info">
+              <span class="text-grey-dark">我的代办</span>
+              <span class={['d-block', 'display-2']}>8个任务</span>
               <em></em>
             </Col>
-            <Col xs={24} sm={8} class={tablStyles.headerInfo}>
-              <span class={tablStyles.textGreyDark}>本周任务平均处理时间</span>
-              <span class={[tablStyles.dBlock, tablStyles.display2]}>24分钟</span>
+            <Col xs={24} sm={8} class="header-info">
+              <span class="text-grey-dark">本周任务平均处理时间</span>
+              <span class={['d-block', 'display-2']}>24分钟</span>
               <em></em>
             </Col>
-            <Col xs={24} sm={8} class={tablStyles.headerInfo}>
-              <span class={tablStyles.textGreyDark}>本周完成任务数</span>
-              <span class={[tablStyles.dBlock, tablStyles.display2]}>24个任务</span>
+            <Col xs={24} sm={8} class="header-info">
+              <span class="text-grey-dark">本周完成任务数</span>
+              <span class={['d-block', 'display-2']}>24个任务</span>
             </Col>
             <em></em>
           </Row>
         </Card>
 
         <Card>
-          <Row class={tablStyles.headerTitle} gutter={1}>
+          <Row class="header-title" gutter={1}>
             <Col span={2}>
               <h3>标准列表</h3>
             </Col>
-            {store.state.baseTable.statusList.length > 0 ? (
+            {statusList.value.length > 0 ? (
               <Col span={4} offset={14}>
                 <Radio.Group value={data.statusValue} onChange={statusChangeEvent}>
-                  {(store.state.baseTable.statusList as Array<RadioOptions>).map(
-                    (item: RadioOptions) => {
-                      return (
-                        <Radio.Button name={item.name} value={item.value}>
-                          {item.name}
-                        </Radio.Button>
-                      );
-                    }
-                  )}
+                  {(statusList.value as Array<RadioOptions>).map((item: RadioOptions) => {
+                    return (
+                      <Radio.Button name={item.name} value={item.value}>
+                        {item.name}
+                      </Radio.Button>
+                    );
+                  })}
                 </Radio.Group>
               </Col>
             ) : (
@@ -152,7 +143,7 @@ export default defineComponent({
               <Input.Search placeholder="请输入"></Input.Search>
             </Col>
           </Row>
-          <Button block type="dashed" class={tablStyles.btnPlus}>
+          <Button block type="dashed" class="btn-plus">
             <PlusOutlined />
             添加
           </Button>
@@ -161,16 +152,16 @@ export default defineComponent({
             loading={data.loading}
             pagination={{
               current: data.pageNo,
-              total: store.state.baseTable.total,
+              total: tableData.total,
               showQuickJumper: true,
               showSizeChanger: true,
               onChange: pageNoChange,
               showSizeChange: pageNoChange,
               onShowSizeChange: pageNoChange
             }}
-            dataSource={store.state.baseTable.dataSourceList}
+            dataSource={tableData.dataSourceList}
           >
-            {store.state.baseTable.dataSourceList.map((dataItem) => {
+            {tableData.dataSourceList.map((dataItem: any) => {
               return (
                 <List.Item actions={getMoreActions()}>
                   <List.Item.Meta
@@ -178,7 +169,7 @@ export default defineComponent({
                     title={<a>{dataItem.name}</a>}
                     avatar={<Avatar shape={'square'} src={dataItem.url}></Avatar>}
                   ></List.Item.Meta>
-                  <div class={tablStyles.widthMd}>
+                  <div class="width-md">
                     <Row>
                       <Col span={12}>
                         Owner{dataItem.statu}

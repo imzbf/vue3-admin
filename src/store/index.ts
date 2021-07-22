@@ -4,8 +4,7 @@ import { createStore, Store } from 'vuex';
 import setting, { SettingStateType } from './modules/setting';
 import menu, { MenuStateType } from './modules/menu';
 import user, { UserStateType } from './modules/user';
-import baseTable, { BaseTableType } from './modules/baseTable';
-import queryTable, { QueryTableType } from './modules/queryTable';
+
 // store的key
 export const key: InjectionKey<Store<StateType>> = Symbol();
 
@@ -13,8 +12,6 @@ export interface StateType {
   setting: SettingStateType;
   menu: MenuStateType;
   user: UserStateType;
-  baseTable: BaseTableType;
-  queryTable: QueryTableType;
 }
 
 const store = (() => {
@@ -27,22 +24,14 @@ const store = (() => {
     modules: {
       setting,
       menu,
-      user,
-      baseTable,
-      queryTable
+      user
     }
   });
   // 处理热更新时需要刷新页面，vuex才能继续使用
   if (import.meta.env.DEV) {
     import.meta.hot.accept(
-      [
-        './modules/menu',
-        './modules/setting',
-        './modules/user',
-        './modules/baseTable',
-        './modules/queryTable'
-      ],
-      ([resMenu, resSetting, resUser, resBaseTable, resQueryTable]: any[]) => {
+      ['./modules/menu', './modules/setting', './modules/user'],
+      ([resMenu, resSetting, resUser]: any[]) => {
         store.hotUpdate({
           getters: {
             token: (state: StateType) => state.user.token
@@ -52,9 +41,7 @@ const store = (() => {
           modules: {
             setting: resSetting,
             menu: resMenu,
-            user: resUser,
-            baseTable: resBaseTable,
-            queryTable: resQueryTable
+            user: resUser
           }
         });
       }

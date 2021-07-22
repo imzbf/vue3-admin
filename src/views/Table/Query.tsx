@@ -15,13 +15,13 @@ import {
   Badge
 } from 'ant-design-vue';
 import { defineComponent, onMounted, reactive } from 'vue';
-import queryTable from './index.module.scss';
-import { key } from '@/store';
-import { useStore } from 'vuex';
+import './index.less';
+
+import { getQueryTableList } from '@/apis/table';
+
 export default defineComponent({
   name: 'ViewTableQuery',
   setup() {
-    const store = useStore(key);
     // ----------------------（1）属性定义-------------------------------
     // 属性
     const data = reactive({
@@ -32,6 +32,11 @@ export default defineComponent({
       pageSize: 10,
       loading: false,
       selectedRowKeys: new Array<any>()
+    });
+
+    const tableData = reactive<{ dataSourceList: any; total: number }>({
+      dataSourceList: [],
+      total: 0
     });
 
     // 表格列
@@ -89,21 +94,21 @@ export default defineComponent({
 
     // ----------------------（2）API方法----------------------------------
     // 获取查询列表的数据
-    const getQueryTableList = () => {
+    const queryList = () => {
       data.loading = true;
-      store
-        .dispatch('queryTable/getQueryTableList', {
-          pageNo: data.pageNo,
-          pageSize: data.pageSize
+      getQueryTableList(data.pageNo, data.pageSize)
+        .then(({ records, total }) => {
+          tableData.dataSourceList = records;
+          tableData.total = total;
         })
-        .then(() => {
+        .finally(() => {
           data.loading = false;
         });
     };
 
     // -----------------------（3）生命周期--------------------------
     onMounted(() => {
-      getQueryTableList();
+      queryList();
     });
 
     // ------------------------（4）事件监听--------------------------
@@ -128,14 +133,14 @@ export default defineComponent({
     // (4.2)点击事件---查询列表
     const search = () => {
       data.pageNo = 1;
-      getQueryTableList();
+      queryList();
     };
 
     // (4.3)页码改变事件
     const pageChange = (...[pageNo, pageSize]: number[]) => {
       data.pageNo = pageNo;
       data.pageSize = pageSize;
-      getQueryTableList();
+      queryList();
     };
     // --------------------------------（5）组件-------------------------
     // 表格action组件
@@ -179,15 +184,15 @@ export default defineComponent({
 
     return () => (
       <section>
-        <section class={queryTable.queryTitle}>
-          <div class={queryTable.titleWrap}>
-            <h1 class={queryTable.h1}>查询表单</h1>
+        <section class="query-title">
+          <div class="title-wrap">
+            <h1>查询表单</h1>
           </div>
         </section>
-        <section class={queryTable.queryContent}>
+        <section class="query-content">
           <Card>
             <section>
-              <Form class={queryTable.antAdvancedSearchForm}>
+              <Form>
                 <Row gutter={24}>
                   <Col md={8} sm={24}>
                     <Form.Item label={'规则编号'}>
@@ -240,12 +245,12 @@ export default defineComponent({
                   ) : (
                     ''
                   )}
-                  <Col span={data.expand ? 24 : 8} class={queryTable.btnGroups}>
+                  <Col span={data.expand ? 24 : 8} class="btn-groups">
                     <Form.Item>
                       <Button type={'primary'} onClick={search}>
                         查询
                       </Button>
-                      <Button type={'default'} class={queryTable.btnMg}>
+                      <Button type={'default'} class="btn-mg">
                         重置
                       </Button>
 
@@ -267,7 +272,7 @@ export default defineComponent({
               <Button type={'primary'} icon={<PlusOutlined></PlusOutlined>}>
                 新建
               </Button>
-              <div class={queryTable.myMd}>
+              <div class="my-md">
                 <Alert message={getAlertMessage()} type={'info'} key="id"></Alert>
               </div>
               <Table
@@ -281,13 +286,13 @@ export default defineComponent({
                 pagination={{
                   current: data.pageNo,
                   pageSize: data.pageSize,
-                  total: store.state.queryTable.total,
+                  total: tableData.total,
                   showSizeChanger: true,
                   showQuickJumper: true,
                   onChange: pageChange,
                   onShowSizeChange: pageChange
                 }}
-                dataSource={store.state.queryTable.dataSourceList}
+                dataSource={tableData.dataSourceList}
               >
                 {columns.map((item) => {
                   if (item.orderable) {
