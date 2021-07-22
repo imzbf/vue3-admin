@@ -1,15 +1,20 @@
 import { defineComponent } from 'vue';
 import MdEditorTsx from './MdEditor';
-import MdEditorVue from './MdEditorVue.vue';
-import 'md-editor-v3/lib/style.css';
+import Docs from './Docs';
+import './index.less';
+
 export default defineComponent({
+  data() {
+    return {
+      type: 'jsx'
+    };
+  },
   render() {
     return (
-      <>
+      <div class="editor-demo-wrapper">
+        <Docs />
         <MdEditorTsx />
-        <br />
-        <MdEditorVue />
-      </>
+      </div>
     );
   }
 });
