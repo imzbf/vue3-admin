@@ -15,7 +15,7 @@ export default () => (
         <div class="hello">早上好，毛利小五郎，开始奋斗吧！</div>
         <div class="weather">
           <IconFont type="icon-tianqi" class="icon" />
-          <span>红火大太阳，33℃ - 41℃，建议你不要建议我建议你别去上班！</span>
+          <span>外面太阳很大，33℃ - 41℃，建议你不要建议我建议你别去上班！</span>
         </div>
       </div>
     </div>
