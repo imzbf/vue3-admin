@@ -1,7 +1,6 @@
 import { defineComponent } from 'vue';
 
 import { Col, Row } from 'ant-design-vue';
-import styles from './index.module.scss';
 
 import M1 from './M1';
 import M2 from './M2';
@@ -13,7 +12,7 @@ const Monitor = defineComponent({
   name: 'ViewHomeMonitor',
   setup() {
     return () => (
-      <div class={`view-space ${styles.monitor}`}>
+      <div class="view-space">
         <Row gutter={[14, 14]}>
           <Col span={16}>
             <M1 />

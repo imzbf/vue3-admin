@@ -4,7 +4,7 @@ import router from './router';
 import store, { key } from './store';
 // import 'ant-design-vue/dist/antd.css';
 import 'ant-design-vue/dist/antd.less';
-import './styles/global.scss';
+import './styles/global.less';
 import 'nprogress/nprogress.css';
 
 import { getToken } from '@/utils/biz';
