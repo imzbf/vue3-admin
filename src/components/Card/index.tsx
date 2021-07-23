@@ -37,8 +37,12 @@ const Card = defineComponent({
       type: [Object, String] as PropType<CSSProperties | string>,
       default: ''
     },
+    bodyPadding: {
+      type: Boolean as PropType<boolean>,
+      default: true
+    },
     border: {
-      type: Boolean,
+      type: Boolean as PropType<boolean>,
       defalut: false
     }
   },
@@ -51,7 +55,11 @@ const Card = defineComponent({
 
       const cardClass = classnames('vra-card', props.border && 'vra-card-border');
       const headerClass = classnames('vra-card-header', props.headerClass);
-      const bodyClass = classnames('vra-card-body', props.bodyClass);
+      const bodyClass = classnames(
+        'vra-card-body',
+        props.bodyClass,
+        !props.bodyPadding && 'vra-card-body-nopadding'
+      );
 
       return (
         <div class={cardClass}>
