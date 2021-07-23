@@ -8,9 +8,10 @@
   list-style: none;
   font-feature-settings: 'tnum';
   position: relative;
-  border-radius: 2px;
+  border-radius: 4px;
   transition: all 0.3s;
   background-color: @component-background;
+  box-shadow: 0 2px 12px 0 #00000010;
 
   .vra-card-header {
     position: relative;
@@ -18,7 +19,7 @@
     line-height: 42px;
     font-size: 14px;
     padding: 0px 15px;
-    border-bottom: 1px solid @border-color-base;
+    border-bottom: 1px solid @border-color-split;
     border-radius: 2px 2px 0px 0px;
     display: flex;
     justify-content: space-between;
@@ -36,5 +37,5 @@
 }
 
 .vra-card-border {
-  border: 1px solid @border-color-base;
+  border: 1px solid @border-color-split;
 }
