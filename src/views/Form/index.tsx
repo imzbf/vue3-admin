@@ -14,9 +14,11 @@ import {
   CheckboxGroup,
   Checkbox,
   RadioGroup,
-  Radio
+  Radio,
+  Textarea,
+  Rate
 } from 'ant-design-vue';
-import './index.less';
+import './style.less';
 
 import FeCard from '@/components/Card';
 
@@ -28,12 +30,13 @@ interface FormState {
   type: string[];
   resource: string;
   desc: string;
+  rate: number;
 }
 
-const fcp = 'form-base';
+const fbp = 'form-base';
 
 const Header = () => (
-  <Typography class={`${fcp}-header`}>
+  <Typography class={`${fbp}-header`}>
     <TypographyTitle level={4}>基础表单</TypographyTitle>
     <TypographyParagraph>
       表单页用于向用户收集或验证信息，基础表单常见于数据项较少的表单场景。
@@ -50,18 +53,19 @@ const Body = defineComponent({
       delivery: false,
       type: [],
       resource: '',
-      desc: ''
+      desc: '',
+      rate: 3.5
     });
     const onSubmit = () => {
       console.log('submit!', toRaw(formState));
     };
 
     return () => (
-      <div class={`${fcp}-body view-space`}>
+      <div class={`${fbp}-body view-space`}>
         <FeCard>
-          <div class={`${fcp}-body-wrapper`}>
+          <div class={`${fbp}-body-wrapper`}>
             <Form model={formState} labelCol={{ span: 4 }} wrapperCol={{ span: 14 }}>
-              <FormItem label="名称">
+              <FormItem label="内容标题">
                 <Input
                   value={formState.name}
                   onChange={(e) => (formState.name = e.target.value)}
@@ -79,21 +83,21 @@ const Body = defineComponent({
             <SelectOption value="beijing">Zone two</SelectOption>
           </Select>
         </FormItem> */}
-              <FormItem label="时间">
+              <FormItem label="创建时间">
                 <DatePicker
                   value={formState.date1}
                   onChange={(date) => (formState.date1 = date)}
                   showTime
-                  placeholder="点击选择"
+                  placeholder=""
                 />
               </FormItem>
-              <FormItem label="是否可用">
+              <FormItem label="内容状态">
                 <Switch
                   checked={formState.delivery}
                   onChange={(checked) => (formState.delivery = checked as boolean)}
                 />
               </FormItem>
-              <FormItem label="活动类型">
+              <FormItem label="内容标签">
                 <CheckboxGroup
                   value={formState.type}
                   onChange={(value) => (formState.type = value)}
@@ -109,7 +113,7 @@ const Body = defineComponent({
                   </Checkbox>
                 </CheckboxGroup>
               </FormItem>
-              <FormItem label="Resources">
+              <FormItem label="内容形式">
                 <RadioGroup
                   value={formState.resource}
                   onChange={(e) => (formState.resource = e.target.value)}
@@ -118,18 +122,25 @@ const Body = defineComponent({
                   <Radio value="2">Venue</Radio>
                 </RadioGroup>
               </FormItem>
-              <FormItem label="Activity form">
-                <Input
+              <FormItem label="内容描述">
+                <Textarea
                   value={formState.desc}
                   type="textarea"
+                  rows={4}
                   onChange={(e) => (formState.desc = e.target.value)}
+                />
+              </FormItem>
+              <FormItem label="内容评价">
+                <Rate
+                  value={formState.rate}
+                  onChange={(v: number) => (formState.rate = v)}
                 />
               </FormItem>
               <FormItem wrapperCol={{ span: 14, offset: 4 }}>
                 <Button type="primary" onClick={onSubmit}>
-                  Create
+                  确定
                 </Button>
-                <Button style="margin-left: 10px;">Cancel</Button>
+                <Button style="margin-left: 10px;">取消</Button>
               </FormItem>
             </Form>
           </div>
@@ -143,7 +154,7 @@ export default defineComponent({
   name: 'ViewForm',
   render() {
     return (
-      <div class={`${fcp}-demo`}>
+      <div class={`${fbp}-demo`}>
         <Header />
         <Body />
       </div>

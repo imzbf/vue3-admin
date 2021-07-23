@@ -1,0 +1,77 @@
+@fbp: form-base;
+@fcp: form-def;
+
+.@{fcp}-demo,
+.@{fbp}-demo {
+  background-color: @page-background;
+}
+
+.@{fbp}-demo {
+  background-color: @page-background;
+
+  .@{fbp}-header {
+    border-bottom: 1px solid @border-color-base;
+    padding: 1rem;
+    background-color: @component-background;
+  }
+  .@{fbp}-body {
+    &-wrapper {
+      width: 600px;
+      margin: 0.5rem auto;
+    }
+  }
+}
+
+.@{fcp}-demo {
+  .@{fcp}-wrapper {
+    display: flex;
+
+    .@{fcp}-left {
+      flex: 2;
+      margin-right: 7.5px;
+    }
+
+    .@{fcp}-right {
+      flex: 1;
+      margin-left: 7.5px;
+
+      .ant-checkbox-wrapper + .ant-checkbox-wrapper {
+        margin-left: 0;
+      }
+
+      .ant-checkbox-wrapper {
+        margin-right: 1.5rem;
+      }
+
+      .color-orange {
+        color: #e6a23c;
+      }
+      .color-gray {
+        color: #909399 !important;
+      }
+      .color-green {
+        color: #67c23a !important;
+      }
+      .color-blue {
+        color: #63a7fd !important;
+      }
+      .color-red {
+        color: #ff6169 !important;
+      }
+      .color-purple {
+        color: #ab8adc !important;
+      }
+      .color-white {
+        color: #988c8c !important;
+      }
+    }
+  }
+
+  .@{fcp}-content {
+    margin-top: 0.875rem;
+
+    .@{fcp}-editor {
+      border: none;
+    }
+  }
+}
