@@ -6,8 +6,6 @@ import {
   Form,
   FormItem,
   Input,
-  Select,
-  SelectOption,
   Button,
   DatePicker,
   Switch,
