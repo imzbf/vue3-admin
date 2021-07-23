@@ -21,7 +21,7 @@ const M1 = defineComponent({
     });
 
     return () => (
-      <Card title="Echarts Demo">
+      <Card border title="Echarts Demo">
         <div ref={chartRef} style={{ width: '100%', height: '200px' }} />
       </Card>
     );

@@ -10,6 +10,7 @@ const Team = defineComponent({
   setup() {
     return () => (
       <FeCard
+        border
         class={`va-mb team`}
         title={
           <>

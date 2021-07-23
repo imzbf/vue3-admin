@@ -7,6 +7,7 @@ import '../index.less';
 // 常用的
 const CommonlyUsed = () => (
   <FeCard
+    border
     class="va-mb"
     title={
       <>

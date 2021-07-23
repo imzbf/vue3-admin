@@ -41,7 +41,7 @@ const M1 = defineComponent({
     });
 
     return () => (
-      <Card class="va-mb" title="Echarts Demo">
+      <Card border class="va-mb" title="Echarts Demo">
         <div ref={chartRef} style={{ width: '100%', height: '600px' }} />
       </Card>
     );

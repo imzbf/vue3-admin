@@ -69,6 +69,7 @@ const Task = defineComponent({
     });
     return () => (
       <FeCard
+        border
         class="va-mb"
         title={
           <>

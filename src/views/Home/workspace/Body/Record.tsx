@@ -99,6 +99,7 @@ const ProjectSchedule = defineComponent({
 
     return () => (
       <FeCard
+        border
         class="va-mb"
         title={
           <>
