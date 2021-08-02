@@ -2008,10 +2008,10 @@ make-dir@^2.1.0:
     pify "^4.0.1"
     semver "^5.6.0"
 
-md-editor-v3@^1.2.0:
-  version "1.2.0"
-  resolved "https://registry.npmjs.org/md-editor-v3/-/md-editor-v3-1.2.0.tgz#886c4fa3a40fc3f8647216a69b1b916b85806b3d"
-  integrity sha512-Su8/vG3Ui17uFiHgSv/sTQAwHNUVetRBEAt6TTludWHYuG9egl4pVwBJWfjeKdOXZ6lJ4fv2Xf/N6zFWVkHXHw==
+md-editor-v3@^1.3.1:
+  version "1.3.1"
+  resolved "https://registry.npmjs.org/md-editor-v3/-/md-editor-v3-1.3.1.tgz#fcafd28ae4892b710a9ee5c7a82bb8367c913062"
+  integrity sha512-E1/Kh5ecv4AoUqN2JQqEEGZQSknqFBaZfhk843ahPJ7EjHqJEmD1TEmq3LPAGO2G4nkIvXFgdrcpwaZO0v/poQ==
 
 merge-source-map@^1.1.0:
   version "1.1.0"
