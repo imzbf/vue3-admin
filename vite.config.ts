@@ -36,9 +36,12 @@ const options: AntdThemeOptions = {
   customColorRegexArray: [/^fade\(.*\)$/] // An array of regex codes to match your custom color variable values so that code can identify that it's a valid color. Make sure your regex does not adds false positives.
 };
 
-export default ({ command }: ConfigEnv): UserConfigExport => {
+import { homepage } from './package.json';
+
+export default ({ command, mode }: ConfigEnv): UserConfigExport => {
+  console.log(command);
   return {
-    base: '/',
+    base: mode === 'preview' ? homepage : '/',
     server: {
       host: 'localhost',
       open: false,
