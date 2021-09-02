@@ -14,7 +14,7 @@
     "tsx"
   ],
   "license": "MIT",
-  "homepage": "https://imzbf.github.io/vue3-admin",
+  "homepage": "https://imzbf.github.io/vue3-admin/",
   "scripts": {
     "dev": "vite serve",
     "build": "vite build",
@@ -27,7 +27,7 @@
     "axios": "^0.21.1",
     "classnames": "^2.3.1",
     "echarts": "^5.0.2",
-    "md-editor-v3": "^1.4.1",
+    "md-editor-v3": "^1.4.2",
     "nprogress": "^0.2.0",
     "screenfull": "^5.1.0",
     "vue": "^3.1.5",
