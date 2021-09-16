@@ -19,7 +19,7 @@ export default defineComponent({
           modelValue={text.value}
           onChange={(v: string) => (text.value = v)}
           theme={theme.value}
-          editorName="editor-tsx"
+          editorId="editor-tsx"
         />
       </FeCard>
     );
