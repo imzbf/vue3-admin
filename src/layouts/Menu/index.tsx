@@ -69,7 +69,6 @@ const menuChildRender = (menuList: MenuType[]) => {
 
 export default defineComponent({
   // 组件需要申明props，setup方法中才能正确接收到props
-  props: {},
   setup() {
     const store = useStore(key);
     const aside = computed(() => store.state.setting.aside === 'close');
