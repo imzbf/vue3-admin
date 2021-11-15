@@ -14,5 +14,17 @@ export default defineConfig({
       '@': path.resolve(__dirname, './src')
     }
   },
-  plugins: [vue(), ElementPlus()]
+  css: {
+    preprocessorOptions: {
+      scss: {
+        additionalData: `@use "@/styles/element-var.scss" as *;`
+      }
+    }
+  },
+  plugins: [
+    vue(),
+    ElementPlus({
+      useSource: true
+    })
+  ]
 });
