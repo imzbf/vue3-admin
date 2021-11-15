@@ -1,3 +1,3 @@
 <template>
-  <router-view />
+  <div>仪表</div>
 </template>
