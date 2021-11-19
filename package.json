@@ -1,6 +1,6 @@
 {
   "name": "vue3-admin",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "author": {
     "name": "zbf",
     "url": "https://imbf.cc"
@@ -27,7 +27,7 @@
     "axios": "^0.21.1",
     "classnames": "^2.3.1",
     "echarts": "^5.0.2",
-    "md-editor-v3": "^1.7.0",
+    "md-editor-v3": "^1.7.1",
     "nprogress": "^0.2.0",
     "screenfull": "^5.1.0",
     "vue": "^3.1.5",
