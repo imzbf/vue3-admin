@@ -23,7 +23,7 @@ const baseTableExp = [
     publishTime: '@datetime("yyyy-MM-dd HH:mm")',
     'rate|0-100': 1,
     content: '@cparagraph(1 , 2)',
-    statu: '@boolean',
+    status: '@boolean',
     url: `${REMOTE_IMAGES_ADDRESS}@constellation`
   }
 ];

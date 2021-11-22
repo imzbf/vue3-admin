@@ -172,7 +172,7 @@ export default defineComponent({
                   <div class="width-md">
                     <Row>
                       <Col span={12}>
-                        Owner{dataItem.statu}
+                        Owner{dataItem.status}
                         <p>{dataItem.owner}</p>
                       </Col>
                       <Col span={12}>
@@ -183,7 +183,7 @@ export default defineComponent({
                     <Row>
                       <Col span={24}>
                         <Progress
-                          status={dataItem.statu ? 'active' : 'exception'}
+                          status={dataItem.status ? 'active' : 'exception'}
                           percent={dataItem.rate}
                         ></Progress>
                       </Col>
