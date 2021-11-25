@@ -141,6 +141,7 @@ const router = createRouter({
 
 router.beforeEach(async (to: RouteLocationNormalized, _, next: NavigationGuardNext) => {
   NProgress.start();
+  document.title = `${to.meta?.title || ''} - 管理系统`;
 
   const token = store.state.user.token;
   // 返回之前页面如有额外query参数可自行携带
@@ -172,7 +173,6 @@ router.beforeEach(async (to: RouteLocationNormalized, _, next: NavigationGuardNe
           .map((item: AdminRouteRecordRaw) => item.meta?.title)
       });
 
-      document.title = `${to.meta?.title || ''} - 管理系统`;
       next();
     }
   } else {

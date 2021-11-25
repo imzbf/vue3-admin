@@ -1,5 +1,5 @@
 <template>
-  <div class="login" id="login">
+  <div class="login" id="login" :style="{ background: `url(${loginBody})` }">
     <div class="login-container">
       <div class="login-asset">
         <img :src="loginBg" width="500" />
@@ -35,7 +35,12 @@
           </ElPopconfirm>
         </div>
         <div class="form-item">
-          <ElButton type="primary" @click="login" style="width: 100%" size="large"> 登录 </ElButton>
+          <ElButton type="primary" @click="login" style="width: 100%" :disabled="data.spinning">
+            <el-icon v-if="data.spinning" class="is-loading">
+              <Loading />
+            </el-icon>
+            登录
+          </ElButton>
         </div>
         <div class="form-item">
           <ElDivider>OR</ElDivider>
@@ -73,7 +78,7 @@
 </template>
 
 <script setup lang="ts">
-import { reactive, onMounted } from 'vue';
+import { reactive, onMounted, ref } from 'vue';
 import { useStore } from 'vuex';
 import { key } from '@/store';
 import '@/assets/iconfonts/login/iconfont';
@@ -82,16 +87,16 @@ import { onBeforeRouteLeave } from 'vue-router';
 import {
   ElMessage,
   ElIcon,
-  ElLoading,
   ElInput,
   ElCheckbox,
   ElPopconfirm,
   ElButton,
   ElDivider
 } from 'element-plus';
-import { User, Lock } from '@element-plus/icons';
+import { User, Lock, Loading } from '@element-plus/icons';
 
 const loginBg = new URL('../../assets/images/login-bg.svg', import.meta.url).href;
+const loginBody = new URL('../../assets/images/login-body.svg', import.meta.url).href;
 
 const data = reactive({
   info: {
