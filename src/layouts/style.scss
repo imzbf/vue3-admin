@@ -1,0 +1,85 @@
+// .hidden-words {
+//   overflow: hidden; //超出的文本隐藏
+//   text-overflow: ellipsis; //溢出用省略号显示
+//   white-space: nowrap; //溢出不换行
+// }
+
+// 黑色主题菜单背景色
+// $darkMenuBack: rgb(0, 17, 30);
+// // 白色主题菜单背景色
+// $lightMenuBack: rgb(255, 255, 255);
+
+.wrapper {
+  display: flex;
+  height: 100%;
+
+  .layout-aside {
+    width: 210px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    transition: all 0.2s;
+
+    .logo {
+      padding: 16px;
+      display: flex;
+      align-items: center;
+
+      img {
+        width: 32px;
+        height: 32px;
+      }
+
+      span {
+        font-size: 18px;
+        font-weight: 600;
+        padding-left: 10px;
+      }
+    }
+
+    .menu-container {
+      flex: 1 1;
+      max-height: 100%;
+      overflow-x: hidden;
+      overflow-y: auto;
+
+      &::-webkit-scrollbar {
+        width: 0 !important;
+      }
+    }
+
+    .copyright {
+      font-size: 14px;
+      padding: 16px;
+      text-align: center;
+
+      span {
+        line-height: 32px;
+      }
+    }
+  }
+
+  .layout-aside-close {
+    width: 64px;
+
+    .logo {
+      border-right: none;
+    }
+  }
+
+  .layout {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+
+    .layout-header {
+      background-color: #fff;
+    }
+
+    .layout-main {
+      flex: 1;
+      overflow: auto;
+      background-color: #fff;
+    }
+  }
+}

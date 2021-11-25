@@ -1,5 +1,36 @@
 <template>
-  <div>
+  <section class="wrapper">
+    <div :class="layoutAsideClass">
+      <header class="logo">
+        <img :src="LogoImg" />
+        <span v-if="asideOpen">Vue3-Admin</span>
+      </header>
+      <div class="menu-container">
+        <AdminMenu />
+      </div>
+      <footer v-if="asideOpen" class="copyright">
+        <span>@2020 imbf.cc</span>
+      </footer>
+    </div>
+    <div class="layout">
+      <!-- <header class="layout-header">
+        <NavBar @setSettingVisible="setSettingVisible" />
+      </header> -->
+      <main class="layout-main">
+        <!-- https://github.com/vuejs/vue-router-next/issues/716#issuecomment-759521287 -->
+        <!-- <RouterView v-slot="{ Component }">
+          <KeepAlive :include="store.state.setting.cacheList">
+            <Component :is="Component" />
+          </KeepAlive>
+        </RouterView> -->
+        <RouterView />
+      </main>
+    </div>
+    <!-- <div class="drawer">
+      <Setting visible={data.settingVisible} setVisible={() => { data.settingVisible = false; }} />
+    </div>  -->
+  </section>
+  <!-- <div>
     <el-menu
       active-text-color="#ffd04b"
       background-color="#545c64"
@@ -44,17 +75,37 @@
     <div>
       <router-view />
     </div>
-  </div>
+  </div> -->
 </template>
 
 <script lang="ts" setup>
-import { ElMenu, ElMenuItem, ElSubMenu, ElMenuItemGroup, ElIcon } from 'element-plus';
+import { computed, reactive } from 'vue';
+import { RouterView } from 'vue-router';
+import { useStore } from 'vuex';
+import { key } from '@/store';
+import AdminMenu from '@/layouts/Menu/index.vue';
 import { Location, Document, Menu as IconMenu, Setting } from '@element-plus/icons';
+import './style.scss';
 
-const handleOpen = (key: string, keyPath: string[]) => {
-  console.log(key, keyPath);
-};
-const handleClose = (key: string, keyPath: string[]) => {
-  console.log(key, keyPath);
+import LogoImg from '@/assets/logo.png';
+
+const store = useStore(key);
+
+const data = reactive({
+  settingVisible: false
+});
+
+// 侧边栏样式
+const layoutAsideClass = computed(() => {
+  return store.state.setting.aside === 'open' ? 'layout-aside' : 'layout-aside layout-aside-close';
+});
+
+// 侧边栏展开状态
+const asideOpen = computed(() => {
+  return store.state.setting.aside === 'open';
+});
+
+const setSettingVisible = (val: boolean) => {
+  data.settingVisible = val;
 };
 </script>
