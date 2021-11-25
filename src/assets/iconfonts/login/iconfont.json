@@ -1,0 +1,44 @@
+{
+  "id": "",
+  "name": "",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "90045164",
+      "name": "facebook",
+      "font_class": "facebook",
+      "unicode": "e601",
+      "unicode_decimal": 58881
+    },
+    {
+      "icon_id": "90045165",
+      "name": "google_plus",
+      "font_class": "google_plus",
+      "unicode": "e602",
+      "unicode_decimal": 58882
+    },
+    {
+      "icon_id": "90045166",
+      "name": "QQ",
+      "font_class": "qq",
+      "unicode": "e60b",
+      "unicode_decimal": 58891
+    },
+    {
+      "icon_id": "90045167",
+      "name": "微信",
+      "font_class": "wechat",
+      "unicode": "e607",
+      "unicode_decimal": 58887
+    },
+    {
+      "icon_id": "90045168",
+      "name": "github",
+      "font_class": "github",
+      "unicode": "e722",
+      "unicode_decimal": 59170
+    }
+  ]
+}

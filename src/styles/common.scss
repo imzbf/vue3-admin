@@ -1,11 +1,3 @@
-html,
-body {
-  font-size: 16px;
-  font-family: -apple-system, BlinkMacSystemFont, 'segoe ui', Roboto, 'helvetica neue', Arial,
-    'noto sans', sans-serif, 'apple color emoji', 'segoe ui emoji', 'segoe ui symbol',
-    'noto color emoji';
-}
-
 body,
 h1,
 h2,
@@ -33,4 +25,146 @@ th,
 td {
   margin: 0;
   padding: 0;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: 100%;
+}
+address,
+cite,
+dfn,
+em,
+var {
+  font-style: normal;
+}
+code,
+kbd,
+pre,
+samp {
+  font-family: couriernew, courier, monospace;
+}
+small {
+  font-size: 12px;
+}
+ul,
+ol {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+sup {
+  vertical-align: text-top;
+}
+sub {
+  vertical-align: text-bottom;
+}
+legend {
+  color: #000;
+}
+fieldset,
+img {
+  border: 0;
+}
+button,
+input,
+select,
+textarea {
+  font-size: 100%;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+html,
+body {
+  font-size: 16px;
+  font-family: -apple-system, BlinkMacSystemFont, 'segoe ui', Roboto, 'helvetica neue', Arial,
+    'noto sans', sans-serif, 'apple color emoji', 'segoe ui emoji', 'segoe ui symbol',
+    'noto color emoji';
+}
+
+html,
+body,
+#app,
+.theme-wrapper,
+.left-container {
+  height: 100%;
+  overflow: hidden;
+}
+
+.cper {
+  cursor: pointer;
+}
+
+.text-help {
+  color: #999999;
+  font-size: 14px;
+}
+
+.va-mb {
+  margin-bottom: 14px !important;
+}
+
+.icon {
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.15em;
+  fill: currentColor;
+  overflow: hidden;
+}
+
+.clear {
+  &::after {
+    content: '';
+    display: block;
+    clear: both;
+  }
+}
+
+.normal-link {
+  color: inherit;
+
+  &:hover {
+    color: inherit;
+  }
+}
+
+.view-space {
+  padding: 14px;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-corner,
+::-webkit-scrollbar-track {
+  background-color: #e2e2e2;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 2px;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+::-webkit-scrollbar-button:vertical {
+  display: none;
+}
+
+::-webkit-scrollbar-thumb:vertical:hover {
+  background-color: rgba(0, 0, 0, 0.35);
+}
+
+::-webkit-scrollbar-thumb:vertical:active {
+  background-color: rgba(0, 0, 0, 0.38);
 }
