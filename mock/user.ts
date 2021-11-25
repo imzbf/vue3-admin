@@ -29,15 +29,15 @@ const DashboardModule: Menu[] = [
   {
     path: '/',
     component: 'layout',
-    redirect: '/workspace',
+    redirect: '/dashboard',
     meta: { title: '首页', iconName: 'SlidersFilled' },
     name: 'Index',
     menu: true,
     children: [
       {
-        path: 'workspace',
-        name: 'IndexPage',
-        component: 'workspace',
+        path: 'dashboard',
+        name: 'DashboardPage',
+        component: 'dashboard',
         menu: true,
         meta: {
           title: '工作台',

@@ -9,7 +9,6 @@ import {
 import NProgress from 'nprogress';
 
 import store from '@/store';
-import { getToken } from '@/utils/biz';
 
 import DynamicRoutes from './dynamic';
 // import errorModule from './modules/error';
@@ -143,8 +142,7 @@ const router = createRouter({
 router.beforeEach(async (to: RouteLocationNormalized, _, next: NavigationGuardNext) => {
   NProgress.start();
 
-  const token = getToken();
-
+  const token = store.state.user.token;
   // 返回之前页面如有额外query参数可自行携带
   // 例如：
   // const { query } = to;
