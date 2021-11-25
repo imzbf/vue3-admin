@@ -130,7 +130,7 @@ const routes: Array<AdminRouteRecordRaw> = [
     path: '/:pathMatch(.*)*',
     name: 'All',
     redirect: (to: RouteLocation) => {
-      return { path: '/404', query: { from: to.path } };
+      return { path: '/404', query: { redirect: to.path } };
     }
   }
 ];
@@ -148,7 +148,7 @@ router.beforeEach(async (to: RouteLocationNormalized, _, next: NavigationGuardNe
   // 返回之前页面如有额外query参数可自行携带
   // 例如：
   // const { query } = to;
-  // delete query.from;
+  // delete query.redirect;
   // next(`/?${Object.entries(query).join('&').replace(/,/g, '=')}`);
 
   if (token) {
@@ -160,9 +160,9 @@ router.beforeEach(async (to: RouteLocationNormalized, _, next: NavigationGuardNe
 
     // 有token时，前往登录页
     if (/^\/login.*/.test(to.path)) {
-      if (to.query.from) {
+      if (to.query.redirect) {
         // 存在登录跳转回页面
-        next(to.query.from as string);
+        next(to.query.redirect as string);
       } else {
         next('/');
       }
@@ -184,10 +184,10 @@ router.beforeEach(async (to: RouteLocationNormalized, _, next: NavigationGuardNe
     if (/^\/login.*/.test(to.path)) {
       next();
     } else if (/^\/404/.test(to.path)) {
-      const from = to.query.from;
-      next(from ? `/login?from=${from}` : `/login`);
+      const redirect = to.query.redirect;
+      next(redirect ? `/login?redirect=${redirect}` : `/login`);
     } else {
-      next(`/login?from=${to.path}`);
+      next(`/login?redirect=${to.path}`);
     }
   }
 });

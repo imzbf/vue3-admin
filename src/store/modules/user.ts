@@ -49,8 +49,8 @@ const actions = {
         await store.dispatch('getLoginUser');
       })
       .then(() => {
-        const from = router.currentRoute.value.query.from as string;
-        router.push(from || '/');
+        const redirect = router.currentRoute.value.query.redirect as string;
+        router.push(redirect || '/');
       });
   },
   logout(store: any): Promise<any> {
@@ -65,9 +65,7 @@ const actions = {
       })
       .then(() => {
         // 返回登录界面
-        router.push(
-          `/login?from=${encodeURIComponent(router.currentRoute.value.fullPath)}`
-        );
+        router.push(`/login?redirect=${encodeURIComponent(router.currentRoute.value.fullPath)}`);
       });
   },
   async getLoginUser(store: any): Promise<any> {
