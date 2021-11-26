@@ -1,10 +1,12 @@
 <template>
-  <div>仪表</div>
+  <div class="dashboard">
+    <Header />
+    <Body />
+  </div>
 </template>
 
 <script setup lang="ts">
-import { useRouter } from 'vue-router';
-const router = useRouter();
-
-console.log(router);
+import Header from './Header.vue';
+// import Body from './Body/index.vue';
+import './index.scss';
 </script>
