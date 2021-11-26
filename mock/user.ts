@@ -30,7 +30,7 @@ const DashboardModule: Menu[] = [
     path: '/',
     component: 'layout',
     redirect: '/dashboard',
-    meta: { title: '首页', iconName: 'SlidersFilled' },
+    meta: { title: '首页', iconName: 'DataBoard' },
     name: 'Index',
     menu: true,
     children: [
@@ -41,7 +41,7 @@ const DashboardModule: Menu[] = [
         menu: true,
         meta: {
           title: '工作台',
-          iconName: 'BgColorsOutlined',
+          iconName: 'DataAnalysis',
           cname: 'ViewHomeWorkspace',
           keepAlive: true
         }
@@ -53,7 +53,7 @@ const DashboardModule: Menu[] = [
         menu: true,
         meta: {
           title: '监控台',
-          iconName: 'CodeOutlined',
+          iconName: 'DataLine',
           cname: 'ViewHomeMonitor',
           keepAlive: true
         }
@@ -70,7 +70,7 @@ const DataModule: Menu[] = [
     name: 'Form',
     meta: {
       title: '表单页',
-      iconName: 'FormOutlined',
+      iconName: 'Platform',
       cname: 'ViewForm',
       keepAlive: true
     },
@@ -83,7 +83,7 @@ const DataModule: Menu[] = [
         menu: true,
         meta: {
           title: '基本表单',
-          iconName: 'EditOutlined',
+          iconName: 'HotWater',
           cname: 'ViewForm',
           keepAlive: true
         }
@@ -95,7 +95,7 @@ const DataModule: Menu[] = [
         menu: true,
         meta: {
           title: '自定义表单',
-          iconName: 'DiffOutlined',
+          iconName: 'HotWater',
           cname: 'ViewFormDef',
           keepAlive: true
         }
@@ -112,21 +112,21 @@ const DemoModule: Menu[] = [
     name: 'Menu0',
     meta: {
       title: '多级菜单',
-      iconName: 'QuestionOutlined'
+      iconName: 'Cherry'
     },
     menu: true,
     children: [
       {
         path: 'm1',
         name: 'Menu1-1',
-        meta: { title: '菜单1-1', iconName: 'QuestionCircleOutlined' },
+        meta: { title: '菜单1-1', iconName: 'Cherry' },
         menu: true,
         component: 'demo_m1'
       },
       {
         path: 'm2',
         name: 'Menu1-2',
-        meta: { title: '菜单1-2', iconName: 'QuestionCircleOutlined' },
+        meta: { title: '菜单1-2', iconName: 'Cherry' },
         menu: true,
         component: 'demo_m2',
         redirect: '/m/m2/m1',
@@ -134,7 +134,7 @@ const DemoModule: Menu[] = [
           {
             path: 'm1',
             name: 'Menu1-2-1',
-            meta: { title: '菜单1-2-1', iconName: 'QuestionCircleOutlined' },
+            meta: { title: '菜单1-2-1', iconName: 'Cherry' },
             menu: true,
             component: 'demo_m2_1'
           },
@@ -142,7 +142,7 @@ const DemoModule: Menu[] = [
             path: 'm2',
             menu: true,
             name: 'Menu1-2-2',
-            meta: { title: '菜单1-2-2', iconName: 'QuestionCircleOutlined' },
+            meta: { title: '菜单1-2-2', iconName: 'Cherry' },
             component: 'demo_m2_2'
           }
         ]
@@ -178,7 +178,7 @@ const TableModule: Menu[] = [
     component: 'layout',
     redirect: '/table/base',
     name: 'Table',
-    meta: { title: '表格页', iconName: 'TableOutlined' },
+    meta: { title: '表格页', iconName: 'Collection' },
     menu: true,
     children: [
       {
@@ -186,7 +186,7 @@ const TableModule: Menu[] = [
         name: 'TableBase',
         meta: {
           title: '基本表格',
-          iconName: 'TableOutlined',
+          iconName: 'Collection',
           cname: 'ViewTableBasic',
           keepAlive: true
         },
@@ -198,7 +198,7 @@ const TableModule: Menu[] = [
         name: 'TableQuery',
         meta: {
           title: '查询表格',
-          iconName: 'SearchOutlined',
+          iconName: 'Collection',
           cname: 'ViewTableQuery',
           keepAlive: true
         },
@@ -216,28 +216,28 @@ const ErrorModule: Menu[] = [
     name: 'Error',
     meta: {
       title: '异常页',
-      iconName: 'QuestionOutlined'
+      iconName: 'MagicStick'
     },
     menu: true,
     children: [
       {
         path: '403',
         name: '403',
-        meta: { title: '403', iconName: 'QuestionCircleOutlined' },
+        meta: { title: '403', iconName: 'MagicStick' },
         menu: true,
         component: 'error_403'
       },
       {
         path: '404',
         name: '404',
-        meta: { title: '404', iconName: 'QuestionCircleOutlined' },
+        meta: { title: '404', iconName: 'MagicStick' },
         menu: true,
         component: 'error_404'
       },
       {
         path: '500',
         name: '500',
-        meta: { title: '500', iconName: 'QuestionCircleOutlined' },
+        meta: { title: '500', iconName: 'MagicStick' },
         menu: true,
         component: 'error_500'
       }
@@ -248,10 +248,9 @@ const OutLinkModule: Menu[] = [
   {
     path: '/outlink',
     name: 'Github',
-    meta: { title: '外部链接', iconName: 'GithubFilled' },
+    meta: { title: '外部链接', iconName: 'Promotion' },
     menu: true,
-    outLink: 'https://github.com/imzbf/vue3-admin',
-    redirect: '/'
+    outLink: 'https://github.com/imzbf/vue3-admin'
   }
 ];
 const ComponentModule: Menu[] = [
@@ -260,20 +259,20 @@ const ComponentModule: Menu[] = [
     component: 'layout',
     redirect: '/component/chart',
     name: 'Component',
-    meta: { title: '自定义组件', iconName: 'SlidersFilled' },
+    meta: { title: '自定义组件', iconName: 'Operation' },
     menu: true,
     children: [
       {
         path: 'card',
         name: 'Card',
-        meta: { title: '卡片', iconName: 'CreditCardOutlined' },
+        meta: { title: '卡片', iconName: 'Operation' },
         menu: true,
         component: 'card_data'
       },
       {
         path: 'editor',
         name: 'MdEditor',
-        meta: { title: '编辑器', iconName: 'FormOutlined' },
+        meta: { title: '编辑器', iconName: 'Operation' },
         menu: true,
         component: 'editor_md'
       }
