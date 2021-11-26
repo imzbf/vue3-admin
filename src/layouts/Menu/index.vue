@@ -13,7 +13,7 @@ const aside = computed(() => store.state.setting.aside === 'close');
 <template>
   <ElMenu
     class="aside-menu dark-menu"
-    router
+    :collapse-transition="false"
     :collapse="aside"
     :default-active="store.state.setting.selectedKey"
     :default-openeds="store.state.setting.openKeys"

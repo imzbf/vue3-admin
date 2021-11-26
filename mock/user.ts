@@ -45,18 +45,6 @@ const DashboardModule: Menu[] = [
           cname: 'ViewHomeWorkspace',
           keepAlive: true
         }
-      },
-      {
-        path: 'monitor',
-        name: 'MonitorPage',
-        component: 'monitor',
-        menu: true,
-        meta: {
-          title: '监控台',
-          iconName: 'DataLine',
-          cname: 'ViewHomeMonitor',
-          keepAlive: true
-        }
       }
     ]
   }
@@ -285,19 +273,30 @@ const user: Array<MockMethod> = [
     url: '/api/user',
     method: 'get',
     response: ({ headers }): any => {
-      let menus = [
-        ...DashboardModule,
-        ...DataModule,
-        ...UserModule,
-        ...TableModule,
-        ...ComponentModule,
-        ...ErrorModule,
-        ...OutLinkModule
-      ];
+      let menus = [];
 
       // 管理员角色菜单
       if (headers.token === ADMIN_TOKEN) {
-        menus = menus.concat(DemoModule);
+        menus = [
+          ...DashboardModule,
+          ...DataModule,
+          ...UserModule,
+          ...TableModule,
+          ...ComponentModule,
+          ...ErrorModule,
+          ...DemoModule,
+          ...OutLinkModule
+        ];
+      } else {
+        menus = [
+          ...DashboardModule,
+          ...DataModule,
+          ...UserModule,
+          ...TableModule,
+          ...ComponentModule,
+          ...ErrorModule,
+          ...OutLinkModule
+        ];
       }
 
       return {

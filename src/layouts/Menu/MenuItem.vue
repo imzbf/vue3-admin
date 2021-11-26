@@ -1,14 +1,12 @@
 <template>
-  <a :href="props.menu.outLink" v-if="props.menu.outLink" target="_blank">
-    <li :key="`__outlink-${menu.path}`" class="el-menu-item" style="padding-left: 20px">
-      <ElIcon v-if="menu.iconName">
-        <MenuIcon :icon-name="menu.iconName" />
-      </ElIcon>
-      <span>{{ props.menu.title }}</span>
-    </li>
-  </a>
+  <ElMenuItem v-if="props.menu.outLink" @click="goto(props.menu.outLink as string)">
+    <ElIcon v-if="menu.iconName">
+      <MenuIcon :icon-name="menu.iconName" />
+    </ElIcon>
+    <span>{{ props.menu.title }}</span>
+  </ElMenuItem>
 
-  <ElMenuItem v-else :key="props.menu.path" :index="props.menu.path">
+  <ElMenuItem v-else :index="props.menu.path" @click="router.push(props.menu.path)">
     <ElIcon v-if="menu.iconName">
       <MenuIcon :icon-name="menu.iconName" />
     </ElIcon>
@@ -22,6 +20,8 @@ import type { PropType } from 'vue';
 import { ElMenuItem, ElIcon } from 'element-plus';
 import type { MenuType } from '@/store/modules/menu';
 import MenuIcon from './Icon.vue';
+import { goto } from '@/utils';
+import { useRouter } from 'vue-router';
 
 const props = defineProps({
   menu: {
@@ -29,4 +29,6 @@ const props = defineProps({
     default: () => ({})
   }
 });
+
+const router = useRouter();
 </script>

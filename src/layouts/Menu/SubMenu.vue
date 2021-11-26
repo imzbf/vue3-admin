@@ -18,6 +18,7 @@ const props = defineProps({
   <template v-for="menu of props.menuList" :key="menu.path">
     <MenuItem v-if="menu.outLink" :menu="menu" />
     <MenuItem v-else-if="menu.children.length === 0" :menu="menu" />
+    <MenuItem v-else-if="menu.children.length === 1" :menu="menu.children[0]" />
     <ElSubMenu v-else :index="menu.path">
       <template #title>
         <ElIcon v-if="menu.iconName">
