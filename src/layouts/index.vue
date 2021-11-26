@@ -17,13 +17,13 @@
         <NavBar @setSettingVisible="setSettingVisible" />
       </header>
       <main class="layout-main">
-        <!-- https://github.com/vuejs/vue-router-next/issues/716#issuecomment-759521287 -->
-        <!-- <RouterView v-slot="{ Component }">
-          <KeepAlive :include="store.state.setting.cacheList">
-            <Component :is="Component" />
-          </KeepAlive>
-        </RouterView> -->
-        <RouterView />
+        <RouterView v-slot="{ Component }">
+          <Transition name="fade" mode="out-in">
+            <KeepAlive :include="store.state.setting.cacheList">
+              <component :is="Component" />
+            </KeepAlive>
+          </Transition>
+        </RouterView>
       </main>
     </div>
     <!-- <div class="drawer">
@@ -33,7 +33,7 @@
 </template>
 
 <script lang="ts" setup>
-import { computed, reactive } from 'vue';
+import { computed, reactive, KeepAlive, Transition } from 'vue';
 import { RouterView } from 'vue-router';
 import { useStore } from 'vuex';
 import { key } from '@/store';

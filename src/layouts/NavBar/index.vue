@@ -5,14 +5,28 @@ import { useStore } from 'vuex';
 import { key } from '@/store';
 import screenfull from 'screenfull';
 import { DEMO_USER_HEAD } from '@/config/urls';
-import { ElMessage, ElIcon, ElBreadcrumb, ElBreadcrumbItem, ElNotification } from 'element-plus';
-import { Fold, Expand } from '@element-plus/icons';
+import {
+  ElMessage,
+  ElIcon,
+  ElBreadcrumb,
+  ElBreadcrumbItem,
+  ElNotification,
+  ElDropdown,
+  ElDropdownMenu,
+  ElDropdownItem,
+  ElAvatar,
+  ElBadge,
+  ElTabs,
+  ElTabPane,
+  ElPopover
+} from 'element-plus';
+import { Fold, Expand, FullScreen, SwitchButton, Setting, User, Bell } from '@element-plus/icons';
 
 import './index.scss';
 
-import Message from './Message';
-import Notification from './Notification';
-import Todo from './Todo';
+import Message from './Message.vue';
+import Notification from './Notification.vue';
+import Todo from './Todo.vue';
 
 // 同时设置props的vue属性和ts类型，setup会报错
 // interface NavBarPropsType {
@@ -96,36 +110,27 @@ if (screenfull.isEnabled) {
       </li>
     </ul>
     <ul class="layout-bar-right">
+      <ElPopover trigger="click">
+        <template #reference>
+          <li>
+            <ElBadge :value="12">
+              <ElIcon><Bell /></ElIcon>
+            </ElBadge>
+          </li>
+        </template>
+        <ElTabs>
+          <ElTabPane name="notice" label="通知">
+            <Notification />
+          </ElTabPane>
+          <ElTabPane name="message" label="消息">
+            <Message />
+          </ElTabPane>
+          <ElTabPane name="todo" label="代办">
+            <Todo />
+          </ElTabPane>
+        </ElTabs>
+      </ElPopover>
       <!-- <Dropdown
-            overlayClassName="notice-wrapper"
-            trigger={['click']}
-            placement="bottomCenter"
-            getPopupContainer={() => document.querySelector('.theme-wrapper')}
-            overlay={
-              <>
-                <div class="notice-content">
-                  <Tabs defaultActiveKey={1}>
-                    <Tabs.TabPane key={1} tab="通知">
-                      <Notification />
-                    </Tabs.TabPane>
-                    <Tabs.TabPane key={2} tab="消息">
-                      <Message />
-                    </Tabs.TabPane>
-                    <Tabs.TabPane key={3} tab="代办">
-                      <Todo />
-                    </Tabs.TabPane>
-                  </Tabs>
-                </div>
-              </>
-            }
-          >
-            <li>
-              <Badge dot>
-                <BellOutlined />
-              </Badge>
-            </li>
-          </Dropdown>
-          <Dropdown
             trigger={['click']}
             overlay={
               <Menu onClick={adjustTheme}>
@@ -147,15 +152,35 @@ if (screenfull.isEnabled) {
             <li>
               <SkinOutlined />
             </li>
-          </Dropdown>
+          </Dropdown> -->
 
-          <li onClick={fullScreen}>
-            {configData.isFullscreen ? (
-              <FullscreenOutlined />
-            ) : (
-              <FullscreenExitOutlined />
-            )}
-          </li> -->
+      <li @click="fullScreen">
+        <ElIcon><FullScreen /></ElIcon>
+      </li>
+
+      <ElDropdown>
+        <template #dropdown>
+          <ElDropdownMenu>
+            <ElDropdownItem>
+              <RouterLink to="/user" class="layout-bar-link">
+                <ElIcon><User /></ElIcon> 个人中心
+              </RouterLink>
+            </ElDropdownItem>
+            <ElDropdownItem>
+              <RouterLink to="/user/setting" class="layout-bar-link">
+                <ElIcon><Setting /></ElIcon> 个人设置
+              </RouterLink>
+            </ElDropdownItem>
+            <ElDropdownItem @click="logout">
+              <ElIcon><SwitchButton /></ElIcon>
+              退出登录
+            </ElDropdownItem>
+          </ElDropdownMenu>
+        </template>
+        <li>
+          <ElAvatar size="small" :src="DEMO_USER_HEAD" />
+        </li>
+      </ElDropdown>
     </ul>
   </div>
 </template>
