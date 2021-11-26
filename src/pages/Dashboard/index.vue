@@ -7,6 +7,6 @@
 
 <script setup lang="ts">
 import Header from './Header.vue';
-// import Body from './Body/index.vue';
+import Body from './Body/index.vue';
 import './index.scss';
 </script>

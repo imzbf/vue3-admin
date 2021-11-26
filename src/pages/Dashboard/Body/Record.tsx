@@ -1,5 +1,5 @@
 import { defineComponent, reactive } from 'vue';
-import FeCard from '@/components/Card';
+import FeCard from '@/components/Card/index.vue';
 import { List, Avatar } from 'ant-design-vue';
 import IconFont from '@/components/IconFont';
 import '../index.less';
