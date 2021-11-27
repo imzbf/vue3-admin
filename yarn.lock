@@ -1399,10 +1399,10 @@ magic-string@^0.25.7:
   dependencies:
     sourcemap-codec "^1.4.4"
 
-md-editor-v3@^1.6.4:
-  version "1.6.4"
-  resolved "https://registry.npmmirror.com/md-editor-v3/download/md-editor-v3-1.6.4.tgz#419a8e8c14c595a43bb6190c08b81bd9c992021e"
-  integrity sha1-QZqOjBTFlaQ7thkMCLgb2cmSAh4=
+md-editor-v3@^1.7.2:
+  version "1.7.2"
+  resolved "https://registry.npmjs.org/md-editor-v3/-/md-editor-v3-1.7.2.tgz#1825e4f1a5e32dda443899ea9b7096b4305b3962"
+  integrity sha512-Wxhz1tawnntGFG/LkkB5Q+eQl5rjWBrnUA3Iptw8AAqC9qhWsPaTYLVlH1WGJ4FJehdyY2aMFnz0aM5E8QWdGg==
 
 memoize-one@^6.0.0:
   version "6.0.0"
