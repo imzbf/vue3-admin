@@ -1,8 +1,8 @@
-// .hidden-words {
-//   overflow: hidden; //超出的文本隐藏
-//   text-overflow: ellipsis; //溢出用省略号显示
-//   white-space: nowrap; //溢出不换行
-// }
+@mixin hidden-words {
+  overflow: hidden; //超出的文本隐藏
+  text-overflow: ellipsis; //溢出用省略号显示
+  white-space: nowrap; //溢出不换行
+}
 
 // 黑色主题菜单背景色
 // $darkMenuBack: rgb(0, 17, 30);
@@ -19,11 +19,13 @@
     flex-direction: column;
     position: relative;
     transition: all 0.2s;
+    border-right: 1px solid #e6e6e6;
 
     .logo {
       padding: 16px;
       display: flex;
       align-items: center;
+      @include hidden-words;
 
       img {
         width: 32px;
@@ -52,6 +54,7 @@
       font-size: 14px;
       padding: 16px;
       text-align: center;
+      @include hidden-words;
 
       span {
         line-height: 32px;

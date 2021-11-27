@@ -1758,6 +1758,11 @@ sass@^1.43.4:
   dependencies:
     chokidar ">=3.0.0 <4.0.0"
 
+screenfull@^6.0.0:
+  version "6.0.0"
+  resolved "https://registry.npmmirror.com/screenfull/download/screenfull-6.0.0.tgz?cache=0&sync_timestamp=1635923453416&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2Fscreenfull%2Fdownload%2Fscreenfull-6.0.0.tgz#6f7f37bfe19c5ee50931ac438c1fe380d5b5ff44"
+  integrity sha1-b383v+GcXuUJMaxDjB/jgNW1/0Q=
+
 semver@^7.2.1, semver@^7.3.5:
   version "7.3.5"
   resolved "https://registry.npmjs.org/semver/-/semver-7.3.5.tgz#0b621c879348d8998e4b0e4be94b3f12e6018ef7"

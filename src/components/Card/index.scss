@@ -1,0 +1,41 @@
+.vra-card {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-size: 0.875rem;
+  font-variant: tabular-nums;
+  line-height: 1.5715;
+  list-style: none;
+  font-feature-settings: 'tnum';
+  position: relative;
+  border-radius: 4px;
+  transition: all 0.3s;
+  background-color: #fff;
+  box-shadow: 0 2px 12px 0 #00000010;
+
+  .vra-card-header {
+    position: relative;
+    height: 42px;
+    line-height: 42px;
+    font-size: 14px;
+    padding: 0px 15px;
+    border-bottom: 1px solid #f0f0f0;
+    border-radius: 2px 2px 0px 0px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .vra-card-body {
+    position: relative;
+    line-height: 24px;
+    padding: 0.875rem;
+  }
+
+  .vra-card-body-nopadding {
+    padding: 0;
+  }
+}
+
+.vra-card-border {
+  border: 1px solid #f0f0f0;
+}

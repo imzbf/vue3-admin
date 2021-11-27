@@ -1,0 +1,137 @@
+.dashboard {
+  background-color: #fff;
+
+  &-header {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #d9d9d9;
+    padding: 20px 10px;
+    background-color: #fff;
+
+    .welcome {
+      .avatar {
+        float: left;
+      }
+      .msg {
+        padding-left: 70px;
+
+        .hello {
+          font-size: 20px;
+          font-weight: 600;
+          margin-bottom: 10px;
+        }
+
+        .weather {
+          color: rgb(102, 102, 102);
+          font-size: 14px;
+
+          .icon {
+            font-size: 20px;
+            vertical-align: text-bottom;
+            padding-right: 4px;
+          }
+        }
+      }
+    }
+
+    .todo {
+      display: flex;
+
+      .todo-item {
+        padding: 0 20px;
+        text-align: right;
+
+        .item-title {
+          font-size: 16px;
+        }
+      }
+    }
+  }
+
+  &-body {
+    .title-icon {
+      font-size: 16px;
+      padding-right: 4px;
+      vertical-align: text-bottom;
+    }
+
+    .project {
+      display: block;
+
+      .footer {
+        display: flex;
+        margin-top: 16px;
+        font-size: 12px;
+        padding: 0 6px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        word-break: break-all;
+        justify-content: space-between;
+
+        a {
+          color: #666;
+          transition: color 0.5s;
+
+          &:hover {
+            color: #1890ff;
+          }
+        }
+
+        span {
+          color: #aaa;
+        }
+      }
+    }
+
+    .used-list {
+      .used-item {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 80px;
+        padding: 10px;
+        text-align: center;
+        box-sizing: border-box;
+
+        .used-item-icon {
+          font-size: 24px;
+        }
+      }
+    }
+
+    .team {
+      .item {
+        display: block;
+        height: 24px;
+        margin: 12px 0;
+        transition: all 0.3s;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        word-break: break-all;
+
+        .name {
+          margin-left: 12px;
+          font-size: 14px;
+          vertical-align: text-top;
+        }
+      }
+    }
+  }
+}
+
+// :global(.theme-dark) {
+//   .workspace {
+//     .header {
+//       border-color: $darkBorderColor;
+//     }
+
+//     .project {
+//       :global {
+//         .ant-card-grid-hoverable:hover {
+//           box-shadow: 0 0 8px rgb(58, 59, 70);
+//         }
+//       }
+//     }
+//   }
+// }

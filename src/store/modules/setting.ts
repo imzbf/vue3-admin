@@ -9,9 +9,9 @@ export type Themes = 'dark' | 'light' | 'mix';
 
 export interface SettingStateType extends AsideType {
   // 当前激活的菜单
-  selectedKeys: Array<string>;
+  selectedKey: string;
   // 当前展开菜单key
-  openKeys: Array<string | number>;
+  openKeys: Array<string>;
   // 面包屑
   breadcrumbs: Array<string>;
   // 主题
@@ -24,7 +24,7 @@ const cacheTheme = localStorage.getItem(Final.THEME);
 
 const state: SettingStateType = {
   aside: 'open',
-  selectedKeys: ['/'],
+  selectedKey: '/',
   openKeys: setting.openKeys,
   breadcrumbs: [],
   theme:
@@ -81,7 +81,7 @@ const mutations = {
       return prev + '/' + curr;
     }, '');
 
-    state.selectedKeys = [payload.path];
+    state.selectedKey = payload.path;
     state.openKeys = openKeysTemp;
     state.breadcrumbs = payload.breadcrumbs;
   },

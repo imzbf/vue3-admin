@@ -1,0 +1,34 @@
+<template>
+  <ElMenuItem v-if="props.menu.outLink" @click="goto(props.menu.outLink as string)">
+    <ElIcon v-if="menu.iconName">
+      <MenuIcon :icon-name="menu.iconName" />
+    </ElIcon>
+    <span>{{ props.menu.title }}</span>
+  </ElMenuItem>
+
+  <ElMenuItem v-else :index="props.menu.path" @click="router.push(props.menu.path)">
+    <ElIcon v-if="menu.iconName">
+      <MenuIcon :icon-name="menu.iconName" />
+    </ElIcon>
+    <span>{{ props.menu.title }}</span>
+  </ElMenuItem>
+</template>
+
+<script setup lang="ts">
+import { defineProps } from 'vue';
+import type { PropType } from 'vue';
+import { ElMenuItem, ElIcon } from 'element-plus';
+import type { MenuType } from '@/store/modules/menu';
+import MenuIcon from './Icon.vue';
+import { goto } from '@/utils';
+import { useRouter } from 'vue-router';
+
+const props = defineProps({
+  menu: {
+    type: Object as PropType<MenuType>,
+    default: () => ({})
+  }
+});
+
+const router = useRouter();
+</script>
