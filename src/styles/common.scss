@@ -168,3 +168,11 @@ body,
 ::-webkit-scrollbar-thumb:vertical:active {
   background-color: rgba(0, 0, 0, 0.38);
 }
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #d9d9d9;
+  padding: 20px 14px;
+  background-color: #fff;
+}
