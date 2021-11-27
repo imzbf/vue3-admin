@@ -59,13 +59,13 @@ const actions = {
         store.commit('reset');
       })
       .then(() => {
+        // 返回登录界面
+        router.push(`/login?redirect=${encodeURIComponent(router.currentRoute.value.fullPath)}`);
+      })
+      .then(() => {
         store.commit('menu/resetMenu', { newRoutes: [] }, { root: true });
         // 重置路由
         resetRoutes([]);
-      })
-      .then(() => {
-        // 返回登录界面
-        router.push(`/login?redirect=${encodeURIComponent(router.currentRoute.value.fullPath)}`);
       });
   },
   async getLoginUser(store: any): Promise<any> {
