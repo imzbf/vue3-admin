@@ -1,6 +1,6 @@
 <template>
   <div :class="cardClass">
-    <div :class="headerClass" :style="props.headerStyle">
+    <div v-if="slots.title" :class="headerClass" :style="props.headerStyle">
       <div class="vra-card-title">
         <slot name="title"></slot>
       </div>
@@ -14,7 +14,8 @@
 </template>
 
 <script setup lang="ts">
-import { PropType, CSSProperties, defineProps, computed } from 'vue';
+import { defineProps, computed, useSlots } from 'vue';
+import type { PropType, CSSProperties } from 'vue';
 import './index.scss';
 
 const props = defineProps({
@@ -51,6 +52,8 @@ const props = defineProps({
     defalut: false
   }
 });
+
+const slots = useSlots();
 
 const cardClass = computed(() => {
   return ['vra-card', props.border && 'vra-card-border'];
