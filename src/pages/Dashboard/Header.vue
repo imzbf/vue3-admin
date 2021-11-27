@@ -6,7 +6,7 @@ const VITE_BASE = import.meta.env.VITE_BASE;
 </script>
 
 <template>
-  <div class="dashboard-header">
+  <div class="page-header">
     <div class="welcome">
       <div class="avatar">
         <ElAvatar :size="60" :src="`${VITE_BASE}/static/img/boy01.jpg`" />

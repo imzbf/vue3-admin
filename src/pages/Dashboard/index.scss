@@ -1,49 +1,41 @@
 .dashboard {
   background-color: #fff;
 
-  &-header {
-    display: flex;
-    justify-content: space-between;
-    border-bottom: 1px solid #d9d9d9;
-    padding: 20px 10px;
-    background-color: #fff;
+  .welcome {
+    .avatar {
+      float: left;
+    }
+    .msg {
+      padding-left: 70px;
 
-    .welcome {
-      .avatar {
-        float: left;
+      .hello {
+        font-size: 20px;
+        font-weight: 600;
+        margin-bottom: 10px;
       }
-      .msg {
-        padding-left: 70px;
 
-        .hello {
+      .weather {
+        color: rgb(102, 102, 102);
+        font-size: 14px;
+
+        .icon {
           font-size: 20px;
-          font-weight: 600;
-          margin-bottom: 10px;
-        }
-
-        .weather {
-          color: rgb(102, 102, 102);
-          font-size: 14px;
-
-          .icon {
-            font-size: 20px;
-            vertical-align: text-bottom;
-            padding-right: 4px;
-          }
+          vertical-align: text-bottom;
+          padding-right: 4px;
         }
       }
     }
+  }
 
-    .todo {
-      display: flex;
+  .todo {
+    display: flex;
 
-      .todo-item {
-        padding: 0 20px;
-        text-align: right;
+    .todo-item {
+      padding: 0 20px;
+      text-align: right;
 
-        .item-title {
-          font-size: 16px;
-        }
+      .item-title {
+        font-size: 16px;
       }
     }
   }
