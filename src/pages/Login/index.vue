@@ -35,10 +35,7 @@
           </ElPopconfirm>
         </div>
         <div class="form-item">
-          <ElButton type="primary" @click="login" style="width: 100%" :disabled="data.spinning">
-            <el-icon v-if="data.spinning" class="is-loading">
-              <Loading />
-            </el-icon>
+          <ElButton type="primary" @click="login" style="width: 100%" :loading="data.spinning">
             登录
           </ElButton>
         </div>
