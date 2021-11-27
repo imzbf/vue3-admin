@@ -60,12 +60,13 @@ const actions = {
       })
       .then(() => {
         // 返回登录界面
-        router.push(`/login?redirect=${encodeURIComponent(router.currentRoute.value.fullPath)}`);
-      })
-      .then(() => {
-        store.commit('menu/resetMenu', { newRoutes: [] }, { root: true });
-        // 重置路由
-        resetRoutes([]);
+        router
+          .push(`/login?redirect=${encodeURIComponent(router.currentRoute.value.fullPath)}`)
+          .then(() => {
+            store.commit('menu/resetMenu', { newRoutes: [] }, { root: true });
+            // 重置路由
+            resetRoutes([]);
+          });
       });
   },
   async getLoginUser(store: any): Promise<any> {
