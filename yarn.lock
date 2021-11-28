@@ -403,18 +403,18 @@
   resolved "https://registry.npmjs.org/@vue/shared/-/shared-3.2.21.tgz#4cd80c0e62cf65a7adab2449e86b6f0cb33a130b"
   integrity sha512-5EQmIPK6gw4UVYUbM959B0uPsJ58+xoMESCZs3N89XyvJ9e+fX4pqEPrOGV8OroIk3SbEvJcC+eYc8BH9JQrHA==
 
-"@vueuse/core@^6.7.3":
-  version "6.9.0"
-  resolved "https://registry.npmmirror.com/@vueuse/core/download/@vueuse/core-6.9.0.tgz?cache=0&sync_timestamp=1636910664407&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2F%40vueuse%2Fcore%2Fdownload%2F%40vueuse%2Fcore-6.9.0.tgz#f65057108bbd85cb593a3dfc78a94913c73d2a12"
-  integrity sha512-/KW3x63X+AlpgJIJxdZZFpZ0SorHv+UHv/i4BufZJwv0s8S1o7dqivDz0DcdD+BBlNwLiOu1mjoUl1rodWCLxw==
+"@vueuse/core@^7.0.0":
+  version "7.1.2"
+  resolved "https://registry.npmjs.org/@vueuse/core/-/core-7.1.2.tgz#61ab2698c725ccaf168676f34cf6f41f76f8df34"
+  integrity sha512-SLoOPfhZdNRNUkZfx+wrHj6WycWdSw2RmNS8E4ngQ2kmBoJjRarGy51/GkGdjqHQqmhuwuFoNO2WaU0yBn3ffg==
   dependencies:
-    "@vueuse/shared" "6.9.0"
+    "@vueuse/shared" "7.1.2"
     vue-demi "*"
 
-"@vueuse/shared@6.9.0":
-  version "6.9.0"
-  resolved "https://registry.npmmirror.com/@vueuse/shared/download/@vueuse/shared-6.9.0.tgz#97d4529212e0155284badd89d27b4746815ae197"
-  integrity sha512-LyavYcibfrKO1PIYtJ+JjFwHNVRmxb/i7v4daKKTZv6iKVh/xBD6kpmO392atn1KaUa19m9aGrVNBv4t5lAzJA==
+"@vueuse/shared@7.1.2":
+  version "7.1.2"
+  resolved "https://registry.npmjs.org/@vueuse/shared/-/shared-7.1.2.tgz#caee72d0669ecdb2b845349e8fea9431e50c09d6"
+  integrity sha512-AjYh4y9S5FMOoHDsysqcXY/1mpqNTrnWUD50yaaiyf+5kGWQVIpAkkjKZlYSC/NHKxxCRn0cLR4nWMzceUWewQ==
   dependencies:
     vue-demi "*"
 
@@ -717,19 +717,19 @@ ee-first@1.1.1:
   resolved "https://registry.npm.taobao.org/ee-first/download/ee-first-1.1.1.tgz#590c61156b0ae2f4f0255732a158b266bc56b21d"
   integrity sha1-WQxhFWsK4vTwJVcyoViyZrxWsh0=
 
-element-plus@^1.2.0-beta.3:
-  version "1.2.0-beta.3"
-  resolved "https://registry.npmmirror.com/element-plus/download/element-plus-1.2.0-beta.3.tgz#0ded059e6c8ddc6f5d9dcdf32e1b7ed44ac38099"
-  integrity sha512-vvUxR3uL2k9K+WCWz/98hq4uPQ6jvfGf0hfzWvao7pySJkNQq9DtRPC6/4/zUceA/J6Y2Yo3xSbR19JRCwurRw==
+element-plus@^1.2.0-beta.4:
+  version "1.2.0-beta.4"
+  resolved "https://registry.npmjs.org/element-plus/-/element-plus-1.2.0-beta.4.tgz#970c7c6307ef7433a84691720cdd4c979116677b"
+  integrity sha512-wYOwa/Zop5xMqhqkS7jOd32FF0Y2IpquIu8JLMbmvwlWvRUVetE5RO5lvxiF6etZgq8urRVttisXnOzJ9YOItQ==
   dependencies:
     "@element-plus/icons" "^0.0.11"
     "@popperjs/core" "^2.10.2"
-    "@vueuse/core" "^6.7.3"
+    "@vueuse/core" "^7.0.0"
     async-validator "^4.0.7"
     dayjs "^1.10.7"
     lodash "^4.17.21"
     memoize-one "^6.0.0"
-    normalize-wheel-es "^1.1.0"
+    normalize-wheel-es "^1.1.1"
 
 emmet@^2.3.0:
   version "2.3.4"
@@ -758,8 +758,8 @@ entities@^2.0.0:
 
 es-module-lexer@^0.9.3:
   version "0.9.3"
-  resolved "https://registry.npmmirror.com/es-module-lexer/download/es-module-lexer-0.9.3.tgz?cache=0&sync_timestamp=1633646154044&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2Fes-module-lexer%2Fdownload%2Fes-module-lexer-0.9.3.tgz#6f13db00cc38417137daf74366f535c8eb438f19"
-  integrity sha1-bxPbAMw4QXE32vdDZvU1yOtDjxk=
+  resolved "https://registry.npmjs.org/es-module-lexer/-/es-module-lexer-0.9.3.tgz#6f13db00cc38417137daf74366f535c8eb438f19"
+  integrity sha512-1HQ2M2sPtxwnvOvT1ZClHyQDiggdNjURWpY2we6aMKCQiUVxTmVs2UYPLIrD84sS+kMdUwfBSylbJPwNnBrnHQ==
 
 esbuild-android-arm64@0.13.13:
   version "0.13.13"
@@ -1461,10 +1461,10 @@ normalize-path@^3.0.0, normalize-path@~3.0.0:
   resolved "https://registry.nlark.com/normalize-path/download/normalize-path-3.0.0.tgz#0dcd69ff23a1c9b11fd0978316644a0388216a65"
   integrity sha1-Dc1p/yOhybEf0JeDFmRKA4ghamU=
 
-normalize-wheel-es@^1.1.0:
+normalize-wheel-es@^1.1.1:
   version "1.1.1"
-  resolved "https://registry.npmmirror.com/normalize-wheel-es/download/normalize-wheel-es-1.1.1.tgz#a8096db6a56f94332d884fd8ebeda88f2fc79569"
-  integrity sha1-qAlttqVvlDMtiE/Y6+2ojy/HlWk=
+  resolved "https://registry.npmjs.org/normalize-wheel-es/-/normalize-wheel-es-1.1.1.tgz#a8096db6a56f94332d884fd8ebeda88f2fc79569"
+  integrity sha512-157VNH4CngrcsvF8xOVOe22cwniIR3nxSltdctvQeHZj8JttEeOXffK28jucWfWBXs0QNetAumjc1GiInnwX4w==
 
 nprogress@^0.2.0:
   version "0.2.0"
@@ -1884,8 +1884,8 @@ unpipe@~1.0.0:
 
 unplugin-element-plus@^0.1.3:
   version "0.1.3"
-  resolved "https://registry.npmmirror.com/unplugin-element-plus/download/unplugin-element-plus-0.1.3.tgz#3fefadef8a2a965ff3a2846beae6ae651f194fee"
-  integrity sha1-P++t74oqll/zooRr6uauZR8ZT+4=
+  resolved "https://registry.npmjs.org/unplugin-element-plus/-/unplugin-element-plus-0.1.3.tgz#3fefadef8a2a965ff3a2846beae6ae651f194fee"
+  integrity sha512-6GO1tuDIXcoYFkbL26Mrd84oUOgAHShcwn/xma5bwmBN2O0N0s13RbBDsK53vm4hxRKIVuFSSr659BkpmXWm2w==
   dependencies:
     "@rollup/pluginutils" "^4.1.1"
     es-module-lexer "^0.9.3"
@@ -1894,7 +1894,7 @@ unplugin-element-plus@^0.1.3:
 
 unplugin@^0.2.16:
   version "0.2.21"
-  resolved "https://registry.npmmirror.com/unplugin/download/unplugin-0.2.21.tgz?cache=0&sync_timestamp=1636878373530&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2Funplugin%2Fdownload%2Funplugin-0.2.21.tgz#7852cddd9f78f0b32881812fd2efd5a39dcc64e5"
+  resolved "https://registry.npmjs.org/unplugin/-/unplugin-0.2.21.tgz#7852cddd9f78f0b32881812fd2efd5a39dcc64e5"
   integrity sha512-IJ15/L5XbhnV7J09Zjk0FT5HEkBjkXucWAXQWRsmEtUxmmxwh23yavrmDbCF6ZPxWiVB28+wnKIHePTRRpQPbQ==
   dependencies:
     webpack-virtual-modules "^0.4.3"

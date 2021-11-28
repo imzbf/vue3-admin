@@ -87,7 +87,7 @@ table {
 
 html,
 body {
-  font-size: 16px;
+  font-size: 14px;
   font-family: -apple-system, BlinkMacSystemFont, 'segoe ui', Roboto, 'helvetica neue', Arial,
     'noto sans', sans-serif, 'apple color emoji', 'segoe ui emoji', 'segoe ui symbol',
     'noto color emoji';
@@ -175,4 +175,15 @@ body,
   border-bottom: 1px solid #d9d9d9;
   padding: 20px 14px;
   background-color: #fff;
+
+  .left {
+    h2 {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+  }
+
+  .right {
+  }
 }

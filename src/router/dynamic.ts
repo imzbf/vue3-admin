@@ -4,12 +4,9 @@ export interface ViewList {
   // 首页
   dashboard: () => Promise<any>;
   // monitor: () => Promise<any>;
-  // // 自定义组件展示
-  // card_data: () => Promise<any>;
-  editor_md: () => Promise<any>;
   // // 表单
-  // base_form: () => Promise<any>;
-  // def_form: () => Promise<any>;
+  base_form: () => Promise<any>;
+  def_form: () => Promise<any>;
   // // 多级菜单demo
   // demo_m1: () => Promise<any>;
   // demo_m2: () => Promise<any>;
@@ -33,12 +30,9 @@ const DynamisList: ViewList = {
   // 首页
   dashboard: () => import('@/pages/Dashboard/index.vue'),
   // monitor: () => import('@/views/Home/monitor'),
-  // // 自定义组件展示页
-  // card_data: () => import('@/views/Component/Card'),
-  editor_md: () => import('@/pages/Component/MdEditor/index.vue'),
   // // 表单
-  // base_form: () => import('@/views/Form'),
-  // def_form: () => import('@/views/Form/Def'),
+  base_form: () => import('@/pages/Form/index.vue'),
+  def_form: () => import('@/pages/Form/def.vue'),
   // // 多级菜单demo
   // demo_m1: () => import('@/views/MenuDemo/M1'),
   // demo_m2: () => import('@/views/MenuDemo/M2'),

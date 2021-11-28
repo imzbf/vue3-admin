@@ -14,7 +14,7 @@
   "dependencies": {
     "@element-plus/icons": "^0.0.11",
     "axios": "^0.24.0",
-    "element-plus": "^1.2.0-beta.3",
+    "element-plus": "^1.2.0-beta.4",
     "md-editor-v3": "^1.7.2",
     "nprogress": "^0.2.0",
     "screenfull": "^6.0.0",

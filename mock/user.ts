@@ -241,32 +241,6 @@ const OutLinkModule: Menu[] = [
     outLink: 'https://github.com/imzbf/vue3-admin'
   }
 ];
-const ComponentModule: Menu[] = [
-  {
-    path: '/component',
-    component: 'layout',
-    redirect: '/component/chart',
-    name: 'Component',
-    meta: { title: '自定义组件', iconName: 'Operation' },
-    menu: true,
-    children: [
-      {
-        path: 'card',
-        name: 'Card',
-        meta: { title: '卡片', iconName: 'Operation' },
-        menu: true,
-        component: 'card_data'
-      },
-      {
-        path: 'editor',
-        name: 'MdEditor',
-        meta: { title: '编辑器', iconName: 'Operation' },
-        menu: true,
-        component: 'editor_md'
-      }
-    ]
-  }
-];
 
 const user: Array<MockMethod> = [
   {
@@ -282,7 +256,6 @@ const user: Array<MockMethod> = [
           ...DataModule,
           ...UserModule,
           ...TableModule,
-          ...ComponentModule,
           ...ErrorModule,
           ...DemoModule,
           ...OutLinkModule
@@ -293,7 +266,6 @@ const user: Array<MockMethod> = [
           ...DataModule,
           ...UserModule,
           ...TableModule,
-          ...ComponentModule,
           ...ErrorModule,
           ...OutLinkModule
         ];
