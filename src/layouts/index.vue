@@ -13,9 +13,8 @@
       </footer>
     </div>
     <div class="layout">
-      <header class="layout-header">
-        <NavBar @setSettingVisible="setSettingVisible" />
-      </header>
+      <Header />
+      <Bar />
       <main class="layout-main">
         <router-view v-slot="{ Component }">
           <transition name="fade" mode="out-in">
@@ -37,10 +36,11 @@ import { computed, reactive } from 'vue';
 import { useStore } from 'vuex';
 import { key } from '@/store';
 import AdminMenu from '@/layouts/Menu/index.vue';
-import NavBar from './NavBar/index.vue';
+import Header from './Header/index.vue';
 import './style.scss';
 
 import LogoImg from '@/assets/logo.png';
+import Bar from './Bar/index.vue';
 
 const store = useStore(key);
 

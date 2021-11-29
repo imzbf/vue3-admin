@@ -79,8 +79,8 @@ if (screenfull.isEnabled) {
 </script>
 
 <template>
-  <div class="layout-bar">
-    <ul class="layout-bar-left">
+  <header class="layout-header">
+    <ul class="layout-header-left">
       <li @click="adjustMenu" class="cper">
         <ElIcon v-if="store.state.setting.aside === 'open'" :size="18"><Fold /></ElIcon>
         <ElIcon v-else :size="18"><Expand /></ElIcon>
@@ -95,7 +95,7 @@ if (screenfull.isEnabled) {
         </ElBreadcrumb>
       </li>
     </ul>
-    <ul class="layout-bar-right">
+    <ul class="layout-header-right">
       <ElPopover trigger="click">
         <template #reference>
           <li>
@@ -148,12 +148,12 @@ if (screenfull.isEnabled) {
         <template #dropdown>
           <ElDropdownMenu>
             <ElDropdownItem>
-              <RouterLink to="/user" class="layout-bar-link">
+              <RouterLink to="/user" class="layout-header-link">
                 <ElIcon><User /></ElIcon> 个人中心
               </RouterLink>
             </ElDropdownItem>
             <ElDropdownItem>
-              <RouterLink to="/user/setting" class="layout-bar-link">
+              <RouterLink to="/user/setting" class="layout-header-link">
                 <ElIcon><Setting /></ElIcon> 个人设置
               </RouterLink>
             </ElDropdownItem>
@@ -168,5 +168,5 @@ if (screenfull.isEnabled) {
         </li>
       </ElDropdown>
     </ul>
-  </div>
+  </header>
 </template>

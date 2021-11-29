@@ -1,10 +1,10 @@
-.layout-bar {
+.layout-header {
   display: flex;
   justify-content: space-between;
   border-bottom: 1px solid #ddd;
 
-  .layout-bar-left,
-  .layout-bar-right {
+  .layout-header-left,
+  .layout-header-right {
     position: relative;
     display: flex;
 
@@ -16,7 +16,7 @@
     }
   }
 
-  .layout-bar-left {
+  .layout-header-left {
     @media screen and (max-width: 750px) {
       .breadcrumb-help {
         display: none;
@@ -24,7 +24,7 @@
     }
   }
 
-  .layout-bar-right {
+  .layout-header-right {
     padding-right: 10px;
 
     li {
@@ -39,7 +39,7 @@
   }
 }
 
-.layout-bar-link {
+.layout-header-link {
   color: inherit;
 
   &:hover {
@@ -47,7 +47,7 @@
   }
 }
 
-.layout-bar-message {
+.layout-header-message {
   .ant-list-item-meta {
     .ant-list-item-meta-avatar {
       margin-top: 4px;
