@@ -139,6 +139,10 @@ body,
   }
 }
 
+.ex-link {
+  color: var(--el-color-primary);
+}
+
 .view-space {
   padding: 14px;
 }
@@ -186,4 +190,15 @@ body,
 
   .right {
   }
+}
+
+.page-search {
+}
+
+.page-data {
+  margin-bottom: 20px;
+}
+
+.page-pagination {
+  margin-bottom: 20px;
 }

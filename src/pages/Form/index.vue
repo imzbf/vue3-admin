@@ -89,7 +89,7 @@ const form = reactive({
 
 const shortcuts = [
   {
-    text: 'Last week',
+    text: '前一周',
     value: () => {
       const end = new Date();
       const start = new Date();
@@ -98,7 +98,7 @@ const shortcuts = [
     }
   },
   {
-    text: 'Last month',
+    text: '前一个月',
     value: () => {
       const end = new Date();
       const start = new Date();
@@ -107,7 +107,7 @@ const shortcuts = [
     }
   },
   {
-    text: 'Last 3 months',
+    text: '前三个月',
     value: () => {
       const end = new Date();
       const start = new Date();
