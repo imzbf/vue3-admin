@@ -1,12 +1,12 @@
 export interface ViewList {
-  layout: () => Promise<any>;
-  login: () => Promise<any>;
+  Layout: () => Promise<any>;
+  Login: () => Promise<any>;
   // 首页
-  dashboard: () => Promise<any>;
+  Dashboard: () => Promise<any>;
   // monitor: () => Promise<any>;
   // // 表单
-  base_form: () => Promise<any>;
-  def_form: () => Promise<any>;
+  BaseForm: () => Promise<any>;
+  DefForm: () => Promise<any>;
   // // 多级菜单demo
   // demo_m1: () => Promise<any>;
   // demo_m2: () => Promise<any>;
@@ -15,24 +15,24 @@ export interface ViewList {
   // // 用户
   // user_center: () => Promise<any>;
   // user_setting: () => Promise<any>;
-  // // 表格
-  // table_base: () => Promise<any>;
-  // table_query: () => Promise<any>;
+  // 表格
+  Table: () => Promise<any>;
+  List: () => Promise<any>;
   // // 错误
   // error_403: () => Promise<any>;
-  error_404: () => Promise<any>;
+  Error404: () => Promise<any>;
   // error_500: () => Promise<any>;
 }
 
 const DynamisList: ViewList = {
-  layout: () => import('@/layouts/index.vue'),
-  login: () => import('@/pages/Login/index.vue'),
+  Layout: () => import('@/layouts/index.vue'),
+  Login: () => import('@/pages/Login/index.vue'),
   // 首页
-  dashboard: () => import('@/pages/Dashboard/index.vue'),
+  Dashboard: () => import('@/pages/Dashboard/index.vue'),
   // monitor: () => import('@/views/Home/monitor'),
   // // 表单
-  base_form: () => import('@/pages/Form/index.vue'),
-  def_form: () => import('@/pages/Form/def.vue'),
+  BaseForm: () => import('@/pages/Form/index.vue'),
+  DefForm: () => import('@/pages/Form/def.vue'),
   // // 多级菜单demo
   // demo_m1: () => import('@/views/MenuDemo/M1'),
   // demo_m2: () => import('@/views/MenuDemo/M2'),
@@ -42,11 +42,11 @@ const DynamisList: ViewList = {
   // user_center: () => import('@/views/User'),
   // user_setting: () => import('@/views/User/Setting'),
   // // 表格
-  // table_base: () => import('@/views/Table/Basic'),
-  // table_query: () => import('@/views/Table/Query'),
+  Table: () => import('@/pages/List/Table/index.vue'),
+  List: () => import('@/pages/List/index.vue'),
   // // 错误
   // error_403: () => import('@/views/Error/403'),
-  error_404: () => import('@/pages/Error/404.vue')
+  Error404: () => import('@/pages/Error/404.vue')
   // error_500: () => import('@/views/Error/500')
 };
 

@@ -1,5 +1,11 @@
 <template>
-  <FeCard :border="true" class="va-mb project" bodyClass="clear" :bodyStyle="{ paddingTop: 10 }">
+  <Card
+    border
+    :shadow="false"
+    class="va-mb project"
+    bodyClass="clear"
+    :bodyStyle="{ paddingTop: 10 }"
+  >
     <template #title>
       <IconFont type="icon-shouye" class="title-icon" />
       进行中的项目
@@ -7,12 +13,12 @@
     <template #func>
       <RouterLink to="/project" class="normal-link"> 全部项目 </RouterLink>
     </template>
-  </FeCard>
+  </Card>
 </template>
 
 <script setup lang="ts">
 import { RouterLink } from 'vue-router';
-import FeCard from '@/components/Card/index.vue';
+import Card from '@/components/Card/index.vue';
 import IconFont from '@/components/IconFont/index.vue';
 
 const VITE_BASE = import.meta.env.VITE_BASE;
