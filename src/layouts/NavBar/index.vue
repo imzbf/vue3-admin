@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { reactive, defineProps } from 'vue';
+import { reactive } from 'vue';
 import { RouterLink } from 'vue-router';
 import { useStore } from 'vuex';
 import { key } from '@/store';

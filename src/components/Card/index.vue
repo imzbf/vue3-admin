@@ -14,7 +14,7 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps, computed, useSlots } from 'vue';
+import { computed, useSlots } from 'vue';
 import type { PropType, CSSProperties } from 'vue';
 import './index.scss';
 

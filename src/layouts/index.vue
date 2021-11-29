@@ -17,13 +17,13 @@
         <NavBar @setSettingVisible="setSettingVisible" />
       </header>
       <main class="layout-main">
-        <RouterView v-slot="{ Component }">
-          <Transition name="fade" mode="out-in">
-            <KeepAlive :include="store.state.setting.cacheList">
+        <router-view v-slot="{ Component }">
+          <transition name="fade" mode="out-in">
+            <keep-alive :include="store.state.setting.cacheList">
               <component :is="Component" />
-            </KeepAlive>
-          </Transition>
-        </RouterView>
+            </keep-alive>
+          </transition>
+        </router-view>
       </main>
     </div>
     <!-- <div class="drawer">
@@ -33,8 +33,7 @@
 </template>
 
 <script lang="ts" setup>
-import { computed, reactive, KeepAlive, Transition } from 'vue';
-import { RouterView } from 'vue-router';
+import { computed, reactive } from 'vue';
 import { useStore } from 'vuex';
 import { key } from '@/store';
 import AdminMenu from '@/layouts/Menu/index.vue';

@@ -15,7 +15,6 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps } from 'vue';
 import type { PropType } from 'vue';
 import { ElMenuItem, ElIcon } from 'element-plus';
 import type { MenuType } from '@/store/modules/menu';
