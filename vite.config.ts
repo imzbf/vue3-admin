@@ -1,7 +1,7 @@
 import path from 'path';
 import { ConfigEnv, UserConfigExport } from 'vite';
 import vue from '@vitejs/plugin-vue';
-import ElementPlus from 'unplugin-element-plus/vite';
+// import ElementPlus from 'unplugin-element-plus/vite';
 import { viteMockServe } from 'vite-plugin-mock';
 
 // https://vitejs.dev/config/
@@ -30,10 +30,10 @@ export default ({ command, mode }: ConfigEnv): UserConfigExport => {
         mockPath: 'mock',
         watchFiles: true, // 修改更新
         localEnabled: command === 'serve'
-      }),
-      ElementPlus({
-        useSource: true
       })
+      // ElementPlus({
+      //   useSource: true
+      // })
     ]
   };
 };

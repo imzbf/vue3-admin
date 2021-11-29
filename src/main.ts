@@ -5,6 +5,9 @@ import App from './App.vue';
 import 'nprogress/nprogress.css';
 import './styles/common.scss';
 
+import ElementPlus from 'element-plus';
+import 'element-plus/dist/index.css';
+
 import { getToken } from '@/utils/biz';
 
 if (getToken()) {
@@ -12,9 +15,9 @@ if (getToken()) {
   if (!store.state.user.info?.username) {
     // 获取用户信息
     store.dispatch('user/getLoginUser').then(() => {
-      createApp(App).use(store, key).use(router).mount('#app');
+      createApp(App).use(ElementPlus).use(store, key).use(router).mount('#app');
     });
   }
 } else {
-  createApp(App).use(store, key).use(router).mount('#app');
+  createApp(App).use(ElementPlus).use(store, key).use(router).mount('#app');
 }
