@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { ElRow, ElCol } from 'element-plus';
 import FeCard from '@/components/Card/index.vue';
 import IconFont from '@/components/IconFont/index.vue';
 </script>

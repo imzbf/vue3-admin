@@ -18,7 +18,6 @@ import Editor from 'md-editor-v3';
 import 'md-editor-v3/lib/style.css';
 import screenfull from 'screenfull';
 import Card from '@/components/Card/index.vue';
-import { ElDescriptions, ElDescriptionsItem } from 'element-plus';
 
 const text = ref<string>('');
 </script>

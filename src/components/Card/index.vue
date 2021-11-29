@@ -14,7 +14,7 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps, computed, useSlots } from 'vue';
+import { computed, useSlots } from 'vue';
 import type { PropType, CSSProperties } from 'vue';
 import './index.scss';
 
@@ -49,14 +49,18 @@ const props = defineProps({
   },
   border: {
     type: Boolean as PropType<boolean>,
-    defalut: false
+    default: false
+  },
+  shadow: {
+    type: Boolean as PropType<boolean>,
+    default: true
   }
 });
 
 const slots = useSlots();
 
 const cardClass = computed(() => {
-  return ['vra-card', props.border && 'vra-card-border'];
+  return ['vra-card', props.shadow && 'vra-card-shadow', props.border && 'vra-card-border'];
 });
 const headerClass = computed(() => {
   return ['vra-card-header', props.headerClass];

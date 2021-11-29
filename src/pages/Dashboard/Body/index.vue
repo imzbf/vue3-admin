@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { ElRow, ElCol } from 'element-plus';
-
 import ProjectSchedule from './ProjectSchedule.vue';
 import CommonlyUsed from './CommonlyUsed.vue';
 // import Task from './Task';

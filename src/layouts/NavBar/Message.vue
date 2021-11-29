@@ -4,7 +4,6 @@
 
 <script setup lang="ts">
 import { reactive } from 'vue';
-import {} from 'element-plus';
 
 interface DataItem {
   avatar: string;

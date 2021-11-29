@@ -1,8 +1,6 @@
 <script setup lang="ts">
-import { defineProps, h } from 'vue';
 import type { PropType } from 'vue';
 import type { MenuType } from '@/store/modules/menu';
-import { ElSubMenu, ElIcon } from 'element-plus';
 import MenuItem from './MenuItem.vue';
 import MenuIcon from './Icon.vue';
 

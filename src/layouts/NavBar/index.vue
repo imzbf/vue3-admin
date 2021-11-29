@@ -1,25 +1,11 @@
 <script setup lang="ts">
-import { reactive, defineProps } from 'vue';
+import { reactive } from 'vue';
 import { RouterLink } from 'vue-router';
 import { useStore } from 'vuex';
 import { key } from '@/store';
 import screenfull from 'screenfull';
 import { DEMO_USER_HEAD } from '@/config/urls';
-import {
-  ElMessage,
-  ElIcon,
-  ElBreadcrumb,
-  ElBreadcrumbItem,
-  ElNotification,
-  ElDropdown,
-  ElDropdownMenu,
-  ElDropdownItem,
-  ElAvatar,
-  ElBadge,
-  ElTabs,
-  ElTabPane,
-  ElPopover
-} from 'element-plus';
+import { ElMessage, ElNotification } from 'element-plus';
 import { Fold, Expand, FullScreen, SwitchButton, Setting, User, Bell } from '@element-plus/icons';
 
 import './index.scss';

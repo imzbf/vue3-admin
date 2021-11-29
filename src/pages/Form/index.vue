@@ -75,21 +75,6 @@
 <script setup lang="ts">
 import { reactive } from 'vue';
 import Card from '@/components/Card/index.vue';
-import {
-  ElForm,
-  ElFormItem,
-  ElInput,
-  ElSelect,
-  ElOption,
-  ElDatePicker,
-  ElSwitch,
-  ElCheckboxGroup,
-  ElCheckbox,
-  ElRadio,
-  ElRadioGroup,
-  ElButton,
-  ElRate
-} from 'element-plus';
 
 const form = reactive({
   name: '',
@@ -104,7 +89,7 @@ const form = reactive({
 
 const shortcuts = [
   {
-    text: 'Last week',
+    text: '前一周',
     value: () => {
       const end = new Date();
       const start = new Date();
@@ -113,7 +98,7 @@ const shortcuts = [
     }
   },
   {
-    text: 'Last month',
+    text: '前一个月',
     value: () => {
       const end = new Date();
       const start = new Date();
@@ -122,7 +107,7 @@ const shortcuts = [
     }
   },
   {
-    text: 'Last 3 months',
+    text: '前三个月',
     value: () => {
       const end = new Date();
       const start = new Date();

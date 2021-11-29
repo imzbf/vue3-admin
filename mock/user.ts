@@ -28,7 +28,7 @@ interface Menu {
 const DashboardModule: Menu[] = [
   {
     path: '/',
-    component: 'layout',
+    component: 'Layout',
     redirect: '/dashboard',
     meta: { title: '首页', iconName: 'DataBoard' },
     name: 'Index',
@@ -37,7 +37,7 @@ const DashboardModule: Menu[] = [
       {
         path: 'dashboard',
         name: 'DashboardPage',
-        component: 'dashboard',
+        component: 'Dashboard',
         menu: true,
         meta: {
           title: '工作台',
@@ -53,7 +53,7 @@ const DashboardModule: Menu[] = [
 const DataModule: Menu[] = [
   {
     path: '/form',
-    component: 'layout',
+    component: 'Layout',
     redirect: '/form/base',
     name: 'Form',
     meta: {
@@ -66,8 +66,8 @@ const DataModule: Menu[] = [
     children: [
       {
         path: 'base',
-        name: 'FormBase',
-        component: 'base_form',
+        name: 'BaseForm',
+        component: 'BaseForm',
         menu: true,
         meta: {
           title: '基本表单',
@@ -78,8 +78,8 @@ const DataModule: Menu[] = [
       },
       {
         path: 'def',
-        name: 'FormDef',
-        component: 'def_form',
+        name: 'DefForm',
+        component: 'DefForm',
         menu: true,
         meta: {
           title: '自定义表单',
@@ -95,7 +95,7 @@ const DataModule: Menu[] = [
 const DemoModule: Menu[] = [
   {
     path: '/m',
-    component: 'layout',
+    component: 'Layout',
     redirect: '/m/m1',
     name: 'Menu0',
     meta: {
@@ -141,7 +141,7 @@ const DemoModule: Menu[] = [
 const UserModule: Menu[] = [
   {
     path: '/user',
-    component: 'layout',
+    component: 'Layout',
     name: 'User',
     meta: { title: '用户中心' },
     children: [
@@ -162,36 +162,36 @@ const UserModule: Menu[] = [
 ];
 const TableModule: Menu[] = [
   {
-    path: '/table',
-    component: 'layout',
-    redirect: '/table/base',
+    path: '/list',
+    component: 'Layout',
+    redirect: '/list/index',
     name: 'Table',
-    meta: { title: '表格页', iconName: 'Collection' },
+    meta: { title: '列表页', iconName: 'Collection' },
     menu: true,
     children: [
       {
-        path: 'base',
-        name: 'TableBase',
+        path: 'table',
+        name: 'Table',
         meta: {
-          title: '基本表格',
-          iconName: 'Collection',
-          cname: 'ViewTableBasic',
-          keepAlive: true
-        },
-        menu: true,
-        component: 'table_base'
-      },
-      {
-        path: 'query',
-        name: 'TableQuery',
-        meta: {
-          title: '查询表格',
+          title: '数据表格',
           iconName: 'Collection',
           cname: 'ViewTableQuery',
           keepAlive: true
         },
         menu: true,
-        component: 'table_query'
+        component: 'Table'
+      },
+      {
+        path: 'index',
+        name: 'ListIndex',
+        meta: {
+          title: '卡片列表',
+          iconName: 'Collection',
+          cname: 'ViewTableQuery',
+          keepAlive: true
+        },
+        menu: true,
+        component: 'List'
       }
     ]
   }
@@ -199,7 +199,7 @@ const TableModule: Menu[] = [
 const ErrorModule: Menu[] = [
   {
     path: '/error',
-    component: 'layout',
+    component: 'Layout',
     redirect: '/error/404',
     name: 'Error',
     meta: {
@@ -220,7 +220,7 @@ const ErrorModule: Menu[] = [
         name: '404',
         meta: { title: '404', iconName: 'MagicStick' },
         menu: true,
-        component: 'error_404'
+        component: 'Error404'
       },
       {
         path: '500',
