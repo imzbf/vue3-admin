@@ -16,13 +16,6 @@ export default ({ command, mode }: ConfigEnv): UserConfigExport => {
         '@': path.resolve(__dirname, './src')
       }
     },
-    css: {
-      preprocessorOptions: {
-        scss: {
-          additionalData: `@use "@/styles/element-var.scss" as *;`
-        }
-      }
-    },
     plugins: [
       vue(),
       viteMockServe({

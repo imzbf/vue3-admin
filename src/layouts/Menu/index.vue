@@ -2,7 +2,6 @@
 import { computed } from 'vue';
 import { useStore } from 'vuex';
 import { key } from '@/store';
-import { ElMenu } from 'element-plus';
 import SubMenu from './SubMenu.vue';
 import './style.scss';
 

@@ -7,14 +7,14 @@
       <div class="login-form">
         <h1 class="form-title">后台管理模板</h1>
         <div class="form-item">
-          <ElInput size="large" type="text" v-model="data.info.username" placeholder="username: 1">
+          <el-input size="large" type="text" v-model="data.info.username" placeholder="username: 1">
             <template #prefix>
-              <ElIcon class="el-input__icon"><User /></ElIcon>
+              <el-icon class="el-input__icon"><User /></el-icon>
             </template>
-          </ElInput>
+          </el-input>
         </div>
         <div class="form-item">
-          <ElInput
+          <el-input
             size="large"
             type="password"
             v-model="data.info.password"
@@ -24,23 +24,23 @@
             <template #prefix>
               <el-icon class="el-input__icon"><Lock /></el-icon>
             </template>
-          </ElInput>
+          </el-input>
         </div>
         <div class="form-item" style="margin-bottom: 14px">
-          <ElCheckbox v-model="data.remembered"> 记住我 </ElCheckbox>
-          <ElPopconfirm title="自行实现！" confirmButtonText="好的" cancelButtonText="被迫好的">
+          <el-checkbox v-model="data.remembered"> 记住我 </el-checkbox>
+          <el-popconfirm title="自行实现！" confirmButtonText="好的" cancelButtonText="被迫好的">
             <template #reference>
               <span class="forget-p-help cper">忘记密码？</span>
             </template>
-          </ElPopconfirm>
+          </el-popconfirm>
         </div>
         <div class="form-item">
-          <ElButton type="primary" @click="login" style="width: 100%" :loading="data.spinning">
+          <el-button type="primary" @click="login" style="width: 100%" :loading="data.spinning">
             登录
-          </ElButton>
+          </el-button>
         </div>
         <div class="form-item">
-          <ElDivider>OR</ElDivider>
+          <el-divider>OR</el-divider>
           <ul class="oauth">
             <li class="cper">
               <svg class="icon login-icon" aria-hidden="true">
@@ -75,22 +75,14 @@
 </template>
 
 <script setup lang="ts">
-import { reactive, onMounted, ref } from 'vue';
+import { reactive, onMounted } from 'vue';
 import { useStore } from 'vuex';
 import { key } from '@/store';
 import '@/assets/iconfonts/login/iconfont';
 import './style.scss';
 import { onBeforeRouteLeave } from 'vue-router';
-import {
-  ElMessage,
-  ElIcon,
-  ElInput,
-  ElCheckbox,
-  ElPopconfirm,
-  ElButton,
-  ElDivider
-} from 'element-plus';
-import { User, Lock, Loading } from '@element-plus/icons';
+import { ElMessage } from 'element-plus';
+import { User, Lock } from '@element-plus/icons';
 
 const loginBg = new URL('../../assets/images/login-bg.svg', import.meta.url).href;
 const loginBody = new URL('../../assets/images/login-body.svg', import.meta.url).href;

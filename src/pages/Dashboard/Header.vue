@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { ElAvatar } from 'element-plus';
 import IconFont from '@/components/IconFont/index.vue';
 import Statistic from '@/components/Statistic/index.vue';
 const VITE_BASE = import.meta.env.VITE_BASE;

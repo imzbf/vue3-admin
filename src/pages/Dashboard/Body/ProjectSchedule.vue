@@ -11,7 +11,6 @@
 </template>
 
 <script setup lang="ts">
-import { defineComponent } from 'vue';
 import { RouterLink } from 'vue-router';
 import FeCard from '@/components/Card/index.vue';
 import IconFont from '@/components/IconFont/index.vue';

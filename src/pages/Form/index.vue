@@ -75,21 +75,6 @@
 <script setup lang="ts">
 import { reactive } from 'vue';
 import Card from '@/components/Card/index.vue';
-import {
-  ElForm,
-  ElFormItem,
-  ElInput,
-  ElSelect,
-  ElOption,
-  ElDatePicker,
-  ElSwitch,
-  ElCheckboxGroup,
-  ElCheckbox,
-  ElRadio,
-  ElRadioGroup,
-  ElButton,
-  ElRate
-} from 'element-plus';
 
 const form = reactive({
   name: '',
