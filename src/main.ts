@@ -6,18 +6,27 @@ import 'nprogress/nprogress.css';
 import './styles/common.scss';
 
 import ElementPlus from 'element-plus';
+import zhCn from 'element-plus/es/locale/lang/zh-cn';
 import '@/styles/element.scss';
 
 import { getToken } from '@/utils/biz';
+
+const mount = () => {
+  createApp(App)
+    .use(ElementPlus, {
+      locale: zhCn
+    })
+    .use(store, key)
+    .use(router)
+    .mount('#app');
+};
 
 if (getToken()) {
   // 检测是否有用户信息
   if (!store.state.user.info?.username) {
     // 获取用户信息
-    store.dispatch('user/getLoginUser').then(() => {
-      createApp(App).use(ElementPlus).use(store, key).use(router).mount('#app');
-    });
+    store.dispatch('user/getLoginUser').then(mount);
   }
 } else {
-  createApp(App).use(ElementPlus).use(store, key).use(router).mount('#app');
+  mount();
 }
