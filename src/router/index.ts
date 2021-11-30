@@ -7,6 +7,7 @@ import {
   RouteLocation
 } from 'vue-router';
 import NProgress from 'nprogress';
+import excludeTag from './tagExclude';
 
 import store from '@/store';
 
@@ -48,6 +49,18 @@ const routes: Array<AdminRouteRecordRaw> = [
     name: 'Global404',
     meta: { title: '页面不见啦.' },
     component: DynamicRoutes.Error404
+  },
+  {
+    path: '/redirect',
+    name: 'Redirect',
+    meta: { title: '...' },
+    component: DynamicRoutes.Layout,
+    children: [
+      {
+        path: ':path*',
+        component: DynamicRoutes.Redirect
+      }
+    ]
   },
   {
     path: '/:pathMatch(.*)*',
@@ -116,7 +129,7 @@ router.beforeEach(async (to: RouteLocationNormalized, _, next: NavigationGuardNe
 
 router.afterEach((to) => {
   // 在这里排除不想要放到标签中的路由
-  if (to.path !== '/login') {
+  if (!excludeTag(to.path)) {
     store.commit('setting/routerChanged', {
       route: {
         title: to.meta.title,

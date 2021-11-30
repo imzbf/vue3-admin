@@ -20,7 +20,7 @@
 
         <template #dropdown>
           <ElDropdownMenu>
-            <ElDropdownItem>刷新当前</ElDropdownItem>
+            <ElDropdownItem @click="refreshRoute">刷新当前</ElDropdownItem>
             <ElDropdownItem v-if="menuTagNotSingle" @click="barMenuClose(menuTagActions.rmCurr)"
               >关闭当前</ElDropdownItem
             >
@@ -41,7 +41,7 @@
 import { computed } from 'vue';
 import { ArrowDown } from '@element-plus/icons';
 import { useStore } from 'vuex';
-import { useRouter } from 'vue-router';
+import { useRouter, useRoute } from 'vue-router';
 import { key } from '@/store';
 import type { MenuTag, MenuTagActions } from '@/store/modules/setting';
 import { fixedTags } from '@/config/setting';
@@ -49,6 +49,7 @@ import { menuTagActions } from '@/config/static';
 
 const store = useStore(key);
 const router = useRouter();
+const route = useRoute();
 
 // 菜单不是单数，单数时不允许显示移除其他等
 const menuTagNotSingle = computed(() => {
@@ -75,6 +76,10 @@ const barMenuClose = (type: MenuTagActions) => {
   store.commit('setting/removeMenuTag', {
     type
   });
+};
+
+const refreshRoute = () => {
+  router.replace(`/redirect${route.path}`);
 };
 </script>
 

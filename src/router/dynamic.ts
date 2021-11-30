@@ -22,6 +22,7 @@ export interface ViewList {
   error403: () => Promise<any>;
   Error404: () => Promise<any>;
   error500: () => Promise<any>;
+  Redirect: () => Promise<any>;
 }
 
 const DynamisList: ViewList = {
@@ -47,7 +48,8 @@ const DynamisList: ViewList = {
   // // 错误
   error403: () => import('@/pages/Error/403.vue'),
   Error404: () => import('@/pages/Error/404.vue'),
-  error500: () => import('@/pages/Error/500.vue')
+  error500: () => import('@/pages/Error/500.vue'),
+  Redirect: () => import('@/pages/Redirect/index.vue')
 };
 
 export default DynamisList;
