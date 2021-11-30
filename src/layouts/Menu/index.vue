@@ -6,7 +6,9 @@ import SubMenu from './SubMenu.vue';
 import './style.scss';
 
 const store = useStore(key);
-const aside = computed(() => store.state.setting.aside === 'close');
+const aside = computed(
+  () => !store.state.setting.isMobile && store.state.setting.aside === 'close'
+);
 </script>
 
 <template>
