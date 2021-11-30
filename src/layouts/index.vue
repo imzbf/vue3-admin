@@ -1,6 +1,27 @@
 <template>
-  <section class="wrapper">
-    <div :class="layoutAsideClass">
+  <section :class="wrapperClass">
+    <ElDrawer
+      v-if="store.state.setting.isMobile"
+      :model-value="store.state.setting.mobileDrawer"
+      @close="adjustMobileDrawer"
+      direction="ltr"
+      size="auto"
+      :with-header="false"
+    >
+      <div class="layout-aside">
+        <header class="logo">
+          <img :src="LogoImg" />
+          <span>后台管理模板</span>
+        </header>
+        <div class="menu-container">
+          <AdminMenu />
+        </div>
+        <footer class="copyright">
+          <span>@2020 imbf.cc</span>
+        </footer>
+      </div>
+    </ElDrawer>
+    <div v-else class="layout-aside">
       <header class="logo">
         <img :src="LogoImg" />
         <span v-if="asideOpen">后台管理模板</span>
@@ -45,18 +66,34 @@ import Bar from './Bar/index.vue';
 const store = useStore(key);
 
 const data = reactive({
-  settingVisible: false
+  settingVisible: false,
+  mobileMenuDrawer: true
 });
 
 // 侧边栏样式
-const layoutAsideClass = computed(() => {
-  return store.state.setting.aside === 'open' ? 'layout-aside' : 'layout-aside layout-aside-close';
+const wrapperClass = computed(() => {
+  const classList = ['wrapper'];
+
+  if (store.state.setting.aside !== 'open') {
+    classList.push('aside-close');
+  }
+
+  if (store.state.setting.isMobile) {
+    classList.push('is-mobile');
+  }
+  return classList;
 });
 
 // 侧边栏展开状态
 const asideOpen = computed(() => {
   return store.state.setting.aside === 'open';
 });
+
+const adjustMobileDrawer = () => {
+  store.commit('setting/adjustMobileDrawer', {
+    mobileDrawer: !store.state.setting.mobileDrawer
+  });
+};
 
 const setSettingVisible = (val: boolean) => {
   data.settingVisible = val;

@@ -4,7 +4,9 @@ import router from '@/router';
 import { menuTagActions } from '@/config/static';
 
 interface AsideType {
-  aside: 'open' | 'close' | 'none'; // 正常展开、缩小显示图标、不展示
+  aside: 'open' | 'close'; // 正常展开、缩小显示图标
+  isMobile: boolean;
+  mobileDrawer: boolean;
 }
 
 export type Themes = 'dark' | 'light' | 'mix';
@@ -38,6 +40,7 @@ const cacheTheme = localStorage.getItem(Final.THEME);
 
 const defaultState: SettingStateType = {
   aside: 'open',
+  mobileDrawer: false,
   selectedKey: '/',
   openKeys: setting.openKeys,
   breadcrumbs: [],
@@ -47,7 +50,8 @@ const defaultState: SettingStateType = {
     (cacheTheme === 'mix' && 'mix') ||
     'dark',
   cacheList: [],
-  menuTags: fixedTags.map((tag) => ({ curr: false, ...tag }))
+  menuTags: fixedTags.map((tag) => ({ curr: false, ...tag })),
+  isMobile: document.body.offsetWidth < 970
 };
 
 // 判断当前操作标签是不是固定标签
@@ -79,6 +83,9 @@ const getCacheComponentName = (routes: Array<any>): Array<string> => {
 const mutations = {
   asideState(state: SettingStateType, payload: AsideType): void {
     state.aside = payload.aside;
+  },
+  adjustMobileDrawer(state: SettingStateType, payload: AsideType): void {
+    state.mobileDrawer = payload.mobileDrawer;
   },
   routeChanged(
     state: SettingStateType,
@@ -172,6 +179,9 @@ const mutations = {
 
     // 定位到最后一个标签
     router.push(state.menuTags[state.menuTags.length - 1].path);
+  },
+  reSized(state: SettingStateType, payload: { isMobile: boolean }) {
+    state.isMobile = payload.isMobile;
   }
 };
 const actions = {};

@@ -38,9 +38,15 @@ const configData = reactive({
 });
 
 const adjustMenu = () => {
-  store.commit('setting/asideState', {
-    aside: store.state.setting.aside === 'open' ? 'close' : 'open'
-  });
+  if (store.state.setting.isMobile) {
+    store.commit('setting/adjustMobileDrawer', {
+      mobileDrawer: !store.state.setting.mobileDrawer
+    });
+  } else {
+    store.commit('setting/asideState', {
+      aside: store.state.setting.aside === 'open' ? 'close' : 'open'
+    });
+  }
 };
 
 // 调整主题

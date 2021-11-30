@@ -13,8 +13,10 @@
   display: flex;
   height: 100%;
 
-  .layout-aside {
+  .layout-aside,
+  .layout-aside-mobile {
     width: 210px;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     position: relative;
@@ -40,8 +42,7 @@
     }
 
     .menu-container {
-      flex: 1 1;
-      max-height: 100%;
+      height: calc(100vh - 168px);
       overflow-x: hidden;
       overflow-y: auto;
 
@@ -62,18 +63,10 @@
     }
   }
 
-  .layout-aside-close {
-    width: 64px;
-
-    .logo {
-      border-right: none;
-    }
-  }
-
   .layout {
     display: flex;
     flex-direction: column;
-    flex: 1;
+    width: calc(100% - 210px);
 
     .layout-header {
       background-color: #fff;
@@ -81,8 +74,40 @@
 
     .layout-main {
       flex: 1;
-      overflow: auto;
+      overflow-y: auto;
+      overflow-x: hidden;
       background-color: #fff;
     }
   }
 }
+
+.aside-close {
+  .layout-aside {
+    width: 64px;
+  }
+
+  .layout {
+    width: calc(100% - 64px);
+  }
+
+  // .logo {
+  //   border-right: none;
+  // }
+}
+
+// 970px以下视为移动设备
+// @media (max-width: 970px) {
+.is-mobile {
+  .layout-aside {
+    width: 210px;
+  }
+
+  .layout {
+    width: 100%;
+  }
+
+  .layout-aside {
+    border: none;
+  }
+}
+// }
