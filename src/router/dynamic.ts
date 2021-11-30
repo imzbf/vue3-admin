@@ -19,9 +19,9 @@ export interface ViewList {
   Table: () => Promise<any>;
   List: () => Promise<any>;
   // // 错误
-  // error_403: () => Promise<any>;
+  error403: () => Promise<any>;
   Error404: () => Promise<any>;
-  // error_500: () => Promise<any>;
+  error500: () => Promise<any>;
 }
 
 const DynamisList: ViewList = {
@@ -45,9 +45,9 @@ const DynamisList: ViewList = {
   Table: () => import('@/pages/List/Table/index.vue'),
   List: () => import('@/pages/List/index.vue'),
   // // 错误
-  // error_403: () => import('@/views/Error/403'),
-  Error404: () => import('@/pages/Error/404.vue')
-  // error_500: () => import('@/views/Error/500')
+  error403: () => import('@/pages/Error/403.vue'),
+  Error404: () => import('@/pages/Error/404.vue'),
+  error500: () => import('@/pages/Error/500.vue')
 };
 
 export default DynamisList;

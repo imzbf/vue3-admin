@@ -213,7 +213,7 @@ const ErrorModule: Menu[] = [
         name: '403',
         meta: { title: '403', iconName: 'MagicStick' },
         menu: true,
-        component: 'error_403'
+        component: 'error403'
       },
       {
         path: '404',
@@ -227,7 +227,7 @@ const ErrorModule: Menu[] = [
         name: '500',
         meta: { title: '500', iconName: 'MagicStick' },
         menu: true,
-        component: 'error_500'
+        component: 'error500'
       }
     ]
   }
