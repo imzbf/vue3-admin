@@ -41,13 +41,13 @@ const routes: Array<AdminRouteRecordRaw> = [
     path: '/login',
     name: 'Login',
     meta: { title: '登录' },
-    component: DynamicRoutes.login
+    component: DynamicRoutes.Login
   },
   {
     path: '/404',
     name: 'Global404',
     meta: { title: '页面不见啦.' },
-    component: DynamicRoutes.error_404
+    component: DynamicRoutes.Error404
   },
   {
     path: '/:pathMatch(.*)*',
@@ -114,7 +114,17 @@ router.beforeEach(async (to: RouteLocationNormalized, _, next: NavigationGuardNe
   }
 });
 
-router.afterEach(() => {
+router.afterEach((to) => {
+  // 在这里排除不想要放到标签中的路由
+  if (to.path !== '/login') {
+    store.commit('setting/routerChanged', {
+      route: {
+        title: to.meta.title,
+        path: to.path
+      }
+    });
+  }
+
   NProgress.done();
 });
 

@@ -1,11 +1,18 @@
 <template>
   <div class="layout-bar">
-    <span class="tag-item" v-for="item of 12"
-      >Medium
-      <ElIcon><Close /></ElIcon>
-    </span>
+    <ElTag
+      class="cper"
+      :closable="!isFixedTag(item) && menuTagNotSingle"
+      :effect="item.curr ? 'dark' : 'plain'"
+      size="small"
+      :type="item.curr ? 'success' : 'info'"
+      v-for="item of store.state.setting.menuTags"
+      @click="tagClick(item)"
+      @close="tagClose(item)"
+      >{{ item.title }}</ElTag
+    >
 
-    <span class="layout-bar-action">
+    <span class="layout-bar-action cper">
       <ElDropdown size="mini" placement="bottom-end">
         <ElIcon>
           <ArrowDown />
@@ -13,10 +20,16 @@
 
         <template #dropdown>
           <ElDropdownMenu>
-            <ElDropdownItem>刷新</ElDropdownItem>
-            <ElDropdownItem>关闭</ElDropdownItem>
-            <ElDropdownItem>关闭其他</ElDropdownItem>
-            <ElDropdownItem>关闭所有</ElDropdownItem>
+            <ElDropdownItem>刷新当前</ElDropdownItem>
+            <ElDropdownItem v-if="menuTagNotSingle" @click="barMenuClose(menuTagActions.rmCurr)"
+              >关闭当前</ElDropdownItem
+            >
+            <ElDropdownItem v-if="menuTagNotSingle" @click="barMenuClose(menuTagActions.rmOther)"
+              >关闭其他</ElDropdownItem
+            >
+            <ElDropdownItem v-if="menuTagNotSingle" @click="barMenuClose(menuTagActions.rmAll)"
+              >关闭所有</ElDropdownItem
+            >
           </ElDropdownMenu>
         </template>
       </ElDropdown></span
@@ -25,7 +38,44 @@
 </template>
 
 <script setup lang="ts">
-import { Close, ArrowDown } from '@element-plus/icons';
+import { computed } from 'vue';
+import { ArrowDown } from '@element-plus/icons';
+import { useStore } from 'vuex';
+import { useRouter } from 'vue-router';
+import { key } from '@/store';
+import { MenuTag, MenuTagActions } from '@/store/modules/setting';
+import { fixedTags } from '@/config/setting';
+import { menuTagActions } from '@/config/static';
+
+const store = useStore(key);
+const router = useRouter();
+
+// 菜单不是单数，单数时不允许显示移除其他等
+const menuTagNotSingle = computed(() => {
+  return store.state.setting.menuTags.length > 1;
+});
+
+// 判断是否是固定标签
+const isFixedTag = (tag: MenuTag) => {
+  return fixedTags.find((item) => item.path === tag.path) !== undefined;
+};
+
+const tagClick = (tag: MenuTag) => {
+  router.push(tag.path);
+};
+
+const tagClose = (tag: MenuTag) => {
+  store.commit('setting/removeMenuTag', {
+    type: menuTagActions.rmTarget,
+    route: tag
+  });
+};
+
+const barMenuClose = (type: MenuTagActions) => {
+  store.commit('setting/removeMenuTag', {
+    type
+  });
+};
 </script>
 
 <style lang="scss">
@@ -43,34 +93,7 @@ import { Close, ArrowDown } from '@element-plus/icons';
     text-align: center;
   }
 
-  .tag-item {
-    background-color: #ffffff;
-    border: 1px solid #e9e9eb;
-    color: #909399;
-    padding: 0 8px;
-    line-height: 24px;
-    border-radius: 2px;
-    font-size: 12px;
-    display: inline-block;
-    cursor: pointer;
-
-    .el-icon {
-      border-radius: 50%;
-      text-align: center;
-      position: relative;
-      line-height: 16px;
-      vertical-align: middle;
-      transform: scale(0.83);
-      top: -1px;
-      right: -5px;
-
-      &:hover {
-        background-color: #dbdbdb;
-      }
-    }
-  }
-
-  .tag-item + .tag-item {
+  .el-tag + .el-tag {
     margin-left: 6px;
   }
 }

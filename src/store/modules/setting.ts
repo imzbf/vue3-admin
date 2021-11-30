@@ -1,11 +1,23 @@
-import setting from '@/config/setting';
+import setting, { fixedTags } from '@/config/setting';
 import Final from '@/config/keys';
+import router from '@/router';
+import { menuTagActions } from '@/config/static';
 
 interface AsideType {
   aside: 'open' | 'close' | 'none'; // 正常展开、缩小显示图标、不展示
 }
 
 export type Themes = 'dark' | 'light' | 'mix';
+
+export interface MenuTag {
+  title: string;
+  path: string;
+  // 是否是当前路由
+  curr: boolean;
+}
+
+// 移除标签类型，当前|目标|非当前|全部
+export type MenuTagActions = 'rmCurr' | 'rmTarget' | 'rmOther' | 'rmAll';
 
 export interface SettingStateType extends AsideType {
   // 当前激活的菜单
@@ -18,11 +30,13 @@ export interface SettingStateType extends AsideType {
   theme: Themes;
   // 缓存路由名称列表
   cacheList: Array<string>;
+  // 当前打开的菜单标签
+  menuTags: Array<MenuTag>;
 }
 
 const cacheTheme = localStorage.getItem(Final.THEME);
 
-const state: SettingStateType = {
+const defaultState: SettingStateType = {
   aside: 'open',
   selectedKey: '/',
   openKeys: setting.openKeys,
@@ -32,7 +46,13 @@ const state: SettingStateType = {
     (cacheTheme === 'light' && 'light') ||
     (cacheTheme === 'mix' && 'mix') ||
     'dark',
-  cacheList: []
+  cacheList: [],
+  menuTags: fixedTags.map((tag) => ({ curr: false, ...tag }))
+};
+
+// 判断当前操作标签是不是固定标签
+const checkFixedTag = (tag: MenuTag) => {
+  return fixedTags.findIndex((item) => item.path === tag.path) !== -1;
 };
 
 // 获取路由列表中需要缓存的组件名称
@@ -93,13 +113,72 @@ const mutations = {
   // 生成新的缓存名单
   setCacheList(state: SettingStateType, payload: { routes: Array<any> }): void {
     state.cacheList = [...state.cacheList, ...getCacheComponentName(payload.routes)];
+  },
+  // 标签栏调整，不存在则新增，存在则更新状态
+  routerChanged(state: SettingStateType, payload: { route: MenuTag }) {
+    const { menuTags } = state;
+    const savedTag = menuTags.find((item) => item.path === payload.route.path);
+
+    if (savedTag) {
+      menuTags.forEach((item) => {
+        if (item === savedTag) {
+          item.curr = true;
+        } else {
+          item.curr = false;
+        }
+      });
+    } else {
+      menuTags.forEach((item) => {
+        item.curr = false;
+      });
+
+      menuTags.push({
+        ...payload.route,
+        curr: true
+      });
+    }
+
+    state.menuTags = menuTags;
+  },
+  // 标签栏移除
+  removeMenuTag(state: SettingStateType, payload: { type: MenuTagActions; route: MenuTag }) {
+    switch (payload.type) {
+      case menuTagActions.rmTarget: {
+        state.menuTags = state.menuTags.filter((tag) => tag.path !== payload.route.path);
+        break;
+      }
+      case menuTagActions.rmCurr: {
+        state.menuTags = state.menuTags.filter((tag) => {
+          if (tag.curr && !checkFixedTag(tag)) {
+            return false;
+          }
+          return true;
+        });
+        break;
+      }
+      case menuTagActions.rmOther: {
+        state.menuTags = state.menuTags.filter((tag) => {
+          if (!tag.curr && !checkFixedTag(tag)) {
+            return false;
+          }
+          return true;
+        });
+        break;
+      }
+      case menuTagActions.rmAll: {
+        state.menuTags = fixedTags.map((tag) => ({ curr: false, ...tag }));
+      }
+    }
+
+    // 定位到最后一个标签
+    router.push(state.menuTags[state.menuTags.length - 1].path);
   }
 };
 const actions = {};
 
 export default {
   namespaced: true,
-  state,
+  state: defaultState,
   mutations,
   actions
 };
