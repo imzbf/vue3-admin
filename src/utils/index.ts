@@ -5,7 +5,7 @@
  * @param {*} option 是否新窗口、是否要求不跟踪
  */
 export const goto = (
-  url: string,
+  url: string | undefined,
   option = {
     newWindow: true,
     nofollow: true

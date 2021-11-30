@@ -1,5 +1,5 @@
 <template>
-  <ElMenuItem v-if="props.menu.outLink" @click="goto(props.menu.outLink as string)">
+  <ElMenuItem v-if="props.menu.outLink" @click="goto(props.menu.outLink)">
     <ElIcon v-if="menu.iconName">
       <MenuIcon :icon-name="menu.iconName" />
     </ElIcon>

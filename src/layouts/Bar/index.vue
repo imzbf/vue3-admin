@@ -43,7 +43,7 @@ import { ArrowDown } from '@element-plus/icons';
 import { useStore } from 'vuex';
 import { useRouter } from 'vue-router';
 import { key } from '@/store';
-import { MenuTag, MenuTagActions } from '@/store/modules/setting';
+import type { MenuTag, MenuTagActions } from '@/store/modules/setting';
 import { fixedTags } from '@/config/setting';
 import { menuTagActions } from '@/config/static';
 
