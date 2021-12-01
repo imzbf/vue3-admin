@@ -54,7 +54,7 @@ const defaultState: SettingStateType = {
   cacheList: [],
   menuTags: fixedTags.map((tag) => ({ curr: false, ...tag })),
   isMobile: document.body.offsetWidth < 970,
-  settingDrawerVisible: true
+  settingDrawerVisible: false
 };
 
 // 判断当前操作标签是不是固定标签

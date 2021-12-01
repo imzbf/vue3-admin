@@ -6,7 +6,7 @@
 </template>
 
 <script lang="ts">
-import { ViewList } from '@/router/dynamic';
+import type { ViewList } from '@/router/dynamic';
 // 规范组件名
 const name: keyof ViewList = 'Dashboard';
 export default { name };
