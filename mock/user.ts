@@ -93,44 +93,61 @@ const DataModule: Menu[] = [
 
 const DemoModule: Menu[] = [
   {
-    path: '/m',
+    path: '/component',
     component: 'Layout',
-    redirect: '/m/m1',
-    name: 'Menu0',
+    redirect: '/component/base',
+    name: 'ComponentPage',
     meta: {
-      title: '多级菜单',
+      title: '组件库',
       iconName: 'Cherry'
     },
     menu: true,
     children: [
       {
-        path: 'm1',
-        name: 'Menu1-1',
-        meta: { title: '菜单1-1', iconName: 'Cherry', cname: 'DemoM1', keepAlive: true },
+        path: 'base',
+        name: 'BaseComponentPage',
+        meta: { title: '基础组件', iconName: 'Cherry' },
         menu: true,
-        component: 'DemoM1'
-      },
-      {
-        path: 'm2',
-        name: 'Menu1-2',
-        meta: { title: '菜单1-2', iconName: 'Cherry' },
-        menu: true,
-        component: 'DemoM2',
-        redirect: '/m/m2/m1',
+        component: 'BaseComponent',
+        redirect: '/component/base/button',
         children: [
           {
-            path: 'm1',
-            name: 'Menu1-2-1',
-            meta: { title: '菜单1-2-1', iconName: 'Cherry', cname: 'DemoM2_1', keepAlive: true },
+            path: 'button',
+            name: 'ButtonPage',
+            meta: { title: '按钮组件', iconName: 'Cherry', cname: 'Button', keepAlive: true },
             menu: true,
-            component: 'DemoM2_1'
+            component: 'Button'
           },
           {
-            path: 'm2',
+            path: 'layout',
+            name: 'LayoutPage',
+            meta: { title: '布局组件', iconName: 'Cherry', cname: 'LayoutC', keepAlive: true },
             menu: true,
-            name: 'Menu1-2-2',
-            meta: { title: '菜单1-2-2', iconName: 'Cherry', cname: 'DemoM2_2', keepAlive: true },
-            component: 'DemoM2_2'
+            component: 'LayoutC'
+          }
+        ]
+      },
+      {
+        path: 'feedback',
+        name: 'Feedback',
+        meta: { title: '反馈组件', iconName: 'Cherry' },
+        menu: true,
+        component: 'FeedbackComponent',
+        redirect: '/component/feedback/alert',
+        children: [
+          {
+            path: 'alert',
+            name: 'AlertPage',
+            meta: { title: '文字提醒', iconName: 'Cherry', cname: 'Alert', keepAlive: true },
+            menu: true,
+            component: 'Alert'
+          },
+          {
+            path: 'message',
+            menu: true,
+            name: 'MessagePage',
+            meta: { title: '消息提示', iconName: 'Cherry', cname: 'Message', keepAlive: true },
+            component: 'Message'
           }
         ]
       }

@@ -14,7 +14,7 @@ onMounted(() => {
 <template><span></span></template>
 
 <script lang="ts">
-import { ViewList } from '@/router/dynamic';
+import type { ViewList } from '@/router/dynamic';
 // 规范组件名
 const name: keyof ViewList = 'Redirect';
 export default { name };
