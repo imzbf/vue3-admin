@@ -46,9 +46,9 @@
         </router-view>
       </main>
     </div>
-    <!-- <div class="drawer">
-      <Setting visible={data.settingVisible} setVisible={() => { data.settingVisible = false; }} />
-    </div>  -->
+    <div class="drawer">
+      <Setting />
+    </div>
   </section>
 </template>
 
@@ -62,6 +62,7 @@ import './style.scss';
 
 import LogoImg from '@/assets/logo.png';
 import Bar from './Bar/index.vue';
+import Setting from './Setting/index.vue';
 
 const store = useStore(key);
 
@@ -93,10 +94,6 @@ const adjustMobileDrawer = () => {
   store.commit('setting/adjustMobileDrawer', {
     mobileDrawer: !store.state.setting.mobileDrawer
   });
-};
-
-const setSettingVisible = (val: boolean) => {
-  data.settingVisible = val;
 };
 </script>
 

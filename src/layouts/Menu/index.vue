@@ -18,6 +18,9 @@ const aside = computed(
     :collapse="aside"
     :default-active="store.state.setting.selectedKey"
     :default-openeds="store.state.setting.openKeys"
+    background-color="#545c64"
+    text-color="#fff"
+    active-text-color="#ffd04b"
   >
     <SubMenu :menuList="store.state.menu.menuList" />
   </ElMenu>

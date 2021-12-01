@@ -6,7 +6,16 @@ import { key } from '@/store';
 import screenfull from 'screenfull';
 import { DEMO_USER_HEAD } from '@/config/urls';
 import { ElMessage, ElNotification } from 'element-plus';
-import { Fold, Expand, FullScreen, SwitchButton, Setting, User, Bell } from '@element-plus/icons';
+import {
+  Fold,
+  Expand,
+  FullScreen,
+  SwitchButton,
+  Setting,
+  User,
+  Bell,
+  MoreFilled
+} from '@element-plus/icons';
 
 import './index.scss';
 
@@ -20,15 +29,6 @@ import Todo from './Todo.vue';
 // }
 
 const store = useStore(key);
-
-const props = defineProps({
-  setSettingVisible: {
-    type: Function,
-    default: (val: boolean) => {
-      return val;
-    }
-  }
-});
 
 const configData = reactive({
   // 全屏状态
@@ -173,6 +173,9 @@ if (screenfull.isEnabled) {
           <ElAvatar size="small" :src="DEMO_USER_HEAD" />
         </li>
       </ElDropdown>
+      <li @click="store.commit('setting/settingDrawerVisibleChanged')">
+        <ElIcon style="transform: rotate(90deg)"><MoreFilled /></ElIcon>
+      </li>
     </ul>
   </header>
 </template>
