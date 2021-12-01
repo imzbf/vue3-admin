@@ -66,6 +66,13 @@
   </div>
 </template>
 
+<script lang="ts">
+import { ViewList } from '@/router/dynamic';
+// 规范组件名
+const name: keyof ViewList = 'Table';
+export default { name };
+</script>
+
 <script setup lang="ts">
 import { onMounted, reactive } from 'vue';
 import { queryTable } from '@/apis/list/table';

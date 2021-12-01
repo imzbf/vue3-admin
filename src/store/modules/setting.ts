@@ -34,6 +34,8 @@ export interface SettingStateType extends AsideType {
   cacheList: Array<string>;
   // 当前打开的菜单标签
   menuTags: Array<MenuTag>;
+  // 设置抽屉状态
+  settingDrawerVisible: boolean;
 }
 
 const cacheTheme = localStorage.getItem(Final.THEME);
@@ -51,7 +53,8 @@ const defaultState: SettingStateType = {
     'dark',
   cacheList: [],
   menuTags: fixedTags.map((tag) => ({ curr: false, ...tag })),
-  isMobile: document.body.offsetWidth < 970
+  isMobile: document.body.offsetWidth < 970,
+  settingDrawerVisible: true
 };
 
 // 判断当前操作标签是不是固定标签
@@ -182,6 +185,10 @@ const mutations = {
   },
   reSized(state: SettingStateType, payload: { isMobile: boolean }) {
     state.isMobile = payload.isMobile;
+  },
+  // 调整设置抽屉显示状态
+  settingDrawerVisibleChanged(state: SettingStateType) {
+    state.settingDrawerVisible = !state.settingDrawerVisible;
   }
 };
 const actions = {};

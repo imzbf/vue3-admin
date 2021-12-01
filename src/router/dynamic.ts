@@ -8,20 +8,20 @@ export interface ViewList {
   BaseForm: () => Promise<any>;
   DefForm: () => Promise<any>;
   // // 多级菜单demo
-  // demo_m1: () => Promise<any>;
-  // demo_m2: () => Promise<any>;
-  // demo_m2_1: () => Promise<any>;
-  // demo_m2_2: () => Promise<any>;
+  DemoM1: () => Promise<any>;
+  DemoM2: () => Promise<any>;
+  DemoM2_1: () => Promise<any>;
+  DemoM2_2: () => Promise<any>;
   // // 用户
-  // user_center: () => Promise<any>;
-  // user_setting: () => Promise<any>;
+  UserCenter: () => Promise<any>;
+  UserSetting: () => Promise<any>;
   // 表格
   Table: () => Promise<any>;
   List: () => Promise<any>;
   // // 错误
-  error403: () => Promise<any>;
+  Error403: () => Promise<any>;
   Error404: () => Promise<any>;
-  error500: () => Promise<any>;
+  Error500: () => Promise<any>;
   Redirect: () => Promise<any>;
 }
 
@@ -35,20 +35,20 @@ const DynamisList: ViewList = {
   BaseForm: () => import('@/pages/Form/index.vue'),
   DefForm: () => import('@/pages/Form/def.vue'),
   // // 多级菜单demo
-  // demo_m1: () => import('@/views/MenuDemo/M1'),
-  // demo_m2: () => import('@/views/MenuDemo/M2'),
-  // demo_m2_1: () => import('@/views/MenuDemo/M2/M2-1'),
-  // demo_m2_2: () => import('@/views/MenuDemo/M2/M2-2'),
+  DemoM1: () => import('@/pages/MenuDemo/M1/index.vue'),
+  DemoM2: () => import('@/pages/MenuDemo/M2/index.vue'),
+  DemoM2_1: () => import('@/pages/MenuDemo/M2/M2-1/index.vue'),
+  DemoM2_2: () => import('@/pages/MenuDemo/M2/M2-2/index.vue'),
   // // 用户
-  // user_center: () => import('@/views/User'),
-  // user_setting: () => import('@/views/User/Setting'),
+  UserCenter: () => import('@/pages/User/index.vue'),
+  UserSetting: () => import('@/pages/User/Setting/index.vue'),
   // // 表格
   Table: () => import('@/pages/List/Table/index.vue'),
   List: () => import('@/pages/List/index.vue'),
   // // 错误
-  error403: () => import('@/pages/Error/403.vue'),
+  Error403: () => import('@/pages/Error/403.vue'),
   Error404: () => import('@/pages/Error/404.vue'),
-  error500: () => import('@/pages/Error/500.vue'),
+  Error500: () => import('@/pages/Error/500.vue'),
   Redirect: () => import('@/pages/Redirect/index.vue')
 };
 
