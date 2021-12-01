@@ -1,23 +1,24 @@
 import { MockMethod } from 'vite-plugin-mock';
-// import Icon from '@ant-design/icons-vue/lib/icons';
+import Icon from '@element-plus/icons';
+import { ViewList } from '../src/router/dynamic';
 
 import { ADMIN_TOKEN } from './login';
 
 interface Menu {
   path: string;
   name: string;
-  component?: string;
+  component?: keyof ViewList;
   redirect?: string;
   menu?: boolean;
   outLink?: string;
   meta?: {
     title?: string;
-    // ant-design-vue使用的标准Icon组件名称
-    // iconName?: keyof typeof Icon;
+    // 使用的标准Icon组件名称
+    iconName?: keyof typeof Icon;
     // 阿里矢量图标js标准，使用svg创建，以#开头
     iconHref?: string;
     // 路由对应组件名称，务必与组件name一致
-    cname?: string;
+    cname?: keyof ViewList;
     // 是否缓存组件
     keepAlive?: boolean;
     [propName: string]: any;
@@ -42,7 +43,7 @@ const DashboardModule: Menu[] = [
         meta: {
           title: '工作台',
           iconName: 'DataAnalysis',
-          cname: 'ViewHomeWorkspace',
+          cname: 'Dashboard',
           keepAlive: true
         }
       }
@@ -58,33 +59,31 @@ const DataModule: Menu[] = [
     name: 'Form',
     meta: {
       title: '表单页',
-      iconName: 'Platform',
-      cname: 'ViewForm',
-      keepAlive: true
+      iconName: 'Platform'
     },
     menu: true,
     children: [
       {
         path: 'base',
-        name: 'BaseForm',
+        name: 'BaseFormPage',
         component: 'BaseForm',
         menu: true,
         meta: {
           title: '基本表单',
           iconName: 'HotWater',
-          cname: 'ViewForm',
+          cname: 'BaseForm',
           keepAlive: true
         }
       },
       {
         path: 'def',
-        name: 'DefForm',
+        name: 'DefFormPage',
         component: 'DefForm',
         menu: true,
         meta: {
           title: '自定义表单',
           iconName: 'HotWater',
-          cname: 'ViewFormDef',
+          cname: 'DefForm',
           keepAlive: true
         }
       }
@@ -107,37 +106,38 @@ const DemoModule: Menu[] = [
       {
         path: 'm1',
         name: 'Menu1-1',
-        meta: { title: '菜单1-1', iconName: 'Cherry' },
+        meta: { title: '菜单1-1', iconName: 'Cherry', cname: 'DemoM1', keepAlive: true },
         menu: true,
-        component: 'demo_m1'
+        component: 'DemoM1'
       },
       {
         path: 'm2',
         name: 'Menu1-2',
         meta: { title: '菜单1-2', iconName: 'Cherry' },
         menu: true,
-        component: 'demo_m2',
+        component: 'DemoM2',
         redirect: '/m/m2/m1',
         children: [
           {
             path: 'm1',
             name: 'Menu1-2-1',
-            meta: { title: '菜单1-2-1', iconName: 'Cherry' },
+            meta: { title: '菜单1-2-1', iconName: 'Cherry', cname: 'DemoM2_1', keepAlive: true },
             menu: true,
-            component: 'demo_m2_1'
+            component: 'DemoM2_1'
           },
           {
             path: 'm2',
             menu: true,
             name: 'Menu1-2-2',
-            meta: { title: '菜单1-2-2', iconName: 'Cherry' },
-            component: 'demo_m2_2'
+            meta: { title: '菜单1-2-2', iconName: 'Cherry', cname: 'DemoM2_2', keepAlive: true },
+            component: 'DemoM2_2'
           }
         ]
       }
     ]
   }
 ];
+
 const UserModule: Menu[] = [
   {
     path: '/user',
@@ -148,18 +148,19 @@ const UserModule: Menu[] = [
       {
         path: '',
         name: 'UserIndex',
-        meta: { title: '个人中心', cname: 'ViewUser', keepAlive: true },
-        component: 'user_center'
+        meta: { title: '个人中心', cname: 'UserCenter', keepAlive: true },
+        component: 'UserCenter'
       },
       {
         path: 'setting',
         name: 'Setting',
-        meta: { title: '个人设置', cname: 'ViewUserSetting', keepAlive: true },
-        component: 'user_setting'
+        meta: { title: '个人设置', cname: 'UserSetting', keepAlive: true },
+        component: 'UserSetting'
       }
     ]
   }
 ];
+
 const TableModule: Menu[] = [
   {
     path: '/list',
@@ -175,7 +176,7 @@ const TableModule: Menu[] = [
         meta: {
           title: '数据表格',
           iconName: 'Collection',
-          cname: 'ViewTableQuery',
+          cname: 'Table',
           keepAlive: true
         },
         menu: true,
@@ -187,7 +188,7 @@ const TableModule: Menu[] = [
         meta: {
           title: '卡片列表',
           iconName: 'Collection',
-          cname: 'ViewTableQuery',
+          cname: 'List',
           keepAlive: true
         },
         menu: true,
@@ -196,6 +197,7 @@ const TableModule: Menu[] = [
     ]
   }
 ];
+
 const ErrorModule: Menu[] = [
   {
     path: '/error',
@@ -211,23 +213,23 @@ const ErrorModule: Menu[] = [
       {
         path: '403',
         name: '403',
-        meta: { title: '403', iconName: 'MagicStick' },
+        meta: { title: '403', iconName: 'MagicStick', cname: 'Error403', keepAlive: true },
         menu: true,
-        component: 'error403'
+        component: 'Error403'
       },
       {
         path: '404',
         name: '404',
-        meta: { title: '404', iconName: 'MagicStick' },
+        meta: { title: '404', iconName: 'MagicStick', cname: 'Error404', keepAlive: true },
         menu: true,
         component: 'Error404'
       },
       {
         path: '500',
         name: '500',
-        meta: { title: '500', iconName: 'MagicStick' },
+        meta: { title: '500', iconName: 'MagicStick', cname: 'Error500', keepAlive: true },
         menu: true,
-        component: 'error500'
+        component: 'Error500'
       }
     ]
   }

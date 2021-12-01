@@ -99,3 +99,10 @@ const setSettingVisible = (val: boolean) => {
   data.settingVisible = val;
 };
 </script>
+
+<script lang="ts">
+import { ViewList } from '@/router/dynamic';
+// 规范组件名
+const name: keyof ViewList = 'Layout';
+export default { name };
+</script>
