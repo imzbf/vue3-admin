@@ -4,20 +4,20 @@
       <ElRow :gutter="20">
         <ElCol :span="6">
           <Card>
-            <ElMenu router>
-              <ElMenuItem index="account">
+            <ElMenu router :default-active="defaultActive">
+              <ElMenuItem index="/user/setting/account">
                 <ElIcon><CreditCard /></ElIcon>
                 资料设置</ElMenuItem
               >
-              <ElMenuItem index="security">
+              <ElMenuItem index="/user/setting/security">
                 <ElIcon><Coin /></ElIcon>
                 安全设置</ElMenuItem
               >
-              <ElMenuItem index="binding">
+              <ElMenuItem index="/user/setting/binding">
                 <ElIcon><Connection /></ElIcon>
                 账号绑定</ElMenuItem
               >
-              <ElMenuItem index="message">
+              <ElMenuItem index="/user/setting/message">
                 <ElIcon><ChatDotRound /></ElIcon>
                 消息通知</ElMenuItem
               >
@@ -42,6 +42,11 @@ export default { name };
 <script setup lang="ts">
 import Card from '@/components/Card/index.vue';
 import { CreditCard, Connection, ChatDotRound, Coin } from '@element-plus/icons';
+import { useRoute } from 'vue-router';
+
+const route = useRoute();
+
+const defaultActive = route.path;
 </script>
 
 <style lang="scss">
