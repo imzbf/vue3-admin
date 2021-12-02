@@ -7,6 +7,7 @@
       direction="ltr"
       size="auto"
       :with-header="false"
+      custom-class="mobile-menu-drawer"
     >
       <div class="layout-aside">
         <header class="logo">
@@ -103,3 +104,13 @@ import type { ViewList } from '@/router/dynamic';
 const name: keyof ViewList = 'Layout';
 export default { name };
 </script>
+
+<style lang="scss">
+.is-mobile {
+  .mobile-menu-drawer {
+    .el-drawer__body {
+      padding: 0;
+    }
+  }
+}
+</style>
