@@ -155,29 +155,6 @@ const DemoModule: Menu[] = [
   }
 ];
 
-const UserModule: Menu[] = [
-  {
-    path: '/user',
-    component: 'Layout',
-    name: 'User',
-    meta: { title: '用户中心' },
-    children: [
-      {
-        path: '',
-        name: 'UserIndex',
-        meta: { title: '个人中心', cname: 'UserCenter', keepAlive: true },
-        component: 'UserCenter'
-      },
-      {
-        path: 'setting',
-        name: 'Setting',
-        meta: { title: '个人设置', cname: 'UserSetting', keepAlive: true },
-        component: 'UserSetting'
-      }
-    ]
-  }
-];
-
 const TableModule: Menu[] = [
   {
     path: '/list',
@@ -273,7 +250,6 @@ const user: Array<MockMethod> = [
         menus = [
           ...DashboardModule,
           ...DataModule,
-          ...UserModule,
           ...TableModule,
           ...ErrorModule,
           ...DemoModule,
@@ -283,7 +259,6 @@ const user: Array<MockMethod> = [
         menus = [
           ...DashboardModule,
           ...DataModule,
-          ...UserModule,
           ...TableModule,
           ...ErrorModule,
           ...OutLinkModule
