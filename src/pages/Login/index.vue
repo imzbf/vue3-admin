@@ -85,7 +85,6 @@ export default { name };
 import { reactive, onMounted } from 'vue';
 import { useStore } from 'vuex';
 import { key } from '@/store';
-import '@/assets/iconfonts/login/iconfont';
 import './style.scss';
 import { onBeforeRouteLeave } from 'vue-router';
 import { ElMessage } from 'element-plus';

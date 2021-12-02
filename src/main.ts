@@ -4,6 +4,7 @@ import store, { key } from './store';
 import App from './App.vue';
 import 'nprogress/nprogress.css';
 import './styles/common.scss';
+import '@/assets/iconfonts/login/iconfont';
 
 import ElementPlus from 'element-plus';
 import zhCn from 'element-plus/es/locale/lang/zh-cn';

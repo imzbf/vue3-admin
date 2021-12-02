@@ -35,7 +35,7 @@
       <ElCol :span="12">
         <ElFormItem label="头像：">
           <div class="avatar-preview">
-            <ElAvatar src="/static/img/boy01.jpg" :size="150" />
+            <ElAvatar :src="avatarUrl" :size="150" />
           </div>
           <ElButton size="small" style="margin-left: 25px" :icon="CameraFilled">更新头像</ElButton>
         </ElFormItem>
@@ -47,6 +47,8 @@
 <script setup lang="ts">
 import { reactive } from 'vue';
 import { CameraFilled } from '@element-plus/icons';
+
+const avatarUrl = `${import.meta.env.VITE_BASE}/static/img/boy01.jpg`;
 
 const form = reactive({
   nickname: '',
