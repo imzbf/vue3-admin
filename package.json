@@ -6,10 +6,20 @@
     "name": "zbf",
     "url": "https://imbf.cc"
   },
+  "keywords": [
+    "vue",
+    "vue3",
+    "vueComponent",
+    "admin",
+    "jsx",
+    "tsx"
+  ],
+  "homepage": "https://imzbf.github.io/vue3-admin/",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite serve",
     "build": "vite build",
-    "serve": "vite preview"
+    "build:preview": "vite build --mode preview",
+    "lint": "eslint --fix --ext .ts,.tsx,.json src"
   },
   "dependencies": {
     "@element-plus/icons": "^0.0.11",

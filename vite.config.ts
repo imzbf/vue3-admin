@@ -4,9 +4,12 @@ import vue from '@vitejs/plugin-vue';
 // import ElementPlus from 'unplugin-element-plus/vite';
 import { viteMockServe } from 'vite-plugin-mock';
 
+import { homepage } from './package.json';
+
 // https://vitejs.dev/config/
 export default ({ command, mode }: ConfigEnv): UserConfigExport => {
   return {
+    base: mode === 'preview' ? homepage : '/',
     server: {
       port: 6677
     },
