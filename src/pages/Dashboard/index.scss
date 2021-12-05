@@ -91,24 +91,6 @@
         }
       }
     }
-
-    .team {
-      .item {
-        display: block;
-        height: 24px;
-        margin: 12px 0;
-        transition: all 0.3s;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-        word-break: break-all;
-
-        .name {
-          margin-left: 12px;
-          font-size: 14px;
-          vertical-align: text-top;
-        }
-      }
-    }
   }
 }
 
