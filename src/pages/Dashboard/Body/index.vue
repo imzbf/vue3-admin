@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import ProjectSchedule from './ProjectSchedule.vue';
+import RunningProject from './RunningProject.vue';
 import CommonlyUsed from './CommonlyUsed.vue';
 // import Task from './Task';
 // import Record from './Record';
@@ -9,7 +9,7 @@ import CommonlyUsed from './CommonlyUsed.vue';
   <div class="view-space dashboard-body">
     <ElRow :gutter="20">
       <ElCol :span="16">
-        <ProjectSchedule />
+        <RunningProject />
         <Record />
       </ElCol>
       <ElCol :span="8">
