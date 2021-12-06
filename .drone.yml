@@ -1,0 +1,6 @@
+pipeline:
+  build:
+    image: node:14
+      commands:
+        - npm i
+        - npm build
