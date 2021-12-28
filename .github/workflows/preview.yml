@@ -1,10 +1,10 @@
-name: doc page publish
+name: Preview Page Publish
 
 on:
   push:
-    branches: [master]
+    branches: [preview]
   pull_request:
-    branches: [master]
+    branches: [preview]
 
 jobs:
   publish:
@@ -30,3 +30,4 @@ jobs:
         with:
           branch: preview
           folder: dist
+          target-folder: docs

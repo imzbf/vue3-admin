@@ -1,0 +1,23 @@
+kind: pipeline
+type: docker
+name: greeting
+
+steps:
+  - name: hello
+    image: alpine
+    commands:
+      - echo hello world
+
+  - name: fr
+    image: alpine
+    commands:
+      - echo bonjour monde
+    when:
+      branch:
+        - develop
+# pipeline:
+#   build:
+#     image: node:14
+#       commands:
+#         - npm i
+#         - npm build
