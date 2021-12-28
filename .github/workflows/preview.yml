@@ -2,9 +2,9 @@ name: Preview Page Publish
 
 on:
   push:
-    branches: [preview]
+    branches: [master]
   pull_request:
-    branches: [preview]
+    branches: [master]
 
 jobs:
   publish:
@@ -30,4 +30,3 @@ jobs:
         with:
           branch: preview
           folder: dist
-          target-folder: docs
