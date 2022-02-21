@@ -23,12 +23,12 @@
   },
   "dependencies": {
     "@element-plus/icons": "^0.0.11",
-    "axios": "^0.24.0",
-    "element-plus": "^1.2.0-beta.4",
-    "md-editor-v3": "^1.9.2",
+    "axios": "^0.26.0",
+    "element-plus": "^2.0.2",
+    "md-editor-v3": "^1.10.1",
     "nprogress": "^0.2.0",
     "screenfull": "^6.0.0",
-    "vue": "^3.2.23",
+    "vue": "^3.2.31",
     "vue-router": "^4.0.12",
     "vuex": "^4.0.2"
   },
