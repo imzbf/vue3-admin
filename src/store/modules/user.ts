@@ -1,7 +1,8 @@
 import { logout, login, getUseInfo, LoginInfoType } from '@/apis/user';
-import Final from '@/config/keys';
+import Final, { REMEMBER_KEY } from '@/config/keys';
 import router from '@/router';
 import { transformRoutes, resetRoutes } from '@/utils/biz';
+import { ElMessage } from 'element-plus';
 
 export interface UserStateType {
   info?: {
@@ -43,14 +44,16 @@ const actions = {
         return data.token;
       })
       .then((token: string) => {
-        payload.remembered && localStorage.setItem(Final.TOKEN, token);
-      })
-      .then(async () => {
-        await store.dispatch('getLoginUser');
+        if (payload.remembered) {
+          localStorage.setItem(REMEMBER_KEY, payload.remembered + '');
+        }
+        localStorage.setItem(Final.TOKEN, token);
       })
       .then(() => {
-        const redirect = router.currentRoute.value.query.redirect as string;
-        router.push(redirect || '/');
+        store.dispatch('getLoginUser').then(() => {
+          const redirect = router.currentRoute.value.query.redirect as string;
+          router.push(redirect || '/');
+        });
       });
   },
   logout(store: any): Promise<any> {
@@ -70,19 +73,24 @@ const actions = {
       });
   },
   async getLoginUser(store: any): Promise<any> {
-    const { data }: any = await getUseInfo();
+    const { code, data, msg }: any = await getUseInfo();
+    if (code === 0) {
+      store.commit('setUserInfo', data);
+      // 将后端菜单列表转换为vue-router列表
+      const newRoutes = transformRoutes(data.menus);
 
-    store.commit('setUserInfo', data);
-    // 将后端菜单列表转换为vue-router列表
-    const newRoutes = transformRoutes(data.menus);
+      store.commit('menu/resetMenu', { newRoutes }, { root: true });
+      store.commit('setting/setCacheList', { routes: newRoutes }, { root: true });
 
-    store.commit('menu/resetMenu', { newRoutes }, { root: true });
-    store.commit('setting/setCacheList', { routes: newRoutes }, { root: true });
+      // 重置路由
+      resetRoutes(newRoutes);
 
-    // 重置路由
-    resetRoutes(newRoutes);
-
-    return data;
+      return data;
+    } else {
+      store.commit('setToken', { token: '' });
+      localStorage.removeItem(Final.TOKEN);
+      ElMessage.error(msg);
+    }
   }
 };
 
