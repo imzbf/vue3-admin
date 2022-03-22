@@ -1,5 +1,5 @@
 import { MockMethod } from 'vite-plugin-mock';
-import Icon from '@element-plus/icons';
+import Icon from '@element-plus/icons-vue';
 import { ViewList } from '../src/router/dynamic';
 
 import { ADMIN_TOKEN } from './login';
@@ -275,6 +275,44 @@ const user: Array<MockMethod> = [
           menus
         }
       };
+    }
+  },
+  {
+    url: '/api/user/device',
+    method: 'get',
+    response: ({ headers, query }: any): any => {
+      const { page, pageSize } = query;
+
+      return headers.token
+        ? {
+            code: 500,
+            data: {
+              total: 96,
+              pageSize,
+              page,
+              list: [
+                {
+                  id: 1,
+                  deviceOS: 'Windows 11',
+                  ip: '10.0.0.1',
+                  lastLoginTime: '@date("yyyy-MM-dd HH:mm:ss")',
+                  location: '中国 台湾'
+                },
+                {
+                  id: 2,
+                  deviceOS: 'MacOS',
+                  ip: '10.0.0.2',
+                  lastLoginTime: '@date("yyyy-MM-dd HH:mm:ss")',
+                  location: '中国 重庆'
+                }
+              ]
+            }
+          }
+        : {
+            code: 500,
+            data: null,
+            msg: '您未登录！'
+          };
     }
   }
 ];
