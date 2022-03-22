@@ -1,6 +1,6 @@
 <template>
   <div class="layout-bar">
-    <ElTag
+    <el-tag
       class="cper"
       :closable="!isFixedTag(item) && menuTagNotSingle"
       :effect="item.curr ? 'dark' : 'plain'"
@@ -9,37 +9,37 @@
       v-for="item of store.state.setting.menuTags"
       @click="tagClick(item)"
       @close="tagClose(item)"
-      >{{ item.title }}</ElTag
+      >{{ item.title }}</el-tag
     >
 
     <span class="layout-bar-action cper">
-      <ElDropdown size="mini" placement="bottom-end">
-        <ElIcon>
-          <ArrowDown />
-        </ElIcon>
+      <el-dropdown size="mini" placement="bottom-end">
+        <el-tag>
+          <arrow-down />
+        </el-tag>
 
         <template #dropdown>
-          <ElDropdownMenu>
-            <ElDropdownItem @click="refreshRoute">刷新当前</ElDropdownItem>
-            <ElDropdownItem v-if="menuTagNotSingle" @click="barMenuClose(menuTagActions.rmCurr)"
-              >关闭当前</ElDropdownItem
+          <el-dropdown-menu>
+            <el-dropdown-item @click="refreshRoute">刷新当前</el-dropdown-item>
+            <el-dropdown-item v-if="menuTagNotSingle" @click="barMenuClose(menuTagActions.rmCurr)"
+              >关闭当前</el-dropdown-item
             >
-            <ElDropdownItem v-if="menuTagNotSingle" @click="barMenuClose(menuTagActions.rmOther)"
-              >关闭其他</ElDropdownItem
+            <el-dropdown-item v-if="menuTagNotSingle" @click="barMenuClose(menuTagActions.rmOther)"
+              >关闭其他</el-dropdown-item
             >
-            <ElDropdownItem v-if="menuTagNotSingle" @click="barMenuClose(menuTagActions.rmAll)"
-              >关闭所有</ElDropdownItem
+            <el-dropdown-item v-if="menuTagNotSingle" @click="barMenuClose(menuTagActions.rmAll)"
+              >关闭所有</el-dropdown-item
             >
-          </ElDropdownMenu>
+          </el-dropdown-menu>
         </template>
-      </ElDropdown></span
+      </el-dropdown></span
     >
   </div>
 </template>
 
 <script setup lang="ts">
 import { computed } from 'vue';
-import { ArrowDown } from '@element-plus/icons';
+import { ArrowDown } from '@element-plus/icons-vue';
 import { useStore } from 'vuex';
 import { useRouter, useRoute } from 'vue-router';
 import { key } from '@/store';

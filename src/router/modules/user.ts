@@ -1,5 +1,5 @@
 import { AdminRouteRecordRaw } from '..';
-import Layout from '@/layouts';
+import Layout from '@/layouts/index.vue';
 import DynamicRoutes from '../dynamic';
 
 const userModule: AdminRouteRecordRaw = {

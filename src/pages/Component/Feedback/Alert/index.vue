@@ -1,26 +1,26 @@
 <template>
   <div class="page-alert">
     <div class="view-space">
-      <ElRow :gutter="20">
-        <ElCol :span="12">
-          <Card>
+      <el-row :gutter="20">
+        <el-col :span="12">
+          <va-card>
             <el-alert title="success alert" type="success" />
             <el-alert title="info alert" type="info" />
             <el-alert title="warning alert" type="warning" />
-            <el-alert title="error alert" type="error" /> </Card
-        ></ElCol>
-        <ElCol :span="12">
-          <Card>
+            <el-alert title="error alert" type="error" /> </va-card
+        ></el-col>
+        <el-col :span="12">
+          <va-card>
             <el-alert title="success alert" type="success" effect="dark"> </el-alert>
             <el-alert title="info alert" type="info" effect="dark"> </el-alert>
             <el-alert title="warning alert" type="warning" effect="dark"> </el-alert>
             <el-alert title="error alert" type="error" effect="dark"> </el-alert
-          ></Card>
-        </ElCol>
-      </ElRow>
-      <ElRow>
-        <ElCol :span="24">
-          <Card>
+          ></va-card>
+        </el-col>
+      </el-row>
+      <el-row>
+        <el-col :span="24">
+          <va-card>
             <el-alert
               title="success alert"
               type="success"
@@ -44,9 +44,9 @@
               show-icon
             >
             </el-alert>
-          </Card>
-        </ElCol>
-      </ElRow>
+          </va-card>
+        </el-col>
+      </el-row>
     </div>
   </div>
 </template>
@@ -59,7 +59,7 @@ export default { name };
 </script>
 
 <script setup lang="ts">
-import Card from '@/components/Card/index.vue';
+import VaCard from '@/components/Card/index.vue';
 </script>
 
 <style lang="scss">

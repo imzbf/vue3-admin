@@ -16,7 +16,7 @@ export const goto = (
   }
 
   const aEle = document.createElement('a');
-  aEle.href = url;
+  aEle.href = url as string;
   aEle.style.display = 'none';
 
   if (option.newWindow) {

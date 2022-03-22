@@ -1,5 +1,5 @@
 import { AdminRouteRecordRaw } from '..';
-import Layout from '@/layouts';
+import Layout from '@/layouts/index.vue';
 import DynamicRoutes from '../dynamic';
 
 // bug: 如果直接将m2Children放到demo中，会产生menu不存在的问题，尚未找到原因

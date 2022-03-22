@@ -28,7 +28,7 @@
         </div>
         <div class="form-item" style="margin-bottom: 14px">
           <el-checkbox v-model="data.remembered"> 记住我 </el-checkbox>
-          <el-popconfirm title="自行实现！" confirmButtonText="好的" cancelButtonText="被迫好的">
+          <el-popconfirm title="自行实现！" confirmButtonText="好的" cancel-buttonText="被迫好的">
             <template #reference>
               <span class="forget-p-help cper">忘记密码？</span>
             </template>
@@ -88,7 +88,7 @@ import { key } from '@/store';
 import './style.scss';
 import { onBeforeRouteLeave } from 'vue-router';
 import { ElMessage } from 'element-plus';
-import { User, Lock } from '@element-plus/icons';
+import { User, Lock } from '@element-plus/icons-vue';
 
 const loginBg = new URL('../../assets/images/login-bg.svg', import.meta.url).href;
 const loginBody = new URL('../../assets/images/login-body.svg', import.meta.url).href;

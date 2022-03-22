@@ -1,8 +1,8 @@
 <template>
   <div class="page-button">
     <div class="view-space">
-      <ElRow>
-        <Card>
+      <el-row>
+        <va-card>
           <el-row>
             <el-button>Default</el-button>
             <el-button type="primary">Primary</el-button>
@@ -39,10 +39,10 @@
             <el-button type="warning" :icon="Star" circle></el-button>
             <el-button type="danger" :icon="Delete" circle></el-button>
           </el-row>
-        </Card>
-      </ElRow>
-      <ElRow>
-        <Card>
+        </va-card>
+      </el-row>
+      <el-row>
+        <va-card>
           <el-row>
             <el-button disabled>Default</el-button>
             <el-button type="primary" disabled>Primary</el-button>
@@ -60,8 +60,8 @@
             <el-button type="warning" plain disabled>Warning</el-button>
             <el-button type="danger" plain disabled>Danger</el-button>
           </el-row>
-        </Card>
-      </ElRow>
+        </va-card>
+      </el-row>
     </div>
   </div>
 </template>
@@ -74,8 +74,8 @@ export default { name };
 </script>
 
 <script setup lang="ts">
-import Card from '@/components/Card/index.vue';
-import { Search, Edit, Check, Message, Star, Delete } from '@element-plus/icons';
+import VaCard from '@/components/Card/index.vue';
+import { Search, Edit, Check, Message, Star, Delete } from '@element-plus/icons-vue';
 </script>
 
 <style lang="scss">

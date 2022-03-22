@@ -1,67 +1,67 @@
 <template>
   <div class="page-list">
     <div class="view-space">
-      <Card>
+      <va-card>
         <div class="page-search">
-          <ElForm inline :model="params" size="small">
-            <ElFormItem label="标题">
+          <el-form inline :model="params">
+            <el-form-item label="标题">
               <el-input v-model="params.title" placeholder="文章标题" :clearable="true" />
-            </ElFormItem>
-            <ElFormItem label="类型">
+            </el-form-item>
+            <el-form-item label="类型">
               <el-input v-model="params.type" placeholder="文章类型" :clearable="true" />
-            </ElFormItem>
-            <ElFormItem label="编码">
+            </el-form-item>
+            <el-form-item label="编码">
               <el-input v-model="params.code" placeholder="文章编码" :clearable="true" />
-            </ElFormItem>
+            </el-form-item>
 
-            <ElFormItem>
+            <el-form-item>
               <el-button type="primary" @click="handleReq">查询</el-button>
-            </ElFormItem>
-          </ElForm>
+            </el-form-item>
+          </el-form>
         </div>
         <div class="page-data">
-          <ElTable :data="table.list" border stripe>
-            <ElTableColumn prop="id" align="center" label="ID" min-width="70" />
-            <ElTableColumn prop="code" align="center" label="编码" width="100" />
-            <ElTableColumn label="标题" min-width="330">
+          <el-table :data="table.list" border stripe>
+            <el-table-column prop="id" align="center" label="ID" min-width="70" />
+            <el-table-column prop="code" align="center" label="编码" width="100" />
+            <el-table-column label="标题" min-width="330">
               <template #default="scope">
                 <a class="ex-link" :href="'/a/' + scope.row.code" target="_blank">{{
                   scope.row.title
                 }}</a>
               </template>
-            </ElTableColumn>
-            <ElTableColumn prop="createdTime" align="center" label="创建时间" min-width="170" />
-            <ElTableColumn prop="hits" align="center" label="点击数" min-width="100" />
-            <ElTableColumn prop="status" align="center" label="状态" width="90">
+            </el-table-column>
+            <el-table-column prop="createdTime" align="center" label="创建时间" min-width="170" />
+            <el-table-column prop="hits" align="center" label="点击数" min-width="100" />
+            <el-table-column prop="status" align="center" label="状态" width="90">
               <template #default="scope">
-                <ElSwitch
+                <el-switch
                   v-model="scope.row.status"
                   :active-value="1"
                   :inactive-value="0"
                   @change="changeStatus(scope.row)"
                 />
               </template>
-            </ElTableColumn>
-            <ElTableColumn prop="updatedTime" align="center" label="更新时间" min-width="170" />
-            <ElTableColumn prop="updatedTime" align="center" label="操作" width="160">
+            </el-table-column>
+            <el-table-column prop="updatedTime" align="center" label="更新时间" min-width="170" />
+            <el-table-column prop="updatedTime" align="center" label="操作" width="160">
               <template #default="scope">
-                <ElButton size="mini" plain type="primary">编辑</ElButton>
-                <ElButton size="mini" type="danger" plain>删除</ElButton>
+                <el-button size="small" plain type="primary">编辑</el-button>
+                <el-button size="small" type="danger" plain>删除</el-button>
               </template>
-            </ElTableColumn>
-          </ElTable>
+            </el-table-column>
+          </el-table>
         </div>
         <div class="page-pagination">
-          <ElPagination
+          <el-pagination
             v-model:currentPage="table.params.page"
             :page-size="table.params.pageSize"
             layout="jumper, prev, pager, next, total"
             :total="table.total"
             background
           >
-          </ElPagination>
+          </el-pagination>
         </div>
-      </Card>
+      </va-card>
     </div>
   </div>
 </template>
@@ -76,7 +76,7 @@ export default { name };
 <script setup lang="ts">
 import { onMounted, reactive } from 'vue';
 import { queryTable } from '@/apis/list/table';
-import Card from '@/components/Card/index.vue';
+import VaCard from '@/components/Card/index.vue';
 
 const params = reactive({
   title: '',

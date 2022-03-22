@@ -1,64 +1,64 @@
 <script setup lang="ts">
-import FeCard from '@/components/Card/index.vue';
+import VaCard from '@/components/Card/index.vue';
 import IconFont from '@/components/IconFont/index.vue';
 </script>
 
 <template>
-  <FeCard :border="true" class="va-mb">
+  <va-card border class="va-mb">
     <template #title>
-      <IconFont type="icon-changyongfenlei" class="title-icon" />
+      <icon-font type="icon-changyongfenlei" class="title-icon" />
       常用功能
     </template>
-    <ElRow class="used-list">
-      <ElCol :span="8">
+    <el-row class="used-list">
+      <el-col :span="8">
         <div class="used-item">
-          <span class="used-item-icon"> <IconFont type="icon-liebiao" /></span>
+          <span class="used-item-icon"> <icon-font type="icon-liebiao" /></span>
           <span>列表</span>
         </div>
-      </ElCol>
-      <ElCol :span="8">
+      </el-col>
+      <el-col :span="8">
         <div class="used-item">
           <span class="used-item-icon">
-            <IconFont type="icon-dingdan" />
+            <icon-font type="icon-dingdan" />
           </span>
           <span>表单</span>
         </div>
-      </ElCol>
-      <ElCol :span="8">
+      </el-col>
+      <el-col :span="8">
         <div class="used-item">
           <span class="used-item-icon">
-            <IconFont type="icon-icon_A" />
+            <icon-font type="icon-icon_A" />
           </span>
 
           <span>设置</span>
         </div>
-      </ElCol>
-      <ElCol :span="8">
+      </el-col>
+      <el-col :span="8">
         <div class="used-item">
           <span class="used-item-icon">
-            <IconFont type="icon-sousuo" />
+            <icon-font type="icon-sousuo" />
           </span>
 
           <span>搜索</span>
         </div>
-      </ElCol>
-      <ElCol :span="8">
+      </el-col>
+      <el-col :span="8">
         <div class="used-item">
           <span class="used-item-icon">
-            <IconFont type="icon-yibiaopan" />
+            <icon-font type="icon-yibiaopan" />
           </span>
 
           <span>监控台</span>
         </div>
-      </ElCol>
-      <ElCol :span="8">
+      </el-col>
+      <el-col :span="8">
         <div class="used-item">
           <span class="used-item-icon">
-            <IconFont type="icon-gongju" />
+            <icon-font type="icon-gongju" />
           </span>
           <span>工具</span>
         </div>
-      </ElCol>
-    </ElRow>
-  </FeCard>
+      </el-col>
+    </el-row>
+  </va-card>
 </template>

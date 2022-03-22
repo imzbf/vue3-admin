@@ -1,33 +1,33 @@
 <template>
   <div class="page-user-setting">
     <div class="view-space">
-      <ElRow :gutter="20">
-        <ElCol :span="6">
-          <Card>
-            <ElMenu router :default-active="defaultActive">
-              <ElMenuItem index="/user/setting/account">
-                <ElIcon><CreditCard /></ElIcon>
-                资料设置</ElMenuItem
+      <el-row :gutter="20">
+        <el-col :span="6">
+          <va-card>
+            <el-menu router :default-active="defaultActive">
+              <el-menu-item index="/user/setting/account">
+                <el-icon><CreditCard /></el-icon>
+                资料设置</el-menu-item
               >
-              <ElMenuItem index="/user/setting/security">
-                <ElIcon><Coin /></ElIcon>
-                安全设置</ElMenuItem
+              <el-menu-item index="/user/setting/security">
+                <el-icon><Coin /></el-icon>
+                安全设置</el-menu-item
               >
-              <ElMenuItem index="/user/setting/binding">
-                <ElIcon><Connection /></ElIcon>
-                账号绑定</ElMenuItem
+              <el-menu-item index="/user/setting/binding">
+                <el-icon><Connection /></el-icon>
+                账号绑定</el-menu-item
               >
-              <ElMenuItem index="/user/setting/message">
-                <ElIcon><ChatDotRound /></ElIcon>
-                消息通知</ElMenuItem
+              <el-menu-item index="/user/setting/message">
+                <el-icon><ChatDotRound /></el-icon>
+                消息通知</el-menu-item
               >
-            </ElMenu>
-          </Card>
-        </ElCol>
-        <ElCol :span="18">
-          <Card> <router-view></router-view> </Card>
-        </ElCol>
-      </ElRow>
+            </el-menu>
+          </va-card>
+        </el-col>
+        <el-col :span="18">
+          <va-card> <router-view></router-view> </va-card>
+        </el-col>
+      </el-row>
     </div>
   </div>
 </template>
@@ -40,8 +40,8 @@ export default { name };
 </script>
 
 <script setup lang="ts">
-import Card from '@/components/Card/index.vue';
-import { CreditCard, Connection, ChatDotRound, Coin } from '@element-plus/icons';
+import VaCard from '@/components/Card/index.vue';
+import { CreditCard, Connection, ChatDotRound, Coin } from '@element-plus/icons-vue';
 import { useRoute } from 'vue-router';
 
 const route = useRoute();

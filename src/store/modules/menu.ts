@@ -1,5 +1,5 @@
 import { routes, AdminRouteRecordRaw } from '@/router';
-import Icon from '@element-plus/icons';
+import Icon from '@element-plus/icons-vue';
 
 export interface MenuType {
   title: string;

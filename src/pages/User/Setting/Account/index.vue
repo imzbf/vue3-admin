@@ -1,52 +1,54 @@
 <template>
-  <ElForm :model="form" label-width="90px">
-    <ElRow>
-      <ElCol :span="12">
-        <ElFormItem label="昵称：">
-          <ElInput v-model="form.nickname" placeholder="2-16个字符"></ElInput>
-        </ElFormItem>
-        <ElFormItem label="邮箱">
-          <ElInput v-model="form.email" placeholder="example@mail.com"></ElInput>
-        </ElFormItem>
-        <ElFormItem label="兴趣爱好：">
-          <ElCheckboxGroup v-model="form.type">
-            <ElCheckbox label="加班" name="type"></ElCheckbox>
-            <ElCheckbox label="晚上加班" name="type"></ElCheckbox>
-            <ElCheckbox label="周末加班" name="type"></ElCheckbox>
-            <ElCheckbox label="节假日加班" name="type"></ElCheckbox>
-          </ElCheckboxGroup>
-        </ElFormItem>
-        <ElFormItem label="城市：">
-          <ElSelect v-model="form.region" placeholder="选择工作地点">
-            <ElOption label="重庆" value="cq"></ElOption>
-            <ElOption label="北京" value="bj"></ElOption>
-          </ElSelect>
-        </ElFormItem>
+  <el-form :model="form" label-width="90px">
+    <el-row>
+      <el-col :span="12">
+        <el-form-item label="昵称：">
+          <el-input v-model="form.nickname" placeholder="2-16个字符"></el-input>
+        </el-form-item>
+        <el-form-item label="邮箱">
+          <el-input v-model="form.email" placeholder="example@mail.com"></el-input>
+        </el-form-item>
+        <el-form-item label="兴趣爱好：">
+          <el-checkbox-group v-model="form.type">
+            <el-checkbox label="加班" name="type"></el-checkbox>
+            <el-checkbox label="晚上加班" name="type"></el-checkbox>
+            <el-checkbox label="周末加班" name="type"></el-checkbox>
+            <el-checkbox label="节假日加班" name="type"></el-checkbox>
+          </el-checkbox-group>
+        </el-form-item>
+        <el-form-item label="城市：">
+          <el-select v-model="form.region" placeholder="选择工作地点">
+            <el-option label="重庆" value="cq"></el-option>
+            <el-option label="北京" value="bj"></el-option>
+          </el-select>
+        </el-form-item>
 
-        <ElFormItem label="个人简介：">
-          <ElInput :rows="4" v-model="form.desc" type="textarea"></ElInput>
-        </ElFormItem>
+        <el-form-item label="个人简介：">
+          <el-input :rows="4" v-model="form.desc" type="textarea"></el-input>
+        </el-form-item>
 
-        <ElFormItem label="">
-          <ElButton type="primary">保存</ElButton>
-          <ElButton>取消</ElButton>
-        </ElFormItem></ElCol
+        <el-form-item label="">
+          <el-button type="primary">保存</el-button>
+          <el-button>取消</el-button>
+        </el-form-item></el-col
       >
-      <ElCol :span="12">
-        <ElFormItem label="头像：">
+      <el-col :span="12">
+        <el-form-item label="头像：">
           <div class="avatar-preview">
-            <ElAvatar :src="avatarUrl" :size="150" />
+            <el-avatar :src="avatarUrl" :size="150" />
           </div>
-          <ElButton size="small" style="margin-left: 25px" :icon="CameraFilled">更新头像</ElButton>
-        </ElFormItem>
-      </ElCol>
-    </ElRow>
-  </ElForm>
+          <el-button size="small" style="margin-left: 25px" :icon="CameraFilled"
+            >更新头像</el-button
+          >
+        </el-form-item>
+      </el-col>
+    </el-row>
+  </el-form>
 </template>
 
 <script setup lang="ts">
 import { reactive } from 'vue';
-import { CameraFilled } from '@element-plus/icons';
+import { CameraFilled } from '@element-plus/icons-vue';
 
 const avatarUrl = `${import.meta.env.VITE_BASE}/static/img/boy01.jpg`;
 

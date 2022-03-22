@@ -2,15 +2,15 @@
   <div class="other-setting">
     <div class="other-setting-item">
       <label for="setting-tag">头部菜单</label>
-      <ElSwitch id="setting-tag" v-model="setting.header" />
+      <el-switch id="setting-tag" v-model="setting.header" />
     </div>
     <div class="other-setting-item">
       <label for="setting-tag">标签导航</label>
-      <ElSwitch id="setting-tag" v-model="setting.bar" />
+      <el-switch id="setting-tag" v-model="setting.bar" />
     </div>
     <div class="other-setting-item">
       <label for="setting-tag">标签导航</label>
-      <ElSwitch id="setting-tag" v-model="setting.bar" />
+      <el-switch id="setting-tag" v-model="setting.bar" />
     </div>
   </div>
 </template>

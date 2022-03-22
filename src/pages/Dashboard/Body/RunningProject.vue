@@ -13,30 +13,30 @@
     <template #func>
       <RouterLink to="/project" class="normal-link"> 全部项目 </RouterLink>
     </template>
-    <ElTable :data="tableData" style="width: 100%">
-      <ElTableColumn prop="name" label="名称">
+    <el-table :data="tableData" style="width: 100%">
+      <el-table-column prop="name" label="名称">
         <template #default="scope">
           <ElLink type="primary" :href="scope.row.url" target="_blank">
             {{ scope.row.name }}</ElLink
           >
         </template>
-      </ElTableColumn>
-      <ElTableColumn prop="date" label="上次启动" />
-      <ElTableColumn prop="status" label="状态">
+      </el-table-column>
+      <el-table-column prop="date" label="上次启动" />
+      <el-table-column prop="status" label="状态">
         <template #default="scope">
           <ElTag size="medium" :type="scope.row.status === '运行中' ? 'success' : 'danger'">{{
             scope.row.status
           }}</ElTag>
         </template>
-      </ElTableColumn>
-      <ElTableColumn label="操作" width="100">
+      </el-table-column>
+      <el-table-column label="操作" width="100">
         <template #default="scope">
-          <ElButton size="mini" :type="scope.row.status === '运行中' ? 'danger' : 'default'">{{
+          <el-button size="mini" :type="scope.row.status === '运行中' ? 'danger' : 'default'">{{
             scope.row.status === '运行中' ? '停止' : '重启'
-          }}</ElButton>
+          }}</el-button>
         </template>
-      </ElTableColumn>
-    </ElTable>
+      </el-table-column>
+    </el-table>
   </Card>
 </template>
 

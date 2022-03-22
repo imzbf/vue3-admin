@@ -1,7 +1,7 @@
 <template>
   <div class="page-layout">
     <div class="view-space">
-      <Card>
+      <va-card>
         <el-row>
           <el-col :span="24"><div class="grid-content bg-purple-dark"></div></el-col>
         </el-row>
@@ -28,7 +28,7 @@
           <el-col :span="4"><div class="grid-content bg-purple"></div></el-col>
           <el-col :span="4"><div class="grid-content bg-purple-light"></div></el-col>
         </el-row>
-      </Card>
+      </va-card>
     </div>
   </div>
 </template>
@@ -41,7 +41,7 @@ export default { name };
 </script>
 
 <script setup lang="ts">
-import Card from '@/components/Card/index.vue';
+import VaCard from '@/components/Card/index.vue';
 </script>
 
 <style lang="scss">

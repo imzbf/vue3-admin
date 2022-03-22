@@ -1,7 +1,7 @@
 <template>
   <el-result icon="error" title="403" sub-title="你的访问被拒绝了！">
     <template #extra>
-      <el-button type="primary" size="medium" @click="goBack">Back</el-button>
+      <el-button type="primary" @click="goBack">Back</el-button>
     </template>
   </el-result>
 </template>

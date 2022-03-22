@@ -1,7 +1,7 @@
 <template>
-  <ElRow :gutter="20">
-    <ElCol :span="8">
-      <ElTooltip placement="top" effect="dark" content="静静的等待ele更新暗黑主题~">
+  <el-row :gutter="20">
+    <el-col :span="8">
+      <el-tooltip placement="top" effect="dark" content="静静的等待ele更新暗黑主题~">
         <div class="theme-preview">
           <div class="theme-preview-left dark"></div>
           <div class="theme-preview-right">
@@ -9,9 +9,9 @@
             <div class="theme-preview-right-main gay"></div>
           </div>
         </div>
-      </ElTooltip>
-    </ElCol>
-    <ElCol :span="8">
+      </el-tooltip>
+    </el-col>
+    <el-col :span="8">
       <div class="theme-preview">
         <div class="theme-preview-left dark"></div>
         <div class="theme-preview-right">
@@ -19,8 +19,8 @@
           <div class="theme-preview-right-main"></div>
         </div>
       </div>
-    </ElCol>
-    <ElCol :span="8">
+    </el-col>
+    <el-col :span="8">
       <div class="theme-preview">
         <div class="theme-preview-left dark"></div>
         <div class="theme-preview-right">
@@ -28,8 +28,8 @@
           <div class="theme-preview-right-main"></div>
         </div>
       </div>
-    </ElCol>
-    <ElCol :span="8">
+    </el-col>
+    <el-col :span="8">
       <div class="theme-preview">
         <div class="theme-preview-left"></div>
         <div class="theme-preview-right">
@@ -37,8 +37,8 @@
           <div class="theme-preview-right-main"></div>
         </div>
       </div>
-    </ElCol>
-  </ElRow>
+    </el-col>
+  </el-row>
 </template>
 
 <style lang="scss">

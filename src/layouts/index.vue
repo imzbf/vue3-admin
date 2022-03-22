@@ -1,6 +1,6 @@
 <template>
   <section :class="wrapperClass">
-    <ElDrawer
+    <el-drawer
       v-if="store.state.setting.isMobile"
       :model-value="store.state.setting.mobileDrawer"
       @close="adjustMobileDrawer"
@@ -15,28 +15,28 @@
           <span>后台管理模板</span>
         </header>
         <div class="menu-container">
-          <AdminMenu />
+          <admin-menu />
         </div>
         <footer class="copyright">
           <span>@2020 imbf.cc</span>
         </footer>
       </div>
-    </ElDrawer>
+    </el-drawer>
     <div v-else class="layout-aside">
       <header class="logo">
         <img :src="LogoImg" />
         <span v-if="asideOpen">后台管理模板</span>
       </header>
       <div class="menu-container">
-        <AdminMenu />
+        <admin-menu />
       </div>
       <footer v-if="asideOpen" class="copyright">
         <span>@2020 imbf.cc</span>
       </footer>
     </div>
     <div class="layout">
-      <Header />
-      <Bar />
+      <va-header />
+      <va-bar />
       <main class="layout-main">
         <router-view v-slot="{ Component }">
           <transition name="fade" mode="out-in">
@@ -48,7 +48,7 @@
       </main>
     </div>
     <div class="drawer">
-      <Setting />
+      <va-setting />
     </div>
   </section>
 </template>
@@ -58,12 +58,12 @@ import { computed, reactive } from 'vue';
 import { useStore } from 'vuex';
 import { key } from '@/store';
 import AdminMenu from '@/layouts/Menu/index.vue';
-import Header from './Header/index.vue';
+import VaHeader from './Header/index.vue';
 import './style.scss';
 
 import LogoImg from '@/assets/logo.png';
-import Bar from './Bar/index.vue';
-import Setting from './Setting/index.vue';
+import VaBar from './Bar/index.vue';
+import VaSetting from './Setting/index.vue';
 
 const store = useStore(key);
 

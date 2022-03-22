@@ -1,7 +1,7 @@
 <template>
   <el-result icon="error" title="404" sub-title="资源消失了！">
     <template #extra>
-      <el-button type="primary" size="medium" @click="goBack">Back</el-button>
+      <el-button type="primary" @click="goBack">Back</el-button>
     </template>
   </el-result>
 </template>

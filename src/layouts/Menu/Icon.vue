@@ -1,7 +1,7 @@
 <script lang="ts">
 import { defineComponent, h } from 'vue';
 import type { PropType } from 'vue';
-import * as Icon from '@element-plus/icons';
+import * as Icon from '@element-plus/icons-vue';
 
 export default defineComponent({
   props: {

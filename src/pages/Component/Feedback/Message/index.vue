@@ -1,30 +1,30 @@
 <template>
   <div class="page-message">
     <div class="view-space">
-      <ElRow :gutter="20">
-        <ElCol :span="12">
-          <Card>
+      <el-row :gutter="20">
+        <el-col :span="12">
+          <va-card>
             <template #title> Notification </template>
             <el-button plain @click="open1"> Success </el-button>
             <el-button plain @click="open2"> Warning </el-button>
             <el-button plain @click="open3"> Info </el-button>
-            <el-button plain @click="open4"> Error </el-button></Card
+            <el-button plain @click="open4"> Error </el-button></va-card
           >
-        </ElCol>
-        <ElCol :span="12">
-          <Card>
+        </el-col>
+        <el-col :span="12">
+          <va-card>
             <template #title> Notification </template>
 
             <el-button plain @click="open11"> Top Right </el-button>
             <el-button plain @click="open22"> Bottom Right </el-button>
             <el-button plain @click="open33"> Bottom Left </el-button>
             <el-button plain @click="open44"> Top Left </el-button>
-          </Card>
-        </ElCol>
-      </ElRow>
-      <ElRow :gutter="20">
-        <ElCol :span="12">
-          <Card>
+          </va-card>
+        </el-col>
+      </el-row>
+      <el-row :gutter="20">
+        <el-col :span="12">
+          <va-card>
             <template #title> Popover </template>
             <el-popover
               placement="top-start"
@@ -62,9 +62,9 @@
                 <el-button>Focus to activate</el-button>
               </template>
             </el-popover>
-          </Card>
-        </ElCol>
-      </ElRow>
+          </va-card>
+        </el-col>
+      </el-row>
     </div>
   </div>
 </template>
@@ -77,7 +77,7 @@ export default { name };
 </script>
 
 <script setup lang="ts">
-import Card from '@/components/Card/index.vue';
+import VaCard from '@/components/Card/index.vue';
 import { ElNotification } from 'element-plus';
 
 const open1 = () => {

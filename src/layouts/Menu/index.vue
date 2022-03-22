@@ -12,7 +12,7 @@ const aside = computed(
 </script>
 
 <template>
-  <ElMenu
+  <el-menu
     class="aside-menu dark-menu"
     :collapse-transition="false"
     :collapse="aside"
@@ -22,6 +22,6 @@ const aside = computed(
     text-color="#fff"
     active-text-color="#ffd04b"
   >
-    <SubMenu :menuList="store.state.menu.menuList" />
-  </ElMenu>
+    <sub-menu :menuList="store.state.menu.menuList" />
+  </el-menu>
 </template>

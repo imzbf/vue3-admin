@@ -1,17 +1,17 @@
 <template>
-  <ElMenuItem v-if="props.menu.outLink" @click="goto(props.menu.outLink)">
-    <ElIcon v-if="menu.iconName">
-      <MenuIcon :icon-name="menu.iconName" />
-    </ElIcon>
+  <el-menu-item v-if="props.menu.outLink" @click="goto(props.menu.outLink)">
+    <el-icon v-if="menu.iconName">
+      <menu-icon :icon-name="menu.iconName" />
+    </el-icon>
     <span>{{ props.menu.title }}</span>
-  </ElMenuItem>
+  </el-menu-item>
 
-  <ElMenuItem v-else :index="props.menu.path" @click="router.push(props.menu.path)">
-    <ElIcon v-if="menu.iconName">
-      <MenuIcon :icon-name="menu.iconName" />
-    </ElIcon>
+  <el-menu-item v-else :index="props.menu.path" @click="router.push(props.menu.path)">
+    <el-icon v-if="menu.iconName">
+      <menu-icon :icon-name="menu.iconName" />
+    </el-icon>
     <span>{{ props.menu.title }}</span>
-  </ElMenuItem>
+  </el-menu-item>
 </template>
 
 <script setup lang="ts">

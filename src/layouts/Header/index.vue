@@ -15,7 +15,7 @@ import {
   User,
   Bell,
   MoreFilled
-} from '@element-plus/icons';
+} from '@element-plus/icons-vue';
 
 import './index.scss';
 
@@ -88,40 +88,40 @@ if (screenfull.isEnabled) {
   <header class="layout-header">
     <ul class="layout-header-left">
       <li @click="adjustMenu" class="cper">
-        <ElIcon v-if="store.state.setting.aside === 'open'" :size="18"><Fold /></ElIcon>
-        <ElIcon v-else :size="18"><Expand /></ElIcon>
+        <el-icon v-if="store.state.setting.aside === 'open'" :size="18"><Fold /></el-icon>
+        <el-icon v-else :size="18"><Expand /></el-icon>
       </li>
       <li class="breadcrumb-help">
-        <ElBreadcrumb separator="/">
-          <ElBreadcrumbItem
+        <el-breadcrumb separator="/">
+          <el-breadcrumb-item
             v-for="breadcrumb of store.state.setting.breadcrumbs"
             :key="breadcrumb"
-            >{{ breadcrumb }}</ElBreadcrumbItem
+            >{{ breadcrumb }}</el-breadcrumb-item
           >
-        </ElBreadcrumb>
+        </el-breadcrumb>
       </li>
     </ul>
     <ul class="layout-header-right">
-      <ElPopover trigger="click">
+      <el-popover trigger="click">
         <template #reference>
           <li>
-            <ElBadge :value="12">
-              <ElIcon><Bell /></ElIcon>
-            </ElBadge>
+            <el-badge :value="12">
+              <el-icon><Bell /></el-icon>
+            </el-badge>
           </li>
         </template>
-        <ElTabs>
-          <ElTabPane name="notice" label="通知">
+        <el-tabs>
+          <el-tab-pane name="notice" label="通知">
             <Notification />
-          </ElTabPane>
-          <ElTabPane name="message" label="消息">
+          </el-tab-pane>
+          <el-tab-pane name="message" label="消息">
             <Message />
-          </ElTabPane>
-          <ElTabPane name="todo" label="代办">
+          </el-tab-pane>
+          <el-tab-pane name="todo" label="代办">
             <Todo />
-          </ElTabPane>
-        </ElTabs>
-      </ElPopover>
+          </el-tab-pane>
+        </el-tabs>
+      </el-popover>
       <!-- <Dropdown
             trigger={['click']}
             overlay={
@@ -147,34 +147,34 @@ if (screenfull.isEnabled) {
           </Dropdown> -->
 
       <li @click="fullScreen">
-        <ElIcon><FullScreen /></ElIcon>
+        <el-icon><FullScreen /></el-icon>
       </li>
 
-      <ElDropdown>
+      <el-dropdown>
         <template #dropdown>
-          <ElDropdownMenu>
-            <ElDropdownItem>
+          <el-dropdown-menu>
+            <el-dropdown-item>
               <RouterLink to="/user" class="layout-header-link">
-                <ElIcon><User /></ElIcon> 个人中心
+                <el-icon><User /></el-icon> 个人中心
               </RouterLink>
-            </ElDropdownItem>
-            <ElDropdownItem>
-              <RouterLink to="/user/setting" class="layout-header-link">
-                <ElIcon><Setting /></ElIcon> 个人设置
-              </RouterLink>
-            </ElDropdownItem>
-            <ElDropdownItem @click="logout">
-              <ElIcon><SwitchButton /></ElIcon>
+            </el-dropdown-item>
+            <el-dropdown-item>
+              <router-link to="/user/setting" class="layout-header-link">
+                <el-icon><Setting /></el-icon> 个人设置
+              </router-link>
+            </el-dropdown-item>
+            <el-dropdown-item @click="logout">
+              <el-icon><SwitchButton /></el-icon>
               退出登录
-            </ElDropdownItem>
-          </ElDropdownMenu>
+            </el-dropdown-item>
+          </el-dropdown-menu>
         </template>
         <li>
           <ElAvatar size="small" :src="DEMO_USER_HEAD" />
         </li>
-      </ElDropdown>
+      </el-dropdown>
       <li @click="store.commit('setting/settingDrawerVisibleChanged')">
-        <ElIcon style="transform: rotate(90deg)"><MoreFilled /></ElIcon>
+        <el-icon style="transform: rotate(90deg)"><MoreFilled /></el-icon>
       </li>
     </ul>
   </header>

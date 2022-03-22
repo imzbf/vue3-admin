@@ -2,7 +2,6 @@
 import { computed } from 'vue';
 import { key } from '@/store';
 import { useStore } from 'vuex';
-import { RouterView } from 'vue-router';
 import { debounce } from './utils';
 const store = useStore(key);
 
@@ -18,6 +17,6 @@ const classNames = computed(() => ['theme-wrapper', `theme-${store.state.setting
 
 <template>
   <div :class="classNames">
-    <RouterView />
+    <router-view />
   </div>
 </template>

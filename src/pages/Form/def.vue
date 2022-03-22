@@ -7,79 +7,79 @@
       </div>
     </div>
     <div class="view-space">
-      <Card>
-        <ElForm size="small" label-width="90px">
-          <ElRow :gutter="14">
-            <ElCol :span="16">
-              <Card border :shadow="false">
+      <va-card>
+        <el-form label-width="90px">
+          <el-row :gutter="14">
+            <el-col :span="16">
+              <va-card border :shadow="false">
                 <template #title>
                   <span>文章属性</span>
                 </template>
-                <ElFormItem label="文章标题">
-                  <ElInput v-model="article.title" />
-                </ElFormItem>
+                <el-form-item label="文章标题">
+                  <el-input v-model="article.title" />
+                </el-form-item>
                 <div class="inline-form-items">
-                  <ElFormItem label="文章状态">
-                    <ElSelect v-model="article.status" placeholder="选择项目地点">
-                      <ElOption label="不显示" :value="0"></ElOption>
-                      <ElOption label="显示" :value="1"></ElOption>
-                    </ElSelect>
-                  </ElFormItem>
-                  <ElFormItem label="创建时间">
-                    <ElDatePicker
+                  <el-form-item label="文章状态">
+                    <el-select v-model="article.status" placeholder="选择项目地点">
+                      <el-option label="不显示" :value="0"></el-option>
+                      <el-option label="显示" :value="1"></el-option>
+                    </el-select>
+                  </el-form-item>
+                  <el-form-item label="创建时间">
+                    <el-date-picker
                       v-model="article.createdTime"
                       type="datetime"
                       placeholder="选择时间"
-                    ></ElDatePicker>
-                  </ElFormItem>
+                    ></el-date-picker>
+                  </el-form-item>
                 </div>
-                <ElFormItem label="预览图片">
-                  <ElInput v-model="article.previewImage">
+                <el-form-item label="预览图片">
+                  <el-input v-model="article.previewImage">
                     <template #append>
                       <input ref="uploadSynopsis" type="file" style="display: none" />
-                      <ElButton :icon="UploadFilled" @click="handleUploadSynopsis"></ElButton>
+                      <el-button :icon="UploadFilled" @click="handleUploadSynopsis"></el-button>
                     </template>
-                  </ElInput>
-                </ElFormItem>
-                <ElFormItem label="文章摘要">
-                  <ElInput
+                  </el-input>
+                </el-form-item>
+                <el-form-item label="文章摘要">
+                  <el-input
                     v-model="article.synopsis"
                     type="textarea"
                     rows="5"
                     maxlength="1000"
                     show-word-limit
-                  ></ElInput>
-                </ElFormItem>
-                <ElFormItem label="">
-                  <ElButton type="primary">保存发布</ElButton>
-                  <ElButton>缓存草稿</ElButton>
-                </ElFormItem>
-              </Card>
-            </ElCol>
-            <ElCol :span="8">
-              <Card border :shadow="false">
+                  ></el-input>
+                </el-form-item>
+                <el-form-item label="">
+                  <el-button type="primary">保存发布</el-button>
+                  <el-button>缓存草稿</el-button>
+                </el-form-item>
+              </va-card>
+            </el-col>
+            <el-col :span="8">
+              <va-card border :shadow="false">
                 <template #title>
                   <span>文章标签</span>
                 </template>
-                <ElCheckboxGroup v-model="tag.tagsSelected">
-                  <ElCheckbox
+                <el-checkbox-group v-model="tag.tagsSelected">
+                  <el-checkbox
                     v-for="item of tag.list"
                     :key="item.tagId"
                     :class="tag.colors[Math.floor(Math.random() * tag.colors.length)]"
                     :label="item.tagId"
-                    >{{ item.tagName }}</ElCheckbox
+                    >{{ item.tagName }}</el-checkbox
                   >
-                </ElCheckboxGroup>
-              </Card>
-            </ElCol>
-          </ElRow>
-          <ElRow>
-            <ElCol :span="24">
-              <Editor editor-id="def-form" v-model="article.content" :screenfull="screenfull" />
-            </ElCol>
-          </ElRow>
-        </ElForm>
-      </Card>
+                </el-checkbox-group>
+              </va-card>
+            </el-col>
+          </el-row>
+          <el-row>
+            <el-col :span="24">
+              <md-editor editor-id="def-form" v-model="article.content" :screenfull="screenfull" />
+            </el-col>
+          </el-row>
+        </el-form>
+      </va-card>
     </div>
   </div>
 </template>
@@ -93,11 +93,11 @@ export default { name };
 
 <script setup lang="ts">
 import { reactive } from 'vue';
-import Editor from 'md-editor-v3';
+import MdEditor from 'md-editor-v3';
 import 'md-editor-v3/lib/style.css';
 import screenfull from 'screenfull';
-import Card from '@/components/Card/index.vue';
-import { UploadFilled } from '@element-plus/icons';
+import VaCard from '@/components/Card/index.vue';
+import { UploadFilled } from '@element-plus/icons-vue';
 import { tags } from './data';
 
 const article = reactive({

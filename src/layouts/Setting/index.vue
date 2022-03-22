@@ -1,16 +1,16 @@
 <template>
-  <ElDrawer
+  <el-drawer
     :model-value="store.state.setting.settingDrawerVisible"
     @close="store.commit('setting/settingDrawerVisibleChanged')"
     direction="rtl"
     size="280px"
     :with-header="false"
   >
-    <ElDivider>主题设置</ElDivider>
-    <ThemePreviewVue />
-    <ElDivider>其他设置</ElDivider>
+    <el-divider>主题设置</el-divider>
+    <theme-preview-vue />
+    <el-divider>其他设置</el-divider>
     <Other />
-  </ElDrawer>
+  </el-drawer>
 </template>
 
 <script setup lang="ts">
