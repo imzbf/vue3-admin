@@ -4,7 +4,6 @@
       class="cper"
       :closable="!isFixedTag(item) && menuTagNotSingle"
       :effect="item.curr ? 'dark' : 'plain'"
-      size="small"
       :type="item.curr ? 'success' : 'info'"
       v-for="item of store.state.setting.menuTags"
       @click="tagClick(item)"
@@ -13,9 +12,11 @@
     >
 
     <span class="layout-bar-action cper">
-      <el-dropdown size="mini" placement="bottom-end">
-        <el-tag>
-          <arrow-down />
+      <el-dropdown size="mini" placement="bottom-end" trigger="click">
+        <el-tag type="info">
+          <el-icon>
+            <arrow-down />
+          </el-icon>
         </el-tag>
 
         <template #dropdown>
@@ -38,7 +39,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue';
+import { computed, reactive } from 'vue';
 import { ArrowDown } from '@element-plus/icons-vue';
 import { useStore } from 'vuex';
 import { useRouter, useRoute } from 'vue-router';
