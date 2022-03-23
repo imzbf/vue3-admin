@@ -20,7 +20,7 @@ const props = defineProps({
     <el-sub-menu v-else :index="menu.path">
       <template #title>
         <el-icon v-if="menu.iconName">
-          <MenuIcon :icon-name="menu.iconName" />
+          <menu-icon :icon-name="menu.iconName" />
         </el-icon>
         <span>{{ menu.title }}</span>
       </template>
@@ -29,9 +29,9 @@ const props = defineProps({
         <el-sub-menu v-else :index="menuChild.path">
           <template #title>
             <el-icon v-if="menuChild.iconName">
-              <menu-item :icon-name="menuChild.iconName" />
+              <menu-icon :icon-name="menuChild.iconName" />
             </el-icon>
-            <span>{{ menuChild.title }}</span>
+            <span ddd>{{ menuChild.title }}</span>
           </template>
           <sub-menu :menu-list="menuChild.children" />
         </el-sub-menu>
