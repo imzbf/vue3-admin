@@ -170,7 +170,7 @@ if (screenfull.isEnabled) {
           </el-dropdown-menu>
         </template>
         <li>
-          <ElAvatar size="small" :src="DEMO_USER_HEAD" />
+          <el-avatar size="small" :src="DEMO_USER_HEAD" />
         </li>
       </el-dropdown>
       <li @click="store.commit('setting/settingDrawerVisibleChanged')">

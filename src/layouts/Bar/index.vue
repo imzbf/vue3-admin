@@ -98,9 +98,5 @@ const refreshRoute = () => {
     width: 30px;
     text-align: center;
   }
-
-  .el-tag + .el-tag {
-    margin-left: 6px;
-  }
 }
 </style>

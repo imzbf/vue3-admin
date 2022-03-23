@@ -7,3 +7,7 @@
 );
 
 @use "element-plus/theme-chalk/src/index.scss" as *;
+
+.el-tag + .el-tag {
+  margin-left: 6px;
+}
