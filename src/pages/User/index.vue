@@ -36,6 +36,14 @@
             </div>
             <el-divider />
             <va-title :level="5">团队</va-title>
+            <el-descriptions class="team">
+              <el-descriptions-item v-for="item of state.team" :key="`team-item-${item}`">
+                <template #label>
+                  <el-icon><office-building /></el-icon>
+                </template>
+                {{ item }}
+              </el-descriptions-item>
+            </el-descriptions>
           </va-card>
         </el-col>
         <el-col :span="16">
@@ -48,6 +56,13 @@
                 <el-table-column prop="ip" label="IP" />
                 <el-table-column prop="lastLoginTime" label="上次登录时间" />
                 <el-table-column prop="location" label="定位" />
+                <el-table-column label="操作" width="120">
+                  <template #default="scope">
+                    <el-button size="small" @click="loginOut(scope.row)" type="danger"
+                      >删除设备</el-button
+                    >
+                  </template>
+                </el-table-column>
               </el-table>
             </div>
             <va-title :level="4">系统操作历史</va-title>
@@ -69,11 +84,21 @@
 
 <script setup lang="ts">
 import { reactive } from 'vue';
+import { ElMessage } from 'element-plus';
+import { OfficeBuilding } from '@element-plus/icons-vue';
 import VaCard from '@/components/Card/index.vue';
 import VaTitle from '@/components/Title/index.vue';
 import { DEMO_USER_HEAD2 } from '@/config/urls';
 
-interface Logs {
+interface Device {
+  id: number;
+  deviceOS: string;
+  ip: string;
+  lastLoginTime: string;
+  location: string;
+}
+
+interface Log {
   id: number;
   deviceOS: string;
   ip: string;
@@ -85,12 +110,13 @@ interface Logs {
 const state = reactive<{
   info: any;
   tag: any;
-  deviceHistory: Array<any>;
-  logs: Array<any>;
+  deviceHistory: Array<Device>;
+  logs: Array<Log>;
+  team: string[];
   tagTypes: Array<'' | 'info' | 'success' | 'warning' | 'danger'>;
 }>({
   info: {
-    nickname: 'Vavt Sn',
+    nickname: '之间',
     description:
       '重庆土著人，毕业于重庆理工大学软件工程系，95后，Web前端开发，2006美国《时代周刊》年度风云人物。',
     sex: '外星人',
@@ -101,6 +127,15 @@ const state = reactive<{
     ['React', 'Vue', 'Sass', 'NodeJS', 'Angular', 'WebGL', 'WeApp', 'Java'],
     ['羽毛球', '跑步', 'LOL', '唱歌', '出行'],
     ['柯南', '星际穿越', '超神学院', '哈利波特']
+  ],
+  team: [
+    '技术有限组',
+    '挖山小组',
+    '掘金小组',
+    '阳光青年组',
+    '魔鬼加班组',
+    '外包团队',
+    '濒临猝死队'
   ],
   deviceHistory: [
     {
@@ -162,6 +197,13 @@ const state = reactive<{
   ],
   tagTypes: ['success', 'info', 'warning', 'danger', '']
 });
+
+const loginOut = (row: Device) => {
+  ElMessage({
+    message: '已取消该设备登录！',
+    type: 'success'
+  });
+};
 </script>
 
 <style lang="scss">
@@ -187,6 +229,13 @@ const state = reactive<{
         font-weight: 500;
         margin-bottom: 10px;
       }
+    }
+  }
+
+  .team {
+    .el-descriptions__label {
+      vertical-align: middle;
+      margin-right: 5px;
     }
   }
 
