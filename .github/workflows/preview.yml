@@ -11,21 +11,21 @@ jobs:
     name: Build and publish
     runs-on: ubuntu-latest
     steps:
-      - name: node env
+      - name: Get Node
         uses: actions/setup-node@v1
         with:
           node-version: 14
           registry-url: https://registry.npmjs.org/
 
-      - name: checkout
+      - name: Checkout Code
         uses: actions/checkout@v2
 
-      - name: action
+      - name: Build Project
         run: |
           npm install
           npm run build:preview
 
-      - name: publish
+      - name: Publish
         uses: JamesIves/github-pages-deploy-action@4.1.5
         with:
           branch: preview
