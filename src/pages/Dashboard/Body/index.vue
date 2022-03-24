@@ -4,16 +4,18 @@ import CommonlyUsed from './CommonlyUsed.vue';
 // import Task from './Task';
 // import Record from './Record.vue';
 import VaTeam from './Team.vue';
+import AccessList from './History/index.vue';
 </script>
 <template>
   <div class="view-space dashboard-body">
     <el-row :gutter="20">
       <el-col :span="16">
-        <running-project />
+        <access-list />
         <!-- <Record /> -->
       </el-col>
       <el-col :span="8">
-        <CommonlyUsed />
+        <commonly-used />
+        <running-project />
         <!-- <Task /> -->
         <va-team />
       </el-col>

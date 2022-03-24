@@ -21,21 +21,14 @@
           >
         </template>
       </el-table-column>
-      <el-table-column prop="date" label="上次启动" />
       <el-table-column prop="status" label="状态">
         <template #default="scope">
-          <ElTag size="medium" :type="scope.row.status === '运行中' ? 'success' : 'danger'">{{
+          <ElTag :type="scope.row.status === '运行中' ? 'success' : 'danger'">{{
             scope.row.status
           }}</ElTag>
         </template>
       </el-table-column>
-      <el-table-column label="操作" width="100">
-        <template #default="scope">
-          <el-button size="mini" :type="scope.row.status === '运行中' ? 'danger' : 'default'">{{
-            scope.row.status === '运行中' ? '停止' : '重启'
-          }}</el-button>
-        </template>
-      </el-table-column>
+      <el-table-column prop="date" label="上次启动" />
     </el-table>
   </Card>
 </template>

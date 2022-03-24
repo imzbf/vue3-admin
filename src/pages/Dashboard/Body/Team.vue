@@ -7,23 +7,23 @@
     <el-row>
       <el-col :span="12" class="item">
         <el-avatar :src="`${VITE_BASE}/static/img/boy01.jpg`" />
-        <span class="name">vra-dever</span>
+        <span class="name">技术有限组</span>
       </el-col>
       <el-col :span="12" class="item">
         <el-avatar :src="`${VITE_BASE}/static/img/boy01.jpg`" />
-        <span :class="name">vra-dever</span>
+        <span class="name">挖山小组</span>
       </el-col>
       <el-col :span="12" class="item">
         <el-avatar :src="`${VITE_BASE}/static/img/boy01.jpg`" />
-        <span :class="name">vra-dever</span>
+        <span class="name">阳光青年组</span>
       </el-col>
       <el-col :span="12" class="item">
         <el-avatar :src="`${VITE_BASE}/static/img/boy01.jpg`" />
-        <span class="name">vra-dever</span>
+        <span class="name">魔鬼加班组</span>
       </el-col>
       <el-col :span="12" class="item">
         <el-avatar :src="`${VITE_BASE}/static/img/boy01.jpg`" />
-        <span class="name">vra-dever</span>
+        <span class="name">濒临猝死队</span>
       </el-col>
     </el-row>
   </va-card>
@@ -43,6 +43,10 @@ const VITE_BASE = import.meta.env.VITE_BASE;
     white-space: nowrap;
     text-overflow: ellipsis;
     word-break: break-all;
+
+    & > span {
+      vertical-align: middle;
+    }
 
     .name {
       margin-left: 12px;
