@@ -6,10 +6,10 @@
 import { debounce } from '@/utils';
 import echarts, { themeLight } from '@/utils/echarts';
 
-import { onUnmounted, ref, shallowRef, defineProps, PropType, watch, onMounted } from 'vue';
+import { ref, shallowRef, PropType, watch, onMounted, onBeforeMount } from 'vue';
 
 const chart = shallowRef<any>(null);
-const chartRef = ref<any>(null);
+const chartRef = ref<HTMLDivElement>();
 const props = defineProps({
   total: {
     type: Array as PropType<Array<any>>,
@@ -24,13 +24,6 @@ const props = defineProps({
     }
   }
 });
-onUnmounted(() => {
-  if (!chart.value) {
-    return;
-  }
-  chart.value.dispose();
-  chart.value = null;
-});
 
 watch(
   () => props.disTotal,
@@ -40,7 +33,7 @@ watch(
 );
 
 const initChart = () => {
-  chart.value = echarts.init(chartRef.value, themeLight);
+  chart.value = echarts.init(chartRef.value as HTMLDivElement, themeLight);
 
   chart.value.setOption({
     tooltip: {
@@ -132,12 +125,24 @@ const resizeHandler = debounce(() => {
   }
 });
 
-window.addEventListener('resize', resizeHandler);
+const resizeObserver = new ResizeObserver((entries: ResizeObserverEntry[]) => {
+  resizeHandler();
+});
 
-onMounted(initChart);
+onMounted(() => {
+  initChart();
 
-onUnmounted(() => {
-  window.removeEventListener('resize', resizeHandler);
+  resizeObserver.observe(chartRef.value as HTMLDivElement);
+});
+
+onBeforeMount(() => {
+  if (!chart.value) {
+    return;
+  }
+  chart.value.dispose();
+  chart.value = null;
+
+  resizeObserver.unobserve(chartRef.value as HTMLDivElement);
 });
 </script>
 

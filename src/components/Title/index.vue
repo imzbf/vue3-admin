@@ -3,7 +3,6 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps, PropType } from 'vue';
 
 const props = defineProps({
   level: {

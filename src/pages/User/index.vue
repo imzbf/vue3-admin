@@ -54,7 +54,7 @@
                 <el-table-column type="index" label="编号" width="80" />
                 <el-table-column prop="deviceOS" label="系统类型" />
                 <el-table-column prop="ip" label="IP" />
-                <el-table-column prop="lastLoginTime" label="上次登录时间" />
+                <el-table-column prop="lastLoginTime" label="上次登录时间" :min-width="160" />
                 <el-table-column prop="location" label="定位" />
                 <el-table-column label="操作" width="120">
                   <template #default="scope">
@@ -71,8 +71,8 @@
                 <el-table-column type="index" label="编号" width="80" />
                 <el-table-column prop="deviceOS" label="系统类型" />
                 <el-table-column prop="ip" label="IP" />
-                <el-table-column prop="createdTime" label="时间" />
-                <el-table-column prop="content" label="操作内容" min-width="230" />
+                <el-table-column prop="createdTime" label="时间" :min-width="160" />
+                <el-table-column prop="content" label="操作内容" :min-width="230" />
               </el-table>
             </div>
           </va-card>
