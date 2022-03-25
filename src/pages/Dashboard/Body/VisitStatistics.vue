@@ -1,5 +1,5 @@
 <template>
-  <va-card border>
+  <va-card border class="va-mb">
     <template #title>
       <icon-font type="icon-changyongfenlei" class="title-icon" />
       访问记录

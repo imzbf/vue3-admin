@@ -14,7 +14,7 @@ const VITE_BASE = import.meta.env.VITE_BASE;
         <div class="hello">早上好，毛利小五郎，开始奋斗吧！</div>
         <div class="weather">
           <icon-font type="icon-tianqi" class="icon" />
-          <span>外面太阳很大，33℃ - 41℃，建议你不要建议我建议你别去上班！</span>
+          <span>外面太阳很大，33℃ - 41℃，建议你不要建议我不建议你别去上班！</span>
         </div>
       </div>
     </div>
