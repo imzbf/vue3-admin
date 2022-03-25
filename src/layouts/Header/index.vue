@@ -110,7 +110,7 @@ if (screenfull.isEnabled) {
             </el-badge>
           </li>
         </template>
-        <el-tabs>
+        <el-tabs model-value="notice">
           <el-tab-pane name="notice" label="通知">
             <Notification />
           </el-tab-pane>
