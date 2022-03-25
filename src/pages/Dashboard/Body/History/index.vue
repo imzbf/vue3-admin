@@ -4,7 +4,7 @@
       <icon-font type="icon-changyongfenlei" class="title-icon" />
       访问记录
     </template>
-    <record-chart :total="state.total" :dis-total="state.disTotal" />
+    <e-chart style="height: 400px" :option="option" />
   </va-card>
 </template>
 
@@ -12,7 +12,7 @@
 import { reactive } from 'vue';
 import IconFont from '@/components/IconFont/index.vue';
 import VaCard from '@/components/Card/index.vue';
-import RecordChart from './components/LineMarker.vue';
+import EChart from '@/components/Echart/index.vue';
 
 const state = reactive({
   total: [
@@ -83,6 +83,89 @@ const state = reactive({
     ['2022-03-24', 41]
   ]
 });
+
+const option = {
+  tooltip: {
+    trigger: 'axis'
+  },
+  xAxis: {
+    data: state.total.map(function (item) {
+      return item[0];
+    })
+  },
+  yAxis: {
+    splitLine: {
+      show: false
+    }
+  },
+  // toolbox: {
+  //   left: 'center',
+  //   feature: {
+  //     dataZoom: {
+  //       yAxisIndex: 'none'
+  //     },
+  //     restore: {},
+  //     saveAsImage: {}
+  //   }
+  // },
+  dataZoom: [
+    {
+      startValue: '2014-06-01'
+    },
+    {
+      type: 'inside'
+    }
+  ],
+  visualMap: {
+    top: 10,
+    right: 10,
+    outOfRange: {
+      color: '#999'
+    }
+  },
+  series: [
+    {
+      name: '当天总流量',
+      type: 'line',
+      data: state.total.map(function (item) {
+        return item[1];
+      }),
+      markLine: {
+        silent: true,
+        data: [
+          {
+            yAxis: 30
+          },
+          {
+            yAxis: 50
+          },
+          {
+            yAxis: 100
+          },
+          {
+            yAxis: 200
+          },
+          {
+            yAxis: 300
+          }
+        ]
+      }
+    },
+    {
+      name: '当天总访客量',
+      type: 'line',
+      data: state.disTotal.map(function (item) {
+        return item[1];
+      })
+    }
+  ],
+  grid: {
+    x: 50,
+    y: 25,
+    x2: 100,
+    y2: 35
+  }
+};
 </script>
 
 <style scoped>
