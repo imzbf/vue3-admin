@@ -53,3 +53,40 @@ export const debounce = (fn: (...params: Array<any>) => any, ms = 200) => {
     }, ms);
   };
 };
+
+export const throttle = (fn: (...params: Array<any>) => any, ms = 200) => {
+  let timer = 0;
+  let startStamp = 0;
+
+  return (...params: Array<any>) => {
+    if (timer > 0) {
+      return;
+    }
+
+    const repeatFn = () => {
+      window.requestAnimationFrame((timestamp) => {
+        // 记录开始
+        if (startStamp === 0) {
+          startStamp = timestamp;
+
+          // 重复执行自己
+          repeatFn();
+        } else {
+          timer = ms - (timestamp - startStamp);
+
+          if (timer <= 0) {
+            // 到点直接执行目标方法
+            fn(...params);
+            // 移除开始标识
+            startStamp = 0;
+          } else {
+            // 重复执行自己
+            repeatFn();
+          }
+        }
+      });
+    };
+
+    repeatFn();
+  };
+};
