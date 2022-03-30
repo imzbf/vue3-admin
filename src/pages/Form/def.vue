@@ -75,7 +75,12 @@
           </el-row>
           <el-row>
             <el-col :span="24">
-              <md-editor editor-id="def-form" v-model="article.content" :screenfull="screenfull" />
+              <md-editor
+                editor-id="def-form"
+                v-model="article.content"
+                :screenfull="screenfull"
+                @onUploadImg="uploadImg"
+              />
             </el-col>
           </el-row>
         </el-form>
@@ -134,6 +139,8 @@ const tag = reactive<{
 });
 
 const handleUploadSynopsis = () => {};
+
+const uploadImg = console.log;
 </script>
 
 <style lang="scss">
