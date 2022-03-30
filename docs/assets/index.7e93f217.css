@@ -1,0 +1,1 @@
+.message-item{display:flex;justify-content:space-between;padding-bottom:8px;margin-bottom:8px;border-bottom:1px solid #eee}.message-item:last-of-type{border-bottom:none;padding-bottom:0;margin-bottom:0}.message-item .message-label div{font-size:15px;margin-bottom:6px}.message-item .message-label span{font-size:12px;color:#999}

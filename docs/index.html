@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+    <script>
+      (function () {
+        var redirect = sessionStorage.redirect;
+        delete sessionStorage.redirect;
+        if (redirect && redirect != location.href) {
+          history.replaceState(null, null, redirect);
+        }
+      })();
+    </script>
+    <script src="//at.alicdn.com/t/font_2365632_z2zcyrhpem.js"></script>
+    <script type="module" crossorigin src="https://imzbf.github.io/vue3-admin/assets/index.85027435.js"></script>
+    <link rel="modulepreload" href="https://imzbf.github.io/vue3-admin/assets/vendor.4e664af6.js">
+    <link rel="stylesheet" href="https://imzbf.github.io/vue3-admin/assets/index.9bcaa0fc.css">
+  </head>
+  <body>
+    <div id="app"></div>
+    
+    <script>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement('script');
+        hm.src = 'https://hm.baidu.com/hm.js?1563bc52cb27ffbc7b5b46cdfc327ce0';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  </body>
+</html>
