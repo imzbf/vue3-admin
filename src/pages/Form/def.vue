@@ -159,7 +159,7 @@ const uploadImg = console.log;
   }
 
   .el-checkbox {
-    height: auto;
+    height: 24px;
   }
 
   .el-row {
