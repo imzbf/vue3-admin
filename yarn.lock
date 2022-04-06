@@ -1301,10 +1301,10 @@ magic-string@^0.25.7:
   dependencies:
     sourcemap-codec "^1.4.4"
 
-md-editor-v3@^1.11.4:
-  version "1.11.4"
-  resolved "https://registry.npmjs.org/md-editor-v3/-/md-editor-v3-1.11.4.tgz#8ff311e9e5ccc5a0b97ec91cc2815e6363adfa63"
-  integrity sha512-C0I5raxHchWPLMHGM+a6EjQ2V29eU0qDjbKe4rE2K2U2i81PA7nKCQKOIxSYFxXXVh6EvHKPK/HImQuxNblJmw==
+md-editor-v3@^1.11.6:
+  version "1.11.6"
+  resolved "https://registry.npmjs.org/md-editor-v3/-/md-editor-v3-1.11.6.tgz#d9b6a6bb795eafcf46f7f941ab0b7cdfb8a1fc26"
+  integrity sha512-+XviAuW092YR2DqY7M141J9QCvmaxi/UyowD9zWo2x1Wfzn85QCYp5fjvPRhutodU7/E+LIAnYiqWznEHCynSw==
 
 memoize-one@^6.0.0:
   version "6.0.0"
