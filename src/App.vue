@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { computed } from 'vue';
 import { key } from '@/store';
 import { useStore } from 'vuex';
 import { debounce } from './utils';
@@ -12,11 +11,24 @@ const updateReSizeState = debounce(() => {
 
 window.addEventListener('resize', updateReSizeState);
 
-const classNames = computed(() => ['theme-wrapper', `theme-${store.state.setting.theme}`]);
+// 监听html标签的class改变情况，变化时，自动调整系统的主题
+const htmlClassObserver = new MutationObserver(() => {
+  const htmlClassList = document.documentElement.classList;
+  const theme = store.state.setting.theme;
+  // 不包含，自动设置
+  if (!htmlClassList.contains(theme)) {
+    store.commit('setting/themeChanged', {
+      theme: theme === 'dark' ? 'light' : 'dark'
+    });
+  }
+});
+
+htmlClassObserver.observe(document.documentElement, {
+  attributes: true,
+  attributeFilter: ['class']
+});
 </script>
 
 <template>
-  <div :class="classNames">
-    <router-view />
-  </div>
+  <router-view />
 </template>

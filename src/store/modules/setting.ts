@@ -9,7 +9,7 @@ interface AsideType {
   mobileDrawer: boolean;
 }
 
-export type Themes = 'dark' | 'light' | 'mix';
+export type Themes = 'dark' | 'light';
 
 export interface MenuTag {
   title: string;
@@ -40,17 +40,23 @@ export interface SettingStateType extends AsideType {
 
 const cacheTheme = localStorage.getItem(Final.THEME);
 
+const adjustHtmlClass = (theme: Themes) => {
+  if (theme === 'dark') {
+    document.documentElement.classList.add('dark');
+  } else {
+    document.documentElement.classList.remove('dark');
+  }
+};
+
+adjustHtmlClass(cacheTheme as Themes);
+
 const defaultState: SettingStateType = {
   aside: 'open',
   mobileDrawer: false,
   selectedKey: '/',
   openKeys: setting.openKeys,
   breadcrumbs: [],
-  theme:
-    (cacheTheme === 'dark' && 'dark') ||
-    (cacheTheme === 'light' && 'light') ||
-    (cacheTheme === 'mix' && 'mix') ||
-    'dark',
+  theme: (cacheTheme === 'dark' && 'dark') || (cacheTheme === 'light' && 'light') || 'light',
   cacheList: [],
   menuTags: fixedTags.map((tag) => ({ curr: false, ...tag })),
   isMobile: document.body.offsetWidth < 970,
@@ -117,6 +123,7 @@ const mutations = {
   },
   // 切换主题
   themeChanged(state: SettingStateType, payload: { theme: Themes }): void {
+    adjustHtmlClass(payload.theme);
     state.theme = payload.theme;
     localStorage.setItem(Final.THEME, payload.theme);
   },
