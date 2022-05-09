@@ -82,7 +82,7 @@ export default { name };
 </script>
 
 <script setup lang="ts">
-import { reactive, onMounted } from 'vue';
+import { reactive, onMounted, computed } from 'vue';
 import { useStore } from 'vuex';
 import { key } from '@/store';
 import './style.scss';
@@ -90,7 +90,8 @@ import { onBeforeRouteLeave } from 'vue-router';
 import { ElMessage } from 'element-plus';
 import { User, Lock } from '@element-plus/icons-vue';
 
-const loginBg = new URL('../../assets/images/login-bg.svg', import.meta.url).href;
+const loginBgNormal = new URL('../../assets/images/login-bg.svg', import.meta.url).href;
+const loginBgDark = new URL('../../assets/images/login-bg-dark.svg', import.meta.url).href;
 const loginBody = new URL('../../assets/images/login-body.svg', import.meta.url).href;
 
 const data = reactive({
@@ -104,6 +105,10 @@ const data = reactive({
 });
 
 const store = useStore(key);
+
+const loginBg = computed(() => {
+  return store.state.setting.theme === 'dark' ? loginBgDark : loginBgNormal;
+});
 
 const login = () => {
   if (data.info.username !== '' && data.info.password !== '') {
