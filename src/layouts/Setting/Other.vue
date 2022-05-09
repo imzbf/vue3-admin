@@ -26,6 +26,8 @@ const setting = reactive({
 
 <style lang="scss">
 .other-setting {
+  color: var(--el-text-color-regular);
+
   &-item {
     display: flex;
     justify-content: space-between;

@@ -20,9 +20,8 @@
     flex-direction: column;
     position: relative;
     transition: all 0.2s;
-    border-right: 1px solid #e6e6e6;
-    background-color: #545c64;
-    color: #fff;
+    border-right: 1px solid var(--el-border-color);
+    color: var(--el-text-color-regular);
 
     .logo {
       padding: 16px;
@@ -70,14 +69,14 @@
     width: calc(100% - 210px);
 
     .layout-header {
-      background-color: #fff;
+      background-color: var(--el-bg-color);
     }
 
     .layout-main {
       flex: 1;
       overflow-y: auto;
       overflow-x: hidden;
-      background-color: #fff;
+      background-color: var(--el-bg-color);
     }
   }
 }

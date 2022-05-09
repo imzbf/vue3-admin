@@ -76,6 +76,7 @@
           <el-row>
             <el-col :span="24">
               <md-editor
+                :theme="store.state.setting.theme"
                 editor-id="def-form"
                 v-model="article.content"
                 :screenfull="screenfull"
@@ -101,9 +102,13 @@ import { reactive } from 'vue';
 import MdEditor from 'md-editor-v3';
 import 'md-editor-v3/lib/style.css';
 import screenfull from 'screenfull';
+import { useStore } from 'vuex';
+import { key } from '@/store';
 import VaCard from '@/components/Card/index.vue';
 import { UploadFilled } from '@element-plus/icons-vue';
 import { tags } from './data';
+
+const store = useStore(key);
 
 const article = reactive({
   title: '',
@@ -120,10 +125,7 @@ const tag = reactive<{
     tagId: number;
     tagName: string;
   }>;
-  tagsSelected: Array<{
-    tagId: number;
-    tagName: string;
-  }>;
+  tagsSelected: Array<number | string>;
 }>({
   colors: [
     'color-orange',

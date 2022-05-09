@@ -12,21 +12,21 @@ const updateReSizeState = debounce(() => {
 window.addEventListener('resize', updateReSizeState);
 
 // 监听html标签的class改变情况，变化时，自动调整系统的主题
-const htmlClassObserver = new MutationObserver(() => {
-  const htmlClassList = document.documentElement.classList;
-  const theme = store.state.setting.theme;
-  // 不包含，自动设置
-  if (!htmlClassList.contains(theme)) {
-    store.commit('setting/themeChanged', {
-      theme: theme === 'dark' ? 'light' : 'dark'
-    });
-  }
-});
+// const htmlClassObserver = new MutationObserver(() => {
+//   const htmlClassList = document.documentElement.classList;
+//   const theme = store.state.setting.theme;
+//   // 不包含，自动设置
+//   if (!htmlClassList.contains(theme)) {
+//     store.commit('setting/themeChanged', {
+//       theme: theme === 'dark' ? 'light' : 'dark'
+//     });
+//   }
+// });
 
-htmlClassObserver.observe(document.documentElement, {
-  attributes: true,
-  attributeFilter: ['class']
-});
+// htmlClassObserver.observe(document.documentElement, {
+//   attributes: true,
+//   attributeFilter: ['class']
+// });
 </script>
 
 <template>

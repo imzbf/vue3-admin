@@ -1,3 +1,5 @@
+@use 'sass:color';
+
 @forward "element-plus/theme-chalk/src/common/var.scss" with (
   $colors: (
     "primary": (
@@ -10,4 +12,20 @@
 
 .el-tag + .el-tag {
   margin-left: 6px;
+}
+
+.el-rate__item {
+  line-height: 1;
+}
+
+
+
+html.dark {
+  --el-color-primary:#2fc950 !important;
+  --el-color-primary-light-3: color.mix(#fff, #2fc950, 30%);
+  --el-color-primary-light-5: color.mix(#fff, #2fc950, 50%);
+  --el-color-primary-light-7: #213d5b;
+  --el-color-primary-light-8: #1d3043;
+  --el-color-primary-light-9: #18222c;
+  --el-color-primary-dark-2: #66b1ff;
 }

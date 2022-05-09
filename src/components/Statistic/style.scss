@@ -2,7 +2,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  color: #000000d9;
+  color: var(--el-text-color-regular);
   font-size: 14px;
   font-variant: tabular-nums;
   line-height: 1.5715;
@@ -12,12 +12,10 @@
 
 .statistic-title {
   margin-bottom: 4px;
-  color: #00000073;
   font-size: 14px;
 }
 
 .statistic-content {
-  color: #000000d9;
   font-size: 24px;
 }
 

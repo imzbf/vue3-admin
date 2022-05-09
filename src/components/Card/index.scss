@@ -1,4 +1,4 @@
-$border: #e6e6e6;
+$border: var(--el-border-color);
 
 .vra-card {
   box-sizing: border-box;
@@ -6,13 +6,14 @@ $border: #e6e6e6;
   padding: 0;
   font-size: 14px;
   font-variant: tabular-nums;
-  line-height: 1.5715;
+  line-height: 1.5;
   list-style: none;
   font-feature-settings: 'tnum';
   position: relative;
   border-radius: 4px;
   transition: all 0.3s;
-  background-color: #fff;
+  background-color: var(--el-bg-color);
+  color: var(--el-text-color-regular);
 
   &-shadow {
     box-shadow: 0 2px 12px 0 #00000010;
