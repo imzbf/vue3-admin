@@ -231,3 +231,7 @@ html.dark {
     background-color: #3a3a3a;
   }
 }
+
+.md-dark {
+  --md-bk-color: var(--el-bg-color);
+}

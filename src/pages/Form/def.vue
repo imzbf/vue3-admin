@@ -108,6 +108,20 @@ import VaCard from '@/components/Card/index.vue';
 import { UploadFilled } from '@element-plus/icons-vue';
 import { tags } from './data';
 
+// MdEditor.config({
+//   markedRenderer(renderer) {
+//     renderer.link = (href, title, text) => {
+//       return `<a href="${href}" title="${title}" target="_blank">${text}</a>`;
+//     };
+
+//     renderer.image = (href: string, _: string, desc: string) => {
+//       return `<img src="${href}" alt="${desc}">`;
+//     };
+
+//     return renderer;
+//   }
+// });
+
 const store = useStore(key);
 
 const article = reactive({
