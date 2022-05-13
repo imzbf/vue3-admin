@@ -1,5 +1,5 @@
 .dashboard {
-  background-color: #fff;
+  background-color: var(--el-bg-color);
 
   .welcome {
     .avatar {
@@ -15,7 +15,6 @@
       }
 
       .weather {
-        color: rgb(102, 102, 102);
         font-size: 14px;
 
         .icon {

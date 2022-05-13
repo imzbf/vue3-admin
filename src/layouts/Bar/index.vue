@@ -12,7 +12,7 @@
     >
 
     <span class="layout-bar-action cper">
-      <el-dropdown :show-timeout="0" size="mini" placement="bottom-end" trigger="click">
+      <el-dropdown :show-timeout="0" size="mini" placement="bottom-end">
         <el-tag type="info">
           <el-icon>
             <arrow-down />
@@ -87,7 +87,7 @@ const refreshRoute = () => {
 <style lang="scss">
 .layout-bar {
   padding: 6px 14px;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid var(--el-border-color);
   position: relative;
 
   &-action {

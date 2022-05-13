@@ -14,14 +14,17 @@ import {
   Setting,
   User,
   Bell,
-  MoreFilled
+  MoreFilled,
+  ReadingLamp
 } from '@element-plus/icons-vue';
+import IconFont from '@/components/IconFont/index.vue';
 
 import './index.scss';
 
 import Message from './Message.vue';
 import Notification from './Notification.vue';
 import Todo from './Todo.vue';
+import { Themes } from '@/store/modules/setting';
 
 // 同时设置props的vue属性和ts类型，setup会报错
 // interface NavBarPropsType {
@@ -50,9 +53,9 @@ const adjustMenu = () => {
 };
 
 // 调整主题
-const adjustTheme = ({ key }: any) => {
+const adjustTheme = (theme: Themes) => {
   store.commit('setting/themeChanged', {
-    theme: key
+    theme
   });
 };
 
@@ -122,29 +125,26 @@ if (screenfull.isEnabled) {
           </el-tab-pane>
         </el-tabs>
       </el-popover>
-      <!-- <Dropdown
-            trigger={['click']}
-            overlay={
-              <Menu onClick={adjustTheme}>
-                <Menu.Item key="mix">
-                  <MyIcon type="icon-ditu_diqiu" />
-                  黑白主题
-                </Menu.Item>
-                <Menu.Item key="light">
-                  <MyIcon type="icon-taiyang" />
-                  白色主题
-                </Menu.Item>
-                <Menu.Item key="dark">
-                  <MyIcon type="icon-yueliang" />
-                  暗黑主题
-                </Menu.Item>
-              </Menu>
-            }
-          >
-            <li>
-              <SkinOutlined />
-            </li>
-          </Dropdown> -->
+      <el-dropdown>
+        <li>
+          <el-icon>
+            <reading-lamp />
+          </el-icon>
+        </li>
+        <template #dropdown>
+          <el-dropdown-menu>
+            <el-dropdown-item @click="adjustTheme('light')">
+              <icon-font type="icon-taiyang" />
+              <span style="padding-left: 4px">默认主题</span>
+            </el-dropdown-item>
+            <el-dropdown-item @click="adjustTheme('dark')">
+              <icon-font type="icon-yueliang" />
+
+              <span style="padding-left: 4px">暗黑主题</span>
+            </el-dropdown-item>
+          </el-dropdown-menu>
+        </template>
+      </el-dropdown>
 
       <li @click="fullScreen">
         <el-icon><FullScreen /></el-icon>
@@ -173,9 +173,9 @@ if (screenfull.isEnabled) {
           <el-avatar size="small" :src="DEMO_USER_HEAD" />
         </li>
       </el-dropdown>
-      <li @click="store.commit('setting/settingDrawerVisibleChanged')">
+      <!-- <li @click="store.commit('setting/settingDrawerVisibleChanged')">
         <el-icon style="transform: rotate(90deg)"><MoreFilled /></el-icon>
-      </li>
+      </li> -->
     </ul>
   </header>
 </template>

@@ -1,3 +1,6 @@
+@use 'sass:math';
+@use 'sass:color';
+
 @forward "element-plus/theme-chalk/src/common/var.scss" with (
   $colors: (
     "primary": (
@@ -10,4 +13,26 @@
 
 .el-tag + .el-tag {
   margin-left: 6px;
+}
+
+.el-rate__item {
+  line-height: 1;
+}
+
+
+$base1: #141414;
+$base2: #2fc950;
+$var-name: --el-color-primary-light;
+
+@function dark-light($num) {
+  @return mix($base1, $base2, math.percentage(math.div($num, 10)));
+}
+
+
+html.dark {
+  --el-color-primary:#2fc950 !important;
+
+  @for $i from 1 through 9 {
+    #{$var-name}-#{$i}: dark-light($i);
+  }
 }

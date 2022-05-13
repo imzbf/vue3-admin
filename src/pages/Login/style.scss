@@ -8,7 +8,7 @@ $borderRadius: 14px;
   justify-content: center;
   // background-color: #fff;
 
-  .login-container {
+  &-container {
     box-shadow: 0px 14px 20px #c0c4cc;
     // filter: drop-shadow(0px 14px 20px #c0c4cc);
     // background-color: transparent;
@@ -17,7 +17,7 @@ $borderRadius: 14px;
 
     .login-form {
       box-sizing: border-box;
-      background-color: #fff;
+      background-color: var(--el-bg-color);
       border-radius: $borderRadius;
       padding: 28px 44px;
       display: flex;
@@ -28,6 +28,7 @@ $borderRadius: 14px;
         font-size: 28px;
         font-weight: 600;
         margin: 14px 0 28px;
+        color: var(--el-text-color-primary);
       }
 
       .form-item {
@@ -57,5 +58,11 @@ $borderRadius: 14px;
         }
       }
     }
+  }
+}
+
+html.dark {
+  .login-container {
+    box-shadow: 0px 14px 20px #000;
   }
 }

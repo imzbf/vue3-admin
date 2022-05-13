@@ -1,7 +1,8 @@
 .layout-header {
   display: flex;
   justify-content: space-between;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid var(--el-border-color);
+  color: var(--el-text-color-regular);
 
   .layout-header-left,
   .layout-header-right {
@@ -33,7 +34,7 @@
       transition: all 0.3s;
 
       &:hover {
-        background-color: #ddd;
+        background-color: var(--el-border-color-extra-light);
       }
     }
   }
