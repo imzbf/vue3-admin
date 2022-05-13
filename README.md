@@ -4,8 +4,6 @@
   <a href="https://nodejs.org/en/about/releases/"><img src="https://img.shields.io/badge/node-%3E=14.0.0-green.svg" alt="node compatility"></a>
 </p>
 
-> !!!`tsx`版本已不再维护，对使用`tsx`开发`vue3`项目感兴趣的可以从`tsx`分支切出代码学习使用。
-
 ## 介绍
 
 项目基于 [vue@3.x](https://v3.cn.vuejs.org/guide) 系列开发（文档：[router@4.x](https://next.router.vuejs.org/zh/guide/index.html)、[vuex@4.x](https://next.vuex.vuejs.org/)），UI 组件库使用 [element-plus](https://element-plus.gitee.io/zh-CN/)，开发环境使用 [vite@2.x](https://cn.vitejs.dev/)。
@@ -18,7 +16,9 @@
 
 **登录**
 
-![image.png](https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/ed8a32611eb344d2b8e02a2a3b35db1a~tplv-k3u1fbpfcp-watermark.image?)
+| 默认模式 | 暗夜模式 |
+| --- | --- |
+| ![默认模式](/vue3-admin/static/preview/login-default.png) | ![默认模式](/vue3-admin/static/preview/login-dark.png) |
 
 ## 项目结构说明
 
@@ -58,3 +58,7 @@ typing # ts 类型申明文件
 ## 资源申明
 
 对于作者在项目引用的一些图片等资源，均支持非商用，并注明了资源出处，如需商用请注意该资源作者的使用条件！
+
+## 结尾
+
+> !!!`tsx`版本已不再维护，对使用`tsx`开发`vue3`项目感兴趣的可以从`tsx`分支切出代码学习使用。
