@@ -127,6 +127,11 @@
   resolved "https://registry.npmjs.org/@types/lodash/-/lodash-4.14.182.tgz#05301a4d5e62963227eaafe0ce04dd77c54ea5c2"
   integrity sha512-/THyiqyQAP9AfARo4pF+aCGcyiQ94tX/Is2I7HofNRqoYLgN1PBoOWu2/zTA5zMxzP5EFutMtWtGAFRKUe961Q==
 
+"@types/marked@^4.0.3":
+  version "4.0.3"
+  resolved "https://registry.npmjs.org/@types/marked/-/marked-4.0.3.tgz#2098f4a77adaba9ce881c9e0b6baf29116e5acc4"
+  integrity sha512-HnMWQkLJEf/PnxZIfbm0yGJRRZYYMhb++O9M36UCTA9z53uPvVoSlAwJr3XOpDEryb7Hwl1qAx/MV6YIW1RXxg==
+
 "@types/mockjs@^1.0.4":
   version "1.0.4"
   resolved "https://registry.npmmirror.com/@types/mockjs/download/@types/mockjs-1.0.4.tgz#e706951d5e33b4f0a4bb73b1f8b124e26f081de0"
@@ -1310,10 +1315,12 @@ magic-string@^0.25.7:
   dependencies:
     sourcemap-codec "^1.4.4"
 
-md-editor-v3@^1.11.8:
-  version "1.11.8"
-  resolved "https://registry.yarnpkg.com/md-editor-v3/-/md-editor-v3-1.11.8.tgz#48d74c138f58f81f84c6ca9ec2aea7653edc99e5"
-  integrity sha512-2ViFF+1bdtLScoRRuxMvKsZ1onZ3ZfpmtyMpe9f4XKRDkAFB1jtl2ic9SjWy0XWZUZPOg2NniGnsviq6FLO4tw==
+md-editor-v3@^2.0.0-beta.3:
+  version "2.0.0-beta.3"
+  resolved "https://registry.npmjs.org/md-editor-v3/-/md-editor-v3-2.0.0-beta.3.tgz#b80405438be3938ccdabdaeff3aa8c05a4b9766c"
+  integrity sha512-u6bU9KXjLUfD8KP2aLUo62Akapdpn6hO0iV4j1mibEdbD5qMQctb8oUNiDNETWWPhEpGEMBt5QRlhPmrsBHwVg==
+  dependencies:
+    "@types/marked" "^4.0.3"
 
 memoize-one@^6.0.0:
   version "6.0.0"

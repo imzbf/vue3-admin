@@ -233,5 +233,5 @@ html.dark {
 }
 
 .md-dark {
-  --md-bk-color: var(--el-bg-color);
+  --md-bk-color: var(--el-bg-color) !important;
 }
