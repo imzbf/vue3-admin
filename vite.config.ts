@@ -10,6 +10,7 @@ import { homepage } from './package.json';
 export default ({ command, mode }: ConfigEnv): UserConfigExport => {
   return {
     base: mode === 'preview' ? homepage : '/',
+    publicDir: './public',
     server: {
       port: 6677
     },
