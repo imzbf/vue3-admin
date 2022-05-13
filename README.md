@@ -12,13 +12,11 @@
 
 ## 预览
 
-在线预览：（<a href="https://imzbf.github.io/vue3-admin" target="_blank">传送门</a>）
-
-**登录**
-
 | 默认模式 | 暗夜模式 |
 | --- | --- |
-| ![默认模式](/vue3-admin/static/preview/login-default.png) | ![默认模式](/vue3-admin/static/preview/login-dark.png) |
+| ![默认模式](https://imzbf.github.io/vue3-admin/static/img/preview/login-default.png) | ![默认模式](https://imzbf.github.io/vue3-admin/static/img/preview/login-dark.png) |
+
+在线预览：（<a href="https://imzbf.github.io/vue3-admin" target="_blank">传送门</a>）
 
 ## 项目结构说明
 
