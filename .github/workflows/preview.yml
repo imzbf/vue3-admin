@@ -8,22 +8,27 @@ on:
 
 jobs:
   publish:
-    name: Build and publish
+    name: Build And Publish
     runs-on: ubuntu-latest
     steps:
       - name: Get Node
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v3
         with:
-          node-version: 14
+          node-version: 16
           registry-url: https://registry.npmjs.org/
 
       - name: Checkout Code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
-      - name: Build Project
-        run: |
-          npm install
-          npm run build:preview
+      - name: Install
+        uses: borales/actions-yarn@v2.3.0
+        with:
+          cmd: install
+
+      - name: Build
+        uses: borales/actions-yarn@v2.3.0
+        with:
+          cmd: build:preview
 
       - name: Publish
         uses: JamesIves/github-pages-deploy-action@4.1.5
