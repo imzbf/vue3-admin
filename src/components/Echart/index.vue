@@ -4,8 +4,12 @@
 
 <script setup lang="ts">
 import { ref, shallowRef, PropType, watch, onMounted, onBeforeMount } from 'vue';
+import { useStore } from 'vuex';
+import { key } from '@/store';
 import { throttle } from '@/utils';
-import echarts, { themeLight } from '@/utils/echarts';
+import echarts, { ThemeLight, ThemeDark } from '@/utils/echarts';
+
+const store = useStore(key);
 
 const chart = shallowRef<any>(null);
 const chartRef = ref<HTMLDivElement>();
@@ -24,6 +28,24 @@ const initChart = () => {
 
 watch(() => props.option, initChart);
 
+watch(
+  () => store.state.setting.theme,
+  (val) => {
+    // 销毁
+    chart.value.dispose();
+    resizeObserver.unobserve(chartRef.value as HTMLDivElement);
+
+    if (val === 'dark') {
+      chart.value = echarts.init(chartRef.value as HTMLDivElement, ThemeDark);
+    } else {
+      chart.value = echarts.init(chartRef.value as HTMLDivElement, ThemeLight);
+    }
+
+    initChart();
+    resizeObserver.observe(chartRef.value as HTMLDivElement);
+  }
+);
+
 const resizeHandler = throttle(() => {
   if (chart.value) {
     chart.value.resize();
@@ -35,7 +57,10 @@ const resizeObserver = new ResizeObserver((entries: ResizeObserverEntry[]) => {
 });
 
 onMounted(() => {
-  chart.value = echarts.init(chartRef.value as HTMLDivElement, themeLight);
+  chart.value = echarts.init(
+    chartRef.value as HTMLDivElement,
+    store.state.setting.theme === 'dark' ? ThemeDark : ThemeLight
+  );
   initChart();
   resizeObserver.observe(chartRef.value as HTMLDivElement);
 });

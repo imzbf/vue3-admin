@@ -132,6 +132,9 @@ const option = {
       }),
       markLine: {
         silent: true,
+        label: {
+          color: 'inherit'
+        },
         data: [
           {
             yAxis: 30

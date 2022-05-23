@@ -14,6 +14,9 @@ import VaCard from '@/components/Card/index.vue';
 import EChart from '@/components/Echart/index.vue';
 
 const option = {
+  label: {
+    color: 'inherit'
+  },
   dataset: [
     {
       source: [
