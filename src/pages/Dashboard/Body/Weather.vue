@@ -45,9 +45,6 @@ const option = {
         ]
       },
       markLine: {
-        label: {
-          color: 'inherit'
-        },
         data: [{ type: 'average', name: 'Avg' }]
       }
     },
