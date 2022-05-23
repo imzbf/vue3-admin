@@ -12,7 +12,8 @@ export default ({ command, mode }: ConfigEnv): UserConfigExport => {
     base: mode === 'preview' ? homepage : '/',
     publicDir: './public',
     server: {
-      port: 6677
+      port: 6677,
+      open: true
     },
     resolve: {
       alias: {
