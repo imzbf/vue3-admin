@@ -18,7 +18,7 @@
           <admin-menu />
         </div>
         <footer class="copyright">
-          <span>@2020 imbf.cc</span>
+          <span>@2020 imzbf.cc</span>
         </footer>
       </div>
     </el-drawer>
@@ -31,7 +31,7 @@
         <admin-menu />
       </div>
       <footer v-if="asideOpen" class="copyright">
-        <span>@2020 imbf.cc</span>
+        <span>@2020 imzbf.cc</span>
       </footer>
     </div>
     <div class="layout">
