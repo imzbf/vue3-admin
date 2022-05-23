@@ -45,6 +45,9 @@ const option = {
         ]
       },
       markLine: {
+        label: {
+          color: 'inherit'
+        },
         data: [{ type: 'average', name: 'Avg' }]
       }
     },
@@ -56,6 +59,9 @@ const option = {
         data: [{ name: '周最低', value: -2, xAxis: 1, yAxis: -1.5 }]
       },
       markLine: {
+        label: {
+          color: 'inherit'
+        },
         data: [
           { type: 'average', name: 'Avg' },
           [

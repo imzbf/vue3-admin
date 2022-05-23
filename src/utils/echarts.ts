@@ -1,8 +1,11 @@
 import * as echarts from 'echarts';
-import theme from '@/config/theme.json';
+import themeLight from '@/config/echart-light.json';
+import themeDark from '@/config/echart-dark.json';
 
-export const themeLight = 'themeLight';
+export const ThemeLight = 'themeLight';
+export const ThemeDark = 'themeDark';
 
-echarts.registerTheme(themeLight, theme);
+echarts.registerTheme(ThemeLight, themeLight);
+echarts.registerTheme(ThemeDark, themeDark);
 
 export default echarts;
