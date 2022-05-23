@@ -4,6 +4,11 @@
       <icon-font type="icon-changyongfenlei" class="title-icon" />
       访问记录
     </template>
+    <template #func>
+      <a href="https://imzbf.github.io/echarts-theme-builder/zh/index.html" target="_blank">
+        在线编辑Echarts主题
+      </a>
+    </template>
     <e-chart style="height: 400px" :option="option" />
   </va-card>
 </template>
@@ -132,9 +137,6 @@ const option = {
       }),
       markLine: {
         silent: true,
-        label: {
-          color: 'inherit'
-        },
         data: [
           {
             yAxis: 30
