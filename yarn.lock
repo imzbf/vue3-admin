@@ -1315,10 +1315,10 @@ magic-string@^0.25.7:
   dependencies:
     sourcemap-codec "^1.4.4"
 
-md-editor-v3@^2.0.1:
-  version "2.0.1"
-  resolved "https://registry.npmjs.org/md-editor-v3/-/md-editor-v3-2.0.1.tgz#04dd05e786b4c2a5a6a09fdd7dff8dca4ad0a2f3"
-  integrity sha512-qwH5jpAj6d6sjv9PIxQYFCX/hHKUDMYdcRWtxKR6Qh4SCBxHoDHEcLjiiEo03EJ/Lgui+3nv9+XFtNQgwm09Vg==
+md-editor-v3@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/md-editor-v3/-/md-editor-v3-2.1.0.tgz#0d8108294e1be474dddbf9bfb70e05660bcfc463"
+  integrity sha512-yqRF3SUrGFQsduaENw/NO5deKWXBKP+m32xef8/GW1tOp8vdIfGT2PzFm+zw33Rmt40IglZu9ZJIC6lLu9HdSg==
   dependencies:
     "@types/marked" "^4.0.3"
 
