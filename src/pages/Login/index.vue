@@ -1,5 +1,5 @@
 <template>
-  <div class="login" id="login" :style="{ background: `url(${loginBody})` }">
+  <div id="login" class="login" :style="{ background: `url(${loginBody})` }">
     <div class="login-container">
       <div class="login-asset">
         <img :src="loginBg" width="500" />
@@ -7,7 +7,7 @@
       <div class="login-form">
         <h1 class="form-title">后台管理模板</h1>
         <div class="form-item">
-          <el-input size="large" type="text" v-model="data.info.username" placeholder="username: 1">
+          <el-input v-model="data.info.username" size="large" type="text" placeholder="username: 1">
             <template #prefix>
               <el-icon class="el-input__icon"><User /></el-icon>
             </template>
@@ -15,9 +15,9 @@
         </div>
         <div class="form-item">
           <el-input
+            v-model="data.info.password"
             size="large"
             type="password"
-            v-model="data.info.password"
             show-password
             placeholder="password: 1"
           >
@@ -28,14 +28,18 @@
         </div>
         <div class="form-item" style="margin-bottom: 14px">
           <el-checkbox v-model="data.remembered"> 记住我 </el-checkbox>
-          <el-popconfirm title="自行实现！" confirmButtonText="好的" cancel-buttonText="被迫好的">
+          <el-popconfirm
+            title="自行实现！"
+            confirm-button-text="好的"
+            cancel-button-text="被迫好的"
+          >
             <template #reference>
               <span class="forget-p-help cper">忘记密码？</span>
             </template>
           </el-popconfirm>
         </div>
         <div class="form-item">
-          <el-button type="primary" @click="login" style="width: 100%" :loading="data.spinning">
+          <el-button type="primary" style="width: 100%" :loading="data.spinning" @click="login">
             登录
           </el-button>
         </div>
@@ -70,6 +74,7 @@
           </ul>
         </div>
       </div>
+      <icon-font class="adjust-theme" :type="themeIcon" @click="adjustTheme" />
     </div>
   </div>
 </template>
@@ -85,10 +90,11 @@ export default { name };
 import { reactive, onMounted, computed } from 'vue';
 import { useStore } from 'vuex';
 import { key } from '@/store';
-import './style.scss';
 import { onBeforeRouteLeave } from 'vue-router';
 import { ElMessage } from 'element-plus';
 import { User, Lock } from '@element-plus/icons-vue';
+import IconFont from '@/components/IconFont/index.vue';
+import './style.scss';
 
 const loginBgNormal = new URL('../../assets/images/login-bg.svg', import.meta.url).href;
 const loginBgDark = new URL('../../assets/images/login-bg-dark.svg', import.meta.url).href;
@@ -108,6 +114,10 @@ const store = useStore(key);
 
 const loginBg = computed(() => {
   return store.state.setting.theme === 'dark' ? loginBgDark : loginBgNormal;
+});
+
+const themeIcon = computed(() => {
+  return store.state.setting.theme === 'dark' ? 'icon-sun' : 'icon-moon';
 });
 
 const login = () => {
@@ -131,6 +141,13 @@ const keyUpHandler = (e: any) => {
   if (e.keyCode == 13) {
     login();
   }
+};
+
+// 调整主题
+const adjustTheme = () => {
+  store.commit('setting/themeChanged', {
+    theme: store.state.setting.theme === 'dark' ? 'light' : 'dark'
+  });
 };
 
 onMounted(() => {

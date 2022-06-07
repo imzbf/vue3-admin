@@ -14,6 +14,7 @@ $borderRadius: 14px;
     // background-color: transparent;
     border-radius: $borderRadius;
     display: flex;
+    position: relative;
 
     .login-form {
       box-sizing: border-box;
@@ -28,7 +29,7 @@ $borderRadius: 14px;
         font-size: 28px;
         font-weight: 600;
         margin: 14px 0 28px;
-        color: var(--el-text-color-primary);
+        color: var(--el-text-color-regular);
       }
 
       .form-item {
@@ -57,6 +58,13 @@ $borderRadius: 14px;
           }
         }
       }
+    }
+
+    .adjust-theme {
+      position: absolute;
+      right: 1rem;
+      bottom: 1rem;
+      cursor: pointer;
     }
   }
 }
