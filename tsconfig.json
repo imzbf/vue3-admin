@@ -9,7 +9,7 @@
     "sourceMap": true,
     "resolveJsonModule": true,
     "esModuleInterop": true,
-    "allowJs": true,
+    "allowJs": false,
     "lib": ["esnext", "dom", "dom.iterable", "scripthost"],
     "baseUrl": "./",
     "paths": {
@@ -18,5 +18,5 @@
     "types": ["element-plus/global"]
   },
   "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.vue"],
-  "exclude": ["node_modules", "/src/assets/*"]
+  "exclude": ["node_modules", "src/assets/**/*"]
 }

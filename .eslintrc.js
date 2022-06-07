@@ -1,23 +1,34 @@
 module.exports = {
+  root: true,
   env: {
     browser: true,
-    node: true
+    node: true,
+    es2021: true
   },
+  parser: 'vue-eslint-parser',
   extends: [
-    // add more generic rulesets here, such as:
-    // 'eslint:recommended',
-    'plugin:vue/vue3-essential',
     'eslint:recommended',
-    '@vue/typescript/recommended',
-    '@vue/prettier',
-    '@vue/prettier/@typescript-eslint'
-    // 'plugin:vue/recommended' // Use this if you are using Vue.js 2.x.
+    'prettier',
+    'plugin:vue/vue3-recommended',
+    'plugin:@typescript-eslint/recommended',
+    'plugin:prettier/recommended'
   ],
-  plugins: ['@typescript-eslint'],
+  parserOptions: {
+    ecmaVersion: 12,
+    parser: '@typescript-eslint/parser',
+    sourceType: 'module',
+    ecmaFeatures: {
+      jsx: true
+    }
+  },
+  plugins: ['vue', '@typescript-eslint', 'prettier'],
   rules: {
-    'vue/multi-word-component-names': 'off',
-    '@typescript-eslint/explicit-module-boundary-types': 'off',
-    '@typescript-eslint/no-explicit-any': 'off',
-    '@typescript-eslint/no-empty-function': 'off'
+    '@typescript-eslint/no-explicit-any': 'off'
+  },
+  globals: {
+    defineProps: 'readonly',
+    defineEmits: 'readonly',
+    defineExpose: 'readonly',
+    withDefaults: 'readonly'
   }
 };
