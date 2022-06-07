@@ -1,3 +1,7 @@
+<script lang="ts">
+export default { name: 'HeaderIndex' };
+</script>
+
 <script setup lang="ts">
 import { reactive } from 'vue';
 import { RouterLink } from 'vue-router';
@@ -89,7 +93,7 @@ if (screenfull.isEnabled) {
 <template>
   <header class="layout-header">
     <ul class="layout-header-left">
-      <li @click="adjustMenu" class="cper">
+      <li class="cper" @click="adjustMenu">
         <el-icon v-if="store.state.setting.aside === 'open'" :size="18"><Fold /></el-icon>
         <el-icon v-else :size="18"><Expand /></el-icon>
       </li>
@@ -151,20 +155,13 @@ if (screenfull.isEnabled) {
       <el-dropdown>
         <template #dropdown>
           <el-dropdown-menu>
-            <el-dropdown-item>
-              <RouterLink to="/user" class="layout-header-link">
-                <el-icon><User /></el-icon> 个人中心
-              </RouterLink>
+            <el-dropdown-item :icon="User">
+              <RouterLink to="/user" class="layout-header-link"> 个人中心 </RouterLink>
             </el-dropdown-item>
-            <el-dropdown-item>
-              <router-link to="/user/setting" class="layout-header-link">
-                <el-icon><Setting /></el-icon> 个人设置
-              </router-link>
+            <el-dropdown-item :icon="Setting">
+              <router-link to="/user/setting" class="layout-header-link"> 个人设置 </router-link>
             </el-dropdown-item>
-            <el-dropdown-item @click="logout">
-              <el-icon><SwitchButton /></el-icon>
-              退出登录
-            </el-dropdown-item>
+            <el-dropdown-item :icon="SwitchButton" @click="logout"> 退出登录 </el-dropdown-item>
           </el-dropdown-menu>
         </template>
         <li>
