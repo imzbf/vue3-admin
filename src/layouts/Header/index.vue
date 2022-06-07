@@ -14,7 +14,6 @@ import {
   Setting,
   User,
   Bell,
-  MoreFilled,
   ReadingLamp
 } from '@element-plus/icons-vue';
 import IconFont from '@/components/IconFont/index.vue';
@@ -134,12 +133,11 @@ if (screenfull.isEnabled) {
         <template #dropdown>
           <el-dropdown-menu>
             <el-dropdown-item @click="adjustTheme('light')">
-              <icon-font type="icon-taiyang" />
+              <icon-font type="icon-sun" />
               <span style="padding-left: 4px">默认主题</span>
             </el-dropdown-item>
             <el-dropdown-item @click="adjustTheme('dark')">
-              <icon-font type="icon-yueliang" />
-
+              <icon-font type="icon-moon" />
               <span style="padding-left: 4px">暗黑主题</span>
             </el-dropdown-item>
           </el-dropdown-menu>
