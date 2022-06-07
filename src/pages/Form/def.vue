@@ -70,10 +70,10 @@
           <el-row>
             <el-col :span="24">
               <md-editor
+                v-model="article.content"
                 :theme="store.state.setting.theme"
                 editor-id="def-form"
-                v-model="article.content"
-                @onUploadImg="uploadImg"
+                @on-upload-img="uploadImg"
               />
             </el-col>
           </el-row>
@@ -155,7 +155,9 @@ const tag = reactive<{
   tagsSelected: []
 });
 
-const handleUploadSynopsis = () => {};
+const handleUploadSynopsis = () => {
+  //
+};
 
 const uploadImg = console.log;
 </script>

@@ -37,9 +37,7 @@ export const resetRoutes = (newRoutes: AdminRouteRecordRaw[] = []) => {
   // 以路由名称为主，删除已知路由，再添加新的路由
   const routeNames = router.getRoutes().map((route) => route.name);
 
-  routeNames.forEach(
-    (name: RouteRecordName | undefined) => name && router.removeRoute(name)
-  );
+  routeNames.forEach((name: RouteRecordName | undefined) => name && router.removeRoute(name));
 
   // 挨个添加新的路由
   newRoutes.concat(routes).forEach((route: AdminRouteRecordRaw) => {
