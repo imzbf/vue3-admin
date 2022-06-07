@@ -1,11 +1,5 @@
 <template>
   <div class="page-def-form">
-    <div class="page-header">
-      <div class="left">
-        <h2>md-editor-v3</h2>
-        <p>在线文档：<a href="https://imzbf.github.io/md-editor-v3">md-editor-v3</a></p>
-      </div>
-    </div>
     <div class="view-space">
       <va-card>
         <el-form label-width="90px">
@@ -79,7 +73,6 @@
                 :theme="store.state.setting.theme"
                 editor-id="def-form"
                 v-model="article.content"
-                :screenfull="screenfull"
                 @onUploadImg="uploadImg"
               />
             </el-col>
@@ -107,6 +100,14 @@ import { key } from '@/store';
 import VaCard from '@/components/Card/index.vue';
 import { UploadFilled } from '@element-plus/icons-vue';
 import { tags } from './data';
+
+MdEditor.config({
+  editorExtensions: {
+    screenfull: {
+      instance: screenfull
+    }
+  }
+});
 
 // MdEditor.config({
 //   markedRenderer(renderer) {
