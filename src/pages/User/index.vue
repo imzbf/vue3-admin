@@ -30,7 +30,7 @@
             <el-divider />
             <va-title :level="5">标记</va-title>
             <div v-for="(row, i) of state.tag" :key="`row-${i}`" class="tag-row">
-              <el-tag v-for="(item, j) of row" :type="state.tagTypes[(i + j) % 5]" :key="item">{{
+              <el-tag v-for="(item, j) of row" :key="item" :type="state.tagTypes[(i + j) % 5]">{{
                 item
               }}</el-tag>
             </div>
@@ -58,7 +58,7 @@
                 <el-table-column prop="location" label="定位" />
                 <el-table-column label="操作" width="120">
                   <template #default="scope">
-                    <el-button size="small" @click="loginOut(scope.row)" type="danger"
+                    <el-button size="small" type="danger" @click="loginOut(scope.row)"
                       >删除设备</el-button
                     >
                   </template>
@@ -81,6 +81,12 @@
     </div>
   </div>
 </template>
+
+<script lang="ts">
+export default {
+  name: 'IzUserInfo'
+};
+</script>
 
 <script setup lang="ts">
 import { reactive } from 'vue';

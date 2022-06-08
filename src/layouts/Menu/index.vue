@@ -11,6 +11,10 @@ const aside = computed(
 );
 </script>
 
+<script lang="ts">
+export default { name: 'IzMenu' };
+</script>
+
 <template>
   <el-menu
     class="aside-menu dark-menu"
@@ -19,6 +23,6 @@ const aside = computed(
     :default-active="store.state.setting.selectedKey"
     :default-openeds="store.state.setting.openKeys"
   >
-    <sub-menu :menuList="store.state.menu.menuList" />
+    <sub-menu :menu-list="store.state.menu.menuList" />
   </el-menu>
 </template>

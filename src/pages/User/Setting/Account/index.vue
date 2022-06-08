@@ -24,7 +24,7 @@
         </el-form-item>
 
         <el-form-item label="个人简介：">
-          <el-input :rows="4" v-model="form.desc" type="textarea"></el-input>
+          <el-input v-model="form.desc" :rows="4" type="textarea"></el-input>
         </el-form-item>
 
         <el-form-item label="">
@@ -45,6 +45,12 @@
     </el-row>
   </el-form>
 </template>
+
+<script lang="ts">
+export default {
+  name: 'IzUserAccountSetting'
+};
+</script>
 
 <script setup lang="ts">
 import { reactive } from 'vue';

@@ -36,6 +36,12 @@ import IconFont from '@/components/IconFont/index.vue';
 const VITE_BASE = import.meta.env.VITE_BASE;
 </script>
 
+<script lang="ts">
+export default {
+  name: 'IzDashboardTeam'
+};
+</script>
+
 <style lang="scss">
 .team {
   .item {

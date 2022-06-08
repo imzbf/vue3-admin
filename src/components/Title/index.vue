@@ -2,7 +2,12 @@
   <div :class="`va-title va-title-l${props.level}`"><slot /></div>
 </template>
 
+<script lang="ts">
+export default { name: 'IzTitle' };
+</script>
+
 <script setup lang="ts">
+import type { PropType } from 'vue';
 
 const props = defineProps({
   level: {

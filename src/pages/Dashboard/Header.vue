@@ -4,6 +4,12 @@ import VaStatistic from '@/components/Statistic/index.vue';
 const VITE_BASE = import.meta.env.VITE_BASE;
 </script>
 
+<script lang="ts">
+export default {
+  name: 'IzDashboardHeader'
+};
+</script>
+
 <template>
   <div class="page-header">
     <div class="welcome">

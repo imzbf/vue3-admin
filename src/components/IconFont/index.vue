@@ -4,6 +4,10 @@
   </svg>
 </template>
 
+<script lang="ts">
+export default { name: 'IzIconFont' };
+</script>
+
 <script setup lang="ts">
 import type { PropType } from 'vue';
 const props = defineProps({

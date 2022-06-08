@@ -13,20 +13,18 @@
   </div>
 </template>
 
+<script lang="ts">
+export default {
+  name: 'IzCard'
+};
+</script>
+
 <script setup lang="ts">
 import { computed, useSlots } from 'vue';
 import type { PropType, CSSProperties } from 'vue';
 import './index.scss';
 
 const props = defineProps({
-  title: {
-    type: [Object, String] as PropType<JSX.Element | string>,
-    default: undefined
-  },
-  func: {
-    type: [Object, String] as PropType<JSX.Element | string>,
-    default: undefined
-  },
   headerClass: {
     type: String,
     default: ''

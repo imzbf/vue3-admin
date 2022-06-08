@@ -9,6 +9,10 @@ const props = defineProps({
 });
 </script>
 
+<script lang="ts">
+export default { name: 'IzStatustic' };
+</script>
+
 <template>
   <div class="statistic">
     <div class="statistic-title">

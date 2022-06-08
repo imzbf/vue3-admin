@@ -6,7 +6,7 @@ import MenuIcon from './Icon.vue';
 
 const props = defineProps({
   menuList: {
-    type: Object as PropType<Array<MenuType>>,
+    type: Array as PropType<Array<MenuType>>,
     default: () => []
   }
 });
@@ -25,8 +25,12 @@ const props = defineProps({
         <span>{{ menu.title }}</span>
       </template>
       <template v-for="menuChild of menu.children">
-        <menu-item v-if="menuChild.children.length === 0" :menu="menuChild" />
-        <el-sub-menu v-else :index="menuChild.path">
+        <menu-item
+          v-if="menuChild.children.length === 0"
+          :key="`el-menu-item-${menuChild.title}`"
+          :menu="menuChild"
+        />
+        <el-sub-menu v-else :key="`el-sub-menu-${menuChild.title}`" :index="menuChild.path">
           <template #title>
             <el-icon v-if="menuChild.iconName">
               <menu-icon :icon-name="menuChild.iconName" />

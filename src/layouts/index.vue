@@ -3,11 +3,11 @@
     <el-drawer
       v-if="store.state.setting.isMobile"
       :model-value="store.state.setting.mobileDrawer"
-      @close="adjustMobileDrawer"
       direction="ltr"
       size="auto"
       :with-header="false"
       custom-class="mobile-menu-drawer"
+      @close="adjustMobileDrawer"
     >
       <div class="layout-aside">
         <header class="logo">
@@ -54,7 +54,7 @@
 </template>
 
 <script lang="ts" setup>
-import { computed, reactive } from 'vue';
+import { computed } from 'vue';
 import { useStore } from 'vuex';
 import { key } from '@/store';
 import AdminMenu from '@/layouts/Menu/index.vue';
@@ -66,11 +66,6 @@ import VaBar from './Bar/index.vue';
 import VaSetting from './Setting/index.vue';
 
 const store = useStore(key);
-
-const data = reactive({
-  settingVisible: false,
-  mobileMenuDrawer: true
-});
 
 // 侧边栏样式
 const wrapperClass = computed(() => {

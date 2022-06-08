@@ -90,6 +90,12 @@ const option = {
 };
 </script>
 
+<script lang="ts">
+export default {
+  name: 'IzDashboardWeather'
+};
+</script>
+
 <style scoped>
 .chart-container {
   position: relative;

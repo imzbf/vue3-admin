@@ -1,11 +1,12 @@
 <template>
   <div class="layout-bar">
     <el-tag
+      v-for="item of store.state.setting.menuTags"
+      :key="item.title"
       class="cper"
       :closable="!isFixedTag(item) && menuTagNotSingle"
       :effect="item.curr ? 'dark' : 'plain'"
       :type="item.curr ? 'success' : 'info'"
-      v-for="item of store.state.setting.menuTags"
       @click="tagClick(item)"
       @close="tagClose(item)"
       >{{ item.title }}</el-tag
@@ -38,8 +39,12 @@
   </div>
 </template>
 
+<script lang="ts">
+export default { name: 'BarLayout' };
+</script>
+
 <script setup lang="ts">
-import { computed, reactive } from 'vue';
+import { computed } from 'vue';
 import { ArrowDown } from '@element-plus/icons-vue';
 import { useStore } from 'vuex';
 import { useRouter, useRoute } from 'vue-router';
