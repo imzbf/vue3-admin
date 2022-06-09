@@ -2,6 +2,10 @@
   <span>通知</span>
 </template>
 
+<script lang="ts">
+export default { name: 'IzNotification' };
+</script>
+
 <script setup lang="ts">
 import { reactive } from 'vue';
 

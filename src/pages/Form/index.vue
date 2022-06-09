@@ -58,7 +58,7 @@
               </div>
             </el-form-item>
             <el-form-item label="项目描述：">
-              <el-input :rows="5" v-model="form.desc" type="textarea"></el-input>
+              <el-input v-model="form.desc" :rows="5" type="textarea"></el-input>
             </el-form-item>
 
             <el-form-item label="">

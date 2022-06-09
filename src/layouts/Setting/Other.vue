@@ -15,6 +15,10 @@
   </div>
 </template>
 
+<script lang="ts">
+export default { name: 'IzOther' };
+</script>
+
 <script setup lang="ts">
 import { reactive } from 'vue';
 

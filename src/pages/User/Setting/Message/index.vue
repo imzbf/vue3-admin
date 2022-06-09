@@ -33,6 +33,12 @@ const data = reactive({
 });
 </script>
 
+<script lang="ts">
+export default {
+  name: 'IzUserMessageSetting'
+};
+</script>
+
 <style lang="scss">
 .message-item {
   display: flex;

@@ -44,7 +44,7 @@
             </el-table-column>
             <el-table-column prop="updatedTime" align="center" label="更新时间" min-width="170" />
             <el-table-column prop="updatedTime" align="center" label="操作" width="160">
-              <template #default="scope">
+              <template #default>
                 <el-button size="small" plain type="primary">编辑</el-button>
                 <el-button size="small" type="danger" plain>删除</el-button>
               </template>
@@ -110,7 +110,9 @@ onMounted(() => {
     });
 });
 
-const handleReq = () => {};
+const handleReq = () => {
+  //
+};
 const changeStatus = (row: any) => {
   console.log(row);
 };

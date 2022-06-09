@@ -1,6 +1,10 @@
 <template>
-  <div class="e-chart" ref="chartRef"></div>
+  <div ref="chartRef" class="e-chart"></div>
 </template>
+
+<script lang="ts">
+export default { name: 'IzEchart' };
+</script>
 
 <script setup lang="ts">
 import { ref, shallowRef, PropType, watch, onMounted, onBeforeMount } from 'vue';

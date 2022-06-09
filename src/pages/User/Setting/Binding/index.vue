@@ -9,7 +9,7 @@
         <span>当前未绑定Facebook账号</span>
       </div>
     </div>
-    <div><el-button type="text">绑定</el-button></div>
+    <div><el-button link>绑定</el-button></div>
   </div>
 
   <div class="binding-item">
@@ -22,7 +22,7 @@
         <span>当前未绑定facebook账号</span>
       </div>
     </div>
-    <div><el-button type="text">绑定</el-button></div>
+    <div><el-button link>绑定</el-button></div>
   </div>
 
   <div class="binding-item">
@@ -35,7 +35,7 @@
         <span>当前未绑定QQ账号</span>
       </div>
     </div>
-    <div><el-button type="text">绑定</el-button></div>
+    <div><el-button link>绑定</el-button></div>
   </div>
 
   <div class="binding-item">
@@ -48,7 +48,7 @@
         <span>当前未绑定微信账号</span>
       </div>
     </div>
-    <div><el-button type="text">绑定</el-button></div>
+    <div><el-button link>绑定</el-button></div>
   </div>
 
   <div class="binding-item">
@@ -61,9 +61,17 @@
         <span>当前未绑定GitHub账号</span>
       </div>
     </div>
-    <div><el-button type="text">绑定</el-button></div>
+    <div><el-button link>绑定</el-button></div>
   </div>
 </template>
+
+<script lang="ts">
+export default {
+  name: 'IzUserBindingSetting'
+};
+</script>
+
+<script setup lang="ts"></script>
 
 <style lang="scss">
 .binding-item {

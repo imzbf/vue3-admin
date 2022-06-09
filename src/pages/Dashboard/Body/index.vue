@@ -8,6 +8,13 @@ import VisitStatistics from './VisitStatistics.vue';
 import RecentWeather from './Weather.vue';
 import MultipleGrap from './MultipleGrap.vue';
 </script>
+
+<script lang="ts">
+export default {
+  name: 'IzDashboardPage'
+};
+</script>
+
 <template>
   <div class="view-space dashboard-body">
     <el-row :gutter="20">

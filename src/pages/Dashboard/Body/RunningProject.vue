@@ -3,8 +3,8 @@
     border
     :shadow="false"
     class="va-mb project"
-    bodyClass="clear"
-    :bodyStyle="{ paddingTop: 10 }"
+    body-class="clear"
+    :body-style="{ paddingTop: 10 }"
   >
     <template #title>
       <icon-font type="icon-shouye" class="title-icon" />
@@ -38,15 +38,15 @@ import { RouterLink } from 'vue-router';
 import VaCard from '@/components/Card/index.vue';
 import IconFont from '@/components/IconFont/index.vue';
 
-const VITE_BASE = import.meta.env.VITE_BASE;
+// const VITE_BASE = import.meta.env.VITE_BASE;
 
-const proj = {
-  title: 'vue3-admin',
-  description: '项目基于vue@3.x系列开发，开发环境使用vite@2.x搭配纯jsx',
-  avatar: `${VITE_BASE}/static/img/boy01.jpg`,
-  team: 'vra-dever',
-  date: '4个月前'
-};
+// const proj = {
+//   title: 'vue3-admin',
+//   description: '项目基于vue@3.x系列开发，开发环境使用vite@2.x搭配纯jsx',
+//   avatar: `${VITE_BASE}/static/img/boy01.jpg`,
+//   team: 'vra-dever',
+//   date: '4个月前'
+// };
 
 const tableData = [
   {
