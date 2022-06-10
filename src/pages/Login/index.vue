@@ -94,6 +94,7 @@ import { onBeforeRouteLeave } from 'vue-router';
 import { ElMessage } from 'element-plus';
 import { User, Lock } from '@element-plus/icons-vue';
 import IconFont from '@/components/IconFont/index.vue';
+import { NAME_KEY, PASSWORD_KEY, REMEMBER_KEY } from '@/config/keys';
 import './style.scss';
 
 const loginBgNormal = new URL('../../assets/images/login-bg.svg', import.meta.url).href;
@@ -128,6 +129,18 @@ const login = () => {
         ...data.info,
         remembered: data.remembered
       })
+      .then(() => {
+        if (data.remembered) {
+          localStorage.setItem(REMEMBER_KEY, data.remembered + '');
+          // 自行加密
+          localStorage.setItem(NAME_KEY, data.info.username);
+          localStorage.setItem(PASSWORD_KEY, data.info.password);
+        } else {
+          localStorage.removeItem(REMEMBER_KEY);
+          localStorage.removeItem(NAME_KEY);
+          localStorage.removeItem(PASSWORD_KEY);
+        }
+      })
       .catch((error: any) => {
         data.spinning = false;
         ElMessage.error(error?.msg || '未知的异常！');
@@ -152,6 +165,18 @@ const adjustTheme = () => {
 
 onMounted(() => {
   document.addEventListener('keyup', keyUpHandler);
+
+  // 处理密码
+  const name = localStorage.getItem(NAME_KEY);
+  const password = localStorage.getItem(PASSWORD_KEY);
+  const remembered = localStorage.getItem(REMEMBER_KEY);
+
+  if (name && password) {
+    // 自定解密
+    data.info.username = name;
+    data.info.password = password;
+    data.remembered = !!remembered;
+  }
 });
 
 onBeforeRouteLeave((_to, _from, next) => {

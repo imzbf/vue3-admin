@@ -1,4 +1,5 @@
 import { RouteRecordName } from 'vue-router';
+import { cloneDeep } from 'lodash';
 import Final from '@/config/keys';
 import router, { routes, AdminRouteRecordRaw } from '@/router';
 
@@ -13,7 +14,7 @@ export const getToken = () => localStorage.getItem(Final.TOKEN) || '';
  * @returns vue-router配置列表
  */
 export const transformRoutes = (menus: Array<any>) => {
-  return menus.map((menu) => {
+  return cloneDeep(menus).map((menu) => {
     // 转换组件
     if (menu.component) {
       menu.component = DynamicRoutes[menu.component as keyof ViewList];
