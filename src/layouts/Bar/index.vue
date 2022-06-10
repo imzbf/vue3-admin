@@ -13,7 +13,7 @@
     >
 
     <span class="layout-bar-action cper">
-      <el-dropdown :show-timeout="0" size="mini" placement="bottom-end">
+      <el-dropdown :show-timeout="0" size="mini" placement="bottom-end" trigger="click">
         <el-tag type="info">
           <el-icon>
             <arrow-down />
