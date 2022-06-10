@@ -108,7 +108,7 @@ if (screenfull.isEnabled) {
       </li>
     </ul>
     <ul class="layout-header-right">
-      <el-popover trigger="click">
+      <el-popover>
         <template #reference>
           <li>
             <el-badge :value="12">
