@@ -1,1 +1,0 @@
-import{_ as o}from"./plugin-vue_export-helper.21dcd24c.js";import{c as r,a as t,o as a}from"./index.a536dd31.js";const n={name:"FeedbackPageLayout"};function c(s,_,p,i,m,f){const e=t("router-view");return a(),r(e)}var l=o(n,[["render",c]]);export{l as default};
