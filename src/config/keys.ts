@@ -4,4 +4,6 @@ export default {
   TOKEN: 'TOKEN_Mb3xHEGi' // localstorage、store等key
 };
 
-export const REMEMBER_KEY = '54bf6d13';
+export const NAME_KEY = '54bf6413';
+export const PASSWORD_KEY = '54bf6414';
+export const REMEMBER_KEY = '54bf6415';

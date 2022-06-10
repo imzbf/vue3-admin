@@ -1,5 +1,5 @@
 import { logout, login, getUseInfo, LoginInfoType } from '@/apis/user';
-import Final, { REMEMBER_KEY } from '@/config/keys';
+import Final from '@/config/keys';
 import router from '@/router';
 import { transformRoutes, resetRoutes } from '@/utils/biz';
 import { ElMessage } from 'element-plus';
@@ -44,9 +44,6 @@ const actions = {
         return data.token;
       })
       .then((token: string) => {
-        if (payload.remembered) {
-          localStorage.setItem(REMEMBER_KEY, payload.remembered + '');
-        }
         localStorage.setItem(Final.TOKEN, token);
       })
       .then(() => {
