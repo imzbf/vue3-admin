@@ -228,6 +228,7 @@ const ErrorModule: Menu[] = [
     ]
   }
 ];
+
 const OutLinkModule: Menu[] = [
   {
     path: '/outlink',
@@ -235,6 +236,34 @@ const OutLinkModule: Menu[] = [
     meta: { title: '外部链接', iconName: 'Promotion' },
     menu: true,
     outLink: 'https://github.com/imzbf/vue3-admin'
+  }
+];
+
+const FuncModule: Menu[] = [
+  {
+    path: '/func',
+    component: 'Layout',
+    redirect: '/func/upload',
+    name: 'Func',
+    meta: {
+      title: '功能页',
+      iconName: 'MagicStick'
+    },
+    menu: true,
+    children: [
+      {
+        path: 'upload',
+        name: 'Upload',
+        meta: {
+          title: '分片上传',
+          iconName: 'UploadFilled',
+          cname: 'UploadSlice',
+          keepAlive: true
+        },
+        menu: true,
+        component: 'UploadSlice'
+      }
+    ]
   }
 ];
 
@@ -251,6 +280,7 @@ const user: Array<MockMethod> = [
           ...DashboardModule,
           ...DataModule,
           ...TableModule,
+          ...FuncModule,
           ...ErrorModule,
           ...DemoModule,
           ...OutLinkModule
@@ -260,6 +290,7 @@ const user: Array<MockMethod> = [
           ...DashboardModule,
           ...DataModule,
           ...TableModule,
+          ...FuncModule,
           ...ErrorModule,
           ...OutLinkModule
         ];

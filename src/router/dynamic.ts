@@ -26,6 +26,8 @@ export interface ViewList {
   Error404: () => Promise<any>;
   Error500: () => Promise<any>;
   Redirect: () => Promise<any>;
+  // 分配上传
+  UploadSlice: () => Promise<any>;
 }
 
 const DynamisList: ViewList = {
@@ -55,7 +57,8 @@ const DynamisList: ViewList = {
   Error403: () => import('@/pages/Error/403.vue'),
   Error404: () => import('@/pages/Error/404.vue'),
   Error500: () => import('@/pages/Error/500.vue'),
-  Redirect: () => import('@/pages/Redirect/index.vue')
+  Redirect: () => import('@/pages/Redirect/index.vue'),
+  UploadSlice: () => import('@/pages/Func/UploadSlice.vue')
 };
 
 export default DynamisList;
