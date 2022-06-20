@@ -91,14 +91,14 @@ const DataModule: Menu[] = [
   }
 ];
 
-const DemoModule: Menu[] = [
+const ElementUIModule: Menu[] = [
   {
-    path: '/component',
+    path: '/element-ui',
     component: 'Layout',
-    redirect: '/component/base',
-    name: 'ComponentPage',
+    redirect: '/element-ui/base',
+    name: 'ElementUIPage',
     meta: {
-      title: '组件库',
+      title: 'ElementUI',
       iconName: 'Cherry'
     },
     menu: true,
@@ -109,7 +109,7 @@ const DemoModule: Menu[] = [
         meta: { title: '基础组件', iconName: 'Cherry' },
         menu: true,
         component: 'BaseComponent',
-        redirect: '/component/base/button',
+        redirect: '/element-ui/base/button',
         children: [
           {
             path: 'button',
@@ -129,11 +129,11 @@ const DemoModule: Menu[] = [
       },
       {
         path: 'feedback',
-        name: 'Feedback',
+        name: 'FeedbackPage',
         meta: { title: '反馈组件', iconName: 'Cherry' },
         menu: true,
         component: 'FeedbackComponent',
-        redirect: '/component/feedback/alert',
+        redirect: '/element-ui/feedback/alert',
         children: [
           {
             path: 'alert',
@@ -239,24 +239,36 @@ const OutLinkModule: Menu[] = [
   }
 ];
 
-const FuncModule: Menu[] = [
+const ComponentModule: Menu[] = [
   {
-    path: '/func',
+    path: '/component',
     component: 'Layout',
-    redirect: '/func/upload',
-    name: 'Func',
+    redirect: '/component/upload',
+    name: 'ComponentPage',
     meta: {
-      title: '功能页',
-      iconName: 'MagicStick'
+      title: '自定义组件',
+      iconName: 'Suitcase'
     },
     menu: true,
     children: [
       {
         path: 'upload',
-        name: 'Upload',
+        name: 'UploadPage',
         meta: {
           title: '分片上传',
           iconName: 'UploadFilled',
+          cname: 'UploadSlice',
+          keepAlive: true
+        },
+        menu: true,
+        component: 'UploadSlice'
+      },
+      {
+        path: 'cron',
+        name: 'CronPage',
+        meta: {
+          title: 'cron表达式',
+          iconName: 'Place',
           cname: 'UploadSlice',
           keepAlive: true
         },
@@ -280,9 +292,9 @@ const user: Array<MockMethod> = [
           ...DashboardModule,
           ...DataModule,
           ...TableModule,
-          ...FuncModule,
+          ...ComponentModule,
           ...ErrorModule,
-          ...DemoModule,
+          ...ElementUIModule,
           ...OutLinkModule
         ];
       } else {
@@ -290,8 +302,9 @@ const user: Array<MockMethod> = [
           ...DashboardModule,
           ...DataModule,
           ...TableModule,
-          ...FuncModule,
+          ...ComponentModule,
           ...ErrorModule,
+          ...ElementUIModule,
           ...OutLinkModule
         ];
       }
