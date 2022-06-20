@@ -8,7 +8,7 @@
     </div>
     <div class="view-space">
       <iz-card>
-        <iz-upload>
+        <iz-upload :url="url">
           <el-button>上传</el-button>
         </iz-upload>
       </iz-card>
@@ -26,4 +26,6 @@ export default { name };
 <script setup lang="ts">
 import IzCard from '@/components/Card/index.vue';
 import IzUpload from '@/components/Upload/index.vue';
+
+const url = `${import.meta.env.VITE_BASE_URL}/upload/chunk`;
 </script>

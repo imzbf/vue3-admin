@@ -1,31 +1,31 @@
 <template>
-  <div class="iz-upload" @click="selectFile">
-    <slot />
+  <div class="iz-upload">
+    <div :style="triggerStyle" class="iz-upload-trigger" @click="selectFile">
+      <slot />
+    </div>
+    <div v-if="status === 'uploading'" class="iz-upload-progress">{{ progress }}</div>
+    <input
+      ref="uploadRef"
+      :multiple="false"
+      type="file"
+      style="display: none"
+      @change="fileSelected"
+    />
   </div>
-  <input
-    ref="uploadRef"
-    :multiple="false"
-    type="file"
-    style="display: none"
-    @change="fileSelected"
-  />
 </template>
 
 <script lang="ts">
 export default {
-  name: 'IzUpload'
+  name: 'IzUploadChunk'
 };
 </script>
 
 <script setup lang="ts">
-import { reactive, ref } from 'vue';
+import { computed, reactive, ref } from 'vue';
 import type { PropType } from 'vue';
-import axios from '@/utils/request';
 
 interface StateType {
-  btn: string;
-  status: 'uploading' | 'pausing' | 'done';
-  slicedFileCount: number;
+  chunkFileCount: number;
   uploadSuccessFileCount: number;
   uploadUtil: number;
   chunkList: Array<Blob>;
@@ -37,22 +37,18 @@ const props = defineProps({
     type: String as PropType<string>,
     default: null
   },
-  // 大小高于此数值的文章会采用分片上传的方式
-  minSize: {
-    type: Number as PropType<number>,
-    default: 10 * 1024 * 1024
+  headers: {
+    type: Object as PropType<any>,
+    default: () => ({})
   },
-  // 分割的片数，auto会进行自动调整分割数量
-  slicePart: {
-    type: [Number, String] as PropType<number | 'auto'>,
-    default: 'auto'
+  size: {
+    type: Number as PropType<number>,
+    default: 5 * 1024 * 1024
   }
 });
 
 const state = reactive<StateType>({
-  btn: '上传',
-  status: 'done', // uploading, pausing, done
-  slicedFileCount: 1,
+  chunkFileCount: 0,
   uploadSuccessFileCount: 0,
   // 已上传到的位置，只允许同时上传10个切片
   uploadUtil: 0,
@@ -60,6 +56,24 @@ const state = reactive<StateType>({
   chunkList: [],
   // 分片上传状态，用于最后判断是否重新上传
   chunkUploadStatus: []
+});
+
+// 进度
+const progress = computed(() => {
+  if (state.chunkFileCount === 0) {
+    return '0%';
+  } else {
+    return ((100 * state.uploadSuccessFileCount) / state.chunkFileCount).toFixed(2) + '%';
+  }
+});
+
+// 上传状态
+const status = computed(() => {
+  return state.chunkFileCount === state.uploadSuccessFileCount ? 'done' : 'uploading';
+});
+
+const triggerStyle = computed(() => {
+  return status.value === 'uploading' ? `visibility: hidden` : '';
 });
 
 const uploadRef = ref<HTMLInputElement>();
@@ -72,22 +86,7 @@ const emitUpload = (file: Blob, index: number) => {
   const form = new FormData();
   form.append('file', file);
 
-  // new Promise((rev) => {
-  //   setTimeout(rev, Math.floor(Math.random() * 30));
-  // })
-  //   .then(() => {
-  //     state.uploadSuccessFileCount++;
-  //     state.chunkUploadStatus[index] = true;
-  //     console.log(index + '上传成功!');
-  //   })
-  //   .finally(() => {
-  //     if (state.uploadUtil + 1 < state.chunkList.length) {
-  //       emitUpload(state.chunkList[++state.uploadUtil], state.uploadUtil);
-  //     }
-  //   });
-
-  axios
-    .post(props.url)
+  fetch(props.url, { method: 'post', headers: props.headers, body: form })
     .then(() => {
       state.uploadSuccessFileCount++;
       state.chunkUploadStatus[index] = true;
@@ -99,9 +98,16 @@ const emitUpload = (file: Blob, index: number) => {
     });
 };
 
+const resetData = () => {
+  state.chunkFileCount = 1;
+  state.uploadSuccessFileCount = 0;
+};
+
 const fileSelected = () => {
+  resetData();
+
   const file = uploadRef.value?.files?.[0] as File;
-  const size = 1024 * 10240;
+  const size = props.size;
 
   const chunkList = [];
   const chunkUploadStatus = [];
@@ -113,9 +119,13 @@ const fileSelected = () => {
 
   state.chunkList = chunkList;
   state.chunkUploadStatus = chunkUploadStatus;
+  state.chunkFileCount = chunkList.length;
 
-  state.uploadUtil = 9;
-  for (let i = 0; i < 10; i++) {
+  // 队列大小限制，最大30
+  state.uploadUtil = chunkList.length >= 30 ? 29 : chunkList.length - 1;
+
+  console.log(state.uploadUtil);
+  for (let i = 0; i < state.uploadUtil + 1; i++) {
     emitUpload(state.chunkList[i], i);
   }
 };
@@ -124,5 +134,17 @@ const fileSelected = () => {
 <style lang="scss">
 .iz-upload {
   display: inline-block;
+  position: relative;
+
+  &-progress {
+    display: flex;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    justify-content: center;
+    align-items: center;
+  }
 }
 </style>
