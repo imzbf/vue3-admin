@@ -3,7 +3,9 @@
     <div :style="triggerStyle" class="iz-upload-trigger" @click="selectFile">
       <slot />
     </div>
-    <div v-if="status === 'uploading'" class="iz-upload-progress">{{ progress }}</div>
+    <div v-if="status === 'uploading'" class="iz-upload-progress">
+      {{ progress }}
+    </div>
     <input
       ref="uploadRef"
       :multiple="false"
@@ -124,7 +126,6 @@ const fileSelected = () => {
   // 队列大小限制，最大30
   state.uploadUtil = chunkList.length >= 30 ? 29 : chunkList.length - 1;
 
-  console.log(state.uploadUtil);
   for (let i = 0; i < state.uploadUtil + 1; i++) {
     emitUpload(state.chunkList[i], i);
   }
@@ -145,6 +146,8 @@ const fileSelected = () => {
     bottom: 0;
     justify-content: center;
     align-items: center;
+    border: 1px solid var(--el-border-color);
+    border-radius: var(--el-border-radius-base);
   }
 }
 </style>
