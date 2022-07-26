@@ -69,6 +69,20 @@ $borderRadius: 14px;
   }
 }
 
+@media (max-width: 970px) {
+  .login-container {
+    box-shadow: 0px 0 20px #c0c4cc;
+
+    .login-asset {
+      display: none;
+    }
+
+    .login-form {
+      padding: 28px;
+    }
+  }
+}
+
 html.dark {
   .login-container {
     box-shadow: 0px 14px 20px #000;

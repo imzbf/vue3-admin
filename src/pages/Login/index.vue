@@ -7,7 +7,13 @@
       <div class="login-form">
         <h1 class="form-title">后台管理模板</h1>
         <div class="form-item">
-          <el-input v-model="data.info.username" size="large" type="text" placeholder="username: 1">
+          <el-input
+            v-model="data.info.username"
+            size="large"
+            type="text"
+            placeholder="username: 1"
+            clearable
+          >
             <template #prefix>
               <el-icon class="el-input__icon"><User /></el-icon>
             </template>
@@ -20,6 +26,7 @@
             type="password"
             show-password
             placeholder="password: 1"
+            clearable
           >
             <template #prefix>
               <el-icon class="el-input__icon"><Lock /></el-icon>
