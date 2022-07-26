@@ -66,7 +66,8 @@
   .layout {
     display: flex;
     flex-direction: column;
-    width: calc(100% - 210px);
+    flex: 1;
+    flex-shrink: 0;
 
     .layout-header {
       background-color: var(--el-bg-color);

@@ -26,6 +26,8 @@ export interface ViewList {
   Error404: () => Promise<any>;
   Error500: () => Promise<any>;
   Redirect: () => Promise<any>;
+  // 分配上传
+  UploadSlice: () => Promise<any>;
 }
 
 const DynamisList: ViewList = {
@@ -38,13 +40,13 @@ const DynamisList: ViewList = {
   BaseForm: () => import('@/pages/Form/index.vue'),
   DefForm: () => import('@/pages/Form/def.vue'),
   // // 多级菜单demo
-  BaseComponent: () => import('@/pages/Component/Base/index.vue'),
-  Button: () => import('@/pages/Component/Base/Button/index.vue'),
-  LayoutC: () => import('@/pages/Component/Base/LayoutC/index.vue'),
+  BaseComponent: () => import('@/pages/ElementUI/Base/index.vue'),
+  Button: () => import('@/pages/ElementUI/Base/Button/index.vue'),
+  LayoutC: () => import('@/pages/ElementUI/Base/LayoutC/index.vue'),
 
-  FeedbackComponent: () => import('@/pages/Component/Feedback/index.vue'),
-  Alert: () => import('@/pages/Component/Feedback/Alert/index.vue'),
-  Message: () => import('@/pages/Component/Feedback/Message/index.vue'),
+  FeedbackComponent: () => import('@/pages/ElementUI/Feedback/index.vue'),
+  Alert: () => import('@/pages/ElementUI/Feedback/Alert/index.vue'),
+  Message: () => import('@/pages/ElementUI/Feedback/Message/index.vue'),
   // // 用户
   UserCenter: () => import('@/pages/User/index.vue'),
   UserSetting: () => import('@/pages/User/Setting/index.vue'),
@@ -55,7 +57,8 @@ const DynamisList: ViewList = {
   Error403: () => import('@/pages/Error/403.vue'),
   Error404: () => import('@/pages/Error/404.vue'),
   Error500: () => import('@/pages/Error/500.vue'),
-  Redirect: () => import('@/pages/Redirect/index.vue')
+  Redirect: () => import('@/pages/Redirect/index.vue'),
+  UploadSlice: () => import('@/pages/Func/UploadChunk.vue')
 };
 
 export default DynamisList;
