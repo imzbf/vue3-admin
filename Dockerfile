@@ -1,10 +1,18 @@
-FROM node:14
-WORKDIR /vue
+FROM node:16.17.1-alpine as install
+WORKDIR /app
 
-COPY ./ /vue
-RUN npm install && npm run build
+COPY package.json yarn.lock ./
+RUN yarn install --frozen-lockfile
 
-FROM nginx
-RUN mkdir /vue-docker
-COPY --from=0 /vue-docker/dist /vue-docker
+# 构建项目
+FROM node:16.17.1-alpine as builder
+WORKDIR /app
+COPY . .
+COPY --from=install /app/node_modules ./node_modules
+RUN yarn build && yarn install --production --ignore-scripts --prefer-offline
+
+FROM nginx:1.23.1-alpine
+WORKDIR /app
+
+COPY --from=builder /app/dist ./
 COPY nginx.conf /etc/nginx/nginx.conf

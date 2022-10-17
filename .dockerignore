@@ -1,9 +1,11 @@
-node_modules
+.git
+.vscode
+
 .DS_Store
 dist
 *.local
 
 # debug
-npm-debug.log*
-yarn-debug.log*
 yarn-error.log*
+# src
+node_modules
