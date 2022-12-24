@@ -1,1 +1,0 @@
-import{_ as e}from"./_plugin-vue_export-helper.cdc0426e.js";import{c as t,o as n,a as r}from"./index.74cafab2.js";const a={name:"ComponentPageLayout"};function c(s,p,_,m,i,f){const o=r("router-view");return n(),t(o)}const l=e(a,[["render",c]]);export{l as default};

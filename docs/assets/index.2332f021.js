@@ -1,1 +1,0 @@
-import{d as s,O as a,h as n,j as c,J as u,o as p}from"./index.74cafab2.js";const _="Redirect",d={name:_},f=s({...d,setup(l){const o=u(),r=c();return a(()=>{const{path:e,query:t}=o;r.replace({path:e.replace("/redirect",""),query:t})}),(e,t)=>(p(),n("span"))}});export{f as default};
