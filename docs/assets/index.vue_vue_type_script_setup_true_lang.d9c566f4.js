@@ -1,0 +1,1 @@
+import{d as n,h as o,f as s,o as r}from"./index.74cafab2.js";const a={class:"icon","aria-hidden":"true"},c=["xlink:href"],_={name:"IzIconFont"},d=n({..._,props:{type:{type:[String,Number],default:""}},setup(e){const t=e;return(p,i)=>(r(),o("svg",a,[s("use",{"xlink:href":`#${t.type}`},null,8,c)]))}});export{d as _};
