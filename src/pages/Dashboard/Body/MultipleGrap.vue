@@ -1,11 +1,11 @@
 <template>
-  <va-card border class="va-mb">
+  <VaCard border class="va-mb">
     <template #title>
-      <icon-font type="icon-changyongfenlei" class="title-icon" />
+      <IconFont type="icon-changyongfenlei" class="title-icon" />
       动态仪表盘
     </template>
-    <e-chart style="height: 210px" :option="option" />
-  </va-card>
+    <EChart style="height: 210px" :option="option" />
+  </VaCard>
 </template>
 
 <script setup lang="ts">

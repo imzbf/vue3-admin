@@ -1,52 +1,47 @@
 <template>
   <div class="page-alert">
     <div class="view-space">
-      <el-row :gutter="20">
-        <el-col :span="12">
-          <va-card>
-            <el-alert title="success alert" type="success" />
-            <el-alert title="info alert" type="info" />
-            <el-alert title="warning alert" type="warning" />
-            <el-alert title="error alert" type="error" /> </va-card
-        ></el-col>
-        <el-col :span="12">
-          <va-card>
-            <el-alert title="success alert" type="success" effect="dark"> </el-alert>
-            <el-alert title="info alert" type="info" effect="dark"> </el-alert>
-            <el-alert title="warning alert" type="warning" effect="dark"> </el-alert>
-            <el-alert title="error alert" type="error" effect="dark"> </el-alert
-          ></va-card>
-        </el-col>
-      </el-row>
-      <el-row>
-        <el-col :span="24">
-          <va-card>
-            <el-alert
+      <ElRow :gutter="20">
+        <ElCol :span="12">
+          <VaCard>
+            <ElAlert title="success alert" type="success" />
+            <ElAlert title="info alert" type="info" />
+            <ElAlert title="warning alert" type="warning" />
+            <ElAlert title="error alert" type="error" /> </VaCard
+        ></ElCol>
+        <ElCol :span="12">
+          <VaCard>
+            <ElAlert title="success alert" type="success" effect="dark"> </ElAlert>
+            <ElAlert title="info alert" type="info" effect="dark"> </ElAlert>
+            <ElAlert title="warning alert" type="warning" effect="dark"> </ElAlert>
+            <ElAlert title="error alert" type="error" effect="dark"> </ElAlert
+          ></VaCard>
+        </ElCol>
+      </ElRow>
+      <ElRow>
+        <ElCol :span="24">
+          <VaCard>
+            <ElAlert
               title="success alert"
               type="success"
               description="more text description"
-              show-icon
+              showIcon
             >
-            </el-alert>
-            <el-alert title="info alert" type="info" description="more text description" show-icon>
-            </el-alert>
-            <el-alert
+            </ElAlert>
+            <ElAlert title="info alert" type="info" description="more text description" showIcon>
+            </ElAlert>
+            <ElAlert
               title="warning alert"
               type="warning"
               description="more text description"
-              show-icon
+              showIcon
             >
-            </el-alert>
-            <el-alert
-              title="error alert"
-              type="error"
-              description="more text description"
-              show-icon
-            >
-            </el-alert>
-          </va-card>
-        </el-col>
-      </el-row>
+            </ElAlert>
+            <ElAlert title="error alert" type="error" description="more text description" showIcon>
+            </ElAlert>
+          </VaCard>
+        </ElCol>
+      </ElRow>
     </div>
   </div>
 </template>

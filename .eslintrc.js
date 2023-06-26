@@ -23,7 +23,30 @@ module.exports = {
   },
   plugins: ['vue', '@typescript-eslint', 'prettier'],
   rules: {
-    '@typescript-eslint/no-explicit-any': 'off'
+    '@typescript-eslint/no-explicit-any': 'off',
+    'vue/attribute-hyphenation': [
+      'error',
+      'never',
+      {
+        ignore: []
+      }
+    ],
+    'vue/v-on-event-hyphenation': [
+      'error',
+      'never',
+      {
+        autofix: true,
+        ignore: []
+      }
+    ],
+    'vue/component-name-in-template-casing': [
+      'error',
+      'PascalCase',
+      {
+        registeredComponentsOnly: false,
+        ignores: []
+      }
+    ]
   },
   globals: {
     defineProps: 'readonly',

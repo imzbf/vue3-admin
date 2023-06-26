@@ -7,11 +7,11 @@
       </div>
     </div>
     <div class="view-space">
-      <iz-card>
-        <iz-upload :url="url">
-          <el-button>上传</el-button>
-        </iz-upload>
-      </iz-card>
+      <IzCard>
+        <IzUpload :url="url">
+          <ElButton>上传</ElButton>
+        </IzUpload>
+      </IzCard>
     </div>
   </div>
 </template>

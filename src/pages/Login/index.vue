@@ -1,13 +1,10 @@
 <template>
-  <div id="login" class="login" :style="{ background: `url(${loginBody})` }">
+  <div class="login">
     <div class="login-container">
-      <div class="login-asset">
-        <img :src="loginBg" width="500" />
-      </div>
       <div class="login-form">
         <h1 class="form-title">后台管理模板</h1>
         <div class="form-item">
-          <el-input
+          <ElInput
             v-model="data.info.username"
             size="large"
             type="text"
@@ -15,43 +12,39 @@
             clearable
           >
             <template #prefix>
-              <el-icon class="el-input__icon"><User /></el-icon>
+              <ElIcon class="el-input__icon"><User /></ElIcon>
             </template>
-          </el-input>
+          </ElInput>
         </div>
         <div class="form-item">
-          <el-input
+          <ElInput
             v-model="data.info.password"
             size="large"
             type="password"
-            show-password
+            showPassword
             placeholder="password: 1"
             clearable
           >
             <template #prefix>
-              <el-icon class="el-input__icon"><Lock /></el-icon>
+              <ElIcon class="el-input__icon"><Lock /></ElIcon>
             </template>
-          </el-input>
+          </ElInput>
         </div>
         <div class="form-item" style="margin-bottom: 14px">
-          <el-checkbox v-model="data.remembered"> 记住我 </el-checkbox>
-          <el-popconfirm
-            title="自行实现！"
-            confirm-button-text="好的"
-            cancel-button-text="被迫好的"
-          >
+          <ElCheckbox v-model="data.remembered"> 记住我 </ElCheckbox>
+          <ElPopconfirm title="自行实现！" confirmButtonText="好的">
             <template #reference>
               <span class="forget-p-help cper">忘记密码？</span>
             </template>
-          </el-popconfirm>
+          </ElPopconfirm>
         </div>
         <div class="form-item">
-          <el-button type="primary" style="width: 100%" :loading="data.spinning" @click="login">
+          <ElButton type="primary" style="width: 100%" :loading="data.spinning" @click="login">
             登录
-          </el-button>
+          </ElButton>
         </div>
         <div class="form-item">
-          <el-divider>OR</el-divider>
+          <ElDivider>OR</ElDivider>
           <ul class="oauth">
             <li class="cper">
               <svg class="icon login-icon" aria-hidden="true">
@@ -81,7 +74,8 @@
           </ul>
         </div>
       </div>
-      <icon-font class="adjust-theme" :type="themeIcon" @click="adjustTheme" />
+      <ElIcon v-if="isDark" class="adjust-theme" @click="adjustTheme"><Sunrise /></ElIcon>
+      <ElIcon v-else class="adjust-theme" @click="adjustTheme"><MoonNight /></ElIcon>
     </div>
   </div>
 </template>
@@ -99,14 +93,9 @@ import { useStore } from 'vuex';
 import { key } from '@/store';
 import { onBeforeRouteLeave } from 'vue-router';
 import { ElMessage } from 'element-plus';
-import { User, Lock } from '@element-plus/icons-vue';
-import IconFont from '@/components/IconFont/index.vue';
+import { User, Lock, Sunrise, MoonNight } from '@element-plus/icons-vue';
 import { NAME_KEY, PASSWORD_KEY, REMEMBER_KEY } from '@/config/keys';
 import './style.scss';
-
-const loginBgNormal = new URL('../../assets/images/login-bg.svg', import.meta.url).href;
-const loginBgDark = new URL('../../assets/images/login-bg-dark.svg', import.meta.url).href;
-const loginBody = new URL('../../assets/images/login-body.svg', import.meta.url).href;
 
 const data = reactive({
   info: {
@@ -120,12 +109,8 @@ const data = reactive({
 
 const store = useStore(key);
 
-const loginBg = computed(() => {
-  return store.state.setting.theme === 'dark' ? loginBgDark : loginBgNormal;
-});
-
-const themeIcon = computed(() => {
-  return store.state.setting.theme === 'dark' ? 'icon-sun' : 'icon-moon';
+const isDark = computed(() => {
+  return store.state.setting.theme === 'dark';
 });
 
 const login = () => {

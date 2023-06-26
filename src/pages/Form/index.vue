@@ -7,67 +7,67 @@
       </div>
     </div>
     <div class="view-space">
-      <va-card>
+      <VaCard>
         <div class="form-wrapper">
-          <el-form :model="form" label-width="90px">
-            <el-form-item label="项目名称：">
-              <el-input v-model="form.name" placeholder="输入项目名称"></el-input>
-            </el-form-item>
-            <el-form-item label="项目地点：">
-              <el-select v-model="form.region" placeholder="选择项目地点">
-                <el-option label="重庆" value="cq"></el-option>
-                <el-option label="北京" value="bj"></el-option>
-              </el-select>
-            </el-form-item>
-            <el-form-item label="项目时间：">
-              <el-date-picker
+          <ElForm :model="form" labelWidth="90px">
+            <ElFormItem label="项目名称：">
+              <ElInput v-model="form.name" placeholder="输入项目名称"></ElInput>
+            </ElFormItem>
+            <ElFormItem label="项目地点：">
+              <ElSelect v-model="form.region" placeholder="选择项目地点">
+                <ElOption label="重庆" value="cq"></ElOption>
+                <ElOption label="北京" value="bj"></ElOption>
+              </ElSelect>
+            </ElFormItem>
+            <ElFormItem label="项目时间：">
+              <ElDatePicker
                 v-model="form.date"
                 type="daterange"
-                unlink-panels
-                range-separator="到"
-                start-placeholder="开始日期"
-                end-placeholder="结束日期"
+                unlinkPanels
+                rangeSeparator="到"
+                startPlaceholder="开始日期"
+                endPlaceholder="结束日期"
                 :shortcuts="shortcuts"
               >
-              </el-date-picker>
-            </el-form-item>
-            <el-form-item label="项目类型：">
-              <el-checkbox-group v-model="form.type">
-                <el-checkbox label="标准项目" name="type"></el-checkbox>
-                <el-checkbox label="文本项目" name="type"></el-checkbox>
-                <el-checkbox label="数值项目" name="type"></el-checkbox>
-                <el-checkbox label="包装项目" name="type"></el-checkbox>
-              </el-checkbox-group>
-            </el-form-item>
-            <el-form-item label="项目状态：">
-              <el-radio-group v-model="form.resource">
-                <el-radio label="关闭"></el-radio>
-                <el-radio label="启用"></el-radio>
-              </el-radio-group>
-            </el-form-item>
-            <el-form-item label="项目评级：">
+              </ElDatePicker>
+            </ElFormItem>
+            <ElFormItem label="项目类型：">
+              <ElCheckboxGroup v-model="form.type">
+                <ElCheckbox label="标准项目" name="type"></ElCheckbox>
+                <ElCheckbox label="文本项目" name="type"></ElCheckbox>
+                <ElCheckbox label="数值项目" name="type"></ElCheckbox>
+                <ElCheckbox label="包装项目" name="type"></ElCheckbox>
+              </ElCheckboxGroup>
+            </ElFormItem>
+            <ElFormItem label="项目状态：">
+              <ElRadioGroup v-model="form.resource">
+                <ElRadio label="关闭"></ElRadio>
+                <ElRadio label="启用"></ElRadio>
+              </ElRadioGroup>
+            </ElFormItem>
+            <ElFormItem label="项目评级：">
               <div class="form-rate">
-                <el-rate
+                <ElRate
                   v-model="form.rate"
-                  show-score
-                  allow-half
-                  text-color="#ff9900"
-                  score-template="{value} 分"
+                  showScore
+                  allowHalf
+                  textColor="#ff9900"
+                  scoreTemplate="{value} 分"
                 >
-                </el-rate>
+                </ElRate>
               </div>
-            </el-form-item>
-            <el-form-item label="项目描述：">
-              <el-input v-model="form.desc" :rows="5" type="textarea"></el-input>
-            </el-form-item>
+            </ElFormItem>
+            <ElFormItem label="项目描述：">
+              <ElInput v-model="form.desc" :rows="5" type="textarea"></ElInput>
+            </ElFormItem>
 
-            <el-form-item label="">
-              <el-button type="primary">保存</el-button>
-              <el-button>取消</el-button>
-            </el-form-item>
-          </el-form>
+            <ElFormItem label="">
+              <ElButton type="primary">保存</ElButton>
+              <ElButton>取消</ElButton>
+            </ElFormItem>
+          </ElForm>
         </div>
-      </va-card>
+      </VaCard>
     </div>
   </div>
 </template>

@@ -1,32 +1,32 @@
 <template>
-  <va-card border class="va-mb team">
+  <VaCard border class="va-mb team">
     <template #title>
-      <icon-font type="icon-86" class="title-icon" />
+      <IconFont type="icon-86" class="title-icon" />
       我的团队
     </template>
-    <el-row>
-      <el-col :span="12" class="item">
-        <el-avatar :src="`${VITE_BASE}/static/img/boy01.jpg`" />
+    <ElRow>
+      <ElCol :span="12" class="item">
+        <ElAvatar :src="`${VITE_BASE}/static/img/boy01.jpg`" />
         <span class="name">技术有限组</span>
-      </el-col>
-      <el-col :span="12" class="item">
-        <el-avatar :src="`${VITE_BASE}/static/img/boy01.jpg`" />
+      </ElCol>
+      <ElCol :span="12" class="item">
+        <ElAvatar :src="`${VITE_BASE}/static/img/boy01.jpg`" />
         <span class="name">挖山小组</span>
-      </el-col>
-      <el-col :span="12" class="item">
-        <el-avatar :src="`${VITE_BASE}/static/img/boy01.jpg`" />
+      </ElCol>
+      <ElCol :span="12" class="item">
+        <ElAvatar :src="`${VITE_BASE}/static/img/boy01.jpg`" />
         <span class="name">阳光青年组</span>
-      </el-col>
-      <el-col :span="12" class="item">
-        <el-avatar :src="`${VITE_BASE}/static/img/boy01.jpg`" />
+      </ElCol>
+      <ElCol :span="12" class="item">
+        <ElAvatar :src="`${VITE_BASE}/static/img/boy01.jpg`" />
         <span class="name">魔鬼加班组</span>
-      </el-col>
-      <el-col :span="12" class="item">
-        <el-avatar :src="`${VITE_BASE}/static/img/boy01.jpg`" />
+      </ElCol>
+      <ElCol :span="12" class="item">
+        <ElAvatar :src="`${VITE_BASE}/static/img/boy01.jpg`" />
         <span class="name">濒临猝死队</span>
-      </el-col>
-    </el-row>
-  </va-card>
+      </ElCol>
+    </ElRow>
+  </VaCard>
 </template>
 
 <script setup lang="ts">

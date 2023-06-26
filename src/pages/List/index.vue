@@ -1,67 +1,67 @@
 <template>
   <div class="page-list">
     <div class="view-space">
-      <va-card>
+      <VaCard>
         <div class="page-search">
-          <el-form inline :model="params">
-            <el-form-item label="标题">
-              <el-input v-model="params.title" placeholder="文章标题" :clearable="true" />
-            </el-form-item>
-            <el-form-item label="类型">
-              <el-input v-model="params.type" placeholder="文章类型" :clearable="true" />
-            </el-form-item>
-            <el-form-item label="编码">
-              <el-input v-model="params.code" placeholder="文章编码" :clearable="true" />
-            </el-form-item>
+          <ElForm inline :model="params">
+            <ElFormItem label="标题">
+              <ElInput v-model="params.title" placeholder="文章标题" :clearable="true" />
+            </ElFormItem>
+            <ElFormItem label="类型">
+              <ElInput v-model="params.type" placeholder="文章类型" :clearable="true" />
+            </ElFormItem>
+            <ElFormItem label="编码">
+              <ElInput v-model="params.code" placeholder="文章编码" :clearable="true" />
+            </ElFormItem>
 
-            <el-form-item>
-              <el-button type="primary" @click="handleReq">查询</el-button>
-            </el-form-item>
-          </el-form>
+            <ElFormItem>
+              <ElButton type="primary" @click="handleReq">查询</ElButton>
+            </ElFormItem>
+          </ElForm>
         </div>
         <div class="page-data">
-          <el-table :data="table.list" border stripe>
-            <el-table-column prop="id" align="center" label="ID" min-width="70" />
-            <el-table-column prop="code" align="center" label="编码" width="100" />
-            <el-table-column label="标题" min-width="330">
+          <ElTable :data="table.list" border stripe>
+            <ElTableColumn prop="id" align="center" label="ID" minWidth="70" />
+            <ElTableColumn prop="code" align="center" label="编码" width="100" />
+            <ElTableColumn label="标题" minWidth="330">
               <template #default="scope">
                 <a class="ex-link" :href="'/a/' + scope.row.code" target="_blank">{{
                   scope.row.title
                 }}</a>
               </template>
-            </el-table-column>
-            <el-table-column prop="createdTime" align="center" label="创建时间" min-width="170" />
-            <el-table-column prop="hits" align="center" label="点击数" min-width="100" />
-            <el-table-column prop="status" align="center" label="状态" width="90">
+            </ElTableColumn>
+            <ElTableColumn prop="createdTime" align="center" label="创建时间" minWidth="170" />
+            <ElTableColumn prop="hits" align="center" label="点击数" minWidth="100" />
+            <ElTableColumn prop="status" align="center" label="状态" width="90">
               <template #default="scope">
-                <el-switch
+                <ElSwitch
                   v-model="scope.row.status"
-                  :active-value="1"
-                  :inactive-value="0"
+                  :activeValue="1"
+                  :inactiveValue="0"
                   @change="changeStatus(scope.row)"
                 />
               </template>
-            </el-table-column>
-            <el-table-column prop="updatedTime" align="center" label="更新时间" min-width="170" />
-            <el-table-column prop="updatedTime" align="center" label="操作" width="160">
+            </ElTableColumn>
+            <ElTableColumn prop="updatedTime" align="center" label="更新时间" minWidth="170" />
+            <ElTableColumn prop="updatedTime" align="center" label="操作" width="160">
               <template #default>
-                <el-button size="small" plain type="primary">编辑</el-button>
-                <el-button size="small" type="danger" plain>删除</el-button>
+                <ElButton size="small" plain type="primary">编辑</ElButton>
+                <ElButton size="small" type="danger" plain>删除</ElButton>
               </template>
-            </el-table-column>
-          </el-table>
+            </ElTableColumn>
+          </ElTable>
         </div>
         <div class="page-pagination">
-          <el-pagination
+          <ElPagination
             v-model:currentPage="table.params.page"
-            :page-size="table.params.pageSize"
+            :pageSize="table.params.pageSize"
             layout="jumper, prev, pager, next, total"
             :total="table.total"
             background
           >
-          </el-pagination>
+          </ElPagination>
         </div>
-      </va-card>
+      </VaCard>
     </div>
   </div>
 </template>

@@ -1,32 +1,32 @@
 <template>
   <div class="page-message">
     <div class="view-space">
-      <el-row :gutter="20">
-        <el-col :span="12">
-          <va-card>
+      <ElRow :gutter="20">
+        <ElCol :span="12">
+          <VaCard>
             <template #title> Notification </template>
-            <el-button plain @click="open1"> Success </el-button>
-            <el-button plain @click="open2"> Warning </el-button>
-            <el-button plain @click="open3"> Info </el-button>
-            <el-button plain @click="open4"> Error </el-button></va-card
+            <ElButton plain @click="open1"> Success </ElButton>
+            <ElButton plain @click="open2"> Warning </ElButton>
+            <ElButton plain @click="open3"> Info </ElButton>
+            <ElButton plain @click="open4"> Error </ElButton></VaCard
           >
-        </el-col>
-        <el-col :span="12">
-          <va-card>
+        </ElCol>
+        <ElCol :span="12">
+          <VaCard>
             <template #title> Notification </template>
 
-            <el-button plain @click="open11"> Top Right </el-button>
-            <el-button plain @click="open22"> Bottom Right </el-button>
-            <el-button plain @click="open33"> Bottom Left </el-button>
-            <el-button plain @click="open44"> Top Left </el-button>
-          </va-card>
-        </el-col>
-      </el-row>
-      <el-row :gutter="20">
-        <el-col :span="12">
-          <va-card>
+            <ElButton plain @click="open11"> Top Right </ElButton>
+            <ElButton plain @click="open22"> Bottom Right </ElButton>
+            <ElButton plain @click="open33"> Bottom Left </ElButton>
+            <ElButton plain @click="open44"> Top Left </ElButton>
+          </VaCard>
+        </ElCol>
+      </ElRow>
+      <ElRow :gutter="20">
+        <ElCol :span="12">
+          <VaCard>
             <template #title> Popover </template>
-            <el-popover
+            <ElPopover
               placement="top-start"
               title="Title"
               :width="200"
@@ -34,11 +34,11 @@
               content="this is content, this is content, this is content"
             >
               <template #reference>
-                <el-button>Hover to activate</el-button>
+                <ElButton>Hover to activate</ElButton>
               </template>
-            </el-popover>
+            </ElPopover>
 
-            <el-popover
+            <ElPopover
               placement="bottom"
               title="Title"
               :width="200"
@@ -46,11 +46,11 @@
               content="this is content, this is content, this is content"
             >
               <template #reference>
-                <el-button>Click to activate</el-button>
+                <ElButton>Click to activate</ElButton>
               </template>
-            </el-popover>
+            </ElPopover>
 
-            <el-popover
+            <ElPopover
               ref="popover"
               placement="right"
               title="Title"
@@ -59,12 +59,12 @@
               content="this is content, this is content, this is content"
             >
               <template #reference>
-                <el-button>Focus to activate</el-button>
+                <ElButton>Focus to activate</ElButton>
               </template>
-            </el-popover>
-          </va-card>
-        </el-col>
-      </el-row>
+            </ElPopover>
+          </VaCard>
+        </ElCol>
+      </ElRow>
     </div>
   </div>
 </template>

@@ -1,19 +1,26 @@
 import path from 'path';
 import { ConfigEnv, UserConfigExport } from 'vite';
 import vue from '@vitejs/plugin-vue';
+import mock from './mock';
 // import ElementPlus from 'unplugin-element-plus/vite';
-import { viteMockServe } from 'vite-plugin-mock';
 
 import { homepage } from './package.json';
 
 // https://vitejs.dev/config/
-export default ({ command, mode }: ConfigEnv): UserConfigExport => {
+export default ({ mode }: ConfigEnv): UserConfigExport => {
   return {
     base: mode === 'preview' ? homepage : '/',
     publicDir: './public',
     server: {
       port: 6677,
       open: true
+      // proxy: {
+      //   '/api': {
+      //     target: 'http://jsonplaceholder.typicode.com',
+      //     changeOrigin: true,
+      //     rewrite: (path) => path.replace(/^\/api/, '')
+      //   }
+      // }
     },
     resolve: {
       alias: {
@@ -23,12 +30,7 @@ export default ({ command, mode }: ConfigEnv): UserConfigExport => {
     },
     plugins: [
       vue(),
-      viteMockServe({
-        ignore: /^_/,
-        mockPath: 'mock',
-        watchFiles: true, // 修改更新
-        localEnabled: command === 'serve'
-      })
+      mock()
       // ElementPlus({
       //   useSource: true
       // })

@@ -1,6 +1,6 @@
 <template>
   <div class="layout-bar">
-    <el-tag
+    <ElTag
       v-for="item of store.state.setting.menuTags"
       :key="item.title"
       class="cper"
@@ -9,32 +9,32 @@
       :type="item.curr ? 'success' : 'info'"
       @click="tagClick(item)"
       @close="tagClose(item)"
-      >{{ item.title }}</el-tag
+      >{{ item.title }}</ElTag
     >
 
     <span class="layout-bar-action cper">
-      <el-dropdown :show-timeout="0" size="mini" placement="bottom-end" trigger="click">
-        <el-tag type="info">
-          <el-icon>
-            <arrow-down />
-          </el-icon>
-        </el-tag>
+      <ElDropdown :showTimeout="0" size="mini" placement="bottom-end" trigger="click">
+        <ElTag type="info">
+          <ElIcon>
+            <ArrowDown />
+          </ElIcon>
+        </ElTag>
 
         <template #dropdown>
-          <el-dropdown-menu>
-            <el-dropdown-item @click="refreshRoute">刷新当前</el-dropdown-item>
-            <el-dropdown-item v-if="menuTagNotSingle" @click="barMenuClose(menuTagActions.rmCurr)"
-              >关闭当前</el-dropdown-item
+          <ElDropdownMenu>
+            <ElDropdownItem @click="refreshRoute">刷新当前</ElDropdownItem>
+            <ElDropdownItem v-if="menuTagNotSingle" @click="barMenuClose(menuTagActions.rmCurr)"
+              >关闭当前</ElDropdownItem
             >
-            <el-dropdown-item v-if="menuTagNotSingle" @click="barMenuClose(menuTagActions.rmOther)"
-              >关闭其他</el-dropdown-item
+            <ElDropdownItem v-if="menuTagNotSingle" @click="barMenuClose(menuTagActions.rmOther)"
+              >关闭其他</ElDropdownItem
             >
-            <el-dropdown-item v-if="menuTagNotSingle" @click="barMenuClose(menuTagActions.rmAll)"
-              >关闭所有</el-dropdown-item
+            <ElDropdownItem v-if="menuTagNotSingle" @click="barMenuClose(menuTagActions.rmAll)"
+              >关闭所有</ElDropdownItem
             >
-          </el-dropdown-menu>
+          </ElDropdownMenu>
         </template>
-      </el-dropdown></span
+      </ElDropdown></span
     >
   </div>
 </template>

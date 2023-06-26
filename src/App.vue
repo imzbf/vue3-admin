@@ -30,5 +30,5 @@ window.addEventListener('resize', updateReSizeState);
 </script>
 
 <template>
-  <router-view />
+  <RouterView />
 </template>

@@ -1,12 +1,14 @@
-import { MockMethod } from 'vite-plugin-mock';
+import { MockApi } from '../type';
 
 // 标准表格
-const table: Array<MockMethod> = [
+const table: Array<MockApi> = [
   {
-    url: '/api/table',
+    url: '/table',
     method: 'get',
-    response({ query }) {
-      const { page, limit } = query;
+    data(req) {
+      const url = new URL(req.url || '', `http://${req.headers.host}`);
+      const page = url.searchParams.get('page');
+      const limit = url.searchParams.get('limit');
 
       return {
         code: 0,

@@ -1,9 +1,9 @@
 <template>
-  <el-result icon="error" title="403" sub-title="你的访问被拒绝了！">
+  <ElResult icon="error" title="403" subTitle="你的访问被拒绝了！">
     <template #extra>
-      <el-button type="primary" @click="goBack">Back</el-button>
+      <ElButton type="primary" @click="goBack">Back</ElButton>
     </template>
-  </el-result>
+  </ElResult>
 </template>
 
 <script lang="ts">
