@@ -2,7 +2,6 @@
   <div class="login">
     <div class="login-container">
       <div class="login-form">
-        <h1 class="form-title">后台管理模板</h1>
         <div class="form-item">
           <ElInput
             v-model="data.info.username"
