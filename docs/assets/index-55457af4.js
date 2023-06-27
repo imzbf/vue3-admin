@@ -1,0 +1,1 @@
+import{u as s,b as a}from"./vue-router-643bf02a.js";import{x as n,o as c,z as u,y as p}from"./runtime-core.esm-bundler-65d2a1d3.js";const _="Redirect",m={name:_},i=n({...m,setup(l){const o=a(),r=s();return c(()=>{const{path:e,query:t}=o;r.replace({path:e.replace("/redirect",""),query:t})}),(e,t)=>(p(),u("span"))}});export{i as default};

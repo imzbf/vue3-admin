@@ -1,0 +1,1 @@
+import{_ as o}from"./_plugin-vue_export-helper-c27b6911.js";import{H as t,y as r,a7 as n}from"./runtime-core.esm-bundler-65d2a1d3.js";const a={name:"FeedbackPageLayout"};function c(s,_,p,i,m,f){const e=n("router-view");return r(),t(e)}const l=o(a,[["render",c]]);export{l as default};

@@ -1,0 +1,1 @@
+import{x as n,z as o,A as s,y as r}from"./runtime-core.esm-bundler-65d2a1d3.js";const a={class:"icon","aria-hidden":"true"},c=["xlink:href"],_={name:"IzIconFont"},u=n({..._,props:{type:{type:[String,Number],default:""}},setup(e){const t=e;return(p,i)=>(r(),o("svg",a,[s("use",{"xlink:href":`#${t.type}`},null,8,c)]))}});export{u as _};

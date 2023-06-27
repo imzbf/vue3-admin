@@ -1,0 +1,1 @@
+import{_ as e}from"./_plugin-vue_export-helper-c27b6911.js";import{H as t,y as n,a7 as r}from"./runtime-core.esm-bundler-65d2a1d3.js";const a={name:"ComponentPageLayout"};function s(c,p,_,m,i,f){const o=r("router-view");return n(),t(o)}const l=e(a,[["render",s]]);export{l as default};
