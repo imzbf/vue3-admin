@@ -1,43 +1,45 @@
 <template>
-  <ElForm :model="form" labelWidth="90px">
+  <ElForm :model="form" labelWidth="130px">
     <ElRow>
       <ElCol :span="12">
-        <ElFormItem label="昵称：">
-          <ElInput v-model="form.nickname" placeholder="2-16个字符"></ElInput>
+        <ElFormItem :label="$t('昵称')">
+          <ElInput v-model="form.nickname" :placeholder="$t('2-16个字符')"></ElInput>
         </ElFormItem>
-        <ElFormItem label="邮箱">
+        <ElFormItem :label="$t('邮箱')">
           <ElInput v-model="form.email" placeholder="example@mail.com"></ElInput>
         </ElFormItem>
-        <ElFormItem label="兴趣爱好：">
+        <ElFormItem :label="$t('兴趣爱好')">
           <ElCheckboxGroup v-model="form.type">
-            <ElCheckbox label="加班" name="type"></ElCheckbox>
-            <ElCheckbox label="晚上加班" name="type"></ElCheckbox>
-            <ElCheckbox label="周末加班" name="type"></ElCheckbox>
-            <ElCheckbox label="节假日加班" name="type"></ElCheckbox>
+            <ElCheckbox :label="$t('加班')" name="type"></ElCheckbox>
+            <ElCheckbox :label="$t('晚上加班')" name="type"></ElCheckbox>
+            <ElCheckbox :label="$t('周末加班')" name="type"></ElCheckbox>
+            <ElCheckbox :label="$t('节假日加班')" name="type"></ElCheckbox>
           </ElCheckboxGroup>
         </ElFormItem>
-        <ElFormItem label="城市：">
-          <ElSelect v-model="form.region" placeholder="选择工作地点">
-            <ElOption label="重庆" value="cq"></ElOption>
-            <ElOption label="北京" value="bj"></ElOption>
+        <ElFormItem :label="$t('城市')">
+          <ElSelect v-model="form.region" :placeholder="$t('请选择')">
+            <ElOption :label="$t('重庆')" value="cq"></ElOption>
+            <ElOption :label="$t('北京')" value="bj"></ElOption>
           </ElSelect>
         </ElFormItem>
 
-        <ElFormItem label="个人简介：">
+        <ElFormItem :label="$t('个人简介')">
           <ElInput v-model="form.desc" :rows="4" type="textarea"></ElInput>
         </ElFormItem>
 
         <ElFormItem label="">
-          <ElButton type="primary">保存</ElButton>
-          <ElButton>取消</ElButton>
+          <ElButton type="primary">{{ $t('保存') }}</ElButton>
+          <ElButton>{{ $t('取消') }}</ElButton>
         </ElFormItem></ElCol
       >
       <ElCol :span="12">
-        <ElFormItem label="头像：">
+        <ElFormItem :label="$t('头像')">
           <div class="avatar-preview">
             <ElAvatar :src="avatarUrl" :size="150" />
           </div>
-          <ElButton size="small" style="margin-left: 25px" :icon="CameraFilled">更新头像</ElButton>
+          <ElButton size="small" style="margin-left: 25px" :icon="CameraFilled">{{
+            $t('更新头像')
+          }}</ElButton>
         </ElFormItem>
       </ElCol>
     </ElRow>

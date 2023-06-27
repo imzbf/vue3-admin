@@ -18,9 +18,9 @@ export default {
         <ElAvatar :size="60" :src="`${VITE_BASE}/static/img/boy01.jpg`" />
       </div>
       <div class="msg">
-        <div class="hello">早上好，毛利小五郎，开始奋斗吧！</div>
+        <div class="hello">{{ $t('早上好，伙计，开始奋斗吧！') }}</div>
         <div class="weather">
-          <span>今天 25-36℃ 雷阵雨</span>
+          <span>{{ $t('今天') }} 25-36℃ {{ $t('雷阵雨') }}</span>
           <ElIcon><Lightning /></ElIcon>
         </div>
       </div>
@@ -38,7 +38,9 @@ export default {
       </VaStatistic>
       <VaStatistic class="todo-item" value="13">
         <template #title>
-          <span class="item-title"> <IconFont type="icon-renwu" /> <span>任务</span> </span>
+          <span class="item-title">
+            <IconFont type="icon-renwu" /> <span>{{ $t('任务') }}</span>
+          </span>
         </template>
         <template #suffix>
           <span>/ 25</span>
@@ -46,7 +48,9 @@ export default {
       </VaStatistic>
       <VaStatistic class="todo-item" value="13">
         <template #title>
-          <span class="item-title"> <IconFont type="icon-youjian" /> <span>邮件</span> </span>
+          <span class="item-title">
+            <IconFont type="icon-youjian" /> <span>{{ $t('邮件') }}</span>
+          </span>
         </template>
         <template #suffix>
           <span>/ 23</span>

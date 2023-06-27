@@ -12,7 +12,7 @@
       <div class="layout-aside">
         <header class="logo">
           <img :src="LogoImg" />
-          <span>后台管理模板</span>
+          <span>vue3-admin</span>
         </header>
         <div class="menu-container">
           <AdminMenu />
@@ -25,7 +25,7 @@
     <div v-else class="layout-aside">
       <header class="logo">
         <img :src="LogoImg" />
-        <span v-if="asideOpen">后台管理模板</span>
+        <span v-if="asideOpen">vue3-admin</span>
       </header>
       <div class="menu-container">
         <AdminMenu />

@@ -1,5 +1,5 @@
 <template>
-  <ElResult icon="error" title="500" subTitle="好像可以甩锅给服务端了耶！">
+  <ElResult icon="error" title="500" :subTitle="$t('服务端异常')">
     <template #extra>
       <ElButton type="primary" @click="goBack">Back</ElButton>
     </template>

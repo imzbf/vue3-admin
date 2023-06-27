@@ -1,8 +1,32 @@
 <script setup lang="ts">
+import { computed, watch } from 'vue';
+import i18next from 'i18next';
 import { key } from '@/store';
 import { useStore } from 'vuex';
+import zhCn from 'element-plus/es/locale/lang/zh-cn';
+import enUs from 'element-plus/es/locale/lang/en';
 import { debounce } from './utils';
+
 const store = useStore(key);
+
+const elementLocalMap = {
+  'zh-CN': zhCn,
+  'en-US': enUs
+};
+
+const locale = computed(() => {
+  return elementLocalMap[store.state.setting.locale];
+});
+
+watch(
+  [() => store.state.setting.locale, () => store.state.setting.title],
+  () => {
+    document.title = `${i18next.t(store.state.setting.title)} - ${i18next.t('管理系统')}`;
+  },
+  {
+    immediate: true
+  }
+);
 
 // FIX 此处应节流
 const updateReSizeState = debounce(() => {
@@ -30,5 +54,7 @@ window.addEventListener('resize', updateReSizeState);
 </script>
 
 <template>
-  <RouterView />
+  <ElConfigProvider :locale="locale">
+    <RouterView />
+  </ElConfigProvider>
 </template>

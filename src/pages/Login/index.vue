@@ -7,7 +7,7 @@
             v-model="data.info.username"
             size="large"
             type="text"
-            placeholder="username: 1"
+            :placeholder="$t('用户名')"
             clearable
           >
             <template #prefix>
@@ -21,7 +21,7 @@
             size="large"
             type="password"
             showPassword
-            placeholder="password: 1"
+            :placeholder="$t('密码')"
             clearable
           >
             <template #prefix>
@@ -30,16 +30,16 @@
           </ElInput>
         </div>
         <div class="form-item" style="margin-bottom: 14px">
-          <ElCheckbox v-model="data.remembered"> 记住我 </ElCheckbox>
-          <ElPopconfirm title="自行实现！" confirmButtonText="好的">
+          <ElCheckbox v-model="data.remembered">{{ $t('记住我') }}</ElCheckbox>
+          <ElPopconfirm :title="$t('开发中')">
             <template #reference>
-              <span class="forget-p-help cper">忘记密码？</span>
+              <span class="forget-p-help cper">{{ $t('忘记密码？') }}</span>
             </template>
           </ElPopconfirm>
         </div>
         <div class="form-item">
           <ElButton type="primary" style="width: 100%" :loading="data.spinning" @click="login">
-            登录
+            {{ $t('登录') }}
           </ElButton>
         </div>
         <div class="form-item">
@@ -73,8 +73,12 @@
           </ul>
         </div>
       </div>
-      <ElIcon v-if="isDark" class="adjust-theme" @click="adjustTheme"><Sunrise /></ElIcon>
-      <ElIcon v-else class="adjust-theme" @click="adjustTheme"><MoonNight /></ElIcon>
+      <div class="login-actions">
+        <ElIcon v-if="isDark" class="adjust-theme" @click="adjustTheme"><Sunrise /></ElIcon>
+        <ElIcon v-else class="adjust-theme" @click="adjustTheme"><MoonNight /></ElIcon>
+
+        <LocaleSwitch size="small" />
+      </div>
     </div>
   </div>
 </template>
@@ -94,6 +98,8 @@ import { onBeforeRouteLeave } from 'vue-router';
 import { ElMessage } from 'element-plus';
 import { User, Lock, Sunrise, MoonNight } from '@element-plus/icons-vue';
 import { NAME_KEY, PASSWORD_KEY, REMEMBER_KEY } from '@/config/keys';
+import LocaleSwitch from '@/components/LocaleSwitch/index.vue';
+
 import './style.scss';
 
 const data = reactive({

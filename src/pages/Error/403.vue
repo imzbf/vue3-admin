@@ -1,5 +1,5 @@
 <template>
-  <ElResult icon="error" title="403" subTitle="你的访问被拒绝了！">
+  <ElResult icon="error" title="403" :subTitle="$t('你的访问被拒绝了！')">
     <template #extra>
       <ElButton type="primary" @click="goBack">Back</ElButton>
     </template>

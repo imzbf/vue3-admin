@@ -24,6 +24,8 @@
     "axios": "^1.4.0",
     "echarts": "^5.4.2",
     "element-plus": "^2.3.7",
+    "i18next": "^23.2.3",
+    "i18next-vue": "^2.1.1",
     "md-editor-v3": "^4.2.0",
     "nprogress": "^0.2.0",
     "screenfull": "^6.0.2",

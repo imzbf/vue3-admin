@@ -2,28 +2,20 @@
   <VaCard border class="va-mb team">
     <template #title>
       <IconFont type="icon-86" class="title-icon" />
-      我的团队
+      {{ $t('我的团队') }}
     </template>
     <ElRow>
       <ElCol :span="12" class="item">
         <ElAvatar :src="`${VITE_BASE}/static/img/boy01.jpg`" />
-        <span class="name">技术有限组</span>
+        <span class="name">{{ $t('技术有限组') }}</span>
       </ElCol>
       <ElCol :span="12" class="item">
         <ElAvatar :src="`${VITE_BASE}/static/img/boy01.jpg`" />
-        <span class="name">挖山小组</span>
+        <span class="name">{{ $t('挖山小组') }}</span>
       </ElCol>
       <ElCol :span="12" class="item">
         <ElAvatar :src="`${VITE_BASE}/static/img/boy01.jpg`" />
-        <span class="name">阳光青年组</span>
-      </ElCol>
-      <ElCol :span="12" class="item">
-        <ElAvatar :src="`${VITE_BASE}/static/img/boy01.jpg`" />
-        <span class="name">魔鬼加班组</span>
-      </ElCol>
-      <ElCol :span="12" class="item">
-        <ElAvatar :src="`${VITE_BASE}/static/img/boy01.jpg`" />
-        <span class="name">濒临猝死队</span>
+        <span class="name">{{ $t('阳光青年组') }}</span>
       </ElCol>
     </ElRow>
   </VaCard>

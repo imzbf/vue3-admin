@@ -21,11 +21,11 @@ import {
   Sunrise,
   MoonNight
 } from '@element-plus/icons-vue';
+import LocaleSwitch from '@/components/LocaleSwitch/index.vue';
 
 import './index.scss';
 
 import Message from './Message.vue';
-import Notification from './Notification.vue';
 import Todo from './Todo.vue';
 
 // 同时设置props的vue属性和ts类型，setup会报错
@@ -105,7 +105,7 @@ if (screenfull.isEnabled) {
           <ElBreadcrumbItem
             v-for="breadcrumb of store.state.setting.breadcrumbs"
             :key="breadcrumb"
-            >{{ breadcrumb }}</ElBreadcrumbItem
+            >{{ $t(breadcrumb) }}</ElBreadcrumbItem
           >
         </ElBreadcrumb>
       </li>
@@ -119,14 +119,11 @@ if (screenfull.isEnabled) {
             </ElBadge>
           </li>
         </template>
-        <ElTabs modelValue="notice">
-          <ElTabPane name="notice" label="通知">
-            <Notification />
-          </ElTabPane>
-          <ElTabPane name="message" label="消息">
+        <ElTabs modelValue="message">
+          <ElTabPane name="message" :label="$t('消息')">
             <Message />
           </ElTabPane>
-          <ElTabPane name="todo" label="代办">
+          <ElTabPane name="todo" :label="$t('代办')">
             <Todo />
           </ElTabPane>
         </ElTabs>
@@ -137,6 +134,8 @@ if (screenfull.isEnabled) {
         <ElIcon v-else><MoonNight /></ElIcon>
       </li>
 
+      <LocaleSwitch wrapper />
+
       <li @click="fullScreen">
         <ElIcon><FullScreen /></ElIcon>
       </li>
@@ -145,12 +144,16 @@ if (screenfull.isEnabled) {
         <template #dropdown>
           <ElDropdownMenu>
             <ElDropdownItem :icon="User">
-              <RouterLink to="/user" class="layout-header-link"> 个人中心 </RouterLink>
+              <RouterLink to="/user" class="layout-header-link"> {{ $t('个人中心') }} </RouterLink>
             </ElDropdownItem>
             <ElDropdownItem :icon="Setting">
-              <RouterLink to="/user/setting" class="layout-header-link"> 个人设置 </RouterLink>
+              <RouterLink to="/user/setting" class="layout-header-link">
+                {{ $t('个人设置') }}
+              </RouterLink>
             </ElDropdownItem>
-            <ElDropdownItem :icon="SwitchButton" @click="logout"> 退出登录 </ElDropdownItem>
+            <ElDropdownItem :icon="SwitchButton" @click="logout">
+              {{ $t('退出登录') }}
+            </ElDropdownItem>
           </ElDropdownMenu>
         </template>
         <li>

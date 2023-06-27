@@ -16,26 +16,25 @@
               </div>
             </div>
             <ElDivider />
-            <VaTitle :level="5">简介</VaTitle>
+            <VaTitle :level="5">{{ $t('简介') }}</VaTitle>
             <ElDescriptions>
-              <ElDescriptionsItem label="性别">
+              <ElDescriptionsItem :label="$t('性别')">
                 <ElTag size="small" type="warning">{{ state.info.sex }}</ElTag>
               </ElDescriptionsItem>
-              <ElDescriptionsItem label="职业">
+              <ElDescriptionsItem :label="$t('职业')">
                 {{ state.info.profession }}
               </ElDescriptionsItem>
-              <ElDescriptionsItem label="部门">{{ state.info.department }}</ElDescriptionsItem>
             </ElDescriptions>
 
             <ElDivider />
-            <VaTitle :level="5">标记</VaTitle>
+            <VaTitle :level="5">{{ $t('标签') }}</VaTitle>
             <div v-for="(row, i) of state.tag" :key="`row-${i}`" class="tag-row">
               <ElTag v-for="(item, j) of row" :key="item" :type="state.tagTypes[(i + j) % 5]">{{
                 item
               }}</ElTag>
             </div>
             <ElDivider />
-            <VaTitle :level="5">团队</VaTitle>
+            <VaTitle :level="5">{{ $t('团队') }}</VaTitle>
             <ElDescriptions class="team">
               <ElDescriptionsItem v-for="item of state.team" :key="`team-item-${item}`">
                 <template #label>
@@ -48,31 +47,31 @@
         </ElCol>
         <ElCol :span="16">
           <VaCard>
-            <VaTitle :level="4">设备登录历史</VaTitle>
+            <VaTitle :level="4">{{ $t('设备登录历史') }}</VaTitle>
             <div class="page-data">
               <ElTable :data="state.deviceHistory" stripe>
-                <ElTableColumn type="index" label="编号" width="80" />
-                <ElTableColumn prop="deviceOS" label="系统类型" />
+                <ElTableColumn type="index" :label="$t('编号')" width="80" />
+                <ElTableColumn prop="deviceOS" :label="$t('系统类型')" />
                 <ElTableColumn prop="ip" label="IP" />
-                <ElTableColumn prop="lastLoginTime" label="上次登录时间" :minWidth="160" />
-                <ElTableColumn prop="location" label="定位" />
+                <ElTableColumn prop="lastLoginTime" :label="$t('上次登录时间')" :minWidth="160" />
+                <ElTableColumn prop="location" :label="$t('定位')" />
                 <ElTableColumn label="操作" width="120">
                   <template #default="scope">
-                    <ElButton size="small" type="danger" @click="loginOut(scope.row)"
-                      >删除设备</ElButton
-                    >
+                    <ElButton size="small" type="danger" @click="() => loginOut(scope.row)">{{
+                      $t('删除')
+                    }}</ElButton>
                   </template>
                 </ElTableColumn>
               </ElTable>
             </div>
-            <VaTitle :level="4">系统操作历史</VaTitle>
+            <VaTitle :level="4">{{ $t('操作历史') }}</VaTitle>
             <div class="page-data">
               <ElTable :data="state.logs">
-                <ElTableColumn type="index" label="编号" width="80" />
-                <ElTableColumn prop="deviceOS" label="系统类型" />
+                <ElTableColumn type="index" :label="$t('编号')" width="80" />
+                <ElTableColumn prop="deviceOS" :label="$t('系统类型')" />
                 <ElTableColumn prop="ip" label="IP" />
-                <ElTableColumn prop="createdTime" label="时间" :minWidth="160" />
-                <ElTableColumn prop="content" label="操作内容" :minWidth="230" />
+                <ElTableColumn prop="createdTime" :label="$t('创建时间')" :minWidth="160" />
+                <ElTableColumn prop="content" :label="$t('详情')" :minWidth="230" />
               </ElTable>
             </div>
           </VaCard>
@@ -130,7 +129,7 @@ const state = reactive<{
     department: 'XX技术部'
   },
   tag: [
-    ['React', 'Vue', 'Sass', 'NodeJS', 'Angular', 'WebGL', 'WeApp', 'Java'],
+    ['React', 'Vue', 'Sass', 'NodeJS', 'WeApp', 'Java'],
     ['羽毛球', '跑步', 'LOL', '唱歌', '出行'],
     ['柯南', '星际穿越', '超神学院', '哈利波特']
   ],

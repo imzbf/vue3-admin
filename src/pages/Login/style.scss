@@ -37,7 +37,7 @@ $borderRadius: 14px;
       .forget-p-help {
         font-size: 14px;
         float: right;
-        line-height: 40px;
+        line-height: 32px;
       }
 
       ul.oauth {
@@ -57,11 +57,17 @@ $borderRadius: 14px;
       }
     }
 
-    .adjust-theme {
+    .login-actions {
       position: absolute;
-      right: 1rem;
+      right: 44px;
       bottom: 1rem;
       cursor: pointer;
+
+      .adjust-theme {
+        margin-right: 1rem;
+        width: 12px;
+        height: 12px;
+      }
     }
   }
 }

@@ -7,19 +7,19 @@
             <ElMenu router :defaultActive="defaultActive">
               <ElMenuItem index="/user/setting/account">
                 <ElIcon><CreditCard /></ElIcon>
-                资料设置</ElMenuItem
+                {{ $t('资料设置') }}</ElMenuItem
               >
               <ElMenuItem index="/user/setting/security">
                 <ElIcon><Coin /></ElIcon>
-                安全设置</ElMenuItem
+                {{ $t('安全设置') }}</ElMenuItem
               >
               <ElMenuItem index="/user/setting/binding">
                 <ElIcon><Connection /></ElIcon>
-                账号绑定</ElMenuItem
+                {{ $t('账号绑定') }}</ElMenuItem
               >
               <ElMenuItem index="/user/setting/message">
                 <ElIcon><ChatDotRound /></ElIcon>
-                消息通知</ElMenuItem
+                {{ $t('消息通知') }}</ElMenuItem
               >
             </ElMenu>
           </VaCard>

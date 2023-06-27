@@ -2,32 +2,28 @@
   <div class="page-def-form">
     <div class="view-space">
       <VaCard>
-        <ElForm labelWidth="90px">
+        <ElForm labelWidth="150px">
           <ElRow :gutter="14">
             <ElCol :span="16">
               <VaCard border :shadow="false">
                 <template #title>
-                  <span>文章属性</span>
+                  <span>{{ $t('属性') }}</span>
                 </template>
-                <ElFormItem label="文章标题">
+                <ElFormItem :label="$t('标题')">
                   <ElInput v-model="article.title" />
                 </ElFormItem>
                 <div class="inline-form-items">
-                  <ElFormItem label="文章状态">
-                    <ElSelect v-model="article.status" placeholder="选择项目地点">
-                      <ElOption label="不显示" :value="0"></ElOption>
-                      <ElOption label="显示" :value="1"></ElOption>
+                  <ElFormItem :label="$t('状态')">
+                    <ElSelect v-model="article.status">
+                      <ElOption :label="$t('不显示')" :value="0"></ElOption>
+                      <ElOption :label="$t('显示')" :value="1"></ElOption>
                     </ElSelect>
                   </ElFormItem>
-                  <ElFormItem label="创建时间">
-                    <ElDatePicker
-                      v-model="article.createdTime"
-                      type="datetime"
-                      placeholder="选择时间"
-                    ></ElDatePicker>
+                  <ElFormItem :label="$t('创建时间')">
+                    <ElDatePicker v-model="article.createdTime" type="datetime"></ElDatePicker>
                   </ElFormItem>
                 </div>
-                <ElFormItem label="预览图片">
+                <ElFormItem :label="$t('预览图片')">
                   <ElInput v-model="article.previewImage">
                     <template #append>
                       <input ref="uploadSynopsis" type="file" style="display: none" />
@@ -35,7 +31,7 @@
                     </template>
                   </ElInput>
                 </ElFormItem>
-                <ElFormItem label="文章摘要">
+                <ElFormItem :label="$t('摘要')">
                   <ElInput
                     v-model="article.synopsis"
                     type="textarea"
@@ -45,15 +41,15 @@
                   ></ElInput>
                 </ElFormItem>
                 <ElFormItem label="">
-                  <ElButton type="primary">保存发布</ElButton>
-                  <ElButton>缓存草稿</ElButton>
+                  <ElButton type="primary">{{ $t('保存') }}</ElButton>
+                  <ElButton>{{ $t('保存') }} {{ $t('草稿') }}</ElButton>
                 </ElFormItem>
               </VaCard>
             </ElCol>
             <ElCol :span="8">
               <VaCard border :shadow="false">
                 <template #title>
-                  <span>文章标签</span>
+                  <span>{{ $t('标签') }}</span>
                 </template>
                 <ElCheckboxGroup v-model="tag.tagsSelected">
                   <ElCheckbox
@@ -71,6 +67,7 @@
             <ElCol :span="24">
               <MdEditor
                 v-model="article.content"
+                :language="store.state.setting.locale"
                 :theme="store.state.setting.theme"
                 editorId="def-form"
                 @onUploadImg="uploadImg"
@@ -150,6 +147,11 @@ const uploadImg = console.log;
 </script>
 
 <style lang="scss">
+.md-editor,
+.md-editor-dark {
+  --md-border-color: var(--el-border-color);
+}
+
 .md-content .md-preview,
 .md-content .md-html {
   font-size: 14px;

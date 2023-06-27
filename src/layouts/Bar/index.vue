@@ -7,9 +7,9 @@
       :closable="!isFixedTag(item) && menuTagNotSingle"
       :effect="item.curr ? 'dark' : 'plain'"
       :type="item.curr ? 'success' : 'info'"
-      @click="tagClick(item)"
-      @close="tagClose(item)"
-      >{{ item.title }}</ElTag
+      @click="() => tagClick(item)"
+      @close="() => tagClose(item)"
+      >{{ $t(item.title) }}</ElTag
     >
 
     <span class="layout-bar-action cper">
@@ -22,15 +22,21 @@
 
         <template #dropdown>
           <ElDropdownMenu>
-            <ElDropdownItem @click="refreshRoute">刷新当前</ElDropdownItem>
-            <ElDropdownItem v-if="menuTagNotSingle" @click="barMenuClose(menuTagActions.rmCurr)"
-              >关闭当前</ElDropdownItem
+            <ElDropdownItem @click="refreshRoute">{{ $t('刷新当前') }}</ElDropdownItem>
+            <ElDropdownItem
+              v-if="menuTagNotSingle"
+              @click="() => barMenuClose(menuTagActions.rmCurr)"
+              >{{ $t('关闭当前') }}</ElDropdownItem
             >
-            <ElDropdownItem v-if="menuTagNotSingle" @click="barMenuClose(menuTagActions.rmOther)"
-              >关闭其他</ElDropdownItem
+            <ElDropdownItem
+              v-if="menuTagNotSingle"
+              @click="() => barMenuClose(menuTagActions.rmOther)"
+              >{{ $t('关闭其他') }}</ElDropdownItem
             >
-            <ElDropdownItem v-if="menuTagNotSingle" @click="barMenuClose(menuTagActions.rmAll)"
-              >关闭所有</ElDropdownItem
+            <ElDropdownItem
+              v-if="menuTagNotSingle"
+              @click="() => barMenuClose(menuTagActions.rmAll)"
+              >{{ $t('关闭所有') }}</ElDropdownItem
             >
           </ElDropdownMenu>
         </template>

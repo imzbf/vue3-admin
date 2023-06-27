@@ -3,14 +3,14 @@
     <ElIcon v-if="menu.iconName">
       <MenuIcon :iconName="menu.iconName" />
     </ElIcon>
-    <span>{{ props.menu.title }}</span>
+    <span>{{ $t(props.menu.title) }}</span>
   </ElMenuItem>
 
   <ElMenuItem v-else :index="props.menu.path" @click="router.push(props.menu.path)">
     <ElIcon v-if="menu.iconName">
       <MenuIcon :iconName="menu.iconName" />
     </ElIcon>
-    <span>{{ props.menu.title }}</span>
+    <span>{{ $t(props.menu.title) }}</span>
   </ElMenuItem>
 </template>
 

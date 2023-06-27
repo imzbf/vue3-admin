@@ -2,7 +2,7 @@
   <VaCard border class="va-mb">
     <template #title>
       <IconFont type="icon-changyongfenlei" class="title-icon" />
-      动态仪表盘
+      {{ $t('动态仪表盘') }}
     </template>
     <EChart style="height: 210px" :option="option" />
   </VaCard>

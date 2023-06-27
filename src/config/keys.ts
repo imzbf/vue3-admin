@@ -1,8 +1,9 @@
-// 常量
-export default {
-  THEME: 'THEME_tXS5b3c3',
-  TOKEN: 'TOKEN_Mb3xHEGi' // localstorage、store等key
-};
+// 主题
+export const THEME = 'THEME_tXS5b3c3';
+// 语言
+export const TOKEN = 'TOKEN_Mb3xHEGi';
+// 语言
+export const LOCALE = 'LOCALE_hbhkc27d';
 
 export const NAME_KEY = '54bf6413';
 export const PASSWORD_KEY = '54bf6414';

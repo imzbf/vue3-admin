@@ -1,34 +1,42 @@
 <template>
   <div class="security-item">
     <div class="security-label">
-      <div>账号密码</div>
-      <span>当前密码强度：弱</span>
+      <div>{{ $t('账号密码') }}</div>
+      <span>{{ $t('当前密码强度') + $t('：') + $t('弱') }}</span>
     </div>
-    <div class="security-action"><ElButton link>修改</ElButton></div>
+    <div class="security-action">
+      <ElButton link>{{ $t('修改') }}</ElButton>
+    </div>
   </div>
 
   <div class="security-item">
     <div class="security-label">
-      <div>绑定手机</div>
-      <span>已绑定手机：134****5223</span>
+      <div>{{ $t('绑定手机') }}</div>
+      <span>{{ $t('已绑定手机') + $t('：') }}134****5223</span>
     </div>
-    <div class="security-action"><ElButton link>修改</ElButton></div>
+    <div class="security-action">
+      <ElButton link>{{ $t('修改') }}</ElButton>
+    </div>
   </div>
 
   <div class="security-item">
     <div class="security-label">
-      <div>两步验证</div>
-      <span>你的账号未开启两步验证</span>
+      <div>{{ $t('两步验证') }}</div>
+      <span>{{ $t('你的账号未开启两步验证') }}</span>
     </div>
-    <div class="security-action"><ElButton link>开启</ElButton></div>
+    <div class="security-action">
+      <ElButton link>{{ $t('开启') }}</ElButton>
+    </div>
   </div>
 
   <div class="security-item">
     <div class="security-label">
-      <div>安全密钥</div>
-      <span>必须先启用两步验证才能使用安全密钥</span>
+      <div>{{ $t('安全秘钥') }}</div>
+      <span>{{ $t('必须先启用两步验证才能使用安全密钥') }}</span>
     </div>
-    <div class="security-action"><ElButton link>修改</ElButton></div>
+    <div class="security-action">
+      <ElButton link>{{ $t('修改') }}</ElButton>
+    </div>
   </div>
 </template>
 

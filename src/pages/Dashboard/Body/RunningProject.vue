@@ -8,27 +8,27 @@
   >
     <template #title>
       <IconFont type="icon-shouye" class="title-icon" />
-      运行中的项目
+      {{ $t('运行中的项目') }}
     </template>
     <template #func>
-      <RouterLink to="/project" class="normal-link"> 全部项目 </RouterLink>
+      <RouterLink to="/project" class="normal-link"> {{ $t('全部项目') }} </RouterLink>
     </template>
     <ElTable :data="tableData" style="width: 100%">
-      <ElTableColumn prop="name" label="名称" :minWidth="90">
+      <ElTableColumn prop="name" :label="$t('名称')" :minWidth="90">
         <template #default="scope">
           <ElLink type="primary" :href="scope.row.url" target="_blank">
             {{ scope.row.name }}</ElLink
           >
         </template>
       </ElTableColumn>
-      <ElTableColumn prop="status" label="状态">
+      <ElTableColumn prop="status" :label="$t('状态')">
         <template #default="scope">
           <ElTag :type="scope.row.status === '运行中' ? 'success' : 'danger'">{{
             scope.row.status
           }}</ElTag>
         </template>
       </ElTableColumn>
-      <ElTableColumn prop="date" label="上次启动" :minWidth="160" />
+      <ElTableColumn prop="date" :label="$t('上次启动')" :minWidth="160" />
     </ElTable>
   </VaCard>
 </template>

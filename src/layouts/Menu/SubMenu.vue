@@ -22,7 +22,7 @@ const props = defineProps({
         <ElIcon v-if="menu.iconName">
           <MenuIcon :iconName="menu.iconName" />
         </ElIcon>
-        <span>{{ menu.title }}</span>
+        <span>{{ $t(menu.title) }}</span>
       </template>
       <template v-for="menuChild of menu.children">
         <MenuItem
@@ -35,7 +35,7 @@ const props = defineProps({
             <ElIcon v-if="menuChild.iconName">
               <MenuIcon :iconName="menuChild.iconName" />
             </ElIcon>
-            <span ddd>{{ menuChild.title }}</span>
+            <span>{{ $t(menuChild.title) }}</span>
           </template>
           <SubMenu :menuList="menuChild.children" />
         </ElSubMenu>

@@ -2,11 +2,11 @@
   <VaCard border class="va-mb">
     <template #title>
       <IconFont type="icon-changyongfenlei" class="title-icon" />
-      访问记录
+      {{ $t('访问记录') }}
     </template>
     <template #func>
       <a href="https://imzbf.github.io/echarts-theme-builder/zh/index.html" target="_blank">
-        在线编辑Echarts主题
+        {{ $t('在线编辑Echarts主题') }}
       </a>
     </template>
     <EChart style="height: 400px" :option="option" />

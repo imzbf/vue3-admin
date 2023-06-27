@@ -1,7 +1,7 @@
 // import { App } from 'vue';
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
 import store from '@/store';
-import Final from '@/config/keys';
+import { TOKEN } from '@/config/keys';
 
 // const data = {
 //   code: 0,
@@ -26,7 +26,7 @@ const errorHandler = (error: ErrorType) => {
 
     // 假定40000为未登录
     if (data?.code === 40000) {
-      const token = localStorage.getItem(Final.TOKEN);
+      const token = localStorage.getItem(TOKEN);
       // 清除过期登陆信息，返回登录页面
       token && store.dispatch('user/logout');
     }

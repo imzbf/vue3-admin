@@ -1,5 +1,5 @@
 <template>
-  <ElResult icon="error" title="404" subTitle="资源消失了！">
+  <ElResult icon="error" title="404" :subTitle="$t('资源消失了！')">
     <template #extra>
       <ElButton type="primary" @click="goBack">Back</ElButton>
     </template>

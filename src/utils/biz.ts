@@ -1,11 +1,11 @@
 import { RouteRecordName } from 'vue-router';
 import { deepClone } from '@vavt/util';
-import Final from '@/config/keys';
+import { TOKEN } from '@/config/keys';
 import router, { routes, AdminRouteRecordRaw } from '@/router';
 
 import DynamicRoutes, { ViewList } from '../router/dynamic';
 
-export const getToken = () => localStorage.getItem(Final.TOKEN) || '';
+export const getToken = () => localStorage.getItem(TOKEN) || '';
 
 /**
  * 将后端菜单数据结构转换为vue-router的结构
