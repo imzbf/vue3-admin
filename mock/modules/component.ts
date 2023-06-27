@@ -1,15 +1,15 @@
-import { MockMethod } from 'vite-plugin-mock';
 import fs from 'fs';
 import path from 'path';
 import multiparty from 'multiparty';
+import { MockApi } from '../type';
 
 const LOCAL_File_PATH = path.resolve(__dirname, '../upload.local');
 
-const component: Array<MockMethod> = [
+const component: Array<MockApi> = [
   {
-    url: '/api/upload/chunk',
+    url: '/upload/chunk',
     method: 'post',
-    rawResponse(req, res) {
+    data(req) {
       if (!fs.existsSync(LOCAL_File_PATH)) {
         fs.mkdirSync(LOCAL_File_PATH);
       }
@@ -18,19 +18,11 @@ const component: Array<MockMethod> = [
         uploadDir: LOCAL_File_PATH
       });
 
-      form.parse(req, () => {
-        res.end(
-          JSON.stringify({
-            code: 0
-          })
-        );
-      });
+      form.parse(req);
 
-      res.end(
-        JSON.stringify({
-          code: 0
-        })
-      );
+      return {
+        code: 0
+      };
     }
   }
 ];

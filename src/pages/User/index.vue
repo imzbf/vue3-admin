@@ -1,12 +1,12 @@
 <template>
   <div class="page-user">
     <div class="view-space">
-      <el-row :gutter="20">
-        <el-col :span="8">
-          <va-card>
+      <ElRow :gutter="20">
+        <ElCol :span="8">
+          <VaCard>
             <div class="base-info">
               <div class="base-info-left">
-                <el-avatar :size="90" :src="DEMO_USER_HEAD2" />
+                <ElAvatar :size="90" :src="DEMO_USER_HEAD2" />
               </div>
               <div class="base-info-right">
                 <div class="nick-name">{{ state.info.nickname }}</div>
@@ -15,69 +15,68 @@
                 </div>
               </div>
             </div>
-            <el-divider />
-            <va-title :level="5">简介</va-title>
-            <el-descriptions>
-              <el-descriptions-item label="性别">
-                <el-tag size="small" type="warning">{{ state.info.sex }}</el-tag>
-              </el-descriptions-item>
-              <el-descriptions-item label="职业">
+            <ElDivider />
+            <VaTitle :level="5">{{ $t('简介') }}</VaTitle>
+            <ElDescriptions>
+              <ElDescriptionsItem :label="$t('性别')">
+                <ElTag size="small" type="warning">{{ state.info.sex }}</ElTag>
+              </ElDescriptionsItem>
+              <ElDescriptionsItem :label="$t('职业')">
                 {{ state.info.profession }}
-              </el-descriptions-item>
-              <el-descriptions-item label="部门">{{ state.info.department }}</el-descriptions-item>
-            </el-descriptions>
+              </ElDescriptionsItem>
+            </ElDescriptions>
 
-            <el-divider />
-            <va-title :level="5">标记</va-title>
+            <ElDivider />
+            <VaTitle :level="5">{{ $t('标签') }}</VaTitle>
             <div v-for="(row, i) of state.tag" :key="`row-${i}`" class="tag-row">
-              <el-tag v-for="(item, j) of row" :key="item" :type="state.tagTypes[(i + j) % 5]">{{
+              <ElTag v-for="(item, j) of row" :key="item" :type="state.tagTypes[(i + j) % 5]">{{
                 item
-              }}</el-tag>
+              }}</ElTag>
             </div>
-            <el-divider />
-            <va-title :level="5">团队</va-title>
-            <el-descriptions class="team">
-              <el-descriptions-item v-for="item of state.team" :key="`team-item-${item}`">
+            <ElDivider />
+            <VaTitle :level="5">{{ $t('团队') }}</VaTitle>
+            <ElDescriptions class="team">
+              <ElDescriptionsItem v-for="item of state.team" :key="`team-item-${item}`">
                 <template #label>
-                  <el-icon><office-building /></el-icon>
+                  <ElIcon><OfficeBuilding /></ElIcon>
                 </template>
                 {{ item }}
-              </el-descriptions-item>
-            </el-descriptions>
-          </va-card>
-        </el-col>
-        <el-col :span="16">
-          <va-card>
-            <va-title :level="4">设备登录历史</va-title>
+              </ElDescriptionsItem>
+            </ElDescriptions>
+          </VaCard>
+        </ElCol>
+        <ElCol :span="16">
+          <VaCard>
+            <VaTitle :level="4">{{ $t('设备登录历史') }}</VaTitle>
             <div class="page-data">
-              <el-table :data="state.deviceHistory" stripe>
-                <el-table-column type="index" label="编号" width="80" />
-                <el-table-column prop="deviceOS" label="系统类型" />
-                <el-table-column prop="ip" label="IP" />
-                <el-table-column prop="lastLoginTime" label="上次登录时间" :min-width="160" />
-                <el-table-column prop="location" label="定位" />
-                <el-table-column label="操作" width="120">
+              <ElTable :data="state.deviceHistory" stripe>
+                <ElTableColumn type="index" :label="$t('编号')" width="80" />
+                <ElTableColumn prop="deviceOS" :label="$t('系统类型')" />
+                <ElTableColumn prop="ip" label="IP" />
+                <ElTableColumn prop="lastLoginTime" :label="$t('上次登录时间')" :minWidth="160" />
+                <ElTableColumn prop="location" :label="$t('定位')" />
+                <ElTableColumn label="操作" width="120">
                   <template #default="scope">
-                    <el-button size="small" type="danger" @click="loginOut(scope.row)"
-                      >删除设备</el-button
-                    >
+                    <ElButton size="small" type="danger" @click="() => loginOut(scope.row)">{{
+                      $t('删除')
+                    }}</ElButton>
                   </template>
-                </el-table-column>
-              </el-table>
+                </ElTableColumn>
+              </ElTable>
             </div>
-            <va-title :level="4">系统操作历史</va-title>
+            <VaTitle :level="4">{{ $t('操作历史') }}</VaTitle>
             <div class="page-data">
-              <el-table :data="state.logs">
-                <el-table-column type="index" label="编号" width="80" />
-                <el-table-column prop="deviceOS" label="系统类型" />
-                <el-table-column prop="ip" label="IP" />
-                <el-table-column prop="createdTime" label="时间" :min-width="160" />
-                <el-table-column prop="content" label="操作内容" :min-width="230" />
-              </el-table>
+              <ElTable :data="state.logs">
+                <ElTableColumn type="index" :label="$t('编号')" width="80" />
+                <ElTableColumn prop="deviceOS" :label="$t('系统类型')" />
+                <ElTableColumn prop="ip" label="IP" />
+                <ElTableColumn prop="createdTime" :label="$t('创建时间')" :minWidth="160" />
+                <ElTableColumn prop="content" :label="$t('详情')" :minWidth="230" />
+              </ElTable>
             </div>
-          </va-card>
-        </el-col>
-      </el-row>
+          </VaCard>
+        </ElCol>
+      </ElRow>
     </div>
   </div>
 </template>
@@ -130,7 +129,7 @@ const state = reactive<{
     department: 'XX技术部'
   },
   tag: [
-    ['React', 'Vue', 'Sass', 'NodeJS', 'Angular', 'WebGL', 'WeApp', 'Java'],
+    ['React', 'Vue', 'Sass', 'NodeJS', 'WeApp', 'Java'],
     ['羽毛球', '跑步', 'LOL', '唱歌', '出行'],
     ['柯南', '星际穿越', '超神学院', '哈利波特']
   ],

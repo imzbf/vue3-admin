@@ -14,32 +14,32 @@ const props = defineProps({
 
 <template>
   <template v-for="menu of props.menuList" :key="menu.path">
-    <menu-item v-if="menu.outLink" :menu="menu" />
-    <menu-item v-else-if="menu.children.length === 0" :menu="menu" />
-    <menu-item v-else-if="menu.children.length === 1" :menu="menu.children[0]" />
-    <el-sub-menu v-else :index="menu.path">
+    <MenuItem v-if="menu.outLink" :menu="menu" />
+    <MenuItem v-else-if="menu.children.length === 0" :menu="menu" />
+    <MenuItem v-else-if="menu.children.length === 1" :menu="menu.children[0]" />
+    <ElSubMenu v-else :index="menu.path">
       <template #title>
-        <el-icon v-if="menu.iconName">
-          <menu-icon :icon-name="menu.iconName" />
-        </el-icon>
-        <span>{{ menu.title }}</span>
+        <ElIcon v-if="menu.iconName">
+          <MenuIcon :iconName="menu.iconName" />
+        </ElIcon>
+        <span>{{ $t(menu.title) }}</span>
       </template>
       <template v-for="menuChild of menu.children">
-        <menu-item
+        <MenuItem
           v-if="menuChild.children.length === 0"
           :key="`el-menu-item-${menuChild.title}`"
           :menu="menuChild"
         />
-        <el-sub-menu v-else :key="`el-sub-menu-${menuChild.title}`" :index="menuChild.path">
+        <ElSubMenu v-else :key="`el-sub-menu-${menuChild.title}`" :index="menuChild.path">
           <template #title>
-            <el-icon v-if="menuChild.iconName">
-              <menu-icon :icon-name="menuChild.iconName" />
-            </el-icon>
-            <span ddd>{{ menuChild.title }}</span>
+            <ElIcon v-if="menuChild.iconName">
+              <MenuIcon :iconName="menuChild.iconName" />
+            </ElIcon>
+            <span>{{ $t(menuChild.title) }}</span>
           </template>
-          <sub-menu :menu-list="menuChild.children" />
-        </el-sub-menu>
+          <SubMenu :menuList="menuChild.children" />
+        </ElSubMenu>
       </template>
-    </el-sub-menu>
+    </ElSubMenu>
   </template>
 </template>

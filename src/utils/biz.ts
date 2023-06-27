@@ -1,11 +1,11 @@
 import { RouteRecordName } from 'vue-router';
-import { cloneDeep } from 'lodash';
-import Final from '@/config/keys';
+import { deepClone } from '@vavt/util';
+import { TOKEN } from '@/config/keys';
 import router, { routes, AdminRouteRecordRaw } from '@/router';
 
 import DynamicRoutes, { ViewList } from '../router/dynamic';
 
-export const getToken = () => localStorage.getItem(Final.TOKEN) || '';
+export const getToken = () => localStorage.getItem(TOKEN) || '';
 
 /**
  * 将后端菜单数据结构转换为vue-router的结构
@@ -14,7 +14,7 @@ export const getToken = () => localStorage.getItem(Final.TOKEN) || '';
  * @returns vue-router配置列表
  */
 export const transformRoutes = (menus: Array<any>) => {
-  return cloneDeep(menus).map((menu) => {
+  return deepClone(menus).map((menu) => {
     // 转换组件
     if (menu.component) {
       menu.component = DynamicRoutes[menu.component as keyof ViewList];

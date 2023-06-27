@@ -1,93 +1,110 @@
 <template>
-  <va-card border class="va-mb">
+  <VaCard border class="va-mb">
     <template #title>
-      <icon-font type="icon-changyongfenlei" class="title-icon" />
-      最近天气
+      <IconFont type="icon-changyongfenlei" class="title-icon" />
+      {{ $t('最近天气') }}
     </template>
-    <e-chart style="height: 200px" :option="option" />
-  </va-card>
+    <EChart style="height: 200px" :option="option" />
+  </VaCard>
 </template>
 
 <script setup lang="ts">
+import { ref, watch } from 'vue';
+import { useStore } from 'vuex';
+import { t } from 'i18next';
+import { key } from '@/store';
 import IconFont from '@/components/IconFont/index.vue';
 import VaCard from '@/components/Card/index.vue';
 import EChart from '@/components/Echart/index.vue';
 
-const option = {
-  title: {
-    text: ''
-  },
-  tooltip: {
-    trigger: 'axis'
-  },
-  legend: {},
+const store = useStore(key);
 
-  xAxis: {
-    type: 'category',
-    boundaryGap: false,
-    data: ['周一', '周二', '周三', '周四', '周五', '周六', '周天']
-  },
-  yAxis: {
-    type: 'value',
-    axisLabel: {
-      formatter: '{value} °C'
-    }
-  },
-  series: [
-    {
-      name: '最高',
-      type: 'line',
-      data: [10, 11, 13, 11, 12, 12, 9],
-      markPoint: {
-        data: [
-          { type: 'max', name: 'Max' },
-          { type: 'min', name: 'Min' }
-        ]
-      },
-      markLine: {
-        data: [{ type: 'average', name: 'Avg' }]
+const translate = () => {
+  return {
+    title: {
+      text: ''
+    },
+    tooltip: {
+      trigger: 'axis'
+    },
+    legend: {},
+
+    xAxis: {
+      type: 'category',
+      boundaryGap: false,
+      data: [t('周一'), t('周二'), t('周三'), t('周四'), t('周五'), t('周六'), t('周天')]
+    },
+    yAxis: {
+      type: 'value',
+      axisLabel: {
+        formatter: '{value} °C'
       }
     },
-    {
-      name: '最低',
-      type: 'line',
-      data: [1, -2, 2, 5, 3, 2, 0],
-      markPoint: {
-        data: [{ name: '周最低', value: -2, xAxis: 1, yAxis: -1.5 }]
-      },
-      markLine: {
-        label: {
-          color: 'inherit'
-        },
-        data: [
-          { type: 'average', name: 'Avg' },
-          [
-            {
-              symbol: 'none',
-              x: '90%',
-              yAxis: 'max'
-            },
-            {
-              symbol: 'circle',
-              label: {
-                position: 'start',
-                formatter: 'Max'
-              },
-              type: 'max',
-              name: '最高点'
-            }
+    series: [
+      {
+        name: t('最高'),
+        type: 'line',
+        data: [10, 11, 13, 11, 12, 12, 9],
+        markPoint: {
+          data: [
+            { type: 'max', name: 'Max' },
+            { type: 'min', name: 'Min' }
           ]
-        ]
+        },
+        markLine: {
+          data: [{ type: 'average', name: 'Avg' }]
+        }
+      },
+      {
+        name: t('最低'),
+        type: 'line',
+        data: [1, -2, 2, 5, 3, 2, 0],
+        markPoint: {
+          data: [{ name: t('本周最低'), value: -2, xAxis: 1, yAxis: -1.5 }]
+        },
+        markLine: {
+          label: {
+            color: 'inherit'
+          },
+          data: [
+            { type: 'average', name: 'Avg' },
+            [
+              {
+                symbol: 'none',
+                x: '90%',
+                yAxis: 'max'
+              },
+              {
+                symbol: 'circle',
+                label: {
+                  position: 'start',
+                  formatter: 'Max'
+                },
+                type: 'max',
+                name: t('最高') + t('点')
+              }
+            ]
+          ]
+        }
       }
+    ],
+    grid: {
+      x: 50,
+      y: 25,
+      x2: 50,
+      y2: 25
     }
-  ],
-  grid: {
-    x: 50,
-    y: 25,
-    x2: 50,
-    y2: 25
-  }
+  };
 };
+
+const option = ref(translate());
+
+watch(
+  () => store.state.setting.locale,
+  () => {
+    option.value = translate();
+  }
+);
 </script>
 
 <script lang="ts">

@@ -16,13 +16,13 @@ export default { name: 'IzMenu' };
 </script>
 
 <template>
-  <el-menu
+  <ElMenu
     class="aside-menu dark-menu"
-    :collapse-transition="false"
+    :collapseTransition="false"
     :collapse="aside"
-    :default-active="store.state.setting.selectedKey"
-    :default-openeds="store.state.setting.openKeys"
+    :defaultActive="store.state.setting.selectedKey"
+    :defaultOpeneds="store.state.setting.openKeys"
   >
-    <sub-menu :menu-list="store.state.menu.menuList" />
-  </el-menu>
+    <SubMenu :menuList="store.state.menu.menuList" />
+  </ElMenu>
 </template>

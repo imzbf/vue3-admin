@@ -1,16 +1,16 @@
 <template>
-  <va-card border class="va-mb">
+  <VaCard border class="va-mb">
     <template #title>
-      <icon-font type="icon-changyongfenlei" class="title-icon" />
-      访问记录
+      <IconFont type="icon-changyongfenlei" class="title-icon" />
+      {{ $t('访问记录') }}
     </template>
     <template #func>
       <a href="https://imzbf.github.io/echarts-theme-builder/zh/index.html" target="_blank">
-        在线编辑Echarts主题
+        {{ $t('在线编辑Echarts主题') }}
       </a>
     </template>
-    <e-chart style="height: 400px" :option="option" />
-  </va-card>
+    <EChart style="height: 400px" :option="option" />
+  </VaCard>
 </template>
 
 <script setup lang="ts">

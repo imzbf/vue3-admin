@@ -1,7 +1,9 @@
+import i18next from 'i18next';
 import setting, { fixedTags } from '@/config/setting';
-import Final from '@/config/keys';
+import { THEME, LOCALE } from '@/config/keys';
 import router from '@/router';
 import { menuTagActions } from '@/config/static';
+import { Locale, localeMap } from '@/config/locale';
 
 interface AsideType {
   aside: 'open' | 'close'; // 正常展开、缩小显示图标
@@ -36,9 +38,16 @@ export interface SettingStateType extends AsideType {
   menuTags: Array<MenuTag>;
   // 设置抽屉状态
   settingDrawerVisible: boolean;
+  // 语言
+  locale: Locale;
+  // 显示的名称
+  localeLabel: string;
+  // 页面标题
+  title: string;
 }
 
-const cacheTheme = localStorage.getItem(Final.THEME);
+const cacheTheme = localStorage.getItem(THEME);
+const cacheLocale = localStorage.getItem(LOCALE) as Locale;
 
 const adjustHtmlClass = (theme: Themes) => {
   if (theme === 'dark') {
@@ -60,7 +69,10 @@ const defaultState: SettingStateType = {
   cacheList: [],
   menuTags: fixedTags.map((tag) => ({ curr: false, ...tag })),
   isMobile: document.body.offsetWidth < 970,
-  settingDrawerVisible: false
+  settingDrawerVisible: false,
+  locale: cacheLocale || 'zh-CN',
+  localeLabel: localeMap[cacheLocale || 'zh-CN'],
+  title: ''
 };
 
 // 判断当前操作标签是不是固定标签
@@ -125,7 +137,18 @@ const mutations = {
   themeChanged(state: SettingStateType, payload: { theme: Themes }): void {
     adjustHtmlClass(payload.theme);
     state.theme = payload.theme;
-    localStorage.setItem(Final.THEME, payload.theme);
+    localStorage.setItem(THEME, payload.theme);
+  },
+  // 切换语言
+  localeChanged(state: SettingStateType, payload: { locale: Locale }) {
+    state.locale = payload.locale;
+    state.localeLabel = localeMap[payload.locale];
+    i18next.changeLanguage(payload.locale);
+    localStorage.setItem(LOCALE, payload.locale);
+  },
+  // 切换页面标题
+  titleChanged(state: SettingStateType, payload: { title: string }) {
+    state.title = payload.title;
   },
   // 生成新的缓存名单
   setCacheList(state: SettingStateType, payload: { routes: Array<any> }): void {

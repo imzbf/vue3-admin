@@ -1,6 +1,6 @@
-import { MockMethod } from 'vite-plugin-mock';
 import Icon from '@element-plus/icons-vue';
-import { ViewList } from '../src/router/dynamic';
+import { ViewList } from '../../src/router/dynamic';
+import { MockApi } from '../type';
 
 import { ADMIN_TOKEN } from './login';
 
@@ -279,12 +279,12 @@ const ComponentModule: Menu[] = [
   }
 ];
 
-const user: Array<MockMethod> = [
+const user: Array<MockApi> = [
   {
-    url: '/api/user',
+    url: '/user',
     method: 'get',
-    response: ({ headers }): any => {
-      let menus = [];
+    data: ({ headers }) => {
+      let menus: Menu[] = [];
 
       // 管理员角色菜单
       if (headers.token === ADMIN_TOKEN) {
@@ -322,9 +322,9 @@ const user: Array<MockMethod> = [
     }
   },
   {
-    url: '/api/user/device',
+    url: '/user/device',
     method: 'get',
-    response: ({ headers, query }: any): any => {
+    data: ({ headers }, _res, _body, query) => {
       const { page, pageSize } = query;
 
       return headers.token

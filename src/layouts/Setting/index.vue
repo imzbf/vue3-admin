@@ -1,14 +1,14 @@
 <template>
-  <el-drawer
-    :model-value="store.state.setting.settingDrawerVisible"
+  <ElDrawer
+    :modelValue="store.state.setting.settingDrawerVisible"
     direction="rtl"
     size="280px"
-    :with-header="false"
+    :withHeader="false"
     @close="store.commit('setting/settingDrawerVisibleChanged')"
   >
-    <el-divider>其他设置</el-divider>
-    <iz-other />
-  </el-drawer>
+    <ElDivider>其他设置</ElDivider>
+    <IzOther />
+  </ElDrawer>
 </template>
 
 <script lang="ts">

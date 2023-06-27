@@ -1,84 +1,81 @@
 <template>
   <div class="page-def-form">
     <div class="view-space">
-      <va-card>
-        <el-form label-width="90px">
-          <el-row :gutter="14">
-            <el-col :span="16">
-              <va-card border :shadow="false">
+      <VaCard>
+        <ElForm labelWidth="150px">
+          <ElRow :gutter="14">
+            <ElCol :span="16">
+              <VaCard border :shadow="false">
                 <template #title>
-                  <span>文章属性</span>
+                  <span>{{ $t('属性') }}</span>
                 </template>
-                <el-form-item label="文章标题">
-                  <el-input v-model="article.title" />
-                </el-form-item>
+                <ElFormItem :label="$t('标题')">
+                  <ElInput v-model="article.title" />
+                </ElFormItem>
                 <div class="inline-form-items">
-                  <el-form-item label="文章状态">
-                    <el-select v-model="article.status" placeholder="选择项目地点">
-                      <el-option label="不显示" :value="0"></el-option>
-                      <el-option label="显示" :value="1"></el-option>
-                    </el-select>
-                  </el-form-item>
-                  <el-form-item label="创建时间">
-                    <el-date-picker
-                      v-model="article.createdTime"
-                      type="datetime"
-                      placeholder="选择时间"
-                    ></el-date-picker>
-                  </el-form-item>
+                  <ElFormItem :label="$t('状态')">
+                    <ElSelect v-model="article.status">
+                      <ElOption :label="$t('不显示')" :value="0"></ElOption>
+                      <ElOption :label="$t('显示')" :value="1"></ElOption>
+                    </ElSelect>
+                  </ElFormItem>
+                  <ElFormItem :label="$t('创建时间')">
+                    <ElDatePicker v-model="article.createdTime" type="datetime"></ElDatePicker>
+                  </ElFormItem>
                 </div>
-                <el-form-item label="预览图片">
-                  <el-input v-model="article.previewImage">
+                <ElFormItem :label="$t('预览图片')">
+                  <ElInput v-model="article.previewImage">
                     <template #append>
                       <input ref="uploadSynopsis" type="file" style="display: none" />
-                      <el-button :icon="UploadFilled" @click="handleUploadSynopsis"></el-button>
+                      <ElButton :icon="UploadFilled" @click="handleUploadSynopsis"></ElButton>
                     </template>
-                  </el-input>
-                </el-form-item>
-                <el-form-item label="文章摘要">
-                  <el-input
+                  </ElInput>
+                </ElFormItem>
+                <ElFormItem :label="$t('摘要')">
+                  <ElInput
                     v-model="article.synopsis"
                     type="textarea"
                     rows="5"
                     maxlength="1000"
-                    show-word-limit
-                  ></el-input>
-                </el-form-item>
-                <el-form-item label="">
-                  <el-button type="primary">保存发布</el-button>
-                  <el-button>缓存草稿</el-button>
-                </el-form-item>
-              </va-card>
-            </el-col>
-            <el-col :span="8">
-              <va-card border :shadow="false">
+                    showWordLimit
+                  ></ElInput>
+                </ElFormItem>
+                <ElFormItem label="">
+                  <ElButton type="primary">{{ $t('保存') }}</ElButton>
+                  <ElButton>{{ $t('保存') }} {{ $t('草稿') }}</ElButton>
+                </ElFormItem>
+              </VaCard>
+            </ElCol>
+            <ElCol :span="8">
+              <VaCard border :shadow="false">
                 <template #title>
-                  <span>文章标签</span>
+                  <span>{{ $t('标签') }}</span>
                 </template>
-                <el-checkbox-group v-model="tag.tagsSelected">
-                  <el-checkbox
+                <ElCheckboxGroup v-model="tag.tagsSelected">
+                  <ElCheckbox
                     v-for="item of tag.list"
                     :key="item.tagId"
                     :class="tag.colors[Math.floor(Math.random() * tag.colors.length)]"
                     :label="item.tagId"
-                    >{{ item.tagName }}</el-checkbox
+                    >{{ item.tagName }}</ElCheckbox
                   >
-                </el-checkbox-group>
-              </va-card>
-            </el-col>
-          </el-row>
-          <el-row>
-            <el-col :span="24">
-              <md-editor
+                </ElCheckboxGroup>
+              </VaCard>
+            </ElCol>
+          </ElRow>
+          <ElRow>
+            <ElCol :span="24">
+              <MdEditor
                 v-model="article.content"
+                :language="store.state.setting.locale"
                 :theme="store.state.setting.theme"
-                editor-id="def-form"
-                @on-upload-img="uploadImg"
+                editorId="def-form"
+                @onUploadImg="uploadImg"
               />
-            </el-col>
-          </el-row>
-        </el-form>
-      </va-card>
+            </ElCol>
+          </ElRow>
+        </ElForm>
+      </VaCard>
     </div>
   </div>
 </template>
@@ -92,8 +89,7 @@ export default { name };
 
 <script setup lang="ts">
 import { reactive } from 'vue';
-import MdEditor from 'md-editor-v3';
-import 'md-editor-v3/lib/style.css';
+import { MdEditor, config } from 'md-editor-v3';
 import screenfull from 'screenfull';
 import { useStore } from 'vuex';
 import { key } from '@/store';
@@ -101,27 +97,15 @@ import VaCard from '@/components/Card/index.vue';
 import { UploadFilled } from '@element-plus/icons-vue';
 import { tags } from './data';
 
-MdEditor.config({
+import 'md-editor-v3/lib/style.css';
+
+config({
   editorExtensions: {
     screenfull: {
       instance: screenfull
     }
   }
 });
-
-// MdEditor.config({
-//   markedRenderer(renderer) {
-//     renderer.link = (href, title, text) => {
-//       return `<a href="${href}" title="${title}" target="_blank">${text}</a>`;
-//     };
-
-//     renderer.image = (href: string, _: string, desc: string) => {
-//       return `<img src="${href}" alt="${desc}">`;
-//     };
-
-//     return renderer;
-//   }
-// });
 
 const store = useStore(key);
 
@@ -163,6 +147,11 @@ const uploadImg = console.log;
 </script>
 
 <style lang="scss">
+.md-editor,
+.md-editor-dark {
+  --md-border-color: var(--el-border-color);
+}
+
 .md-content .md-preview,
 .md-content .md-html {
   font-size: 14px;

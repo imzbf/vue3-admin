@@ -1,9 +1,9 @@
 <template>
-  <el-result icon="error" title="404" sub-title="资源消失了！">
+  <ElResult icon="error" title="404" :subTitle="$t('资源消失了！')">
     <template #extra>
-      <el-button type="primary" @click="goBack">Back</el-button>
+      <ElButton type="primary" @click="goBack">Back</ElButton>
     </template>
-  </el-result>
+  </ElResult>
 </template>
 
 <script lang="ts">

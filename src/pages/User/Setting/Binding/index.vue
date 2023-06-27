@@ -5,11 +5,13 @@
         <use xlink:href="#icon-facebook"></use>
       </svg>
       <div class="binding-item-meta-main">
-        <div>Facebook账号</div>
-        <span>当前未绑定Facebook账号</span>
+        <div>{{ $t('Facebook账号') }}</div>
+        <span>{{ $t('未绑定') }}</span>
       </div>
     </div>
-    <div><el-button link>绑定</el-button></div>
+    <div>
+      <ElButton link>{{ $t('绑定') }}</ElButton>
+    </div>
   </div>
 
   <div class="binding-item">
@@ -18,11 +20,13 @@
         <use xlink:href="#icon-google_plus"></use>
       </svg>
       <div class="binding-item-meta-main">
-        <div>Google账号</div>
-        <span>当前未绑定facebook账号</span>
+        <div>{{ $t('Google账号') }}</div>
+        <span>{{ $t('未绑定') }}</span>
       </div>
     </div>
-    <div><el-button link>绑定</el-button></div>
+    <div>
+      <ElButton link>{{ $t('绑定') }}</ElButton>
+    </div>
   </div>
 
   <div class="binding-item">
@@ -31,11 +35,13 @@
         <use xlink:href="#icon-qq"></use>
       </svg>
       <div class="binding-item-meta-main">
-        <div>QQ账号</div>
-        <span>当前未绑定QQ账号</span>
+        <div>{{ $t('QQ账号') }}</div>
+        <span>{{ $t('未绑定') }}</span>
       </div>
     </div>
-    <div><el-button link>绑定</el-button></div>
+    <div>
+      <ElButton link>{{ $t('绑定') }}</ElButton>
+    </div>
   </div>
 
   <div class="binding-item">
@@ -44,11 +50,13 @@
         <use xlink:href="#icon-wechat"></use>
       </svg>
       <div class="binding-item-meta-main">
-        <div>微信账号</div>
-        <span>当前未绑定微信账号</span>
+        <div>{{ $t('微信账号') }}</div>
+        <span>{{ $t('未绑定') }}</span>
       </div>
     </div>
-    <div><el-button link>绑定</el-button></div>
+    <div>
+      <ElButton link>{{ $t('绑定') }}</ElButton>
+    </div>
   </div>
 
   <div class="binding-item">
@@ -57,11 +65,13 @@
         <use xlink:href="#icon-github"></use>
       </svg>
       <div class="binding-item-meta-main">
-        <div>GitHub账号</div>
-        <span>当前未绑定GitHub账号</span>
+        <div>{{ $t('GitHub账号') }}</div>
+        <span>{{ $t('未绑定') }}</span>
       </div>
     </div>
-    <div><el-button link>绑定</el-button></div>
+    <div>
+      <ElButton link>{{ $t('绑定') }}</ElButton>
+    </div>
   </div>
 </template>
 

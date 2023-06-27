@@ -2,16 +2,16 @@
   <div class="page-md-editor">
     <div class="page-header">
       <div class="left">
-        <h2>分片上传</h2>
-        <p>演示分片上传功能，只支持本地运行，服务端在mock中实现。</p>
+        <h2>{{ $t('分片上传') }}</h2>
+        <p>{{ $t('演示分片上传功能，只支持本地运行，服务端在mock中实现。') }}</p>
       </div>
     </div>
     <div class="view-space">
-      <iz-card>
-        <iz-upload :url="url">
-          <el-button>上传</el-button>
-        </iz-upload>
-      </iz-card>
+      <IzCard>
+        <IzUpload :url="url">
+          <ElButton>{{ $t('上传') }}</ElButton>
+        </IzUpload>
+      </IzCard>
     </div>
   </div>
 </template>

@@ -82,10 +82,14 @@ table {
 html,
 body {
   font-size: 14px;
-  color: var(--el-text-color-regular);
+  color: var(--el-text-color-primary);
   font-family: -apple-system, BlinkMacSystemFont, 'segoe ui', Roboto, 'helvetica neue', Arial,
     'noto sans', sans-serif, 'apple color emoji', 'segoe ui emoji', 'segoe ui symbol',
     'noto color emoji';
+}
+
+* {
+  outline: none;
 }
 
 html,
@@ -175,7 +179,7 @@ body,
   border-bottom: 1px solid var(--el-border-color);
   padding: 20px 14px;
   background-color: var(--el-bg-color);
-  color: var(--el-text-color-regular);
+  color: var(--el-text-color-primary);
 
   .left {
     h2 {
@@ -233,6 +237,6 @@ html.dark {
   }
 }
 
-.md-dark {
+.md-editor-dark {
   --md-bk-color: var(--el-bg-color) !important;
 }

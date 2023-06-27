@@ -1,33 +1,33 @@
 <template>
   <div class="page-user-setting">
     <div class="view-space">
-      <el-row :gutter="20">
-        <el-col :span="6">
-          <va-card>
-            <el-menu router :default-active="defaultActive">
-              <el-menu-item index="/user/setting/account">
-                <el-icon><CreditCard /></el-icon>
-                资料设置</el-menu-item
+      <ElRow :gutter="20">
+        <ElCol :span="6">
+          <VaCard>
+            <ElMenu router :defaultActive="defaultActive">
+              <ElMenuItem index="/user/setting/account">
+                <ElIcon><CreditCard /></ElIcon>
+                {{ $t('资料设置') }}</ElMenuItem
               >
-              <el-menu-item index="/user/setting/security">
-                <el-icon><Coin /></el-icon>
-                安全设置</el-menu-item
+              <ElMenuItem index="/user/setting/security">
+                <ElIcon><Coin /></ElIcon>
+                {{ $t('安全设置') }}</ElMenuItem
               >
-              <el-menu-item index="/user/setting/binding">
-                <el-icon><Connection /></el-icon>
-                账号绑定</el-menu-item
+              <ElMenuItem index="/user/setting/binding">
+                <ElIcon><Connection /></ElIcon>
+                {{ $t('账号绑定') }}</ElMenuItem
               >
-              <el-menu-item index="/user/setting/message">
-                <el-icon><ChatDotRound /></el-icon>
-                消息通知</el-menu-item
+              <ElMenuItem index="/user/setting/message">
+                <ElIcon><ChatDotRound /></ElIcon>
+                {{ $t('消息通知') }}</ElMenuItem
               >
-            </el-menu>
-          </va-card>
-        </el-col>
-        <el-col :span="18">
-          <va-card> <router-view></router-view> </va-card>
-        </el-col>
-      </el-row>
+            </ElMenu>
+          </VaCard>
+        </ElCol>
+        <ElCol :span="18">
+          <VaCard> <RouterView></RouterView> </VaCard>
+        </ElCol>
+      </ElRow>
     </div>
   </div>
 </template>

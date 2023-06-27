@@ -17,25 +17,25 @@ export default {
 
 <template>
   <div class="view-space dashboard-body">
-    <el-row :gutter="20">
-      <el-col :span="16">
-        <visit-statistics />
+    <ElRow :gutter="20">
+      <ElCol :span="16">
+        <VisitStatistics />
         <!-- <Record /> -->
-        <el-row :gutter="20">
-          <el-col :span="12">
-            <running-project />
-          </el-col>
-          <el-col :span="12">
-            <multiple-grap />
-          </el-col>
-        </el-row>
-      </el-col>
-      <el-col :span="8">
-        <commonly-used />
-        <recent-weather />
+        <ElRow :gutter="20">
+          <ElCol :span="12">
+            <RunningProject />
+          </ElCol>
+          <ElCol :span="12">
+            <MultipleGrap />
+          </ElCol>
+        </ElRow>
+      </ElCol>
+      <ElCol :span="8">
+        <CommonlyUsed />
+        <RecentWeather />
         <!-- <Task /> -->
-        <va-team />
-      </el-col>
-    </el-row>
+        <VaTeam />
+      </ElCol>
+    </ElRow>
   </div>
 </template>

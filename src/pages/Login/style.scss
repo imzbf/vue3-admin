@@ -9,7 +9,7 @@ $borderRadius: 14px;
   // background-color: #fff;
 
   &-container {
-    box-shadow: 0px 14px 20px #c0c4cc;
+    box-shadow: var(--el-box-shadow-light);
     // filter: drop-shadow(0px 14px 20px #c0c4cc);
     // background-color: transparent;
     border-radius: $borderRadius;
@@ -25,22 +25,19 @@ $borderRadius: 14px;
       flex-direction: column;
       align-items: center;
 
-      .form-title {
-        font-size: 28px;
-        font-weight: 600;
-        margin: 14px 0 28px;
-        color: var(--el-text-color-regular);
-      }
-
       .form-item {
         width: 280px;
         margin-bottom: 22px;
+
+        &:first-of-type {
+          margin-top: 22px;
+        }
       }
 
       .forget-p-help {
         font-size: 14px;
         float: right;
-        line-height: 40px;
+        line-height: 32px;
       }
 
       ul.oauth {
@@ -60,31 +57,25 @@ $borderRadius: 14px;
       }
     }
 
-    .adjust-theme {
+    .login-actions {
       position: absolute;
-      right: 1rem;
+      right: 44px;
       bottom: 1rem;
       cursor: pointer;
+
+      .adjust-theme {
+        margin-right: 1rem;
+        width: 12px;
+        height: 12px;
+      }
     }
   }
 }
 
 @media (max-width: 970px) {
   .login-container {
-    box-shadow: 0px 0 20px #c0c4cc;
-
-    .login-asset {
-      display: none;
-    }
-
     .login-form {
       padding: 28px;
     }
-  }
-}
-
-html.dark {
-  .login-container {
-    box-shadow: 0px 14px 20px #000;
   }
 }

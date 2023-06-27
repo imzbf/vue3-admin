@@ -1,34 +1,34 @@
 <template>
   <div class="page-layout">
     <div class="view-space">
-      <va-card>
-        <el-row>
-          <el-col :span="24"><div class="grid-content bg-purple-dark"></div></el-col>
-        </el-row>
-        <el-row>
-          <el-col :span="12"><div class="grid-content bg-purple"></div></el-col>
-          <el-col :span="12"><div class="grid-content bg-purple-light"></div></el-col>
-        </el-row>
-        <el-row>
-          <el-col :span="8"><div class="grid-content bg-purple"></div></el-col>
-          <el-col :span="8"><div class="grid-content bg-purple-light"></div></el-col>
-          <el-col :span="8"><div class="grid-content bg-purple"></div></el-col>
-        </el-row>
-        <el-row>
-          <el-col :span="6"><div class="grid-content bg-purple"></div></el-col>
-          <el-col :span="6"><div class="grid-content bg-purple-light"></div></el-col>
-          <el-col :span="6"><div class="grid-content bg-purple"></div></el-col>
-          <el-col :span="6"><div class="grid-content bg-purple-light"></div></el-col>
-        </el-row>
-        <el-row>
-          <el-col :span="4"><div class="grid-content bg-purple"></div></el-col>
-          <el-col :span="4"><div class="grid-content bg-purple-light"></div></el-col>
-          <el-col :span="4"><div class="grid-content bg-purple"></div></el-col>
-          <el-col :span="4"><div class="grid-content bg-purple-light"></div></el-col>
-          <el-col :span="4"><div class="grid-content bg-purple"></div></el-col>
-          <el-col :span="4"><div class="grid-content bg-purple-light"></div></el-col>
-        </el-row>
-      </va-card>
+      <VaCard>
+        <ElRow>
+          <ElCol :span="24"><div class="grid-content bg-purple-dark"></div></ElCol>
+        </ElRow>
+        <ElRow>
+          <ElCol :span="12"><div class="grid-content bg-purple"></div></ElCol>
+          <ElCol :span="12"><div class="grid-content bg-purple-light"></div></ElCol>
+        </ElRow>
+        <ElRow>
+          <ElCol :span="8"><div class="grid-content bg-purple"></div></ElCol>
+          <ElCol :span="8"><div class="grid-content bg-purple-light"></div></ElCol>
+          <ElCol :span="8"><div class="grid-content bg-purple"></div></ElCol>
+        </ElRow>
+        <ElRow>
+          <ElCol :span="6"><div class="grid-content bg-purple"></div></ElCol>
+          <ElCol :span="6"><div class="grid-content bg-purple-light"></div></ElCol>
+          <ElCol :span="6"><div class="grid-content bg-purple"></div></ElCol>
+          <ElCol :span="6"><div class="grid-content bg-purple-light"></div></ElCol>
+        </ElRow>
+        <ElRow>
+          <ElCol :span="4"><div class="grid-content bg-purple"></div></ElCol>
+          <ElCol :span="4"><div class="grid-content bg-purple-light"></div></ElCol>
+          <ElCol :span="4"><div class="grid-content bg-purple"></div></ElCol>
+          <ElCol :span="4"><div class="grid-content bg-purple-light"></div></ElCol>
+          <ElCol :span="4"><div class="grid-content bg-purple"></div></ElCol>
+          <ElCol :span="4"><div class="grid-content bg-purple-light"></div></ElCol>
+        </ElRow>
+      </VaCard>
     </div>
   </div>
 </template>

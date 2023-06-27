@@ -1,54 +1,54 @@
 <template>
   <section :class="wrapperClass">
-    <el-drawer
+    <ElDrawer
       v-if="store.state.setting.isMobile"
-      :model-value="store.state.setting.mobileDrawer"
+      :modelValue="store.state.setting.mobileDrawer"
       direction="ltr"
       size="auto"
-      :with-header="false"
-      custom-class="mobile-menu-drawer"
+      :withHeader="false"
+      customClass="mobile-menu-drawer"
       @close="adjustMobileDrawer"
     >
       <div class="layout-aside">
         <header class="logo">
           <img :src="LogoImg" />
-          <span>后台管理模板</span>
+          <span>vue3-admin</span>
         </header>
         <div class="menu-container">
-          <admin-menu />
+          <AdminMenu />
         </div>
         <footer class="copyright">
-          <span>@2020 imzbf.cc</span>
+          <span>@2020 imzbf</span>
         </footer>
       </div>
-    </el-drawer>
+    </ElDrawer>
     <div v-else class="layout-aside">
       <header class="logo">
         <img :src="LogoImg" />
-        <span v-if="asideOpen">后台管理模板</span>
+        <span v-if="asideOpen">vue3-admin</span>
       </header>
       <div class="menu-container">
-        <admin-menu />
+        <AdminMenu />
       </div>
       <footer v-if="asideOpen" class="copyright">
-        <span>@2020 imzbf.cc</span>
+        <span>@2020 imzbf</span>
       </footer>
     </div>
     <div class="layout">
-      <va-header />
-      <va-bar />
+      <VaHeader />
+      <VaBar />
       <main class="layout-main">
-        <router-view v-slot="{ Component }">
-          <transition name="fade" mode="out-in">
-            <keep-alive :include="store.state.setting.cacheList">
-              <component :is="Component" />
-            </keep-alive>
-          </transition>
-        </router-view>
+        <RouterView v-slot="{ Component }">
+          <Transition name="fade" mode="out-in">
+            <KeepAlive :include="store.state.setting.cacheList">
+              <Component :is="Component" />
+            </KeepAlive>
+          </Transition>
+        </RouterView>
       </main>
     </div>
     <div class="drawer">
-      <va-setting />
+      <VaSetting />
     </div>
   </section>
 </template>

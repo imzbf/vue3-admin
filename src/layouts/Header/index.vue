@@ -3,7 +3,7 @@ export default { name: 'HeaderIndex' };
 </script>
 
 <script setup lang="ts">
-import { reactive } from 'vue';
+import { reactive, computed } from 'vue';
 import { RouterLink } from 'vue-router';
 import { useStore } from 'vuex';
 import { key } from '@/store';
@@ -18,16 +18,15 @@ import {
   Setting,
   User,
   Bell,
-  ReadingLamp
+  Sunrise,
+  MoonNight
 } from '@element-plus/icons-vue';
-import IconFont from '@/components/IconFont/index.vue';
+import LocaleSwitch from '@/components/LocaleSwitch/index.vue';
 
 import './index.scss';
 
 import Message from './Message.vue';
-import Notification from './Notification.vue';
 import Todo from './Todo.vue';
-import { Themes } from '@/store/modules/setting';
 
 // 同时设置props的vue属性和ts类型，setup会报错
 // interface NavBarPropsType {
@@ -43,6 +42,10 @@ const configData = reactive({
   bellContent: false
 });
 
+const isDark = computed(() => {
+  return store.state.setting.theme === 'dark';
+});
+
 const adjustMenu = () => {
   if (store.state.setting.isMobile) {
     store.commit('setting/adjustMobileDrawer', {
@@ -56,9 +59,9 @@ const adjustMenu = () => {
 };
 
 // 调整主题
-const adjustTheme = (theme: Themes) => {
+const adjustTheme = () => {
   store.commit('setting/themeChanged', {
-    theme
+    theme: isDark.value ? 'light' : 'dark'
   });
 };
 
@@ -94,80 +97,69 @@ if (screenfull.isEnabled) {
   <header class="layout-header">
     <ul class="layout-header-left">
       <li class="cper" @click="adjustMenu">
-        <el-icon v-if="store.state.setting.aside === 'open'" :size="18"><Fold /></el-icon>
-        <el-icon v-else :size="18"><Expand /></el-icon>
+        <ElIcon v-if="store.state.setting.aside === 'open'" :size="18"><Fold /></ElIcon>
+        <ElIcon v-else :size="18"><Expand /></ElIcon>
       </li>
       <li class="breadcrumb-help">
-        <el-breadcrumb separator="/">
-          <el-breadcrumb-item
+        <ElBreadcrumb separator="/">
+          <ElBreadcrumbItem
             v-for="breadcrumb of store.state.setting.breadcrumbs"
             :key="breadcrumb"
-            >{{ breadcrumb }}</el-breadcrumb-item
+            >{{ $t(breadcrumb) }}</ElBreadcrumbItem
           >
-        </el-breadcrumb>
+        </ElBreadcrumb>
       </li>
     </ul>
     <ul class="layout-header-right">
-      <el-popover>
+      <ElPopover>
         <template #reference>
           <li>
-            <el-badge :value="12">
-              <el-icon><Bell /></el-icon>
-            </el-badge>
+            <ElBadge :value="12">
+              <ElIcon><Bell /></ElIcon>
+            </ElBadge>
           </li>
         </template>
-        <el-tabs model-value="notice">
-          <el-tab-pane name="notice" label="通知">
-            <Notification />
-          </el-tab-pane>
-          <el-tab-pane name="message" label="消息">
+        <ElTabs modelValue="message">
+          <ElTabPane name="message" :label="$t('消息')">
             <Message />
-          </el-tab-pane>
-          <el-tab-pane name="todo" label="代办">
+          </ElTabPane>
+          <ElTabPane name="todo" :label="$t('代办')">
             <Todo />
-          </el-tab-pane>
-        </el-tabs>
-      </el-popover>
-      <el-dropdown>
-        <li>
-          <el-icon>
-            <reading-lamp />
-          </el-icon>
-        </li>
-        <template #dropdown>
-          <el-dropdown-menu>
-            <el-dropdown-item @click="adjustTheme('light')">
-              <icon-font type="icon-sun" />
-              <span style="padding-left: 4px">默认主题</span>
-            </el-dropdown-item>
-            <el-dropdown-item @click="adjustTheme('dark')">
-              <icon-font type="icon-moon" />
-              <span style="padding-left: 4px">暗黑主题</span>
-            </el-dropdown-item>
-          </el-dropdown-menu>
-        </template>
-      </el-dropdown>
+          </ElTabPane>
+        </ElTabs>
+      </ElPopover>
 
-      <li @click="fullScreen">
-        <el-icon><FullScreen /></el-icon>
+      <li @click="adjustTheme">
+        <ElIcon v-if="isDark"><Sunrise /></ElIcon>
+        <ElIcon v-else><MoonNight /></ElIcon>
       </li>
 
-      <el-dropdown>
+      <LocaleSwitch wrapper />
+
+      <li @click="fullScreen">
+        <ElIcon><FullScreen /></ElIcon>
+      </li>
+
+      <ElDropdown>
         <template #dropdown>
-          <el-dropdown-menu>
-            <el-dropdown-item :icon="User">
-              <RouterLink to="/user" class="layout-header-link"> 个人中心 </RouterLink>
-            </el-dropdown-item>
-            <el-dropdown-item :icon="Setting">
-              <router-link to="/user/setting" class="layout-header-link"> 个人设置 </router-link>
-            </el-dropdown-item>
-            <el-dropdown-item :icon="SwitchButton" @click="logout"> 退出登录 </el-dropdown-item>
-          </el-dropdown-menu>
+          <ElDropdownMenu>
+            <ElDropdownItem :icon="User">
+              <RouterLink to="/user" class="layout-header-link"> {{ $t('个人中心') }} </RouterLink>
+            </ElDropdownItem>
+            <ElDropdownItem :icon="Setting">
+              <RouterLink to="/user/setting" class="layout-header-link">
+                {{ $t('个人设置') }}
+              </RouterLink>
+            </ElDropdownItem>
+            <ElDropdownItem :icon="SwitchButton" @click="logout">
+              {{ $t('退出登录') }}
+            </ElDropdownItem>
+          </ElDropdownMenu>
         </template>
         <li>
-          <el-avatar size="small" :src="DEMO_USER_HEAD" />
+          <ElAvatar size="small" :src="DEMO_USER_HEAD" />
         </li>
-      </el-dropdown>
+      </ElDropdown>
       <!-- <li @click="store.commit('setting/settingDrawerVisibleChanged')">
         <el-icon style="transform: rotate(90deg)"><MoreFilled /></el-icon>
       </li> -->

@@ -1,36 +1,36 @@
 <template>
-  <va-card
+  <VaCard
     border
     :shadow="false"
     class="va-mb project"
-    body-class="clear"
-    :body-style="{ paddingTop: 10 }"
+    bodyClass="clear"
+    :bodyStyle="{ paddingTop: 10 }"
   >
     <template #title>
-      <icon-font type="icon-shouye" class="title-icon" />
-      运行中的项目
+      <IconFont type="icon-shouye" class="title-icon" />
+      {{ $t('运行中的项目') }}
     </template>
     <template #func>
-      <router-link to="/project" class="normal-link"> 全部项目 </router-link>
+      <RouterLink to="/project" class="normal-link"> {{ $t('全部项目') }} </RouterLink>
     </template>
-    <el-table :data="tableData" style="width: 100%">
-      <el-table-column prop="name" label="名称" :min-width="90">
+    <ElTable :data="tableData" style="width: 100%">
+      <ElTableColumn prop="name" :label="$t('名称')" :minWidth="90">
         <template #default="scope">
-          <el-link type="primary" :href="scope.row.url" target="_blank">
-            {{ scope.row.name }}</el-link
+          <ElLink type="primary" :href="scope.row.url" target="_blank">
+            {{ scope.row.name }}</ElLink
           >
         </template>
-      </el-table-column>
-      <el-table-column prop="status" label="状态">
+      </ElTableColumn>
+      <ElTableColumn prop="status" :label="$t('状态')">
         <template #default="scope">
-          <el-tag :type="scope.row.status === '运行中' ? 'success' : 'danger'">{{
+          <ElTag :type="scope.row.status === '运行中' ? 'success' : 'danger'">{{
             scope.row.status
-          }}</el-tag>
+          }}</ElTag>
         </template>
-      </el-table-column>
-      <el-table-column prop="date" label="上次启动" :min-width="160" />
-    </el-table>
-  </va-card>
+      </ElTableColumn>
+      <ElTableColumn prop="date" :label="$t('上次启动')" :minWidth="160" />
+    </ElTable>
+  </VaCard>
 </template>
 
 <script setup lang="ts">

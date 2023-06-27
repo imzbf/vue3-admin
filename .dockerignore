@@ -1,5 +1,6 @@
 .git
 .vscode
+.idea
 
 .DS_Store
 dist
@@ -9,3 +10,6 @@ dist
 yarn-error.log*
 # src
 node_modules
+
+.github
+dist

@@ -1,26 +1,26 @@
 <template>
   <div class="message-item">
     <div class="message-label">
-      <div>新任务</div>
-      <span>将会通过Ele通知的方式提醒您！</span>
+      <div>{{ $t('新任务') }}</div>
+      <span>{{ $t('将会通过通知的方式提醒您！') }}</span>
     </div>
-    <div class="message-action"><el-switch v-model="data.m1"></el-switch></div>
+    <div class="message-action"><ElSwitch v-model="data.m1"></ElSwitch></div>
   </div>
 
   <div class="message-item">
     <div class="message-label">
-      <div>系统消息</div>
-      <span>将展示在工具栏中！</span>
+      <div>{{ $t('系统消息') }}</div>
+      <span>{{ $t('将展示在工具栏中！') }}</span>
     </div>
-    <div class="message-action"><el-switch v-model="data.m2"></el-switch></div>
+    <div class="message-action"><ElSwitch v-model="data.m2"></ElSwitch></div>
   </div>
 
   <div class="message-item">
     <div class="message-label">
-      <div>聊天消息</div>
-      <span>将在聊天工具中展示！</span>
+      <div>{{ $t('聊天消息') }}</div>
+      <span>{{ $t('将在聊天工具中展示！') }}</span>
     </div>
-    <div class="message-action"><el-switch v-model="data.m3"></el-switch></div>
+    <div class="message-action"><ElSwitch v-model="data.m3"></ElSwitch></div>
   </div>
 </template>
 

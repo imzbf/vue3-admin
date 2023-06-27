@@ -1,5 +1,5 @@
 import { logout, login, getUseInfo, LoginInfoType } from '@/apis/user';
-import Final from '@/config/keys';
+import { TOKEN } from '@/config/keys';
 import router from '@/router';
 import { transformRoutes, resetRoutes } from '@/utils/biz';
 import { ElMessage } from 'element-plus';
@@ -19,7 +19,7 @@ const initInfo = {
 
 const state: UserStateType = {
   info: initInfo,
-  token: localStorage.getItem(Final.TOKEN) || ''
+  token: localStorage.getItem(TOKEN) || ''
 };
 
 const mutations = {
@@ -29,7 +29,7 @@ const mutations = {
   reset(state: UserStateType): void {
     state.token = '';
     state.info = initInfo;
-    localStorage.removeItem(Final.TOKEN);
+    localStorage.removeItem(TOKEN);
   },
   setUserInfo(state: UserStateType, payload: any): void {
     state.info = payload.info;
@@ -44,7 +44,7 @@ const actions = {
         return data.token;
       })
       .then((token: string) => {
-        localStorage.setItem(Final.TOKEN, token);
+        localStorage.setItem(TOKEN, token);
       })
       .then(() => {
         store.dispatch('getLoginUser').then(() => {
@@ -85,7 +85,7 @@ const actions = {
       return data;
     } else {
       store.commit('setToken', { token: '' });
-      localStorage.removeItem(Final.TOKEN);
+      localStorage.removeItem(TOKEN);
       ElMessage.error(msg);
     }
   }
