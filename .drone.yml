@@ -1,0 +1,37 @@
+# 私有的服务器上运行drone后，通过该配置可以在drone所在的服务器自动构建docker镜像并运行容器
+kind: pipeline
+type: docker
+name: admin-deploy
+
+trigger:
+  branch:
+    - main # 只有main分支才能出发部署任务
+
+steps:
+  - name: build-dist
+    image: node:18.16.1-slim
+    volumes:
+      - name: yarn-cache
+        path: /usr/local/share/.cache/yarn/v6
+      - name: docker-sock
+        path: /var/run/docker.sock
+      - name: docker-bin
+        path: /usr/bin/docker
+    commands:
+      - yarn install --frozen-lockfile
+      - yarn build
+      - docker rm -f vue3-admin || true
+      - docker rmi vue3-admin:2.0.0 || true
+      - docker build -t vue3-admin:2.0.0 .
+      - docker run -d -p 3033:80 --restart always --name vue3-admin vue3-admin:2.0.0
+
+volumes: # 定义流水线挂载目录，用于共享数据
+  - name: yarn-cache
+    host:
+      path: /usr/local/share/.cache/yarn/v6
+  - name: docker-sock
+    host:
+      path: /var/run/docker.sock
+  - name: docker-bin
+    host:
+      path: /usr/bin/docker
