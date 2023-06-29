@@ -1,4 +1,4 @@
-import { defineStore } from 'pinia';
+import { defineStore, acceptHMRUpdate } from 'pinia';
 import { reactive } from 'vue';
 import Icon from '@element-plus/icons-vue';
 import { routes, AdminRouteRecordRaw } from '@/router';
@@ -57,3 +57,7 @@ export const useMenuStore = defineStore('menu', () => {
 
   return { state, resetMenu };
 });
+
+if (import.meta.hot) {
+  import.meta.hot.accept(acceptHMRUpdate(useMenuStore, import.meta.hot));
+}

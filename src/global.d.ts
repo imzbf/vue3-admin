@@ -1,9 +1,6 @@
-export {};
-
-declare global {
-  interface ResponseBase<T> {
-    code: number;
-    data: T;
-    msg: string;
-  }
+// 接口返回的数据结构
+interface ResponseBase<T> {
+  code: number;
+  data: T;
+  msg: string;
 }

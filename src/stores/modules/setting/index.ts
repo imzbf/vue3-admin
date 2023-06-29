@@ -1,5 +1,5 @@
 import { reactive } from 'vue';
-import { defineStore } from 'pinia';
+import { defineStore, acceptHMRUpdate } from 'pinia';
 import i18next from 'i18next';
 import setting, { fixedTags } from '@/config/setting';
 import { THEME, LOCALE } from '@/config/keys';
@@ -249,3 +249,7 @@ export const useSettingStore = defineStore('setting', () => {
     settingDrawerVisibleChanged
   };
 });
+
+if (import.meta.hot) {
+  import.meta.hot.accept(acceptHMRUpdate(useSettingStore, import.meta.hot));
+}

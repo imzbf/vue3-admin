@@ -1,5 +1,5 @@
 import { reactive } from 'vue';
-import { defineStore } from 'pinia';
+import { defineStore, acceptHMRUpdate } from 'pinia';
 import { ElMessage } from 'element-plus';
 import { TOKEN } from '@/config/keys';
 import { logout as logoutApi, login as loginApi, getUseInfo, LoginInfoType } from '@/apis/user';
@@ -100,3 +100,7 @@ export const useUserStore = defineStore('user', () => {
     getLoginUser
   };
 });
+
+if (import.meta.hot) {
+  import.meta.hot.accept(acceptHMRUpdate(useUserStore, import.meta.hot));
+}
