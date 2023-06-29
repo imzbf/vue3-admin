@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { PropType } from 'vue';
-import type { MenuType } from '@/store/modules/menu';
+import type { MenuType } from '@/stores';
 import MenuItem from './MenuItem.vue';
 import MenuIcon from './Icon.vue';
 

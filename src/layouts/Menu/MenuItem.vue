@@ -16,7 +16,7 @@
 
 <script setup lang="ts">
 import type { PropType } from 'vue';
-import type { MenuType } from '@/store/modules/menu';
+import type { MenuType } from '@/stores';
 import MenuIcon from './Icon.vue';
 import { goto } from '@/utils';
 import { useRouter } from 'vue-router';

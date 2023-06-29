@@ -5,11 +5,10 @@ export default { name: 'HeaderIndex' };
 <script setup lang="ts">
 import { reactive, computed } from 'vue';
 import { RouterLink } from 'vue-router';
-import { useStore } from 'vuex';
-import { key } from '@/store';
+import { useSettingStore, useUserStore } from '@/stores';
 import screenfull from 'screenfull';
 import { DEMO_USER_HEAD } from '@/config/urls';
-import { ElMessage, ElNotification } from 'element-plus';
+import { ElMessage } from 'element-plus';
 import {
   Fold,
   Expand,
@@ -33,7 +32,8 @@ import Todo from './Todo.vue';
 //   setSettingVisible: (val: boolean) => void;
 // }
 
-const store = useStore(key);
+const settingStore = useSettingStore();
+const userStore = useUserStore();
 
 const configData = reactive({
   // 全屏状态
@@ -43,26 +43,20 @@ const configData = reactive({
 });
 
 const isDark = computed(() => {
-  return store.state.setting.theme === 'dark';
+  return settingStore.state.theme === 'dark';
 });
 
 const adjustMenu = () => {
-  if (store.state.setting.isMobile) {
-    store.commit('setting/adjustMobileDrawer', {
-      mobileDrawer: !store.state.setting.mobileDrawer
-    });
+  if (settingStore.state.isMobile) {
+    settingStore.adjustMobileDrawer(!settingStore.state.mobileDrawer);
   } else {
-    store.commit('setting/asideState', {
-      aside: store.state.setting.aside === 'open' ? 'close' : 'open'
-    });
+    settingStore.asideState(settingStore.state.aside === 'open' ? 'close' : 'open');
   }
 };
 
 // 调整主题
 const adjustTheme = () => {
-  store.commit('setting/themeChanged', {
-    theme: isDark.value ? 'light' : 'dark'
-  });
+  settingStore.themeChanged(isDark.value ? 'light' : 'dark');
 };
 
 const fullScreen = () => {
@@ -73,17 +67,6 @@ const fullScreen = () => {
   } else {
     ElMessage.error('浏览器不支持全屏');
   }
-};
-
-// 退出登录
-const logout = () => {
-  store.dispatch('user/logout').catch((error: any) => {
-    ElNotification({
-      type: 'warning',
-      title: '操作失败！',
-      message: error?.msg || '未知的异常！'
-    });
-  });
 };
 
 if (screenfull.isEnabled) {
@@ -97,13 +80,13 @@ if (screenfull.isEnabled) {
   <header class="layout-header">
     <ul class="layout-header-left">
       <li class="cper" @click="adjustMenu">
-        <ElIcon v-if="store.state.setting.aside === 'open'" :size="18"><Fold /></ElIcon>
+        <ElIcon v-if="settingStore.state.aside === 'open'" :size="18"><Fold /></ElIcon>
         <ElIcon v-else :size="18"><Expand /></ElIcon>
       </li>
       <li class="breadcrumb-help">
         <ElBreadcrumb separator="/">
           <ElBreadcrumbItem
-            v-for="breadcrumb of store.state.setting.breadcrumbs"
+            v-for="breadcrumb of settingStore.state.breadcrumbs"
             :key="breadcrumb"
             >{{ $t(breadcrumb) }}</ElBreadcrumbItem
           >
@@ -151,7 +134,7 @@ if (screenfull.isEnabled) {
                 {{ $t('个人设置') }}
               </RouterLink>
             </ElDropdownItem>
-            <ElDropdownItem :icon="SwitchButton" @click="logout">
+            <ElDropdownItem :icon="SwitchButton" @click="userStore.logout">
               {{ $t('退出登录') }}
             </ElDropdownItem>
           </ElDropdownMenu>

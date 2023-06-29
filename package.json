@@ -29,10 +29,10 @@
     "i18next-vue": "^2.1.1",
     "md-editor-v3": "^4.2.0",
     "nprogress": "^0.2.0",
+    "pinia": "^2.1.4",
     "screenfull": "^6.0.2",
     "vue": "^3.3.4",
-    "vue-router": "^4.2.2",
-    "vuex": "^4.1.0"
+    "vue-router": "^4.2.2"
   },
   "devDependencies": {
     "@types/mockjs": "^1.0.7",

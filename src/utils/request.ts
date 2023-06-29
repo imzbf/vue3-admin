@@ -1,6 +1,6 @@
 // import { App } from 'vue';
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
-import store from '@/store';
+import { useUserStore } from '@/stores';
 import { TOKEN } from '@/config/keys';
 
 // const data = {
@@ -21,6 +21,7 @@ interface ErrorType {
 
 // 异常拦截处理器
 const errorHandler = (error: ErrorType) => {
+  const userStore = useUserStore();
   if (error.response) {
     const { data } = error.response;
 
@@ -28,15 +29,17 @@ const errorHandler = (error: ErrorType) => {
     if (data?.code === 40000) {
       const token = localStorage.getItem(TOKEN);
       // 清除过期登陆信息，返回登录页面
-      token && store.dispatch('user/logout');
+      token && userStore.logout();
     }
   }
   return Promise.reject(error);
 };
 
 axiosInstance.interceptors.request.use((config: AxiosRequestConfig): any => {
-  if (store.getters.token) {
-    (config.headers as any).TOKEN = store.getters.token;
+  const userStore = useUserStore();
+
+  if (userStore.state.token) {
+    (config.headers as any).TOKEN = userStore.state.token;
   }
   return config;
 }, errorHandler);

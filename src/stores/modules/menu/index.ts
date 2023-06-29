@@ -1,5 +1,7 @@
-import { routes, AdminRouteRecordRaw } from '@/router';
+import { defineStore } from 'pinia';
+import { reactive } from 'vue';
 import Icon from '@element-plus/icons-vue';
+import { routes, AdminRouteRecordRaw } from '@/router';
 
 export interface MenuType {
   title: string;
@@ -44,19 +46,14 @@ const transformMenu = (routes: Array<AdminRouteRecordRaw>): Array<MenuType> => {
   return menuList;
 };
 
-const state: MenuStateType = {
-  menuList: []
-};
-const mutations = {
-  resetMenu(state: MenuStateType, payload: { newRoutes: Array<AdminRouteRecordRaw> }): void {
-    state.menuList = transformMenu(routes.concat(payload.newRoutes));
-  }
-};
-const actions = {};
+export const useMenuStore = defineStore('menu', () => {
+  const state = reactive({
+    menuList: [] as Array<MenuType>
+  });
 
-export default {
-  namespaced: true,
-  state,
-  mutations,
-  actions
-};
+  const resetMenu = (newRoutes: Array<AdminRouteRecordRaw>) => {
+    state.menuList = transformMenu(routes.concat(newRoutes));
+  };
+
+  return { state, resetMenu };
+});

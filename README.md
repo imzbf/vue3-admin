@@ -1,6 +1,6 @@
 # vue3-admin
 
-使用[vue@3.x](https://cn.vuejs.org/)系列开发。目前支持了登录及主结构，暗夜主题，国际化，异步权限菜单，少数 demo 等。
+搭配`vue@3.x`系列（已使用`pinia`重构）开发。支持了登录及主结构，暗夜主题，国际化，服务端异步菜单，少数 demo 等。
 
 ## 预览
 
@@ -24,7 +24,7 @@
 │   ├── config               # 项目中的配置
 │   ├── layouts              # 通用布局
 │   ├── router               # vue路由配置
-│   ├── store                # vuex配置
+│   ├── stores               # pinia配置
 │   ├── styles               # 全局样式
 │   ├── utils                # 工具库
 │   └── pages                # 业务页面

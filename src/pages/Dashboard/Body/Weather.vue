@@ -10,14 +10,13 @@
 
 <script setup lang="ts">
 import { ref, watch } from 'vue';
-import { useStore } from 'vuex';
 import { t } from 'i18next';
-import { key } from '@/store';
+import { useSettingStore } from '@/stores';
 import IconFont from '@/components/IconFont/index.vue';
 import VaCard from '@/components/Card/index.vue';
 import EChart from '@/components/Echart/index.vue';
 
-const store = useStore(key);
+const settingStore = useSettingStore();
 
 const translate = () => {
   return {
@@ -100,7 +99,7 @@ const translate = () => {
 const option = ref(translate());
 
 watch(
-  () => store.state.setting.locale,
+  () => settingStore.state.locale,
   () => {
     option.value = translate();
   }

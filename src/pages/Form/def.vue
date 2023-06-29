@@ -67,8 +67,8 @@
             <ElCol :span="24">
               <MdEditor
                 v-model="article.content"
-                :language="store.state.setting.locale"
-                :theme="store.state.setting.theme"
+                :language="settingStore.state.locale"
+                :theme="settingStore.state.theme"
                 editorId="def-form"
                 @onUploadImg="uploadImg"
               />
@@ -91,8 +91,7 @@ export default { name };
 import { reactive } from 'vue';
 import { MdEditor, config } from 'md-editor-v3';
 import screenfull from 'screenfull';
-import { useStore } from 'vuex';
-import { key } from '@/store';
+import { useSettingStore } from '@/stores';
 import VaCard from '@/components/Card/index.vue';
 import { UploadFilled } from '@element-plus/icons-vue';
 import { tags } from './data';
@@ -107,7 +106,7 @@ config({
   }
 });
 
-const store = useStore(key);
+const settingStore = useSettingStore();
 
 const article = reactive({
   title: '',

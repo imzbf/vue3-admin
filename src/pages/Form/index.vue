@@ -80,11 +80,10 @@ export default { name };
 <script setup lang="ts">
 import { reactive, ref, watch } from 'vue';
 import { t } from 'i18next';
-import { useStore } from 'vuex';
-import { key } from '@/store';
+import { useSettingStore } from '@/stores';
 import VaCard from '@/components/Card/index.vue';
 
-const store = useStore(key);
+const settingStore = useSettingStore();
 
 const form = reactive({
   name: '',
@@ -132,7 +131,7 @@ const translateShortcuts = () => {
 const shortcuts = ref(translateShortcuts());
 
 watch(
-  () => store.state.setting.locale,
+  () => settingStore.state.locale,
   () => {
     shortcuts.value = translateShortcuts();
   }
