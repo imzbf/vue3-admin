@@ -1,1 +1,0 @@
-import{_ as e}from"./_plugin-vue_export-helper-c27b6911.js";import{r as t,c as n,o as r}from"./index-e20ef559.js";const c={name:"ComponentPageLayout"};function s(a,p,_,m,i,f){const o=t("RouterView");return r(),n(o)}const l=e(c,[["render",s]]);export{l as default};
