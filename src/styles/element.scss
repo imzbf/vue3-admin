@@ -35,3 +35,9 @@ html.dark {
     #{$var-name}-#{$i}: dark-light($i);
   }
 }
+
+.el-form--inline {
+  .el-input {
+    --el-input-width: 190px;
+  }
+}
