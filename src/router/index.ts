@@ -11,7 +11,7 @@ import excludeTag from './tagExclude';
 
 import userRoutes from './modules/user';
 
-import store from '@/store';
+import { useSettingStore, useUserStore } from '@/stores';
 
 import DynamicRoutes from './dynamic';
 // import errorModule from './modules/error';
@@ -82,11 +82,11 @@ const router = createRouter({
 router.beforeEach(async (to: RouteLocationNormalized, _, next: NavigationGuardNext) => {
   NProgress.start();
 
-  store.commit('setting/titleChanged', {
-    title: to.meta?.title
-  });
+  const settingStore = useSettingStore();
+  const userStore = useUserStore();
+  settingStore.titleChanged(to.meta?.title as string);
 
-  const token = store.state.user.token;
+  const token = userStore.state.token;
   // 返回之前页面如有额外query参数可自行携带
   // 例如：
   // const { query } = to;
@@ -109,11 +109,11 @@ router.beforeEach(async (to: RouteLocationNormalized, _, next: NavigationGuardNe
         next('/');
       }
     } else {
-      store.commit('setting/routeChanged', {
+      settingStore.routeChanged({
         path: to.path,
         breadcrumbs: to.matched
           .filter((item) => item.meta?.title)
-          .map((item: AdminRouteRecordRaw) => item.meta?.title)
+          .map((item: AdminRouteRecordRaw) => item.meta?.title) as string[]
       });
 
       next();
@@ -134,13 +134,14 @@ router.beforeEach(async (to: RouteLocationNormalized, _, next: NavigationGuardNe
 });
 
 router.afterEach((to) => {
+  const settingStore = useSettingStore();
+
   // 在这里排除不想要放到标签中的路由
   if (!excludeTag(to.path)) {
-    store.commit('setting/routerChanged', {
-      route: {
-        title: to.meta.title,
-        path: to.path
-      }
+    settingStore.routerChanged({
+      title: to.meta.title as string,
+      path: to.path,
+      curr: true
     });
   }
 

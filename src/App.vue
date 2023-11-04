@@ -1,13 +1,12 @@
 <script setup lang="ts">
 import { computed, watch } from 'vue';
 import i18next from 'i18next';
-import { key } from '@/store';
-import { useStore } from 'vuex';
+import { useSettingStore } from '@/stores';
 import zhCn from 'element-plus/es/locale/lang/zh-cn';
 import enUs from 'element-plus/es/locale/lang/en';
 import { debounce } from './utils';
 
-const store = useStore(key);
+const settingStore = useSettingStore();
 
 const elementLocalMap = {
   'zh-CN': zhCn,
@@ -15,13 +14,13 @@ const elementLocalMap = {
 };
 
 const locale = computed(() => {
-  return elementLocalMap[store.state.setting.locale];
+  return elementLocalMap[settingStore.state.locale];
 });
 
 watch(
-  [() => store.state.setting.locale, () => store.state.setting.title],
+  [() => settingStore.state.locale, () => settingStore.state.title],
   () => {
-    document.title = `${i18next.t(store.state.setting.title)} - ${i18next.t('管理系统')}`;
+    document.title = `${i18next.t(settingStore.state.title)} - ${i18next.t('管理系统')}`;
   },
   {
     immediate: true
@@ -30,7 +29,7 @@ watch(
 
 // FIX 此处应节流
 const updateReSizeState = debounce(() => {
-  store.commit('setting/reSized', { isMobile: document.body.offsetWidth < 970 });
+  settingStore.reSized({ isMobile: document.body.offsetWidth < 970 });
 });
 
 window.addEventListener('resize', updateReSizeState);

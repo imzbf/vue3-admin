@@ -1,9 +1,9 @@
 <template>
   <ElDropdown :size="props.size">
     <li v-if="props.wrapper">
-      <span>{{ store.state.setting.localeLabel }}</span>
+      <span>{{ settingStore.state.localeLabel }}</span>
     </li>
-    <span v-else>{{ store.state.setting.localeLabel }}</span>
+    <span v-else>{{ settingStore.state.localeLabel }}</span>
     <template #dropdown>
       <ElDropdownMenu>
         <ElDropdownItem
@@ -24,9 +24,8 @@ export default { name: 'LocaleSwitch' };
 <script setup lang="ts">
 import { computed } from 'vue';
 import type { PropType } from 'vue';
-import { useStore } from 'vuex';
-import { key } from '@/store';
-import { localeMap } from '@/config/locale';
+import { useSettingStore } from '@/stores';
+import { Locale, localeMap } from '@/config/locale';
 
 const props = defineProps({
   size: {
@@ -39,21 +38,19 @@ const props = defineProps({
   }
 });
 
-const store = useStore(key);
+const settingStore = useSettingStore();
 
 const localeOptions = computed(() => {
   return Reflect.ownKeys(localeMap).map((key) => {
     return {
-      key: key as string,
+      key: key as Locale,
       value: Reflect.get(localeMap, key)
     };
   });
 });
 
 // 调整语言
-const adjustLocale = (locale: string) => {
-  store.commit('setting/localeChanged', {
-    locale
-  });
+const adjustLocale = (locale: Locale) => {
+  settingStore.localeChanged(locale);
 };
 </script>

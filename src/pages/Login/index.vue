@@ -92,8 +92,7 @@ export default { name };
 
 <script setup lang="ts">
 import { reactive, onMounted, computed } from 'vue';
-import { useStore } from 'vuex';
-import { key } from '@/store';
+import { useSettingStore, useUserStore } from '@/stores';
 import { onBeforeRouteLeave } from 'vue-router';
 import { ElMessage } from 'element-plus';
 import { User, Lock, Sunrise, MoonNight } from '@element-plus/icons-vue';
@@ -112,17 +111,18 @@ const data = reactive({
   spinning: false
 });
 
-const store = useStore(key);
+const settingStore = useSettingStore();
+const userStore = useUserStore();
 
 const isDark = computed(() => {
-  return store.state.setting.theme === 'dark';
+  return settingStore.state.theme === 'dark';
 });
 
 const login = () => {
   if (data.info.username !== '' && data.info.password !== '') {
     data.spinning = true;
-    store
-      .dispatch('user/login', {
+    userStore
+      .login({
         ...data.info,
         remembered: data.remembered
       })
@@ -155,9 +155,7 @@ const keyUpHandler = (e: any) => {
 
 // 调整主题
 const adjustTheme = () => {
-  store.commit('setting/themeChanged', {
-    theme: store.state.setting.theme === 'dark' ? 'light' : 'dark'
-  });
+  settingStore.themeChanged(settingStore.state.theme === 'dark' ? 'light' : 'dark');
 };
 
 onMounted(() => {

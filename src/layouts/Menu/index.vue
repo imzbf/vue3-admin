@@ -1,14 +1,12 @@
 <script lang="ts" setup>
 import { computed } from 'vue';
-import { useStore } from 'vuex';
-import { key } from '@/store';
+import { useSettingStore, useMenuStore } from '@/stores';
 import SubMenu from './SubMenu.vue';
 import './style.scss';
 
-const store = useStore(key);
-const aside = computed(
-  () => !store.state.setting.isMobile && store.state.setting.aside === 'close'
-);
+const settingStore = useSettingStore();
+const menuStore = useMenuStore();
+const aside = computed(() => !settingStore.state.isMobile && settingStore.state.aside === 'close');
 </script>
 
 <script lang="ts">
@@ -20,9 +18,9 @@ export default { name: 'IzMenu' };
     class="aside-menu dark-menu"
     :collapseTransition="false"
     :collapse="aside"
-    :defaultActive="store.state.setting.selectedKey"
-    :defaultOpeneds="store.state.setting.openKeys"
+    :defaultActive="settingStore.state.selectedKey"
+    :defaultOpeneds="settingStore.state.openKeys"
   >
-    <SubMenu :menuList="store.state.menu.menuList" />
+    <SubMenu :menuList="menuStore.state.menuList" />
   </ElMenu>
 </template>

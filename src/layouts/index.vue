@@ -1,8 +1,8 @@
 <template>
   <section :class="wrapperClass">
     <ElDrawer
-      v-if="store.state.setting.isMobile"
-      :modelValue="store.state.setting.mobileDrawer"
+      v-if="settingStore.state.isMobile"
+      :modelValue="settingStore.state.mobileDrawer"
       direction="ltr"
       size="auto"
       :withHeader="false"
@@ -40,7 +40,7 @@
       <main class="layout-main">
         <RouterView v-slot="{ Component }">
           <Transition name="fade" mode="out-in">
-            <KeepAlive :include="store.state.setting.cacheList">
+            <KeepAlive :include="settingStore.state.cacheList">
               <Component :is="Component" />
             </KeepAlive>
           </Transition>
@@ -55,8 +55,7 @@
 
 <script lang="ts" setup>
 import { computed } from 'vue';
-import { useStore } from 'vuex';
-import { key } from '@/store';
+import { useSettingStore } from '@/stores';
 import AdminMenu from '@/layouts/Menu/index.vue';
 import VaHeader from './Header/index.vue';
 import './style.scss';
@@ -65,17 +64,17 @@ import LogoImg from '@/assets/logo.png';
 import VaBar from './Bar/index.vue';
 import VaSetting from './Setting/index.vue';
 
-const store = useStore(key);
+const settingStore = useSettingStore();
 
 // 侧边栏样式
 const wrapperClass = computed(() => {
   const classList = ['wrapper'];
 
-  if (store.state.setting.aside !== 'open') {
+  if (settingStore.state.aside !== 'open') {
     classList.push('aside-close');
   }
 
-  if (store.state.setting.isMobile) {
+  if (settingStore.state.isMobile) {
     classList.push('is-mobile');
   }
   return classList;
@@ -83,13 +82,11 @@ const wrapperClass = computed(() => {
 
 // 侧边栏展开状态
 const asideOpen = computed(() => {
-  return store.state.setting.aside === 'open';
+  return settingStore.state.aside === 'open';
 });
 
 const adjustMobileDrawer = () => {
-  store.commit('setting/adjustMobileDrawer', {
-    mobileDrawer: !store.state.setting.mobileDrawer
-  });
+  settingStore.adjustMobileDrawer(!settingStore.state.mobileDrawer);
 };
 </script>
 

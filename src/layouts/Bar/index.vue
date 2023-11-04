@@ -1,7 +1,7 @@
 <template>
   <div class="layout-bar">
     <ElTag
-      v-for="item of store.state.setting.menuTags"
+      v-for="item of settingStore.state.menuTags"
       :key="item.title"
       class="cper"
       :closable="!isFixedTag(item) && menuTagNotSingle"
@@ -52,20 +52,19 @@ export default { name: 'BarLayout' };
 <script setup lang="ts">
 import { computed } from 'vue';
 import { ArrowDown } from '@element-plus/icons-vue';
-import { useStore } from 'vuex';
 import { useRouter, useRoute } from 'vue-router';
-import { key } from '@/store';
-import type { MenuTag, MenuTagActions } from '@/store/modules/setting';
+import { useSettingStore } from '@/stores';
+import type { MenuTag, MenuTagActions } from '@/stores';
 import { fixedTags } from '@/config/setting';
 import { menuTagActions } from '@/config/static';
 
-const store = useStore(key);
+const settingStore = useSettingStore();
 const router = useRouter();
 const route = useRoute();
 
 // 菜单不是单数，单数时不允许显示移除其他等
 const menuTagNotSingle = computed(() => {
-  return store.state.setting.menuTags.length > 1;
+  return settingStore.state.menuTags.length > 1;
 });
 
 // 判断是否是固定标签
@@ -78,14 +77,14 @@ const tagClick = (tag: MenuTag) => {
 };
 
 const tagClose = (tag: MenuTag) => {
-  store.commit('setting/removeMenuTag', {
+  settingStore.removeMenuTag({
     type: menuTagActions.rmTarget,
     route: tag
   });
 };
 
 const barMenuClose = (type: MenuTagActions) => {
-  store.commit('setting/removeMenuTag', {
+  settingStore.removeMenuTag({
     type
   });
 };

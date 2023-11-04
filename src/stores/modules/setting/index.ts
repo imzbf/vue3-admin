@@ -1,9 +1,12 @@
+import { reactive } from 'vue';
+import { defineStore, acceptHMRUpdate } from 'pinia';
 import i18next from 'i18next';
 import setting, { fixedTags } from '@/config/setting';
 import { THEME, LOCALE } from '@/config/keys';
 import router from '@/router';
 import { menuTagActions } from '@/config/static';
 import { Locale, localeMap } from '@/config/locale';
+import { deepClone } from '@vavt/util';
 
 interface AsideType {
   aside: 'open' | 'close'; // 正常展开、缩小显示图标
@@ -101,17 +104,18 @@ const getCacheComponentName = (routes: Array<any>): Array<string> => {
   return Array.from(list);
 };
 
-const mutations = {
-  asideState(state: SettingStateType, payload: AsideType): void {
-    state.aside = payload.aside;
-  },
-  adjustMobileDrawer(state: SettingStateType, payload: AsideType): void {
-    state.mobileDrawer = payload.mobileDrawer;
-  },
-  routeChanged(
-    state: SettingStateType,
-    payload: { path: string; breadcrumbs: Array<string> }
-  ): void {
+export const useSettingStore = defineStore('setting', () => {
+  const state = reactive<SettingStateType>(defaultState);
+
+  const asideState = (aside: typeof state.aside) => {
+    state.aside = aside;
+  };
+
+  const adjustMobileDrawer = (mobileDrawer: boolean) => {
+    state.mobileDrawer = mobileDrawer;
+  };
+
+  const routeChanged = (payload: { path: string; breadcrumbs: Array<string> }) => {
     // ['index','data']
     const levels = payload.path.match(/[^/]+/g) || [];
 
@@ -132,32 +136,37 @@ const mutations = {
     state.selectedKey = payload.path;
     state.openKeys = openKeysTemp;
     state.breadcrumbs = payload.breadcrumbs;
-  },
+  };
+
   // 切换主题
-  themeChanged(state: SettingStateType, payload: { theme: Themes }): void {
-    adjustHtmlClass(payload.theme);
-    state.theme = payload.theme;
-    localStorage.setItem(THEME, payload.theme);
-  },
+  const themeChanged = (theme: Themes) => {
+    adjustHtmlClass(theme);
+    state.theme = theme;
+    localStorage.setItem(THEME, theme);
+  };
+
   // 切换语言
-  localeChanged(state: SettingStateType, payload: { locale: Locale }) {
-    state.locale = payload.locale;
-    state.localeLabel = localeMap[payload.locale];
-    i18next.changeLanguage(payload.locale);
-    localStorage.setItem(LOCALE, payload.locale);
-  },
+  const localeChanged = (locale: Locale) => {
+    state.locale = locale;
+    state.localeLabel = localeMap[locale];
+    i18next.changeLanguage(locale);
+    localStorage.setItem(LOCALE, locale);
+  };
+
   // 切换页面标题
-  titleChanged(state: SettingStateType, payload: { title: string }) {
-    state.title = payload.title;
-  },
+  const titleChanged = (title: string) => {
+    state.title = title;
+  };
+
   // 生成新的缓存名单
-  setCacheList(state: SettingStateType, payload: { routes: Array<any> }): void {
-    state.cacheList = [...state.cacheList, ...getCacheComponentName(payload.routes)];
-  },
+  const setCacheList = (routes: Array<any>) => {
+    state.cacheList = [...state.cacheList, ...getCacheComponentName(routes)];
+  };
+
   // 标签栏调整，不存在则新增，存在则更新状态
-  routerChanged(state: SettingStateType, payload: { route: MenuTag }) {
-    const { menuTags } = state;
-    const savedTag = menuTags.find((item) => item.path === payload.route.path);
+  const routerChanged = (route: MenuTag) => {
+    const menuTags = deepClone(state.menuTags);
+    const savedTag = menuTags.find((item) => item.path === route.path);
 
     if (savedTag) {
       menuTags.forEach((item) => {
@@ -173,18 +182,20 @@ const mutations = {
       });
 
       menuTags.push({
-        ...payload.route,
+        ...route,
         curr: true
       });
     }
 
     state.menuTags = menuTags;
-  },
+  };
+
   // 标签栏移除
-  removeMenuTag(state: SettingStateType, payload: { type: MenuTagActions; route: MenuTag }) {
+  const removeMenuTag = (payload: { type: MenuTagActions; route?: MenuTag }) => {
     switch (payload.type) {
       case menuTagActions.rmTarget: {
-        state.menuTags = state.menuTags.filter((tag) => tag.path !== payload.route.path);
+        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+        state.menuTags = state.menuTags.filter((tag) => tag.path !== payload.route!.path);
         break;
       }
       case menuTagActions.rmCurr: {
@@ -212,20 +223,33 @@ const mutations = {
 
     // 定位到最后一个标签
     router.push(state.menuTags[state.menuTags.length - 1].path);
-  },
-  reSized(state: SettingStateType, payload: { isMobile: boolean }) {
-    state.isMobile = payload.isMobile;
-  },
-  // 调整设置抽屉显示状态
-  settingDrawerVisibleChanged(state: SettingStateType) {
-    state.settingDrawerVisible = !state.settingDrawerVisible;
-  }
-};
-const actions = {};
+  };
 
-export default {
-  namespaced: true,
-  state: defaultState,
-  mutations,
-  actions
-};
+  const reSized = (payload: { isMobile: boolean }) => {
+    state.isMobile = payload.isMobile;
+  };
+
+  // 调整设置抽屉显示状态
+  const settingDrawerVisibleChanged = () => {
+    state.settingDrawerVisible = !state.settingDrawerVisible;
+  };
+
+  return {
+    state,
+    asideState,
+    adjustMobileDrawer,
+    routeChanged,
+    themeChanged,
+    localeChanged,
+    titleChanged,
+    setCacheList,
+    routerChanged,
+    removeMenuTag,
+    reSized,
+    settingDrawerVisibleChanged
+  };
+});
+
+if (import.meta.hot) {
+  import.meta.hot.accept(acceptHMRUpdate(useSettingStore, import.meta.hot));
+}

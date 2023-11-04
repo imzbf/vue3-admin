@@ -5,13 +5,13 @@
         <div class="page-search">
           <ElForm inline :model="params">
             <ElFormItem :label="$t('标题')">
-              <ElInput v-model="params.title" :placeholder="$t('标题')" :clearable="true" />
+              <ElInput v-model="params.title" :placeholder="$t('标题')" clearable />
             </ElFormItem>
             <ElFormItem :label="$t('类型')">
-              <ElInput v-model="params.type" :placeholder="$t('类型')" :clearable="true" />
+              <ElInput v-model="params.type" :placeholder="$t('类型')" clearable />
             </ElFormItem>
             <ElFormItem :label="$t('编码')">
-              <ElInput v-model="params.code" :placeholder="$t('编码')" :clearable="true" />
+              <ElInput v-model="params.code" :placeholder="$t('编码')" clearable />
             </ElFormItem>
 
             <ElFormItem>

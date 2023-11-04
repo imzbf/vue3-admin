@@ -1,14 +1,6 @@
 # vue3-admin
 
-<p>
-  <a href="https://nodejs.org/en/about/releases/"><img src="https://img.shields.io/badge/node-%3E=14.0.0-green.svg" alt="node compatility"></a>
-</p>
-
-## 介绍
-
-项目基于 [vue@3.x](https://v3.cn.vuejs.org/guide) 系列开发（文档：[router@4.x](https://next.router.vuejs.org/zh/guide/index.html)、[vuex@4.x](https://next.vuex.vuejs.org/)），UI 组件库使用 [element-plus](https://element-plus.gitee.io/zh-CN/)，开发环境使用 [vite@2.x](https://cn.vitejs.dev/)。
-
-目前支持了登录及主结构，异步菜单，少数 demo 等。
+搭配`vue@3.x`系列（已使用`pinia`重构）开发。支持了登录及主结构，暗夜主题，国际化，服务端异步菜单，少数 demo 等。
 
 ## 预览
 
@@ -32,19 +24,21 @@
 │   ├── config               # 项目中的配置
 │   ├── layouts              # 通用布局
 │   ├── router               # vue路由配置
-│   ├── store                # vuex配置
+│   ├── stores               # pinia配置
 │   ├── styles               # 全局样式
-typing # ts 类型申明文件
 │   ├── utils                # 工具库
-│   └── views                # 业务页面
+│   └── pages                # 业务页面
+├── .drone.yml               # drone任务
 ├── .env                     # 公共的环境常量
 ├── .env.development         # 开发环境下的环境常量
 ├── .env.preview             # 预览模式下的环境常量
 ├── .env.production          # 生产环境下的环境常量
 ├── .eslintignore            # eslint忽略项配置
 ├── .gitignore
-├── .prettierignore          # prettier忽略项配置
+├── build.sh                 # 构建dokcer镜像并运行容器
+├── Dockerfile               #
 ├── index.html               # vite规范的入口文件
+├── nginx.conf               # docker镜像内运行的nginx的配置项
 ├── LICENSE
 ├── package.json
 ├── tsconfig.json            # ts config
@@ -52,10 +46,6 @@ typing # ts 类型申明文件
 ├── vite.config.ts           # vite配置文件
 └── yarn.lock                # 当前版本的lock
 ```
-
-## 资源申明
-
-对于作者在项目引用的一些图片等资源，均支持非商用，并注明了资源出处，如需商用请注意该资源作者的使用条件！
 
 ## 结尾
 

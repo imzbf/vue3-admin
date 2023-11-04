@@ -7,8 +7,14 @@ export interface LoginInfoType {
 }
 
 // 登出
-export const logout = (): Promise<any> => axios.post('logout');
+export const logout = (): Promise<ResponseBase<null>> => axios.post('logout');
 // 登录
-export const login = (data: LoginInfoType): Promise<any> => axios.post('login', data);
+export const login = (
+  data: LoginInfoType
+): Promise<
+  ResponseBase<{
+    token: string;
+  }>
+> => axios.post('login', data);
 // 获取信息
-export const getUseInfo = (): Promise<any> => axios.get('user');
+export const getUseInfo = (): Promise<ResponseBase<any>> => axios.get('user');
